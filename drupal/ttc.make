@@ -11,7 +11,6 @@ projects[nci_SSO][subdir] = "custom"
 projects[nci_SSO][download][type] = "svn"
 projects[nci_SSO][download][url] = "https://OLD_SVN/svn/oce_dev/Products/Drupal/shared/modules/Custom/nci_SSO/branches/1.3"
 projects[nci_SSO][download][interactive] = "true"
-projects[nci_SSO][download][working-copy] = "true"
 
 ; Modules - Development-only
 projects[features][subdir] = "dev"
