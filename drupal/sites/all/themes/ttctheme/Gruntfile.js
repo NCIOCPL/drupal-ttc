@@ -59,11 +59,17 @@ module.exports = function(grunt) {
 		global_vars: global_vars,
 		pkg: grunt.file.readJSON('package.json'),
 
+		drush: {
+			'cc': {
+				args: ['cache-clear', 'all']
+			}
+		},
+
 		sass: {
 			dist: {
 				options: {
 					outputStyle: 'compressed',
-					includePaths: ['<%= global_vars.theme.src.scss %>', '<%= global_vars.theme.base %>/scss/'].concat(bourbon)
+					includePaths: require('node-bourbon').with('<%= global_vars.theme.src.scss %>', '<%= global_vars.theme.base %>/scss/')
 				},
 				files: {
 					'<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>.scss'
