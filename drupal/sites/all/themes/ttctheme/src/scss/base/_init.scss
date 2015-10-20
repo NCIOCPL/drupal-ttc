@@ -1,1 +1,70 @@
-@import "../../zurb_foundation/scss/foundation/functions";
+@import "foundation/functions";
+
+// Import our functions early so they can be used by mixins and other partials.
+// We can also override Foundation functions this way.
+@import "base/functions";
+
+/// Map of fonts.
+/// @type Map
+$fonts: (
+	lato: (Lato),
+	default: (Arial, sans-serif)
+);
+
+/// Map of palettes.
+/// @type Map
+$palettes: (
+	white: (
+		base: #ffffff
+	),
+	gray: (
+		x-light: #f5f6f2,
+		light: #d9d9d9,
+		mid-light: #474747,
+		base: #3e3e3e,
+		dark: #323131
+	),
+	black: (
+		base: #000000
+	),
+	red: (
+		base: #ec5248,
+		dark: #c93930
+	),
+	orange: (
+		base: #f99848,
+		dark: #db7729
+	),
+	grass-green: (
+		base: #98a345,
+		dark: #797b3a
+	),
+	sea-green: (
+		base: #5baa8b,
+		dark: #51977f
+	),
+	blue: (
+		base: #307491,
+		dark: #235c72
+	),
+	lavender: (
+		base: #7b75a5,
+		dark: #6a6491
+	),
+	plum: (
+		base: #3d334b,
+		dark: #282030
+	)
+);
+
+
+// Foundation variables
+
+$font-family-sans-serif: font(lato);
+$body-bg: palette(white);
+$body-font-color: palette(gray, dark);
+$header-font-color: palette(gray, dark);
+$h1-font-size: rem-calc(30);
+$h2-font-size: rem-calc(18);
+$paragraph-font-size: rem-calc(18);
+$paragraph-line-height: 1.475;

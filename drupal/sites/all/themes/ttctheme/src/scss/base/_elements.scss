@@ -2,23 +2,30 @@
 //
 // Things to review before you write code here:
 // - Be sure to load after "foundation" import.
-// - Also, before adding styles be sure to modify variables in the
-//   "base/_common.scss" file. You may not need to write any code.
+// - Also, before adding styles be sure to modify variables in the `base/_common.scss` file. You may not need to write any code.
 
 // Headings
 //------------------------------------------
-// h1, h2, h3,
-// h4, h5, h6 {}
+h1 {
+	text-transform: uppercase;
+	border-bottom: 1px solid palette(gray, light);
+}
+
+h2 {
+	text-transform: uppercase;
+}
 
 // Anchors
 //-----------------------------------------------------------------------------
-// a {}
+a {
+	color: palette(blue, base);
+	text-decoration: none;
 
-// a:focus {}
-
-// a.active,
-// a:active,
-// a:hover {}
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
 
 // Form Input
 //-----------------------------------------------------------------------------
