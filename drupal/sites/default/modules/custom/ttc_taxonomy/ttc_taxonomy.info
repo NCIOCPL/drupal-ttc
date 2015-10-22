@@ -13,4 +13,4 @@ features[taxonomy][] = development_stage
 features[taxonomy][] = patent_status
 features[taxonomy][] = product_type
 features[taxonomy][] = therapeutic_area
-project path = sites/all/modules/custom
+project path = sites/default/modules/custom

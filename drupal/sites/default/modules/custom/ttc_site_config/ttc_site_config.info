@@ -12,4 +12,4 @@ features[variable][] = date_default_timezone
 features[variable][] = site_default_country
 features[variable][] = site_mail
 features[variable][] = site_name
-project path = sites/all/modules
+project path = sites/default/modules/custom
