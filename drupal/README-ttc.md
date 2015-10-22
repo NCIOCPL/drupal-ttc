@@ -17,13 +17,13 @@ Dependencies
 * [Node.js](https://nodejs.org/) -- using [nvm](https://github.com/creationix/nvm) (for Linux/OS X) or [NVM for Windows](https://github.com/coreybutler/nvm-windows) is recommended
 * [Git](https://git-scm.com/)
 * [grunt-cli](https://github.com/gruntjs/grunt-cli), a Node.js package (must be installed globally) -- once Node.js is installed, run:
-```console
-npm install -g grunt-cli
-```
+	```console
+	npm install -g grunt-cli
+	```
 * [bower](https://github.com/bower/bower), a Node.js package (must be installed globally) -- once both Node.js and Git are installed, run:
-```console
-npm install -g bower
-```
+	```console
+	npm install -g bower
+	```
 
 Installation
 ----------
@@ -34,19 +34,19 @@ Installation
 2. If you are not using Acquia Dev Desktop:
 	1. Build the site:
 		```console
-		drush make
+		drush make ttc.make
 		```
 	2. Install the site. **Change the `db-url` parameter to include your specific SQL database connection details.**
 		```console
 		drush site-install --db-url=mysql://username:password@localhost:port/ttc
 		```
 3. If you *are* using Acquia Dev Desktop:
-	2. In Acquia Dev Desktop, create a new Drupal site in the directory where you exported or checked out the `ttc.make` file. See the [Acquia Dev Desktop documentation](https://docs.acquia.com/dev-desktop2/start/new) if you're unsure how to do this.
-		* Use the default "Drupal" distribution.
+	1. Download Drupal 7 from https://www.drupal.org/project/drupal and extract the archive to the directory where you exported or checked out the `ttc.make` file
+	2. In Acquia Dev Desktop, import this directory as a new site. See the [Acquia Dev Desktop documentation](https://docs.acquia.com/dev-desktop2/start/local) if you're unsure how to do this.
 		* For the "local site name", use "ttc".
 	3. Build the site -- note the `no-core` flag, which prevents drush from trying to download Drupal on its own:
 		```console
-		drush make --no-core
+		drush make --no-core ttc.make
 		```
 	4. In a web browser, navigate to https://ttc.dd:8083 and run through the installation steps. The database steps will be completed automatically by Acquia Dev Desktop.
 4. You're done! Now you can work with Drupal as usual.
