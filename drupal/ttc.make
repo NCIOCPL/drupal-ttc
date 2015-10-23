@@ -3,7 +3,7 @@ core = 7.x
 api = 2
 
 ; Core
-projects[drupal][version] = "7.39"
+projects[drupal][version] = "7.41"
 
 ; Modules - Custom
 projects[nci_SSO][type] = "module"
