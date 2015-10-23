@@ -13,10 +13,10 @@ projects[nci_SSO][download][url] = "https://OLD_SVN/svn/oce_dev/Products/Drupal/
 projects[nci_SSO][download][interactive] = "true"
 
 ; Modules - Development-only
-projects[features][subdir] = "dev"
+projects[features][subdir] = "contrib"
 projects[features][version] = "2.7"
 
-projects[features_extra][subdir] = "dev"
+projects[features_extra][subdir] = "contrib"
 projects[features_extra][version] = "1.0"
 
 ; Modules - Contributed
