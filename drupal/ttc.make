@@ -39,7 +39,7 @@ projects[entity][subdir] = "contrib"
 projects[entity][version] = "1.6"
 
 projects[field_collection][subdir] = "contrib"
-projects[field_collection][version] = "1.0-beta8"
+projects[field_collection][version] = "1.0-beta10"
 
 projects[panels][subdir] = "contrib"
 projects[panels][version] = "3.5"
