@@ -12,13 +12,6 @@ projects[nci_SSO][download][type] = "svn"
 projects[nci_SSO][download][url] = "https://OLD_SVN/svn/oce_dev/Products/Drupal/shared/modules/Custom/nci_SSO/branches/1.3"
 projects[nci_SSO][download][interactive] = "true"
 
-; Modules - Development-only
-projects[features][subdir] = "contrib"
-projects[features][version] = "2.7"
-
-projects[features_extra][subdir] = "contrib"
-projects[features_extra][version] = "1.0"
-
 ; Modules - Contributed
 projects[autologout][subdir] = "contrib"
 projects[autologout][version] = "4.4"
@@ -35,8 +28,17 @@ projects[config_perms][version] = "2.1"
 projects[date][subdir] = "contrib"
 projects[date][version] = "2.9"
 
+projects[email][subdir] = "contrib"
+projects[email][version] = "1.3"
+
 projects[entity][subdir] = "contrib"
 projects[entity][version] = "1.6"
+
+projects[features][subdir] = "contrib"
+projects[features][version] = "2.7"
+
+projects[features_extra][subdir] = "contrib"
+projects[features_extra][version] = "1.0"
 
 projects[field_collection][subdir] = "contrib"
 projects[field_collection][version] = "1.0-beta10"
