@@ -1,4 +1,4 @@
-/* jshint node:true */
+/* eslint-env node */
 
 module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt);
@@ -77,9 +77,9 @@ module.exports = function(grunt) {
 			}
 		},
 
-		jshint: {
+		eslint: {
 			options: {
-				jshintrc: '.jshintrc'
+				configFile: '.eslintrc'
 			},
 			all: [
 				'Gruntfile.js',
@@ -115,13 +115,13 @@ module.exports = function(grunt) {
 				files: [
 					jsLibs,
 					jsFoundation,
-					'<%= jshint.all %>'
+					'<%= eslint.all %>'
 				],
-				tasks: ['jshint', 'uglify']
+				tasks: ['eslint', 'uglify']
 			}
 		}
 	});
 
-	grunt.registerTask('build', ['jshint', 'uglify', 'sass']);
+	grunt.registerTask('build', ['eslint', 'uglify', 'sass']);
 	grunt.registerTask('default', ['build', 'watch']);
 };
