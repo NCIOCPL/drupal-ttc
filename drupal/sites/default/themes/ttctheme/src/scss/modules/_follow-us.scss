@@ -1,0 +1,14 @@
+.follow-us {
+	&__label {
+		&:after {
+			content: ":";
+		}
+	}
+
+	&__list {
+		list-style-type: none;
+	}
+	&__list-item {
+		display: inline-block;
+	}
+}

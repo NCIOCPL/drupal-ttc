@@ -66,10 +66,21 @@ module.exports = function (grunt) {
     },
 
     sass: {
-      dist: {
+      options: {
+        includePaths: require('node-bourbon').with('<%= global_vars.theme.src.scss %>', '<%= global_vars.theme.base %>/scss/')
+      },
+      dev: {
         options: {
-          outputStyle: 'compressed',
-          includePaths: require('node-bourbon').with('<%= global_vars.theme.src.scss %>', '<%= global_vars.theme.base %>/scss/')
+          outputStyle: 'expanded',
+          sourceMap: true
+        },
+        files: {
+          '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>.scss'
+        }
+      },
+      prod: {
+        options: {
+          outputStyle: 'compressed'
         },
         files: {
           '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>.scss'
@@ -107,7 +118,7 @@ module.exports = function (grunt) {
 
       sass: {
         files: '<%= global_vars.theme.src.scss %>/**/*.scss',
-        tasks: ['sass'],
+        tasks: ['sass:dev'],
         options: {
           livereload: true
         }
@@ -124,6 +135,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('build', ['eslint', 'uglify', 'sass']);
+  grunt.registerTask('build', ['eslint', 'uglify', 'sass:dev']);
+  grunt.registerTask('deploy', ['eslint', 'uglify', 'sass:prod']);
   grunt.registerTask('default', ['build', 'watch']);
 };
