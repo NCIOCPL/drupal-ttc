@@ -45,7 +45,7 @@ function ttc_theme_config_default_fe_block_boxes() {
   $fe_block_boxes->machine_name = 'logo_footer';
   $fe_block_boxes->body = '<div class="logo l-logo">
   <a href="/" title="Home" class="logo__link">
-    <img src="/sites/default/themes/ttctheme/public/images/ttc-logo--white.svg" alt="Technology Transfer Center of the National Cancer Institute" onerror="this.src=\'/sites/default/themes/ttctheme/public/images/ttc-logo--white.png; this.removeAttribute(\'onerror\');">
+    <img src="/sites/default/themes/ttctheme/public/images/ttc-logo--white.svg" alt="Technology Transfer Center of the National Cancer Institute" onerror="this.src=\'/sites/default/themes/ttctheme/public/images/ttc-logo--white.png\'; this.removeAttribute(\'onerror\');">
   </a>
 </div>';
 
@@ -57,7 +57,7 @@ function ttc_theme_config_default_fe_block_boxes() {
   $fe_block_boxes->machine_name = 'logo_header';
   $fe_block_boxes->body = '<div class="logo l-logo">
   <a href="/" title="Home" class="logo__link">
-    <img src="/sites/default/themes/ttctheme/public/images/ttc-logo.svg" alt="Technology Transfer Center of the National Cancer Institute" onerror="this.src=\'/sites/default/themes/ttctheme/public/images/ttc-logo.png; this.removeAttribute(\'onerror\');">
+    <img src="/sites/default/themes/ttctheme/public/images/ttc-logo.svg" alt="Technology Transfer Center of the National Cancer Institute" onerror="this.src=\'/sites/default/themes/ttctheme/public/images/ttc-logo.png\'; this.removeAttribute(\'onerror\');">
   </a>
 </div>';
 
