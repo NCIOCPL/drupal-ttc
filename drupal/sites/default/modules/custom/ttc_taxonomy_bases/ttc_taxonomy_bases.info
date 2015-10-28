@@ -1,0 +1,16 @@
+name = TTC Taxonomy Bases
+description = Any field bases that depend upon taxonomies.
+core = 7.x
+package = TTC
+version = 7.x-1.0
+dependencies[] = features
+dependencies[] = taxonomy
+dependencies[] = ttc_taxonomy
+features[features_api][] = api:2
+features[field_base][] = field_contact_auto
+features[field_base][] = field_development_stage
+features[field_base][] = field_patent_status
+features[field_base][] = field_pdf_img
+features[field_base][] = field_product_type
+features[field_base][] = field_therapeutic_area
+project path = sites/default/modules/custom
