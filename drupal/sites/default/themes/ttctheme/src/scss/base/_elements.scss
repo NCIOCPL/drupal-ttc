@@ -8,6 +8,7 @@
 //------------------------------------------
 h1 {
 	text-transform: uppercase;
+
 	border-bottom: 1px solid palette(gray, light);
 }
 
@@ -18,8 +19,9 @@ h2 {
 // Anchors
 //-----------------------------------------------------------------------------
 a {
-	color: palette(blue, base);
 	text-decoration: none;
+
+	color: palette(blue, base);
 
 	&:hover,
 	&:focus {

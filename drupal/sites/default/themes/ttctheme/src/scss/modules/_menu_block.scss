@@ -1,0 +1,20 @@
+.block-menu-menu-footer-menu-primary,
+.block-menu-menu-footer-menu-secondary {
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+
+	.leaf {
+		display: block;
+
+		padding-top: 0.5rem;
+		padding-bottom: 0.25rem;
+
+		border-bottom-width: 2px;
+		border-bottom-style: solid;
+		border-bottom-color: palette(gray, mid-light);
+	}
+
+	a {
+		color: palette(white);
+	}
+}

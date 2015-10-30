@@ -57,8 +57,16 @@ $palettes: (
 	)
 );
 
+$palettes: map-merge($palettes, (
+	grey: map-get($palettes, gray)
+));
+
 
 // Foundation variables
+
+$base-font-size: 18px;
+$rem-base: $base-font-size;
+$row-width: 1440px;
 
 $font-family-sans-serif: font(lato);
 $body-bg: palette(white);

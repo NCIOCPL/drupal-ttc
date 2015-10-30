@@ -1,26 +1,43 @@
-%icon {
-	display: inline-block;
-}
-
 .icon {
-	// icon size classes
+	// icon sizes
 	$icon-sizes: (
 		36px,
 		54px
 	);
 
+	display: inline-block;
+
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 50%;
+
 	@each $size in $icon-sizes {
-		&--#{strip-unit($size)} {
+		&.-size-#{strip-unit($size)} {
 			height: $size;
 			width: $size;
 		}
 	}
 
+	/// @TODO: remove and replace with dynamic images
+	&.-icon-email {
+		border-color: palette(blue);
 
-	&--email {
+		&--grayscale {
+			border-color: palette(white);
+		}
 	}
-	&--linkedin {
+	&.-icon-linkedin {
+		border-color: palette(blue);
+
+		&--grayscale {
+			border-color: palette(white);
+		}
 	}
-	&--twitter {
+	&.-icon-twitter {
+		border-color: palette(blue);
+
+		&--grayscale {
+			border-color: palette(white);
+		}
 	}
 }
