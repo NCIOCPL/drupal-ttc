@@ -13,6 +13,13 @@ function ttc_content_type_abstract_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_abstract';
+  $strongarm->value = 'edit-workflow';
+  $export['additional_settings__active_tab_abstract'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__abstract';
   $strongarm->value = array(
     'view_modes' => array(
@@ -65,7 +72,8 @@ function ttc_content_type_abstract_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_abstract';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_abstract'] = $strongarm;
 
@@ -82,6 +90,13 @@ function ttc_content_type_abstract_strongarm() {
   $strongarm->name = 'node_submitted_abstract';
   $strongarm->value = 0;
   $export['node_submitted_abstract'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_abstract';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_abstract'] = $strongarm;
 
   return $export;
 }
