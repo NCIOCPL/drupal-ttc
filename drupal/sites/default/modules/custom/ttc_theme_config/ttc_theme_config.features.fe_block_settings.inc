@@ -31,7 +31,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -10,
+        'weight' => -11,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -63,7 +63,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -9,
+        'weight' => -11,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -95,7 +95,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -11,
+        'weight' => -12,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -127,7 +127,103 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
+        'weight' => -12,
+      ),
+      'zurb_foundation' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zurb_foundation',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['block-tagline'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'tagline',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'ttctheme' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'ttctheme',
+        'weight' => 0,
+      ),
+      'zurb_foundation' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zurb_foundation',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['menu-menu-footer-menu--primary'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-footer-menu--primary',
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'ttctheme' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'ttctheme',
         'weight' => -10,
+      ),
+      'zurb_foundation' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zurb_foundation',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['menu-menu-footer-menu--secondary'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-footer-menu--secondary',
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'ttctheme' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'ttctheme',
+        'weight' => -9,
       ),
       'zurb_foundation' => array(
         'region' => '',

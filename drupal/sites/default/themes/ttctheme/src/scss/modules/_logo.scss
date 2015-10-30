@@ -1,4 +1,6 @@
 .logo {
+	max-width: 440px;
+
 	&__link {
 		display: block;
 	}
@@ -6,5 +8,10 @@
 
 /// header logo
 .block--logo-footer {
-	max-width: 440px;
+
+	@media #{$large-up} {
+		display: inline-block;
+
+		width: 50%;
+	}
 }

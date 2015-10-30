@@ -16,9 +16,9 @@ function ttc_theme_config_default_fe_block_boxes() {
   $fe_block_boxes->machine_name = 'follow_us_footer';
   $fe_block_boxes->body = '<div class="follow-us">
   <ul class="follow-us__list">
-    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4677463" title="LinkedIn" class="icon--54 icon--linkedin--grayscale"><span class="element-invisible">follow us on LinkedIn</span></a></li>
-    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon--54 icon--twitter--grayscale"><span class="element-invisible">follow us on Twitter</span></a></li>
-    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon--54 icon--email--grayscale"><span class="element-invisible">email us</span></a></li>
+    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4677463" title="LinkedIn" class="icon -size-54 -icon-linkedin--grayscale"><span class="element-invisible">follow us on LinkedIn</span></a></li>
+    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-54 -icon-twitter--grayscale"><span class="element-invisible">follow us on Twitter</span></a></li>
+    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-54 -icon-email--grayscale"><span class="element-invisible">email us</span></a></li>
   </ul>
 </div>';
 
@@ -31,9 +31,9 @@ function ttc_theme_config_default_fe_block_boxes() {
   $fe_block_boxes->body = '<div class="follow-us">
   <span class="follow-us__label">Follow Us</span>
   <ul class="follow-us__list">
-    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4677463" title="LinkedIn" class="icon--36 icon--linkedin"><span class="element-invisible">follow us on LinkedIn</span></a></li>
-    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon--36 icon--twitter"><span class="element-invisible">follow us on Twitter</span></a></li>
-    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon--36 icon--email"><span class="element-invisible">email us</span></a></li>
+    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4677463" title="LinkedIn" class="icon -size-36 -icon-linkedin"><span class="element-invisible">follow us on LinkedIn</span></a></li>
+    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-36 -icon-twitter"><span class="element-invisible">follow us on Twitter</span></a></li>
+    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-36 -icon-email"><span class="element-invisible">email us</span></a></li>
   </ul>
 </div>';
 
@@ -62,6 +62,16 @@ function ttc_theme_config_default_fe_block_boxes() {
 </div>';
 
   $export['logo_header'] = $fe_block_boxes;
+
+  $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'Tagline';
+  $fe_block_boxes->format = 'full_html';
+  $fe_block_boxes->machine_name = 'tagline';
+  $fe_block_boxes->body = '<div class="row">
+  <div class="tagline">NIH … Turning Discovery Into Health<sup>®</sup></div>
+</div>';
+
+  $export['tagline'] = $fe_block_boxes;
 
   return $export;
 }

@@ -10,4 +10,9 @@
 
 	color: palette(gray, mid-light);
 	background-color: palette(gray, light);
+
+	@media #{$large-up} {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
 }
