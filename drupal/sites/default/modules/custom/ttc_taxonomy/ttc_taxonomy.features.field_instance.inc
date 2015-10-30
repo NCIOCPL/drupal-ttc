@@ -121,11 +121,46 @@ function ttc_taxonomy_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'taxonomy_term-send_to_email_addresses-field_email'.
+  $field_instances['taxonomy_term-send_to_email_addresses-field_email'] = array(
+    'bundle' => 'send_to_email_addresses',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The address to use for email notifications.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Email');
   t('Image');
   t('Phone');
+  t('The address to use for email notifications.');
 
   return $field_instances;
 }
