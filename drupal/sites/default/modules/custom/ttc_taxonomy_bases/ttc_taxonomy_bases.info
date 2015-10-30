@@ -12,5 +12,6 @@ features[field_base][] = field_development_stage
 features[field_base][] = field_patent_status
 features[field_base][] = field_pdf_img
 features[field_base][] = field_product_type
+features[field_base][] = field_send_to
 features[field_base][] = field_therapeutic_area
-project path = sites/default/modules/custom
+project path = sites/default/modules/custom2
