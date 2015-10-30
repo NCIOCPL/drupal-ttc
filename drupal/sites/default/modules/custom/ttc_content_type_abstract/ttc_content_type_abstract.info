@@ -24,7 +24,6 @@ features[features_api][] = api:2
 features[field_instance][] = node-abstract-field_contact_auto
 features[field_instance][] = node-abstract-field_development_stage
 features[field_instance][] = node-abstract-field_enumber
-features[field_instance][] = node-abstract-field_internal_notes
 features[field_instance][] = node-abstract-field_list_intro_text
 features[field_instance][] = node-abstract-field_meta_desc
 features[field_instance][] = node-abstract-field_meta_keywords
