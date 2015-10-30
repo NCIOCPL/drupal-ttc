@@ -11,44 +11,6 @@ function ttc_field_collections_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'field_collection_item-field_notif-field_notif_auto'.
-  $field_instances['field_collection_item-field_notif-field_notif_auto'] = array(
-    'bundle' => 'field_notif',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_notif_auto',
-    'label' => 'Send To',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 0,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-field_notif-field_notif_manual'.
   $field_instances['field_collection_item-field_notif-field_notif_manual'] = array(
     'bundle' => 'field_notif',
@@ -78,41 +40,38 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
-  // Exported field_instance:
-  // 'field_collection_item-field_opp_invs_text-field_opp_invs_email'.
-  $field_instances['field_collection_item-field_opp_invs_text-field_opp_invs_email'] = array(
-    'bundle' => 'field_opp_invs_text',
+  // Exported field_instance: 'field_collection_item-field_notif-field_send_to'.
+  $field_instances['field_collection_item-field_notif-field_send_to'] = array(
+    'bundle' => 'field_notif',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'email',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'email_default',
-        'weight' => 1,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'field_collection_item',
-    'field_name' => 'field_opp_invs_email',
-    'label' => 'Email',
+    'field_name' => 'field_send_to',
+    'label' => 'Send To',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'email',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'email_textfield',
-      'weight' => 2,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 0,
     ),
   );
 
@@ -148,6 +107,45 @@ function ttc_field_collections_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_opp_invs_text-field_url'.
+  $field_instances['field_collection_item-field_opp_invs_text-field_url'] = array(
+    'bundle' => 'field_opp_invs_text',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'url',
+        'settings' => array(
+          'nofollow' => FALSE,
+          'trim_length' => 80,
+        ),
+        'type' => 'url_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_url',
+    'label' => 'URL',
+    'required' => 0,
+    'settings' => array(
+      'title_fetch' => 0,
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'url',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'url_external',
+      'weight' => 4,
     ),
   );
 
@@ -276,7 +274,7 @@ function ttc_field_collections_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_text',
     'label' => 'Text',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -334,7 +332,6 @@ function ttc_field_collections_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Citation');
-  t('Email');
   t('Link to the patent\'s page on the relevant site.');
   t('List publications in the format: last name, first initial, et al. PMID.');
   t('Name');
