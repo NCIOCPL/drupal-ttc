@@ -16,9 +16,9 @@ function ttc_theme_config_default_fe_block_boxes() {
   $fe_block_boxes->machine_name = 'follow_us_footer';
   $fe_block_boxes->body = '<div class="follow-us">
   <ul class="follow-us__list">
-    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4677463" title="LinkedIn" class="icon -size-54 -icon-linkedin--grayscale"><span class="element-invisible">follow us on LinkedIn</span></a></li>
-    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-54 -icon-twitter--grayscale"><span class="element-invisible">follow us on Twitter</span></a></li>
-    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-54 -icon-email--grayscale"><span class="element-invisible">email us</span></a></li>
+    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4677463" title="LinkedIn" class="icon -size-54 -icon-linkedin--white"><span class="element-invisible">follow us on LinkedIn</span></a></li>
+    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-54 -icon-twitter--white"><span class="element-invisible">follow us on Twitter</span></a></li>
+    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-54 -icon-email--white"><span class="element-invisible">email us</span></a></li>
   </ul>
 </div>';
 
