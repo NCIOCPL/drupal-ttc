@@ -112,16 +112,17 @@ module.exports = function (grunt) {
     },
 
     watch: {
+      options: {
+        livereload: true
+      },
+
       grunt: {
         files: ['Gruntfile.js']
       },
 
       sass: {
         files: '<%= global_vars.theme.src.scss %>/**/*.scss',
-        tasks: ['sass:dev'],
-        options: {
-          livereload: true
-        }
+        tasks: ['sass:dev']
       },
 
       js: {
