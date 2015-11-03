@@ -1,12 +1,13 @@
-.block-menu-menu-footer-menu-primary,
-.block-menu-menu-footer-menu-secondary {
-	margin-top: 2.5rem;
+/// Common footer menu block
+/// @type Placeholder
+%footer-menu {
+	clear: both;
+
 	margin-bottom: 2.5rem;
 
 	color: palette(white);
 
 	@media #{$large-up} {
-		margin-top: 1.5rem;
 		margin-bottom: 1.5rem;
 	}
 
@@ -45,10 +46,14 @@
 	}
 }
 
-@media #{$large-up} {
-	.block-menu-menu-footer-menu-primary {
-		margin-top: 2.5rem;
+/// Primary footer menu block
+/// Intended to include links to TTC-specific pages, like the Homepage and Site Map
+.block-menu-menu-footer-menu-primary {
+	padding-top: 2.5rem;
 
+	@extend %footer-menu;
+
+	@media #{$large-up} {
 		.menu {
 			padding-top: 2.5rem;
 
@@ -57,7 +62,14 @@
 			border-top-color: palette(gray, mid-light);
 		}
 	}
-	.block-menu-menu-footer-menu-secondary {
+}
+
+/// Secondary footer menu block
+/// Intended to include links to other NCI/NIH/HHS/USA.gov
+.block-menu-menu-footer-menu-secondary {
+	@extend %footer-menu;
+
+	@media #{$large-up} {
 		margin-bottom: 3.5rem;
 	}
 }

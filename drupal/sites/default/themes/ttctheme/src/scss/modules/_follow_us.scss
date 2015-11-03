@@ -1,11 +1,19 @@
 .follow-us {
 	&__label {
+		position: relative;
+		top: -0.625rem;
+
 		&:after {
 			content: ":";
 		}
 	}
 
 	&__list {
+		display: inline-block;
+
+		margin-bottom: 0;
+		margin-left: 0.5rem;
+
 		list-style-type: none;
 	}
 
@@ -27,10 +35,31 @@
 	}
 }
 
-.block--follow-us-footer {
+/// Common "Follow Us" block
+/// @type Placeholder
+%block--follow-us {
 	@media #{$large-up} {
-		display: inline-block;
+		display: block;
+		float: right;
 
 		width: 50%;
+		margin-top: 1rem;
+		margin-bottom: 0.25rem;
 	}
+}
+
+/// Header "Follow Us" block
+.block--follow-us-header {
+	display: none;
+
+	@extend %block--follow-us;
+
+	@media #{$large-up} {
+		display: inline-block;
+	}
+}
+
+/// Footer "Follow Us" block
+.block--follow-us-footer {
+	@extend %block--follow-us;
 }

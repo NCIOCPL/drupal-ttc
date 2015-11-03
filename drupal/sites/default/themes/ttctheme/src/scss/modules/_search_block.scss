@@ -1,0 +1,40 @@
+.block-search-form {
+	display: none;
+
+	@media #{$large-up} {
+		display: block;
+		float: right;
+
+		width: 30%;
+		margin-top: 0.25rem;
+		margin-bottom: 1rem;
+
+		@at-root .search-form {
+			&__input {
+				// force override Foundation styles
+				&#{&} {
+					margin-bottom: 0;
+				}
+
+				&-container {
+					padding: rem-calc(7px);
+					padding-right: rem-calc(4px);
+
+					background-color: palette(gray, light);
+				}
+			}
+			&__submit {
+				margin-bottom: 0;
+
+				text-transform: uppercase;
+
+				&-container {
+					padding: rem-calc(7px);
+					padding-left: rem-calc(4px);
+
+					background-color: palette(gray, light);
+				}
+			}
+		}
+	}
+}

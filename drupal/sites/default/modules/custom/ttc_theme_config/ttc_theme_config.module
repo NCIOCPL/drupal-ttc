@@ -5,15 +5,3 @@
  */
 
 include_once 'ttc_theme_config.features.inc';
-
-/**
- * Implements hook_preprocess_block.
- */
-function ttc_theme_config_preprocess_block(&$vars) {
-  $block = $vars['block'];
-  $machine_name = fe_block_get_machine_name($block->delta);
-
-  if (!empty($machine_name)) {
-    $vars['classes_array'][] = 'block--' . str_replace('_', '-', $machine_name);
-  }
-}

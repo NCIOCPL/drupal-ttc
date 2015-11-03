@@ -6,12 +6,26 @@
 	}
 }
 
-/// header logo
-.block--logo-footer {
+/// Common Logo block
+/// @type Placeholder
+%block--logo {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
 
 	@media #{$large-up} {
-		display: inline-block;
+		display: block;
+		float: left;
 
 		width: 50%;
 	}
+}
+
+/// Header Logo block
+.block--logo-header {
+	@extend %block--logo;
+}
+
+/// Footer Logo block
+.block--logo-footer {
+	@extend %block--logo;
 }

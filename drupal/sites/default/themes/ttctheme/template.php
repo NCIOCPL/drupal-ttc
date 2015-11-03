@@ -8,13 +8,61 @@ function ttctheme_preprocess_html(&$variables) {
 }
 
 /**
- * Implements template_preprocess_page.
+ * Implements template_preprocess_page().
  */
 function ttctheme_preprocess_page(&$variables) {
+  $variables['show_alt_header'] = (
+    $variables['linked_logo'] ||
+    $variables['site_name'] ||
+    $variables['site_slogan'] ||
+    $variables['alt_main_menu'] ||
+    $variables['alt_secondary_menu']
+  );
 }
 
 /**
- * Implements template_preprocess_node.
+ * Implements template_preprocess_node().
  */
 function ttctheme_preprocess_node(&$variables) {
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function ttc_theme_config_preprocess_block(&$vars) {
+  $block = $vars['block'];
+  $machine_name = fe_block_get_machine_name($block->delta);
+
+  if (!empty($machine_name)) {
+    $vars['classes_array'][] = 'block--' . str_replace('_', '-', $machine_name);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ttctheme_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['#form_id']) && ($form['#form_id'] == 'search_block_form')) {
+    $form['search_block_form']['#attributes'] += array(
+      'placeholder' => 'Search...',
+      'class' => array(
+        'search-form__input'
+      )
+    );
+    $form['search_block_form']['#prefix'] = '<div class="row -no-margin"><div class="small-10 columns search-form__input-container">';
+
+    $form['actions']['submit']['#value'] = 'Go';
+    $form['actions']['submit']['#attributes']['class'] = array_diff(
+      $form['actions']['submit']['#attributes']['class'],
+      array('secondary')
+    );
+    $form['actions']['submit']['#attributes']['class'][] = 'primary';
+    $form['actions']['submit']['#attributes']['class'][] = 'search-form__submit';
+    $form['actions']['submit']['#prefix'] = '<div class="small-2 columns search-form__submit-container">';
+  }
+  /*
+  print('<pre>');
+  print_r($form);
+  print('</pre>');
+  */
 }
