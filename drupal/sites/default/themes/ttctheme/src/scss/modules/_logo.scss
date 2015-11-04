@@ -14,9 +14,6 @@
 
 	@media #{$large-up} {
 		display: block;
-		float: left;
-
-		width: 50%;
 	}
 }
 
@@ -28,4 +25,10 @@
 /// Footer Logo block
 .block--logo-footer {
 	@extend %block--logo;
+
+	@media #{$large-up} {
+		float: left;
+
+		width: 50%;
+	}
 }

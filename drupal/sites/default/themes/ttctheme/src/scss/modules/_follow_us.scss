@@ -38,11 +38,11 @@
 /// Common "Follow Us" block
 /// @type Placeholder
 %block--follow-us {
+	display: none;
+
 	@media #{$large-up} {
 		display: block;
-		float: right;
 
-		width: 50%;
 		margin-top: 1rem;
 		margin-bottom: 0.25rem;
 	}
@@ -50,16 +50,17 @@
 
 /// Header "Follow Us" block
 .block--follow-us-header {
-	display: none;
-
 	@extend %block--follow-us;
-
-	@media #{$large-up} {
-		display: inline-block;
-	}
 }
 
 /// Footer "Follow Us" block
 .block--follow-us-footer {
 	@extend %block--follow-us;
+
+	display: block;
+
+	@media #{$large-up} {
+		float: right;
+		width: 50%;
+	}
 }

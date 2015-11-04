@@ -60,10 +60,10 @@ function ttc_theme_config_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ttctheme' => array(
-        'region' => 'header',
+        'region' => 'header_second',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -11,
+        'weight' => -12,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -124,7 +124,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ttctheme' => array(
-        'region' => 'header',
+        'region' => 'header_first',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -12,
@@ -230,6 +230,38 @@ function ttc_theme_config_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'zurb_foundation',
         'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['search-form'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'form',
+    'module' => 'search',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'seven' => array(
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => -10,
+      ),
+      'ttctheme' => array(
+        'region' => 'header_second',
+        'status' => 1,
+        'theme' => 'ttctheme',
+        'weight' => -11,
+      ),
+      'zurb_foundation' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'zurb_foundation',
+        'weight' => -1,
       ),
     ),
     'title' => '',
