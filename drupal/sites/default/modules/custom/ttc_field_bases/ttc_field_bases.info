@@ -12,6 +12,7 @@ dependencies[] = number
 dependencies[] = text
 dependencies[] = url
 features[features_api][] = api:2
+features[field_base][] = body
 features[field_base][] = field_contact_email
 features[field_base][] = field_contact_phone
 features[field_base][] = field_email
