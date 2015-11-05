@@ -1,7 +1,7 @@
 /// Common footer menu block
 /// @type Placeholder
 %footer-menu {
-	clear: both;
+	@include clearprior;
 
 	margin-bottom: 2.5rem;
 
@@ -49,9 +49,9 @@
 /// Primary footer menu block
 /// Intended to include links to TTC-specific pages, like the Homepage and Site Map
 .block-menu-menu-footer-menu-primary {
-	padding-top: 2.5rem;
-
 	@extend %footer-menu;
+
+	padding-top: 2.5rem;
 
 	@media #{$large-up} {
 		.menu {

@@ -2,17 +2,21 @@
 /// BLOCK: tagline
 /// Used for the "NIH ... Turning Discovery Into Health" section in the footer
 ////
-.tagline {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+.block--tagline {
+	@include clearprior;
 
-	text-align: center;
+	@at-root .tagline {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 
-	color: palette(gray, mid-light);
-	background-color: palette(gray, light);
+		text-align: center;
 
-	@media #{$large-up} {
-		padding-top: 2rem;
-		padding-bottom: 2rem;
+		color: palette(gray, mid-light);
+		background-color: palette(gray, light);
+
+		@media #{$large-up} {
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+		}
 	}
 }
