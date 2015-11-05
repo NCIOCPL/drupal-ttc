@@ -59,8 +59,7 @@ scripts[] = public/js/app.min.js
 ; You'll use this variable in page.tpl.php:
 ;   <?php print render($page['header']); ?>
 
-regions[header_first]        = Left Header
-regions[header_second]       = Right Header
+regions[header]              = Header
 regions[help]                = Help
 regions[highlighted]         = Highlighted
 regions[featured]            = Featured

@@ -70,19 +70,12 @@
       <!-- End title, slogan and menu -->
     <?php endif; ?>
 
-    <?php if (!empty($page['header_first']) || !empty($page['header_second'])): ?>
+    <?php if (!empty($page['header'])): ?>
       <!--.l-header-region -->
-      <section class="l-header-region row" data-equalizer data-equalizer-mq="large-up">
-        <?php if (!empty($page['header_first'])): ?>
-          <div class="header-first large-6 columns" data-equalizer-watch>
-            <?php print render($page['header_first']); ?>
-          </div>
-        <?php endif; ?>
-        <?php if (!empty($page['header_second'])): ?>
-          <div class="header-second large-6 columns" data-equalizer-watch>
-            <?php print render($page['header_second']); ?>
-          </div>
-        <?php endif; ?>
+      <section class="l-header-region row">
+        <div class="columns">
+          <?php print render($page['header']); ?>
+        </div>
       </section>
       <!--/.l-header-region -->
     <?php endif; ?>
