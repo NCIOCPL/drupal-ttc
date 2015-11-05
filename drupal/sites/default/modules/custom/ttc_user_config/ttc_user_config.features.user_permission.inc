@@ -102,15 +102,6 @@ function ttc_user_config_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: 'delete terms in tags'.
-  $permissions['delete terms in tags'] = array(
-    'name' => 'delete terms in tags',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'taxonomy',
-  );
-
   // Exported permission: 'delete terms in therapeutic_area'.
   $permissions['delete terms in therapeutic_area'] = array(
     'name' => 'delete terms in therapeutic_area',
@@ -201,15 +192,6 @@ function ttc_user_config_user_default_permissions() {
       'administrator' => 'administrator',
       'advanced content editor' => 'advanced content editor',
       'site manager' => 'site manager',
-    ),
-    'module' => 'taxonomy',
-  );
-
-  // Exported permission: 'edit terms in tags'.
-  $permissions['edit terms in tags'] = array(
-    'name' => 'edit terms in tags',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
   );
