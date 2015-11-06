@@ -29,6 +29,7 @@ features[field_instance][] = node-abstract-field_meta_desc
 features[field_instance][] = node-abstract-field_meta_keywords
 features[field_instance][] = node-abstract-field_notif
 features[field_instance][] = node-abstract-field_opp_30day_warned
+features[field_instance][] = node-abstract-field_opp_co_dev
 features[field_instance][] = node-abstract-field_opp_commapp_text
 features[field_instance][] = node-abstract-field_opp_compadv_text
 features[field_instance][] = node-abstract-field_opp_description_text

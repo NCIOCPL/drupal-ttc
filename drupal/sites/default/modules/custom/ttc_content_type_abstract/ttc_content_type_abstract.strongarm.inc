@@ -45,7 +45,7 @@ function ttc_content_type_abstract_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '26',
         ),
       ),
       'display' => array(),

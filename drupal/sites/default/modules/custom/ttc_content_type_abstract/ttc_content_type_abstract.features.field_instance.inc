@@ -319,6 +319,47 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-abstract-field_opp_co_dev'.
+  $field_instances['node-abstract-field_opp_co_dev'] = array(
+    'bundle' => 'abstract',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_opp_co_dev',
+    'label' => 'Co-Development',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'node-abstract-field_opp_commapp_text'.
   $field_instances['node-abstract-field_opp_commapp_text'] = array(
     'bundle' => 'abstract',
@@ -1000,6 +1041,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('30-Day Warned');
   t('A comma-separated list of related E-Numbers.');
   t('Announce opportunity to ListServ?');
+  t('Co-Development');
   t('Competitive Advantages');
   t('Contact');
   t('Description of Technology');
