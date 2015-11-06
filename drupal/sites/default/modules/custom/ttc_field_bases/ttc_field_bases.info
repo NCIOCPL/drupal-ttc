@@ -25,6 +25,7 @@ features[field_base][] = field_meta_desc
 features[field_base][] = field_meta_keywords
 features[field_base][] = field_notif_manual
 features[field_base][] = field_opp_30day_warned
+features[field_base][] = field_opp_co_dev
 features[field_base][] = field_opp_commapp_text
 features[field_base][] = field_opp_compadv_text
 features[field_base][] = field_opp_description_text
