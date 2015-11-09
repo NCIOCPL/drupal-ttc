@@ -31,7 +31,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -11,
+        'weight' => -13,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -63,7 +63,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -11,
+        'weight' => -13,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -95,7 +95,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -12,
+        'weight' => -14,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -127,7 +127,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -12,
+        'weight' => -14,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -159,7 +159,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => 0,
+        'weight' => -10,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -191,7 +191,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -10,
+        'weight' => -12,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -223,7 +223,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -9,
+        'weight' => -11,
       ),
       'zurb_foundation' => array(
         'region' => '',
