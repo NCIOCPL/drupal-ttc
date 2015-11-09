@@ -31,10 +31,20 @@ function ttctheme_preprocess_node(&$variables) {
  */
 function ttc_theme_config_preprocess_block(&$vars) {
   $block = $vars['block'];
-  $machine_name = fe_block_get_machine_name($block->delta);
 
+  // Add the block's machine name to its class list.
+  $machine_name = fe_block_get_machine_name($block->delta);
   if (!empty($machine_name)) {
     $vars['classes_array'][] = 'block--' . str_replace('_', '-', $machine_name);
+  }
+
+  // If the block is a menu block, hide its title
+  if ($block->module == 'menu') {
+    $vars['title_attributes_array'] += array(
+      'class' => array(
+        'element-invisible'
+      )
+    );
   }
 }
 
@@ -60,9 +70,4 @@ function ttctheme_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'][] = 'search-form__submit';
     $form['actions']['submit']['#prefix'] = '<div class="small-2 columns search-form__submit-container">';
   }
-  /*
-  print('<pre>');
-  print_r($form);
-  print('</pre>');
-  */
 }

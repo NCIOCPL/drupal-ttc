@@ -1,0 +1,25 @@
+.block-system-main-menu {
+	display: none;
+	clear: both;
+
+	@media #{$large-up} {
+		display: block;
+
+		.menu {
+			position: absolute;
+			z-index: 1;
+
+			display: table;
+
+			width: 100%;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.leaf {
+			display: table-cell;
+
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+}
