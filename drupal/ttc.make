@@ -34,20 +34,17 @@ projects[email][version] = "1.3"
 projects[entity][subdir] = "contrib"
 projects[entity][version] = "1.6"
 
-projects[features][subdir] = "contrib"
-projects[features][version] = "2.7"
-
 projects[features_extra][subdir] = "contrib"
 projects[features_extra][version] = "1.0"
 
+projects[features][subdir] = "contrib"
+projects[features][version] = "2.7"
+
 projects[field_collection][subdir] = "contrib"
-projects[field_collection][version] = "1.0-beta10"
+projects[field_collection][version] = "1.x-dev"
 
 projects[panels][subdir] = "contrib"
 projects[panels][version] = "3.5"
-
-projects[panels_everywhere][subdir] = "contrib"
-projects[panels_everywhere][version] = "1.0-rc2"
 
 projects[imce][subdir] = "contrib"
 projects[imce][version] = "1.9"
@@ -66,6 +63,9 @@ projects[link][version] = "1.3"
 
 projects[nodequeue][subdir] = "contrib"
 projects[nodequeue][version] = "2.0"
+
+projects[panels_everywhere][subdir] = "contrib"
+projects[panels_everywhere][version] = "1.0-rc2"
 
 projects[pathauto][subdir] = "contrib"
 projects[pathauto][version] = "1.3"
