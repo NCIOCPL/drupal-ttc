@@ -21,17 +21,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'seven' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'seven',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -13,
+        'weight' => -11,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -53,17 +53,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'seven' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'seven',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -13,
+        'weight' => -11,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -85,17 +85,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'seven' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'seven',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -14,
+        'weight' => -12,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -117,17 +117,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'seven' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'seven',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -14,
+        'weight' => -12,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -149,17 +149,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'seven' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'seven',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -10,
+        'weight' => -8,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -181,17 +181,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'seven' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'seven',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -12,
+        'weight' => -10,
       ),
       'zurb_foundation' => array(
         'region' => '',
@@ -213,17 +213,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'seven' => array(
+      'bartik' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'seven',
+        'theme' => 'bartik',
         'weight' => 0,
       ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -11,
+        'weight' => -9,
       ),
       'zurb_foundation' => array(
         'region' => '',
