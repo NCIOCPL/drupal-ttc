@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TTC Views feature.
+ */
+
+include_once 'ttc_views.features.inc';
