@@ -27,7 +27,7 @@ function ttctheme_preprocess_node(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_block().
+ * Implements template_preprocess_block().
  */
 function ttc_theme_config_preprocess_block(&$vars) {
   $block = $vars['block'];

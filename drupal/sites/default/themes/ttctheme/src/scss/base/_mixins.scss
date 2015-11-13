@@ -12,3 +12,11 @@
 		clear: both;
 	}
 }
+
+@mixin field-label($level: 1) {
+	font-weight: bold;
+
+	@if $level == 1 {
+		text-transform: uppercase;
+	}
+}
