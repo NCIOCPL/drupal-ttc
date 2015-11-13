@@ -1,0 +1,14 @@
+name = TTC Search
+description = Contains all configured search indexes for the TTC site.
+core = 7.x
+package = TTC
+version = 7.x-1.0
+dependencies[] = entity
+dependencies[] = search_api
+dependencies[] = search_api_db
+dependencies[] = ttc_content_type_abstract
+dependencies[] = ttc_content_type_basic_page
+features[features_api][] = api:2
+features[search_api_index][] = default_node_index
+features[search_api_server][] = ttc
+project path = sites/default/modules/custom/feature-export
