@@ -2,6 +2,6 @@
   "name": "ttctheme",
   "private": "true",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    "foundation": "#~5.5.3"
   }
 }

@@ -6,7 +6,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   var theme_name = 'ttctheme';
-  var base_theme_path = '../../../all/themes/zurb_foundation';
+  var base_theme_path = 'bower_components/foundation';
 
   var global_vars = {
     theme: {

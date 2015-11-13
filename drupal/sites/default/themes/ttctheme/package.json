@@ -10,5 +10,8 @@
     "grunt-sass": "~1.1.0",
     "load-grunt-tasks": "~3.3.0",
     "node-bourbon": "~4.2.3"
+  },
+  "scripts": {
+    "postinstall": "bower install"
   }
 }
