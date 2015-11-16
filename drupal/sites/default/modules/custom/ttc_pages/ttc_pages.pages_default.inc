@@ -40,7 +40,7 @@ function ttc_pages_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Search Results';
   $display->uuid = '3402764f-da73-4d6b-857e-b5af3a665f2c';
   $display->content = array();
   $display->panels = array();
@@ -55,6 +55,12 @@ function ttc_pages_default_page_manager_handlers() {
       'arguments' => array(
         'search_api_views_fulltext' => '%keywords',
       ),
+      'use_pager' => 1,
+      'pager_id' => '0',
+      'items_per_page' => '20',
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
     );
     $pane->cache = array();
     $pane->style = array(
