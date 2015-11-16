@@ -28,9 +28,43 @@
  * @see template_process()
  */
 ?>
+
+<?php
+  $hasDesc = isset($content['field_text']);
+  $hasLink = isset($content['field_url']);
+
+  $patentStatus = $content['field_patent_status'][0]['#title'];
+  $patentLink = $hasLink ? $content['field_url'][0]['#href'] : null;
+  $patentDesc = $hasDesc ? $content['field_text'][0]['#markup'] : null;
+?>
+
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="field-pat-status__item"<?php print $content_attributes; ?>>
-    <span class="field-pat-status__item-label"><?php print $content['field_patent_status'][0]['#title']; ?>:&nbsp;</span>
-    <span class="field-pat-status__item-content"><a href="<?php print $content['field_url'][0]['#href']; ?>"><?php print_r($content['field_text'][0]['#markup']); ?></a></span>
+    <span class="field-pat-status__item-label">
+      <?php if (!$hasDesc && $hasLink): ?>
+        <a href="<?php print $patentLink; ?>">
+      <?php endif; ?>
+
+      <?php print $patentStatus; ?><?php if ($hasDesc): ?>:&nbsp;<?php endif; ?>
+
+      <?php if (!$hasDesc && $hasLink): ?>
+        </a>
+      <?php endif; ?>
+    </span>
+
+    <?php if ($hasDesc): ?>
+      <span class="field-pat-status__item-content">
+        <?php if ($hasLink): ?>
+          <a href="<?php print $patentLink; ?>">
+        <?php endif; ?>
+
+        <?php print $patentDesc; ?>
+
+        <?php if ($hasLink): ?>
+          </a>
+        <?php endif; ?>
+      </span>
+    <?php endif; ?>
+    </span>
   </div>
 </div>
