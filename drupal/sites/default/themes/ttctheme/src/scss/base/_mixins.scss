@@ -20,3 +20,9 @@
 		text-transform: uppercase;
 	}
 }
+
+@mixin bordered-box($style: solid, $color: palette(gray, light), $width: 8px) {
+	border-style: $style;
+	border-width: $width;
+	border-color: $color;
+}

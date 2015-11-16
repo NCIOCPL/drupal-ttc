@@ -48,9 +48,9 @@
   <?php if (!$label_hidden): ?>
     <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?></div>
   <?php endif; ?>
-  <ul class="field-items"<?php print $content_attributes; ?>>
+  <ul class="field-items list--inline"<?php print $content_attributes; ?>>
     <?php foreach ($items as $delta => $item): ?>
-      <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></li>
+      <li class="field-item list--inline__item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></li>
     <?php endforeach; ?>
   </ul>
 </div>

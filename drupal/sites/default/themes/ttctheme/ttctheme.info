@@ -1,6 +1,5 @@
 name = ttctheme
 description = Custom sub-theme based on the the Zurb Foundation base theme.
-screenshot = images/screenshot.png
 
 core = 7.x
 engine = phptemplate
