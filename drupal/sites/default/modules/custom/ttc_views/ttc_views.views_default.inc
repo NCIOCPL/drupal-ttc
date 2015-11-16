@@ -11,6 +11,46 @@ function ttc_views_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'ttc_abstract_faceted_results';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_abstract_faceted_index';
+  $view->human_name = 'TTC Abstract Faceted Results';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Indexed Node: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_abstract_faceted_index';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Field: Indexed Node: Summary */
+  $handler->display->display_options['fields']['field_meta_desc']['id'] = 'field_meta_desc';
+  $handler->display->display_options['fields']['field_meta_desc']['table'] = 'search_api_index_abstract_faceted_index';
+  $handler->display->display_options['fields']['field_meta_desc']['field'] = 'field_meta_desc';
+  $handler->display->display_options['fields']['field_meta_desc']['label'] = '';
+  $handler->display->display_options['fields']['field_meta_desc']['element_label_colon'] = FALSE;
+
+  /* Display: Abstract Faceted Context */
+  $handler = $view->new_display('ctools_context', 'Abstract Faceted Context', 'ctools_context_1');
+  $handler->display->display_options['style_plugin'] = 'ctools_context';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $export['ttc_abstract_faceted_results'] = $view;
+
+  $view = new view();
   $view->name = 'ttc_content_search_results';
   $view->description = '';
   $view->tag = 'default';
