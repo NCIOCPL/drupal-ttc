@@ -82,6 +82,7 @@ function ttc_search_default_search_api_index() {
       },
       "fields" : {
         "field_development_stage" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_meta_keywords" : { "type" : "list\\u003Ctext\\u003E" },
         "field_pat_status" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
@@ -399,6 +400,11 @@ function ttc_search_default_search_api_server() {
             "table" : "search_api_db_abstract_faceted_index_field_pat_status_field_pa",
             "column" : "value",
             "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "field_meta_keywords" : {
+            "table" : "search_api_db_abstract_faceted_index_text",
+            "type" : "list\\u003Ctext\\u003E",
             "boost" : "1.0"
           }
         }
