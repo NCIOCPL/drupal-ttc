@@ -98,7 +98,7 @@ function ttc_pages_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Available Technologies',
     'name' => 'main-menu',
-    'weight' => '0',
+    'weight' => '-49',
     'parent' => array(
       'type' => 'none',
       'title' => '',
@@ -340,6 +340,158 @@ function ttc_pages_default_page_manager_pages() {
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['available_technologies_faceted_search'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'homepage';
+  $page->task = 'page';
+  $page->admin_title = 'Homepage';
+  $page->admin_description = '';
+  $page->path = 'home';
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Home',
+    'name' => 'main-menu',
+    'weight' => '-50',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_homepage__panel';
+  $handler->task = 'page';
+  $handler->subtask = 'homepage';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'panel',
+  );
+  $display = new panels_display();
+  $display->layout = 'ttc_home';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'top_first' => NULL,
+      'top_second' => NULL,
+      'top_third' => NULL,
+      'top_fourth' => NULL,
+      'middle_small' => NULL,
+      'middle_large' => NULL,
+      'middle_first' => NULL,
+      'middle_second' => NULL,
+      'bottom_first' => NULL,
+      'bottom_second' => NULL,
+      'bottom_third' => NULL,
+      'bottom_fourth' => NULL,
+      'bottom' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '299b2b76-2d89-4a77-88a9-8133ee604829';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-af46a5ad-6616-4e1b-bd95-fc84eec622bc';
+    $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Homepage Banner',
+      'title' => '',
+      'body' => '<div class="banner">
+  <h2 class="banner__headline">Innovation Through Collaboration</h2>
+  <p class="banner__tagline">Serving NCI and Client Institutes and Centers</p>
+</div>',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'row',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'af46a5ad-6616-4e1b-bd95-fc84eec622bc';
+    $display->content['new-af46a5ad-6616-4e1b-bd95-fc84eec622bc'] = $pane;
+    $display->panels['top'][0] = 'new-af46a5ad-6616-4e1b-bd95-fc84eec622bc';
+    $pane = new stdClass();
+    $pane->pid = 'new-0d960a56-1d5b-4c61-8c9a-2ae3357951e2';
+    $pane->panel = 'top';
+    $pane->type = 'views';
+    $pane->subtype = 'available_technologies';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '0',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 1,
+      'args' => '',
+      'url' => '/available-technologies',
+      'display' => 'block',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'row',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '0d960a56-1d5b-4c61-8c9a-2ae3357951e2';
+    $display->content['new-0d960a56-1d5b-4c61-8c9a-2ae3357951e2'] = $pane;
+    $display->panels['top'][1] = 'new-0d960a56-1d5b-4c61-8c9a-2ae3357951e2';
+  $display->hide_title = PANELS_TITLE_NONE;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['homepage'] = $page;
 
   return $pages;
 
