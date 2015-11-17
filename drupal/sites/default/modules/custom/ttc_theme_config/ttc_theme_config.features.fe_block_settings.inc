@@ -21,12 +21,6 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -53,12 +47,6 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
@@ -85,12 +73,6 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -117,12 +99,6 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
@@ -149,12 +125,6 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -181,12 +151,6 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -213,12 +177,6 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
