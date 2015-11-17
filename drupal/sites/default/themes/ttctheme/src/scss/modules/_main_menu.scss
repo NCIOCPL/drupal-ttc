@@ -1,3 +1,5 @@
+$main-menu-margin: 1rem;
+
 .block-system-main-menu {
 	display: none;
 	clear: both;
@@ -12,7 +14,9 @@
 			display: table;
 
 			width: 100%;
+			margin-top: $main-menu-margin;
 			margin-right: auto;
+			margin-bottom: $main-menu-margin;
 			margin-left: auto;
 		}
 		li {
@@ -21,5 +25,16 @@
 			text-align: center;
 			text-transform: uppercase;
 		}
+		a {
+			color: palette(white, base);
+		}
+	}
+}
+
+.main {
+	padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin * 2);
+
+	.l-help + & {
+		padding: 0;
 	}
 }

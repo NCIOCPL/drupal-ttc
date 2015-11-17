@@ -93,7 +93,10 @@ function ttc_pages_default_page_manager_pages() {
   $page->admin_title = 'Available Technologies faceted search';
   $page->admin_description = '';
   $page->path = 'availabletechnologies';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Available Technologies',
@@ -418,6 +421,75 @@ function ttc_pages_default_page_manager_pages() {
   $display->uuid = '299b2b76-2d89-4a77-88a9-8133ee604829';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-fa861c18-0b34-4706-80a3-6466c1ad2d17';
+    $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Homepage Banner',
+      'title' => '',
+      'body' => '<div class="banner">
+  <h2 class="banner__headline">Innovation Through Collaboration</h2>
+  <p class="banner__tagline">Serving NCI and Client Institutes and Centers</p>
+</div>',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'row',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'fa861c18-0b34-4706-80a3-6466c1ad2d17';
+    $display->content['new-fa861c18-0b34-4706-80a3-6466c1ad2d17'] = $pane;
+    $display->panels['top'][0] = 'new-fa861c18-0b34-4706-80a3-6466c1ad2d17';
+    $pane = new stdClass();
+    $pane->pid = 'new-dde72c29-185e-4c3f-948d-cf3049c554cf';
+    $pane->panel = 'top';
+    $pane->type = 'views';
+    $pane->subtype = 'available_technologies';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '0',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 1,
+      'args' => '',
+      'url' => '/availabletechnologies',
+      'display' => 'block',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'row',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'dde72c29-185e-4c3f-948d-cf3049c554cf';
+    $display->content['new-dde72c29-185e-4c3f-948d-cf3049c554cf'] = $pane;
+    $display->panels['top'][1] = 'new-dde72c29-185e-4c3f-948d-cf3049c554cf';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

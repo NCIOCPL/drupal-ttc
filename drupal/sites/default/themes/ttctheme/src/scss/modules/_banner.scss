@@ -1,0 +1,42 @@
+.banner {
+  text-align: center;
+
+  &__headline {
+    $spacer-padding: 0.5rem;
+
+    position: relative;
+
+    display: inline-block;
+
+    padding-bottom: ($spacer-padding * 2);
+
+    color: palette(white, base);
+
+    @media #{$large-up} {
+      font-size: rem-calc(40px);
+    }
+
+    &:after {
+      position: absolute;
+      right: -5%;
+      bottom: $spacer-padding;
+      left: -5%;
+
+      height: 2px;
+
+      content: "";
+
+      background-color: rgba(palette(white, base), 0.3);
+    }
+  }
+
+  &__tagline {
+    color: palette(white, base);
+
+    font-style: italic;
+
+    @media #{$large-up} {
+      font-size: rem-calc(24px);
+    }
+  }
+}

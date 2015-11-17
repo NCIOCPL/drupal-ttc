@@ -114,9 +114,9 @@
   <?php endif; ?>
 
   <!--.l-main -->
-  <main role="main" class="row l-main">
+  <main role="main" class="row l-main main">
     <!-- .l-main region -->
-    <div class="<?php print $main_grid; ?> main columns">
+    <div class="<?php print $main_grid; ?> columns main__inner">
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlight panel callout">
           <?php print render($page['highlighted']); ?>

@@ -1,0 +1,10 @@
+// Non-modular or client styles for the .main region.
+.main {
+	@include linear-gradient(palette(blue, dark), palette(grass-green, dark), palette(orange, dark));
+
+	&__inner {
+		body.not-front & {
+			background-color: palette(white, base);
+		}
+	}
+}

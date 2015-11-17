@@ -34,6 +34,7 @@
 // Import Foundation grid.
 @import "foundation/components/grid";
 // Import other Foundation components (in alphabetic order).
+@import "foundation/components/block-grid";
 @import "foundation/components/buttons";
 @import "foundation/components/forms";
 @import "foundation/components/inline-lists";
@@ -56,18 +57,12 @@
 // Optional.
 @import "base/elements";
 
-// Layout
-// Each section of the document has its own partial seperated out to improve developer experience. Additionally, grids can be declared in layouts as well.
-@import "layout/header";
-@import "layout/main";
-@import "layout/aside";
-@import "layout/footer";
-
 // Modules
 @import "modules/icon";
 @import "modules/field";
 @import "modules/list";
 @import "modules/footer";
+@import "modules/banner";
 @import "modules/logo";
 @import "modules/follow_us";
 @import "modules/search_block";
@@ -76,6 +71,13 @@
 @import "modules/main_menu";
 @import "modules/abstract_summary";
 @import "modules/patent_status";
+
+// Regions
+// Each section of the document has its own partial seperated out to improve developer experience. Additionally, grids can be declared in regions as well.
+@import "regions/header";
+@import "regions/main";
+@import "regions/aside";
+@import "regions/footer";
 
 // States
 // @import "states/collapse";

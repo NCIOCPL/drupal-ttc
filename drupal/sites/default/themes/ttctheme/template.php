@@ -71,3 +71,8 @@ function ttctheme_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#prefix'] = '<div class="small-2 columns search-form__submit-container">';
   }
 }
+
+
+function regex_to_lowercase($matches) {
+  return strtolower($matches[0]);
+}
