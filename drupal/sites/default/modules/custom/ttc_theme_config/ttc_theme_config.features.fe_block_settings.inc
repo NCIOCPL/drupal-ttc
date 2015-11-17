@@ -194,5 +194,31 @@ function ttc_theme_config_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['system-main-menu'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'main-menu',
+    'module' => 'system',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'ttctheme' => array(
+        'region' => 'header',
+        'status' => 1,
+        'theme' => 'ttctheme',
+        'weight' => -9,
+      ),
+      'zurb_foundation' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'zurb_foundation',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   return $export;
 }
