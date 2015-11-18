@@ -95,11 +95,39 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_meta_desc']['field'] = 'field_meta_desc';
   $handler->display->display_options['fields']['field_meta_desc']['label'] = '';
   $handler->display->display_options['fields']['field_meta_desc']['element_label_colon'] = FALSE;
+  /* Filter criterion: Indexed Node: Keywords */
+  $handler->display->display_options['filters']['field_meta_keywords']['id'] = 'field_meta_keywords';
+  $handler->display->display_options['filters']['field_meta_keywords']['table'] = 'search_api_index_abstract_faceted_index';
+  $handler->display->display_options['filters']['field_meta_keywords']['field'] = 'field_meta_keywords';
+  $handler->display->display_options['filters']['field_meta_keywords']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_meta_keywords']['expose']['operator_id'] = 'field_meta_keywords_op';
+  $handler->display->display_options['filters']['field_meta_keywords']['expose']['label'] = 'Keywords';
+  $handler->display->display_options['filters']['field_meta_keywords']['expose']['operator'] = 'field_meta_keywords_op';
+  $handler->display->display_options['filters']['field_meta_keywords']['expose']['identifier'] = 'keyword';
+  $handler->display->display_options['filters']['field_meta_keywords']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_meta_keywords']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    8 => 0,
+    4 => 0,
+    7 => 0,
+  );
 
   /* Display: Abstract Faceted Context */
   $handler = $view->new_display('ctools_context', 'Abstract Faceted Context', 'ctools_context_1');
   $handler->display->display_options['style_plugin'] = 'ctools_context';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['inherit_panels_path'] = '1';
+  $handler->display->display_options['argument_input'] = array(
+    'field_meta_keywords' => array(
+      'type' => 'context',
+      'context' => 'string.html_safe',
+      'context_optional' => 1,
+    ),
+  );
   $export['ttc_abstract_faceted_results'] = $view;
 
   $view = new view();
