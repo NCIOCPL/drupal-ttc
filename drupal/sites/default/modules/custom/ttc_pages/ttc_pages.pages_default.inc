@@ -93,10 +93,7 @@ function ttc_pages_default_page_manager_pages() {
   $page->admin_title = 'Available Technologies faceted search';
   $page->admin_description = '';
   $page->path = 'availabletechnologies';
-  $page->access = array(
-    'type' => 'none',
-    'settings' => NULL,
-  );
+  $page->access = array();
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Available Technologies',
@@ -223,10 +220,37 @@ function ttc_pages_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-093fa0b3-7ce8-4633-9d88-06ccf129f2be';
+    $pane->pid = 'new-78d777a7-af16-4cab-a272-9741a8a0fc1b';
     $pane->panel = 'center';
-    $pane->type = 'views_view';
-    $pane->subtype = 'views_view';
+    $pane->type = 'views_row';
+    $pane->subtype = 'views_row';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'rows' => array(),
+      'use_fields' => 0,
+      'fields' => array(),
+      'context' => 'context_view:ttc_abstract_faceted_results-ctools_context_1_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '78d777a7-af16-4cab-a272-9741a8a0fc1b';
+    $display->content['new-78d777a7-af16-4cab-a272-9741a8a0fc1b'] = $pane;
+    $display->panels['center'][0] = 'new-78d777a7-af16-4cab-a272-9741a8a0fc1b';
+    $pane = new stdClass();
+    $pane->pid = 'new-99545797-bc83-40b0-bd92-0f70a29e5370';
+    $pane->panel = 'facets';
+    $pane->type = 'views_exposed';
+    $pane->subtype = 'views_exposed';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -243,9 +267,9 @@ function ttc_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '093fa0b3-7ce8-4633-9d88-06ccf129f2be';
-    $display->content['new-093fa0b3-7ce8-4633-9d88-06ccf129f2be'] = $pane;
-    $display->panels['center'][0] = 'new-093fa0b3-7ce8-4633-9d88-06ccf129f2be';
+    $pane->uuid = '99545797-bc83-40b0-bd92-0f70a29e5370';
+    $display->content['new-99545797-bc83-40b0-bd92-0f70a29e5370'] = $pane;
+    $display->panels['facets'][0] = 'new-99545797-bc83-40b0-bd92-0f70a29e5370';
     $pane = new stdClass();
     $pane->pid = 'new-59da9e71-7ec2-401e-a5f6-0a8ebb55e594';
     $pane->panel = 'facets';
@@ -264,11 +288,11 @@ function ttc_pages_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '59da9e71-7ec2-401e-a5f6-0a8ebb55e594';
     $display->content['new-59da9e71-7ec2-401e-a5f6-0a8ebb55e594'] = $pane;
-    $display->panels['facets'][0] = 'new-59da9e71-7ec2-401e-a5f6-0a8ebb55e594';
+    $display->panels['facets'][1] = 'new-59da9e71-7ec2-401e-a5f6-0a8ebb55e594';
     $pane = new stdClass();
     $pane->pid = 'new-ce03417b-f1b6-4228-95d2-e844fd2e6c4b';
     $pane->panel = 'facets';
@@ -287,11 +311,11 @@ function ttc_pages_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
     $pane->uuid = 'ce03417b-f1b6-4228-95d2-e844fd2e6c4b';
     $display->content['new-ce03417b-f1b6-4228-95d2-e844fd2e6c4b'] = $pane;
-    $display->panels['facets'][1] = 'new-ce03417b-f1b6-4228-95d2-e844fd2e6c4b';
+    $display->panels['facets'][2] = 'new-ce03417b-f1b6-4228-95d2-e844fd2e6c4b';
     $pane = new stdClass();
     $pane->pid = 'new-cecef8cf-637f-435e-bb18-03b3ebba61f7';
     $pane->panel = 'facets';
@@ -310,11 +334,11 @@ function ttc_pages_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 3;
     $pane->locks = array();
     $pane->uuid = 'cecef8cf-637f-435e-bb18-03b3ebba61f7';
     $display->content['new-cecef8cf-637f-435e-bb18-03b3ebba61f7'] = $pane;
-    $display->panels['facets'][2] = 'new-cecef8cf-637f-435e-bb18-03b3ebba61f7';
+    $display->panels['facets'][3] = 'new-cecef8cf-637f-435e-bb18-03b3ebba61f7';
     $pane = new stdClass();
     $pane->pid = 'new-6cb1a064-2aff-487d-af15-258fb4be714b';
     $pane->panel = 'facets';
@@ -333,11 +357,11 @@ function ttc_pages_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 4;
     $pane->locks = array();
     $pane->uuid = '6cb1a064-2aff-487d-af15-258fb4be714b';
     $display->content['new-6cb1a064-2aff-487d-af15-258fb4be714b'] = $pane;
-    $display->panels['facets'][3] = 'new-6cb1a064-2aff-487d-af15-258fb4be714b';
+    $display->panels['facets'][4] = 'new-6cb1a064-2aff-487d-af15-258fb4be714b';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-59da9e71-7ec2-401e-a5f6-0a8ebb55e594';
   $handler->conf['display'] = $display;
