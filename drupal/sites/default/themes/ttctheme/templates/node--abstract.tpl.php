@@ -75,7 +75,7 @@
  * @see template_process()
  */
 ?>
-<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
     <?php if (!$page): ?>
@@ -92,7 +92,7 @@
   ?>
 
   <?php if ($has_summary_block): ?>
-    <div class="summary">
+    <div class="abstract__summary">
       <?php
         print render($content['field_meta_desc']);
         print render($content['field_enumber']);
