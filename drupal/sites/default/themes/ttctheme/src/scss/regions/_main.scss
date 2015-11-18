@@ -3,8 +3,23 @@
 	@include linear-gradient(palette(blue, dark), palette(grass-green, dark), palette(orange, dark));
 
 	&__inner {
-		body.not-front & {
+		padding-right: $column-gutter;
+		padding-left: $column-gutter;
+	}
+
+	@at-root {
+		.messages,
+		.help,
+		.featured,
+		&__content {
 			background-color: palette(white, base);
+		}
+		&__content {
+			margin-bottom: ($column-gutter);
+
+			body.front & {
+				background-color: transparent;
+			}
 		}
 	}
 }

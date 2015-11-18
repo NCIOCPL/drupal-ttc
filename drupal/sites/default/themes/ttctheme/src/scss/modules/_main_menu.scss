@@ -33,8 +33,4 @@ $main-menu-margin: 1rem;
 
 .main {
 	padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin * 2);
-
-	.l-help + & {
-		padding: 0;
-	}
 }

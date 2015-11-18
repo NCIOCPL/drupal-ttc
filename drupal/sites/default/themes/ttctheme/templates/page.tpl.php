@@ -83,82 +83,80 @@
   </header>
   <!--/.l-header -->
 
-  <?php if (!empty($page['featured'])): ?>
-    <!--.l-featured -->
-    <section class="l-featured row">
-      <div class="columns">
-        <?php print render($page['featured']); ?>
-      </div>
-    </section>
-    <!--/.l-featured -->
-  <?php endif; ?>
-
-  <?php if ($messages && !$zurb_foundation_messages_modal): ?>
-    <!--.l-messages -->
-    <section class="l-messages row">
-      <div class="columns">
-        <?php if ($messages): print $messages; endif; ?>
-      </div>
-    </section>
-    <!--/.l-messages -->
-  <?php endif; ?>
-
-  <?php if (!empty($page['help'])): ?>
-    <!--.l-help -->
-    <section class="l-help row">
-      <div class="columns">
-        <?php print render($page['help']); ?>
-      </div>
-    </section>
-    <!--/.l-help -->
-  <?php endif; ?>
 
   <!--.l-main -->
-  <main role="main" class="row l-main main">
+  <main role="main" class="main row">
     <!-- .l-main region -->
-    <div class="<?php print $main_grid; ?> columns main__inner">
-      <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlight panel callout">
-          <?php print render($page['highlighted']); ?>
-        </div>
+    <div class="main__inner">
+
+      <?php if ($messages && !$zurb_foundation_messages_modal): ?>
+        <!--.l-messages -->
+        <aside role="complementary" class="messages columns">
+          <?php if ($messages): print $messages; endif; ?>
+        </aside>
+        <!--/.l-messages -->
       <?php endif; ?>
 
-      <a id="main-content"></a>
-
-      <?php if ($breadcrumb): print $breadcrumb; endif; ?>
-
-      <?php if ($title): ?>
-        <?php print render($title_prefix); ?>
-        <h1 id="page-title" class="title"><?php print $title; ?></h1>
-        <?php print render($title_suffix); ?>
+      <?php if (!empty($page['help'])): ?>
+        <!--.l-help -->
+        <aside role="complementary" class="help columns">
+          <?php print render($page['help']); ?>
+        </aside>
+        <!--/.l-help -->
       <?php endif; ?>
 
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
-        <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
+      <?php if (!empty($page['featured'])): ?>
+        <!--.l-featured -->
+        <section class="featured columns">
+          <?php print render($page['featured']); ?>
+        </section>
+        <!--/.l-featured -->
       <?php endif; ?>
 
-      <?php if ($action_links): ?>
-        <ul class="action-links">
-          <?php print render($action_links); ?>
-        </ul>
+      <div class="<?php print $main_grid; ?> columns main__content">
+        <?php if (!empty($page['highlighted'])): ?>
+          <div class="highlight panel callout">
+            <?php print render($page['highlighted']); ?>
+          </div>
+        <?php endif; ?>
+
+        <a id="main-content"></a>
+
+        <?php if ($breadcrumb): print $breadcrumb; endif; ?>
+
+        <?php if ($title): ?>
+          <?php print render($title_prefix); ?>
+          <h1 id="page-title" class="title"><?php print $title; ?></h1>
+          <?php print render($title_suffix); ?>
+        <?php endif; ?>
+
+        <?php if (!empty($tabs)): ?>
+          <?php print render($tabs); ?>
+          <?php if (!empty($tabs2)): print render($tabs2); endif; ?>
+        <?php endif; ?>
+
+        <?php if ($action_links): ?>
+          <ul class="action-links">
+            <?php print render($action_links); ?>
+          </ul>
+        <?php endif; ?>
+
+        <?php print render($page['content']); ?>
+      </div>
+      <!--/.l-main region -->
+
+      <?php if (!empty($page['sidebar_first'])): ?>
+        <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
+          <?php print render($page['sidebar_first']); ?>
+        </aside>
       <?php endif; ?>
 
-      <?php print render($page['content']); ?>
+      <?php if (!empty($page['sidebar_second'])): ?>
+        <aside role="complementary" class="<?php print $sidebar_sec_grid; ?> sidebar-second columns sidebar">
+          <?php print render($page['sidebar_second']); ?>
+        </aside>
+      <?php endif; ?>
     </div>
-    <!--/.l-main region -->
-
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
-        <?php print render($page['sidebar_first']); ?>
-      </aside>
-    <?php endif; ?>
-
-    <?php if (!empty($page['sidebar_second'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_sec_grid; ?> sidebar-second columns sidebar">
-        <?php print render($page['sidebar_second']); ?>
-      </aside>
-    <?php endif; ?>
   </main>
   <!--/.l-main -->
 
