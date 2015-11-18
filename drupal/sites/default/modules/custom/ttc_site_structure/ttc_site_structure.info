@@ -1,0 +1,17 @@
+name = TTC Site Structure
+description = Contains organizational items for the TTC site such as menu structures.
+core = 7.x
+package = TTC
+version = 7.x-1.0
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:2
+features[menu_custom][] = main-menu
+features[menu_custom][] = navigation
+features[menu_links][] = main-menu_home:home
+features[menu_links][] = navigation_abstract:node/add/abstract
+features[menu_links][] = navigation_add-content:node/add
+features[menu_links][] = navigation_basic-page:node/add/page
+features[menu_links][] = navigation_compose-tips:filter/tips
+features[menu_links][] = navigation_search:search
+project path = sites/default/modules/custom
