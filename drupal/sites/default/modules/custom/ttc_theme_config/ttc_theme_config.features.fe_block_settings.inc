@@ -21,17 +21,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -11,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -47,17 +47,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -11,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -73,17 +73,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -12,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -99,17 +99,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -12,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -125,17 +125,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -8,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -151,17 +151,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -10,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -177,17 +177,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -9,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -203,17 +203,17 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => -10,
+      ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -10,
-      ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
       ),
     ),
     'title' => '',
@@ -229,16 +229,44 @@ function ttc_theme_config_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -9,
       ),
-      'zurb_foundation' => array(
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['system-navigation'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'navigation',
+    'module' => 'system',
+    'node_types' => array(
+      0 => 'page',
+    ),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'seven' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'zurb_foundation',
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'ttctheme' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'ttctheme',
         'weight' => 0,
       ),
     ),
