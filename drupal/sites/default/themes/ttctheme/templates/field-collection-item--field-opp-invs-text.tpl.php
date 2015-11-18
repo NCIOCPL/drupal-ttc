@@ -30,28 +30,15 @@
 ?>
 
 <?php
-  $hasDesc = isset($content['field_text']);
+  $hasDesc = isset($content['field_opp_invs_name']);
   $hasLink = isset($content['field_url']);
 
-  $fieldLabel = $content['field_patent_status'][0]['#title'];
   $fieldLink = $hasLink ? $content['field_url'][0]['#href'] : null;
-  $fieldDesc = $hasDesc ? $content['field_text'][0]['#markup'] : null;
+  $fieldDesc = $hasDesc ? $content['field_opp_invs_name'][0]['#markup'] : null;
 ?>
 
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="field-collection__item"<?php print $content_attributes; ?>>
-    <span class="field-collection__item-label">
-      <?php if (!$hasDesc && $hasLink): ?>
-        <a href="<?php print $fieldLink; ?>">
-      <?php endif; ?>
-
-      <?php print $fieldLabel; ?><?php if ($hasDesc): ?>:&nbsp;<?php endif; ?>
-
-      <?php if (!$hasDesc && $hasLink): ?>
-        </a>
-      <?php endif; ?>
-    </span>
-
     <?php if ($hasDesc): ?>
       <span class="field-collection__item-content">
         <?php if ($hasLink): ?>

@@ -8,6 +8,11 @@
 		@include field-label;
 	}
 }
+.field-collection {
+	&__item-label {
+		@include field-label($level: 2);
+	}
+}
 
 // Override styling from field_collection module.
 // @see https://www.drupal.org/node/1462584 for related Drupal issue.

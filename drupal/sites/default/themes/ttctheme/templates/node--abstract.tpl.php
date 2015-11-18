@@ -105,7 +105,12 @@
     print render($content['field_opp_description_text']);
     print render($content['field_opp_commapp_text']);
     print render($content['field_opp_compadv_text']);
+    print render($content['field_opp_invs_text']);
+    print render($content['field_development_stage']);
+    print render($content['field_opp_pubs_text']);
     print render($content['field_pat_status']);
     print render($content['field_opp_rel_enum']);
+    print render($content['field_product_type']);
+    print render($content['field_therapeutic_area']);
   ?>
 </article>
