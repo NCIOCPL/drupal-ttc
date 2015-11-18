@@ -97,8 +97,8 @@ function ttc_pages_default_page_manager_pages() {
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Available Technologies',
-    'name' => 'main-menu',
-    'weight' => '0',
+    'name' => 'navigation',
+    'weight' => '1',
     'parent' => array(
       'type' => 'none',
       'title' => '',
@@ -381,7 +381,7 @@ function ttc_pages_default_page_manager_pages() {
     'settings' => NULL,
   );
   $page->menu = array(
-    'type' => 'normal',
+    'type' => 'none',
     'title' => 'Home',
     'name' => 'main-menu',
     'weight' => '0',
