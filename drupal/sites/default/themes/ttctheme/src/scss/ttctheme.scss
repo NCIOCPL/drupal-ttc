@@ -60,19 +60,20 @@
 @import "base/elements";
 
 // Modules
-@import "modules/icon";
-@import "modules/field";
-@import "modules/list";
-@import "modules/footer";
-@import "modules/banner";
-@import "modules/logo";
-@import "modules/follow_us";
-@import "modules/search_block";
-@import "modules/block";
-@import "modules/menu_block";
-@import "modules/main_menu";
 @import "modules/abstract_summary";
+@import "modules/banner";
+@import "modules/block";
+@import "modules/breadcrumbs";
+@import "modules/field";
+@import "modules/follow_us";
+@import "modules/footer";
+@import "modules/icon";
+@import "modules/list";
+@import "modules/logo";
+@import "modules/main_menu";
+@import "modules/menu_block";
 @import "modules/patent_status";
+@import "modules/search_block";
 
 // Regions
 // Each section of the document has its own partial seperated out to improve developer experience. Additionally, grids can be declared in regions as well.

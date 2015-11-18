@@ -67,6 +67,7 @@ $palettes: map-merge($palettes, (
 $base-font-size: 18px;
 $rem-base: $base-font-size;
 $row-width: 1440px;
+$column-gutter: rem-calc(30);
 
 $font-family-sans-serif: font(lato);
 $body-bg: palette(white);
@@ -79,3 +80,16 @@ $h2-font-reduction: 0;
 $paragraph-font-size: rem-calc(18);
 $paragraph-line-height: 1.475;
 $form-label-font-size: rem-calc(18);
+
+// breadcrumbs
+$crumb-bg: transparent;
+$crumb-padding: ($column-gutter / 2) 0 0;
+$crumb-border-size: 0;
+$crumb-border-style: none;
+$crumb-border-color: transparent;
+$crumb-font-size: rem-calc(18);
+$crumb-font-color: palette(blue, dark);
+$crumb-font-color-current: palette(gray, dark);
+$crumb-font-color-unavailable: palette(gray, mid-light);
+$crumb-font-transform: none;
+$crumb-slash-color: palette(gray, mid-light);
