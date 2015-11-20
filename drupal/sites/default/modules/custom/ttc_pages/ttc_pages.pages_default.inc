@@ -92,8 +92,11 @@ function ttc_pages_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Available Technologies faceted search';
   $page->admin_description = '';
-  $page->path = 'availabletechnologies';
-  $page->access = array();
+  $page->path = 'availabletechnologies/!keyword';
+  $page->access = array(
+    'plugins' => array(),
+    'logic' => 'and',
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Available Technologies',
@@ -106,7 +109,16 @@ function ttc_pages_default_page_manager_pages() {
       'weight' => '0',
     ),
   );
-  $page->arguments = array();
+  $page->arguments = array(
+    'keyword' => array(
+      'id' => 1,
+      'identifier' => 'Search Keyword',
+      'name' => 'string',
+      'settings' => array(
+        'use_tail' => 0,
+      ),
+    ),
+  );
   $page->conf = array(
     'admin_paths' => FALSE,
   );
@@ -114,11 +126,124 @@ function ttc_pages_default_page_manager_pages() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'page_available_technologies_faceted_search__panel_context_78250f32-e192-4c92-ae8c-1bb4672bd7f0';
+  $handler->task = 'page';
+  $handler->subtask = 'available_technologies_faceted_search';
+  $handler->handler = 'panel_context';
+  $handler->weight = -30;
+  $handler->conf = array(
+    'title' => 'Landing Page',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => '',
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'context_exists',
+          'settings' => array(
+            'exists' => '0',
+          ),
+          'context' => 'argument_string_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'flexible';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'center' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Available Technologies';
+  $display->uuid = '60b2c82a-0299-4b2d-8a48-3120c474b921';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-ecdd01f5-cf28-4c09-b0bd-6a42497470cc';
+    $pane->panel = 'center';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Landing Page Placeholder',
+      'title' => '',
+      'body' => 'Landing Page Placeholder
+
+<a href=\'/availabletechnologies/all\'>View all technologies</a>',
+      'format' => 'filtered_html',
+      'substitute' => 1,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'ecdd01f5-cf28-4c09-b0bd-6a42497470cc';
+    $display->content['new-ecdd01f5-cf28-4c09-b0bd-6a42497470cc'] = $pane;
+    $display->panels['center'][0] = 'new-ecdd01f5-cf28-4c09-b0bd-6a42497470cc';
+    $pane = new stdClass();
+    $pane->pid = 'new-8ba64bdb-0255-43f2-8223-058655c58eb4';
+    $pane->panel = 'center';
+    $pane->type = 'views';
+    $pane->subtype = 'available_technologies';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '0',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '8ba64bdb-0255-43f2-8223-058655c58eb4';
+    $display->content['new-8ba64bdb-0255-43f2-8223-058655c58eb4'] = $pane;
+    $display->panels['center'][1] = 'new-8ba64bdb-0255-43f2-8223-058655c58eb4';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'page_available_technologies_faceted_search__panel';
   $handler->task = 'page';
   $handler->subtask = 'available_technologies_faceted_search';
   $handler->handler = 'panel_context';
-  $handler->weight = 0;
+  $handler->weight = -29;
   $handler->conf = array(
     'title' => 'Faceted Search',
     'no_blocks' => 0,
@@ -129,13 +254,23 @@ function ttc_pages_default_page_manager_pages() {
     'css' => '',
     'contexts' => array(
       0 => array(
-        'identifier' => 'View: TTC Abstract Faceted Results: Abstract Faceted Context',
+        'identifier' => 'Faceted Search view',
         'keyword' => 'facets',
         'name' => 'view:ttc_abstract_faceted_results-ctools_context_1',
         'id' => 1,
       ),
     ),
-    'relationships' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'Faceted Search relationship',
+        'keyword' => 'facets_with_keyword',
+        'name' => 'view_from_argument:ttc_abstract_faceted_results-ctools_context_1',
+        'context' => array(
+          0 => 'argument_string_1',
+        ),
+        'id' => 1,
+      ),
+    ),
     'name' => 'panel',
   );
   $display = new panels_display();
@@ -220,7 +355,7 @@ function ttc_pages_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-78d777a7-af16-4cab-a272-9741a8a0fc1b';
+    $pane->pid = 'new-8f426681-fbd8-495b-8a86-eefde4c39fe7';
     $pane->panel = 'center';
     $pane->type = 'views_row';
     $pane->subtype = 'views_row';
@@ -230,7 +365,7 @@ function ttc_pages_default_page_manager_pages() {
       'rows' => array(),
       'use_fields' => 0,
       'fields' => array(),
-      'context' => 'context_view:ttc_abstract_faceted_results-ctools_context_1_1',
+      'context' => 'relationship_view_from_argument:ttc_abstract_faceted_results-ctools_context_1_1',
       'override_title' => 0,
       'override_title_text' => '',
       'override_title_heading' => 'h2',
@@ -243,18 +378,44 @@ function ttc_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '78d777a7-af16-4cab-a272-9741a8a0fc1b';
-    $display->content['new-78d777a7-af16-4cab-a272-9741a8a0fc1b'] = $pane;
-    $display->panels['center'][0] = 'new-78d777a7-af16-4cab-a272-9741a8a0fc1b';
+    $pane->uuid = '8f426681-fbd8-495b-8a86-eefde4c39fe7';
+    $display->content['new-8f426681-fbd8-495b-8a86-eefde4c39fe7'] = $pane;
+    $display->panels['center'][0] = 'new-8f426681-fbd8-495b-8a86-eefde4c39fe7';
     $pane = new stdClass();
-    $pane->pid = 'new-99545797-bc83-40b0-bd92-0f70a29e5370';
-    $pane->panel = 'facets';
-    $pane->type = 'views_exposed';
-    $pane->subtype = 'views_exposed';
+    $pane->pid = 'new-fd741315-5abd-4c20-a6a5-cae1f20c15b3';
+    $pane->panel = 'center';
+    $pane->type = 'views_empty';
+    $pane->subtype = 'views_empty';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => 'context_view:ttc_abstract_faceted_results-ctools_context_1_1',
+      'context' => 'relationship_view_from_argument:ttc_abstract_faceted_results-ctools_context_1_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'fd741315-5abd-4c20-a6a5-cae1f20c15b3';
+    $display->content['new-fd741315-5abd-4c20-a6a5-cae1f20c15b3'] = $pane;
+    $display->panels['center'][1] = 'new-fd741315-5abd-4c20-a6a5-cae1f20c15b3';
+    $pane = new stdClass();
+    $pane->pid = 'new-bad4fbc2-aecf-4bb8-ba20-6e60dfdf817b';
+    $pane->panel = 'facets';
+    $pane->type = 'ttc_search_form_pane';
+    $pane->subtype = 'ttc_search_form_pane';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'index_url' => 'availabletechnologies',
+      'search_form_label' => 'Keywords',
+      'context' => 'argument_string_1',
       'override_title' => 0,
       'override_title_text' => '',
       'override_title_heading' => 'h2',
@@ -267,9 +428,9 @@ function ttc_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '99545797-bc83-40b0-bd92-0f70a29e5370';
-    $display->content['new-99545797-bc83-40b0-bd92-0f70a29e5370'] = $pane;
-    $display->panels['facets'][0] = 'new-99545797-bc83-40b0-bd92-0f70a29e5370';
+    $pane->uuid = 'bad4fbc2-aecf-4bb8-ba20-6e60dfdf817b';
+    $display->content['new-bad4fbc2-aecf-4bb8-ba20-6e60dfdf817b'] = $pane;
+    $display->panels['facets'][0] = 'new-bad4fbc2-aecf-4bb8-ba20-6e60dfdf817b';
     $pane = new stdClass();
     $pane->pid = 'new-59da9e71-7ec2-401e-a5f6-0a8ebb55e594';
     $pane->panel = 'facets';
