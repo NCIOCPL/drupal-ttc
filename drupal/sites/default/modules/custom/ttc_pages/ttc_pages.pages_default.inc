@@ -100,7 +100,7 @@ function ttc_pages_default_page_manager_pages() {
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Available Technologies',
-    'name' => 'navigation',
+    'name' => 'menu-site-structure',
     'weight' => '1',
     'parent' => array(
       'type' => 'none',
