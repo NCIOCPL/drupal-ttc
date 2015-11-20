@@ -89,7 +89,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'bundle' => 'abstract',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Also called an E-Number.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -107,7 +107,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_enumber',
-    'label' => 'E-Number',
+    'label' => 'Reference Number',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -751,7 +751,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'bundle' => 'abstract',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'A comma-separated list of related E-Numbers.',
+    'description' => 'A list of related reference numbers (E-Numbers).',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -769,7 +769,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_opp_rel_enum',
-    'label' => 'Related E-Numbers',
+    'label' => 'Related Technologies',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1041,14 +1041,14 @@ function ttc_content_type_abstract_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('30-Day Warned');
-  t('A comma-separated list of related E-Numbers.');
+  t('A list of related reference numbers (E-Numbers).');
+  t('Also called an E-Number.');
   t('Announce opportunity to ListServ?');
   t('Co-Development');
   t('Competitive Advantages');
   t('Contact');
   t('Description of Technology');
   t('Development Stage');
-  t('E-Number');
   t('End Date');
   t('Inventor(s)');
   t('Keywords');
@@ -1061,7 +1061,8 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Potential Commercial Applications');
   t('Product Type');
   t('Publications');
-  t('Related E-Numbers');
+  t('Reference Number');
+  t('Related Technologies');
   t('Send To');
   t('Start Date');
   t('Summary');
