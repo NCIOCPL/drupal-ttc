@@ -57,7 +57,7 @@ function ttc_content_type_basic_page_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_page';
   $strongarm->value = array(
-    0 => 'navigation',
+    0 => 'menu-site-structure',
   );
   $export['menu_options_page'] = $strongarm;
 
@@ -65,7 +65,7 @@ function ttc_content_type_basic_page_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_page';
-  $strongarm->value = 'navigation:0';
+  $strongarm->value = 'menu-site-structure:0';
   $export['menu_parent_page'] = $strongarm;
 
   $strongarm = new stdClass();
