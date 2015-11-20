@@ -12,4 +12,4 @@ features[features_api][] = api:2
 features[views_view][] = available_technologies
 features[views_view][] = ttc_abstract_faceted_results
 features[views_view][] = ttc_content_search_results
-project path = sites/default/modules/custom
+project path = sites/default/modules/feature_export
