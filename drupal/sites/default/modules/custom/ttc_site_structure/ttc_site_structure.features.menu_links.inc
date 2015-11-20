@@ -42,7 +42,7 @@ function ttc_site_structure_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-    'customized' => 1,
+    'customized' => 0,
     'parent_identifier' => 'navigation_add-content:node/add',
   );
   // Exported menu link: navigation_add-content:node/add.
@@ -59,8 +59,8 @@ function ttc_site_structure_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
+    'weight' => 0,
+    'customized' => 0,
   );
   // Exported menu link: navigation_basic-page:node/add/page.
   $menu_links['navigation_basic-page:node/add/page'] = array(
@@ -77,7 +77,7 @@ function ttc_site_structure_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-    'customized' => 1,
+    'customized' => 0,
     'parent_identifier' => 'navigation_add-content:node/add',
   );
   // Exported menu link: navigation_compose-tips:filter/tips.
@@ -94,8 +94,8 @@ function ttc_site_structure_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
+    'weight' => 0,
+    'customized' => 0,
   );
   // Exported menu link: navigation_search:search.
   $menu_links['navigation_search:search'] = array(
@@ -111,8 +111,8 @@ function ttc_site_structure_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
+    'weight' => 0,
+    'customized' => 0,
   );
 
   // Translatables
