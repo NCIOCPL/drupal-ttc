@@ -122,7 +122,8 @@ function ttc_views_views_default_views() {
   /* Display: Abstract Faceted Context */
   $handler = $view->new_display('ctools_context', 'Abstract Faceted Context', 'ctools_context_1');
   $handler->display->display_options['style_plugin'] = 'ctools_context';
-  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
   $handler->display->display_options['inherit_panels_path'] = '1';
   $handler->display->display_options['argument_input'] = array(
     'search_api_views_fulltext' => array(
