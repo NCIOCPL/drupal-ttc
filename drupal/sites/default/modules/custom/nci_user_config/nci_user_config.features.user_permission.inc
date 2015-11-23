@@ -940,32 +940,6 @@ function nci_user_config_user_default_permissions() {
     'module' => 'panels',
   );
 
-  // Exported permission: 'use text format filtered_html'.
-  $permissions['use text format filtered_html'] = array(
-    'name' => 'use text format filtered_html',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'advanced content editor' => 'advanced content editor',
-      'authenticated user' => 'authenticated user',
-      'content author' => 'content author',
-      'content editor' => 'content editor',
-      'site manager' => 'site manager',
-      'site moderator' => 'site moderator',
-    ),
-    'module' => 'filter',
-  );
-
-  // Exported permission: 'use text format full_html'.
-  $permissions['use text format full_html'] = array(
-    'name' => 'use text format full_html',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'advanced content editor' => 'advanced content editor',
-      'site manager' => 'site manager',
-    ),
-    'module' => 'filter',
-  );
-
   // Exported permission: 'use workbench_moderation my drafts tab'.
   $permissions['use workbench_moderation my drafts tab'] = array(
     'name' => 'use workbench_moderation my drafts tab',
