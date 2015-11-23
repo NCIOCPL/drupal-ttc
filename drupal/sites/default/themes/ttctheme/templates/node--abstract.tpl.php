@@ -112,5 +112,6 @@
     print render($content['field_opp_rel_enum']);
     print render($content['field_product_type']);
     print render($content['field_therapeutic_area']);
+    print render($content['field_opp_co_dev']);
   ?>
 </article>
