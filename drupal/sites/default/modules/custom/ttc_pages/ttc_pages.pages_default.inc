@@ -355,6 +355,77 @@ function ttc_pages_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
+    $pane->pid = 'new-b53f4355-59a1-451f-9a5f-683e4bd8fb94';
+    $pane->panel = 'center';
+    $pane->type = 'views_exposed';
+    $pane->subtype = 'views_exposed';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'relationship_view_from_argument:ttc_abstract_faceted_results-ctools_context_1_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'b53f4355-59a1-451f-9a5f-683e4bd8fb94';
+    $display->content['new-b53f4355-59a1-451f-9a5f-683e4bd8fb94'] = $pane;
+    $display->panels['center'][0] = 'new-b53f4355-59a1-451f-9a5f-683e4bd8fb94';
+    $pane = new stdClass();
+    $pane->pid = 'new-711e0fac-116c-4f0c-acd6-24faa10a9d53';
+    $pane->panel = 'center';
+    $pane->type = 'views_header';
+    $pane->subtype = 'views_header';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'relationship_view_from_argument:ttc_abstract_faceted_results-ctools_context_1_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '711e0fac-116c-4f0c-acd6-24faa10a9d53';
+    $display->content['new-711e0fac-116c-4f0c-acd6-24faa10a9d53'] = $pane;
+    $display->panels['center'][1] = 'new-711e0fac-116c-4f0c-acd6-24faa10a9d53';
+    $pane = new stdClass();
+    $pane->pid = 'new-0013f8d4-d1b0-449a-a243-560125e50d18';
+    $pane->panel = 'center';
+    $pane->type = 'block';
+    $pane->subtype = 'current_search-current_abstract_faceted_search';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'span',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = '0013f8d4-d1b0-449a-a243-560125e50d18';
+    $display->content['new-0013f8d4-d1b0-449a-a243-560125e50d18'] = $pane;
+    $display->panels['center'][2] = 'new-0013f8d4-d1b0-449a-a243-560125e50d18';
+    $pane = new stdClass();
     $pane->pid = 'new-8f426681-fbd8-495b-8a86-eefde4c39fe7';
     $pane->panel = 'center';
     $pane->type = 'views_row';
@@ -376,11 +447,11 @@ function ttc_pages_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 3;
     $pane->locks = array();
     $pane->uuid = '8f426681-fbd8-495b-8a86-eefde4c39fe7';
     $display->content['new-8f426681-fbd8-495b-8a86-eefde4c39fe7'] = $pane;
-    $display->panels['center'][0] = 'new-8f426681-fbd8-495b-8a86-eefde4c39fe7';
+    $display->panels['center'][3] = 'new-8f426681-fbd8-495b-8a86-eefde4c39fe7';
     $pane = new stdClass();
     $pane->pid = 'new-fd741315-5abd-4c20-a6a5-cae1f20c15b3';
     $pane->panel = 'center';
@@ -400,11 +471,11 @@ function ttc_pages_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 4;
     $pane->locks = array();
     $pane->uuid = 'fd741315-5abd-4c20-a6a5-cae1f20c15b3';
     $display->content['new-fd741315-5abd-4c20-a6a5-cae1f20c15b3'] = $pane;
-    $display->panels['center'][1] = 'new-fd741315-5abd-4c20-a6a5-cae1f20c15b3';
+    $display->panels['center'][4] = 'new-fd741315-5abd-4c20-a6a5-cae1f20c15b3';
     $pane = new stdClass();
     $pane->pid = 'new-bad4fbc2-aecf-4bb8-ba20-6e60dfdf817b';
     $pane->panel = 'facets';
@@ -524,7 +595,7 @@ function ttc_pages_default_page_manager_pages() {
     $display->content['new-6cb1a064-2aff-487d-af15-258fb4be714b'] = $pane;
     $display->panels['facets'][4] = 'new-6cb1a064-2aff-487d-af15-258fb4be714b';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-59da9e71-7ec2-401e-a5f6-0a8ebb55e594';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['available_technologies_faceted_search'] = $page;
