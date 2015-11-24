@@ -88,7 +88,10 @@
   <?php
     $has_summary_block = !empty($content['field_meta_desc']) ||
       !empty($content['field_enumber']) ||
-      !empty($content['field_meta_keywords']);
+      !empty($content['field_therapeutic_area']) ||
+      !empty($content['field_meta_keywords']) ||
+      !empty($content['field_opp_co_dev']) ||
+      !empty($content['field_contact_auto']);
   ?>
 
   <?php if ($has_summary_block): ?>
@@ -96,7 +99,10 @@
       <?php
         print render($content['field_meta_desc']);
         print render($content['field_enumber']);
+        print render($content['field_therapeutic_area']);
         print render($content['field_meta_keywords']);
+        print render($content['field_opp_co_dev']);
+        print render($content['field_contact_auto']);
       ?>
     </div>
   <?php endif; ?>
@@ -111,7 +117,5 @@
     print render($content['field_pat_status']);
     print render($content['field_opp_rel_enum']);
     print render($content['field_product_type']);
-    print render($content['field_therapeutic_area']);
-    print render($content['field_opp_co_dev']);
   ?>
 </article>
