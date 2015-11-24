@@ -45,6 +45,7 @@ function ttc_site_config_wysiwyg_default_profiles() {
           'PasteFromWord' => 1,
           'ShowBlocks' => 1,
           'RemoveFormat' => 1,
+          'Format' => 1,
           'Table' => 1,
           'SpellChecker' => 1,
           'Scayt' => 1,
@@ -64,8 +65,8 @@ function ttc_site_config_wysiwyg_default_profiles() {
       'apply_source_formatting' => 1,
       'paste_auto_cleanup_on_paste' => 0,
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div,blockquote',
-      'css_setting' => 'theme',
-      'css_path' => '',
+      'css_setting' => 'self',
+      'css_path' => '%bsites/default/themes/ttctheme/public/css/ttctheme.css',
       'css_classes' => '',
     ),
   );
