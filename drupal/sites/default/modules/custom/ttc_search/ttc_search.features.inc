@@ -8,7 +8,13 @@
  * Implements hook_ctools_plugin_api().
  */
 function ttc_search_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "current_search" && $api == "current_search") {
+    return array("version" => "1");
+  }
   if ($module == "facetapi" && $api == "facetapi_defaults") {
+    return array("version" => "1");
+  }
+  if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
 }
@@ -81,8 +87,11 @@ function ttc_search_default_search_api_index() {
         }
       },
       "fields" : {
+        "changed" : { "type" : "date" },
         "field_development_stage" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_enumber" : { "type" : "string" },
         "field_meta_keywords" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_opp_start_date" : { "type" : "date" },
         "field_pat_status" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
@@ -90,7 +99,10 @@ function ttc_search_default_search_api_index() {
         "field_pat_status:field_patent_status" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_product_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_therapeutic_area" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "search_api_language" : { "type" : "string" }
+        "nid" : { "type" : "integer" },
+        "search_api_language" : { "type" : "string" },
+        "title" : { "type" : "string" },
+        "vid" : { "type" : "integer" }
       }
     },
     "enabled" : "1",
@@ -405,6 +417,42 @@ function ttc_search_default_search_api_server() {
           "field_meta_keywords" : {
             "table" : "search_api_db_abstract_faceted_index_text",
             "type" : "list\\u003Ctext\\u003E",
+            "boost" : "1.0"
+          },
+          "nid" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "nid",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "vid" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "vid",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "changed" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "changed",
+            "type" : "date",
+            "boost" : "1.0"
+          },
+          "field_enumber" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "field_enumber",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "field_opp_start_date" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "field_opp_start_date",
+            "type" : "date",
+            "boost" : "1.0"
+          },
+          "title" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "title",
+            "type" : "string",
             "boost" : "1.0"
           }
         }
