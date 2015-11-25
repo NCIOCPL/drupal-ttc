@@ -25,3 +25,34 @@ function ttc_search_ctools_plugin_directory($module, $plugin) {
         return "plugins/$plugin";
     }
 }
+
+/**
+* Implements hook_facetapi_searcher_info()
+*/
+function ttc_search_facetapi_searcher_info_alter(array &$searcher_info) {
+  foreach ($searcher_info as $key => $value) {
+    if($value['url processor'] == 'standard'){
+      $searcher_info[$key]['url processor'] = 'ttc_search_url_processor';
+    }
+  }
+}
+
+/**
+* Implements hook_facetapi_url_processors().
+*/
+function ttc_search_facetapi_url_processors() {
+  return array(
+    'ttc_search_url_processor' => array(
+      'handler' => array(
+        'label' => t('TTC facetapi url processor.'),
+        'class' => 'FacetApiTtcSearch',
+      ),
+    ),
+  );
+}
+
+class FacetApiTtcSearch extends FacetapiUrlProcessorStandard {
+  public function setBreadcrumb() {
+    // Keep default behavior.
+  }
+}
