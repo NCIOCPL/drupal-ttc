@@ -29,7 +29,7 @@ function nci_wysiwyg_config_filter_default_formats() {
         'weight' => 1,
         'status' => 1,
         'settings' => array(
-          'allowed_html' => '<p> <blockquote> <ol> <ul> <li> <figure> <figcaption> <div> <a> <em> <strong> <cite> <q> <span> <br> <a> <img> <table> <caption> <tbody> <thead> <tfoot> <tr> <td> <th>',
+          'allowed_html' => '<aside> <h2> <h3> <h4> <h5> <h6> <p> <pre> <blockquote> <ol> <ul> <li> <figure> <figcaption> <div> <a> <em> <strong> <s> <cite> <q> <sub> <sup> <u> <span> <br> <img> <table> <caption> <tbody> <thead> <tfoot> <tr> <td> <th>',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 0,
         ),
