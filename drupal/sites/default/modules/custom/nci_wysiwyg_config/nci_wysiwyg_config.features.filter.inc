@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * ttc_site_config.features.filter.inc
+ * nci_wysiwyg_config.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function ttc_site_config_filter_default_formats() {
+function nci_wysiwyg_config_filter_default_formats() {
   $formats = array();
 
   // Exported format: Filtered HTML.
