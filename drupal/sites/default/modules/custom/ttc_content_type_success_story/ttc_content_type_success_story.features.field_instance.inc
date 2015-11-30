@@ -411,7 +411,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_show_in_navigation',
     'label' => 'Show in Navigation',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
