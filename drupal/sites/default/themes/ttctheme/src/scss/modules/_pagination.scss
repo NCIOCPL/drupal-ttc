@@ -1,42 +1,42 @@
 .pager {
-	li {
-		$pager-spacing: 0.5rem;
-		$pager-wide-spacing: 2rem;
+  li {
+    $pager-spacing: 0.5rem;
+    $pager-wide-spacing: 2rem;
 
-		// specificity override
-		.item-list & {
-			margin-left: $pager-spacing;
+    // specificity override
+    .item-list & {
+      margin-left: $pager-spacing;
 
-			&.arrow {
-				// first arrow ('<')
-				&.first {
-					margin-left: 0;
-				}
-			}
+      &.arrow {
+        // first arrow ('<')
+        &.first {
+          margin-left: 0;
+        }
+      }
 
-			// after second arrow ('< <<  1')
-			&.arrow + li:not(.arrow),
-			// after last real item ('4  >')
-			&:not(.arrow) + .arrow {
-				margin-left: $pager-wide-spacing;
-			}
-		}
+      // after second arrow ('< <<  1')
+      &.arrow + li:not(.arrow),
+      // after last real item ('4  >')
+      &:not(.arrow) + .arrow {
+        margin-left: $pager-wide-spacing;
+      }
+    }
 
-		a {
-			@include button-base;
-			@include button-size;
-			@include button-style;
-			@include single-transition(background-color);
+    a {
+      @include button-base;
+      @include button-size;
+      @include button-style;
+      @include single-transition(background-color);
 
-			color: palette(white);
-		}
+      color: palette(white);
+    }
 
-		&.current {
-			a {
-				@include button-style($bg:$secondary-button-bg-color, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
+    &.current {
+      a {
+        @include button-style($bg:$secondary-button-bg-color, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
 
-				color: palette(gray, base);
-			}
-		}
-	}
+        color: palette(gray, base);
+      }
+    }
+  }
 }

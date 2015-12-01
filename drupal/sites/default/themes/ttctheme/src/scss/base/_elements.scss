@@ -8,34 +8,34 @@
 // Headings
 //------------------------------------------------------------------------------
 h1 {
-	text-transform: uppercase;
+  text-transform: uppercase;
 
-	border-bottom: 1px solid palette(gray, light);
+  border-bottom: 1px solid palette(gray, light);
 }
 
 h2 {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 // Anchors
 //------------------------------------------------------------------------------
 a {
-	text-decoration: none;
+  text-decoration: none;
 
-	color: palette(blue, base);
+  color: palette(blue, base);
 
-	&:hover,
-	&:focus {
-		text-decoration: underline;
-	}
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 // Lists
 //------------------------------------------------------------------------------
 ul, ol {
-	// fix font sizes
-	font-size: 0;
+  // fix font sizes
+  font-size: 0;
 }
 li {
-	font-size: $list-font-size;
+  font-size: $list-font-size;
 }

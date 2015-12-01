@@ -7,11 +7,11 @@
 // %font-serif      { font-family: serif; }
 
 .row {
-	&.-no-margin {
-		margin: 0;
-	}
+  &.-no-margin {
+    margin: 0;
+  }
 }
 
 .clearprior {
-	@include clearprior;
+  @include clearprior;
 }

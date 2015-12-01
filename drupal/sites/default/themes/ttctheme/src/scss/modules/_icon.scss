@@ -1,43 +1,43 @@
 .icon {
-	// icon sizes
-	$icon-sizes: (
-		36px,
-		54px
-	);
+  // icon sizes
+  $icon-sizes: (
+    36px,
+    54px
+  );
 
-	display: inline-block;
+  display: inline-block;
 
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
 
-	@each $size in $icon-sizes {
-		&.-size-#{strip-unit($size)} {
-			height: $size;
-			width: $size;
-		}
-	}
+  @each $size in $icon-sizes {
+    &.-size-#{strip-unit($size)} {
+      height: $size;
+      width: $size;
+    }
+  }
 
-	/// @TODO: remove and replace with dynamic images
-	&.-icon-email {
-		border-color: palette(blue);
+  /// @TODO: remove and replace with dynamic images
+  &.-icon-email {
+    border-color: palette(blue);
 
-		&--white {
-			border-color: palette(white);
-		}
-	}
-	&.-icon-linkedin {
-		border-color: palette(blue);
+    &--white {
+      border-color: palette(white);
+    }
+  }
+  &.-icon-linkedin {
+    border-color: palette(blue);
 
-		&--white {
-			border-color: palette(white);
-		}
-	}
-	&.-icon-twitter {
-		border-color: palette(blue);
+    &--white {
+      border-color: palette(white);
+    }
+  }
+  &.-icon-twitter {
+    border-color: palette(blue);
 
-		&--white {
-			border-color: palette(white);
-		}
-	}
+    &--white {
+      border-color: palette(white);
+    }
+  }
 }

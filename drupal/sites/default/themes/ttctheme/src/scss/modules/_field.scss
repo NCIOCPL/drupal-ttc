@@ -1,65 +1,65 @@
 // Generic styling for fields and field collections
 
 .field {
-	margin-bottom: $paragraph-margin-bottom;
+  margin-bottom: $paragraph-margin-bottom;
 
-	// Style field labels consistently
-	.field-label {
-		@include field-label;
-	}
+  // Style field labels consistently
+  .field-label {
+    @include field-label;
+  }
 }
 .field-collection {
-	&__item-label {
-		@include field-label($level: 2);
-	}
+  &__item-label {
+    @include field-label($level: 2);
+  }
 }
 
 // Override styling from field_collection module.
 // @see https://www.drupal.org/node/1462584 for related Drupal issue.
 .field-collection-container,
 .field-collection-view {
-	border-bottom: none;
+  border-bottom: none;
 
-	&:before {
-		content: none;
-	}
+  &:before {
+    content: none;
+  }
 }
 .field-collection-container {
-	&:after {
-		content: none;
-	}
-	.field-items {
-		margin-bottom: 0;
+  &:after {
+    content: none;
+  }
+  .field-items {
+    margin-bottom: 0;
 
-		.field-item {
-			margin-bottom: 0;
-		}
-	}
-	ul.action-links-field-collection-add {
-		float: none;
-		clear: both;
+    .field-item {
+      margin-bottom: 0;
+    }
+  }
+  ul.action-links-field-collection-add {
+    float: none;
+    clear: both;
 
-		margin-#{$default-float}: $list-side-margin;
+    margin-#{$default-float}: $list-side-margin;
 
-		font-size: 0;
-	}
+    font-size: 0;
+  }
 }
 .field-collection-view {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 
-	.entity-field-collection-item {
-		float: none;
-	}
-	ul.field-collection-view-links {
-		float: none;
+  .entity-field-collection-item {
+    float: none;
+  }
+  ul.field-collection-view-links {
+    float: none;
 
-		margin-#{$default-float}: $list-nested-margin;
+    margin-#{$default-float}: $list-nested-margin;
 
-		@at-root ul.field-collection-view-links {
-			li a {
-				margin-right: $list-nested-margin;
-			}
-		}
-	}
+    @at-root ul.field-collection-view-links {
+      li a {
+        margin-right: $list-nested-margin;
+      }
+    }
+  }
 }

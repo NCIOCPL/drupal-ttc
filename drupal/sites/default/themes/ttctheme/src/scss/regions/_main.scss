@@ -1,25 +1,25 @@
 // Non-modular or client styles for the .main region.
 .main {
-	@include linear-gradient(palette(blue, dark), palette(grass-green, dark), palette(orange, dark));
+  @include linear-gradient(palette(blue, dark), palette(grass-green, dark), palette(orange, dark));
 
-	&__inner {
-		padding-right: $column-gutter;
-		padding-left: $column-gutter;
-	}
+  &__inner {
+    padding-right: $column-gutter;
+    padding-left: $column-gutter;
+  }
 
-	@at-root {
-		.messages,
-		.help,
-		.featured,
-		&__content {
-			background-color: palette(white, base);
-		}
-		&__content {
-			margin-bottom: ($column-gutter);
+  @at-root {
+    .messages,
+    .help,
+    .featured,
+    &__content {
+      background-color: palette(white, base);
+    }
+    &__content {
+      margin-bottom: ($column-gutter);
 
-			body.front & {
-				background-color: transparent;
-			}
-		}
-	}
+      body.front & {
+        background-color: transparent;
+      }
+    }
+  }
 }

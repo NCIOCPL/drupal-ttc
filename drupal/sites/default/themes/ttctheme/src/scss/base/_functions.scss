@@ -7,16 +7,16 @@
 /// @throws An error, if `$quiet` is overridden to false.
 /// @returns null
 @function throw($message) {
-	$quiet: true !default;
+  $quiet: true !default;
 
-	@if $quiet {
-		@warn $message;
-		@return null;
-	}
-	@else {
-		@error $message;
-		@return null;
-	}
+  @if $quiet {
+    @warn $message;
+    @return null;
+  }
+  @else {
+    @error $message;
+    @return null;
+  }
 }
 
 /// Returns a specified palette tone from the palette map.
@@ -28,14 +28,14 @@
 /// @throws If `$tone` does not exist in the specified `$palette`.
 /// @return {Color | null}
 @function palette($palette, $tone: "base") {
-	@if not map-has-key($palettes, $palette) {
-		@return throw("Palette does not exist in `$palettes`: "#{$palette}"");
-	}
-	@if not map-has-key(map-get($palettes, $palette), $tone) {
-		@return throw("Tone does not exist in palette "#{$palette}": "#{$tone}"");
-	}
+  @if not map-has-key($palettes, $palette) {
+    @return throw("Palette does not exist in `$palettes`: "#{$palette}"");
+  }
+  @if not map-has-key(map-get($palettes, $palette), $tone) {
+    @return throw("Tone does not exist in palette "#{$palette}": "#{$tone}"");
+  }
 
-	@return map-get(map-get($palettes, $palette), $tone);
+  @return map-get(map-get($palettes, $palette), $tone);
 }
 
 /// Returns a specified palette tone from the palette map.
@@ -45,14 +45,14 @@
 /// @throws If `$font` does not exist in the `$fonts` map.
 /// @return {List}
 @function font($font) {
-	$font: to-lower-case($font);
+  $font: to-lower-case($font);
 
-	@if $font == null or $font == default {
-		@return map-get($fonts, default);
-	}
-	@if map-has-key($fonts, $font) {
-		@return join(map-get($fonts, $font), map-get($fonts, default), comma);
-	}
+  @if $font == null or $font == default {
+    @return map-get($fonts, default);
+  }
+  @if map-has-key($fonts, $font) {
+    @return join(map-get($fonts, $font), map-get($fonts, default), comma);
+  }
 
-	@return throw("Unknown font `#{$font}` in $fonts.");
+  @return throw("Unknown font `#{$font}` in $fonts.");
 }

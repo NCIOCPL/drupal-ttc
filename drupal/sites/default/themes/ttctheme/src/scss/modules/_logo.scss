@@ -1,31 +1,31 @@
 .logo {
-	max-width: 440px;
+  max-width: 440px;
 
-	&__link {
-		display: block;
-	}
+  &__link {
+    display: block;
+  }
 }
 
 /// Common Logo block
 /// @type Placeholder
 %block--logo {
-	margin-top: 1rem;
-	margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 
-	@media #{$large-up} {
-		display: block;
-		float: left;
+  @media #{$large-up} {
+    display: block;
+    float: left;
 
-		width: 50%;
-	}
+    width: 50%;
+  }
 }
 
 /// Header Logo block
 .block--logo-header {
-	@extend %block--logo;
+  @extend %block--logo;
 }
 
 /// Footer Logo block
 .block--logo-footer {
-	@extend %block--logo;
+  @extend %block--logo;
 }

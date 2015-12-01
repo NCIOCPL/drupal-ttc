@@ -12,12 +12,12 @@ function ttctheme_preprocess_html(&$variables) {
  */
 function ttctheme_preprocess_page(&$variables) {
   $variables['show_alt_header'] = (
-      $variables['linked_logo'] ||
-      $variables['site_name'] ||
-      $variables['site_slogan'] ||
-      $variables['alt_main_menu'] ||
-      $variables['alt_secondary_menu']
-      );
+    $variables['linked_logo'] ||
+    $variables['site_name'] ||
+    $variables['site_slogan'] ||
+    $variables['alt_main_menu'] ||
+    $variables['alt_secondary_menu']
+  );
 }
 
 /**
@@ -64,7 +64,7 @@ function ttctheme_form_alter(&$form, &$form_state, $form_id) {
 
     $form['actions']['submit']['#value'] = 'Go';
     $form['actions']['submit']['#attributes']['class'] = array_diff(
-        $form['actions']['submit']['#attributes']['class'], array('secondary')
+      $form['actions']['submit']['#attributes']['class'], array('secondary')
     );
     $form['actions']['submit']['#attributes']['class'][] = 'primary';
     $form['actions']['submit']['#attributes']['class'][] = 'search-form__submit';
@@ -166,11 +166,11 @@ function ttctheme_facetapi_link_active($variables) {
     'active' => FALSE,
   );
   $accessible_markup = theme('facetapi_accessible_markup', $accessible_vars);
-  
+
   // Sanitizes the link text if necessary.
   $sanitize = empty($variables['options']['html']);
   $variables['text'] = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
-  
+
   // Adds count to link if one was passed.
   if (isset($variables['count'])) {
     $variables['text'] .= ' ' . theme('facetapi_count', $variables);
