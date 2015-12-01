@@ -17,5 +17,6 @@ features[features_api][] = api:2
 features[page_manager_handlers][] = search_node__panel_context_ce61e6fb-6c9b-46cb-a9b8-a0d6984ef738
 features[page_manager_pages][] = available_technologies_faceted_search
 features[page_manager_pages][] = homepage
+features[page_manager_pages][] = news
 features[panels_mini][] = ttc_abstract_faceted_search_mini
 project path = sites/default/modules/feature_export

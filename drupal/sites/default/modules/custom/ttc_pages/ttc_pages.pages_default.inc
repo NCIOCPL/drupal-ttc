@@ -752,6 +752,121 @@ function ttc_pages_default_page_manager_pages() {
   $page->default_handlers[$handler->name] = $handler;
   $pages['homepage'] = $page;
 
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'news';
+  $page->task = 'page';
+  $page->admin_title = 'News';
+  $page->admin_description = '';
+  $page->path = 'news';
+  $page->access = array();
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_news__panel';
+  $handler->task = 'page';
+  $handler->subtask = 'news';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'panel',
+  );
+  $display = new panels_display();
+  $display->layout = 'ttc_home';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'middle' => NULL,
+      'bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '04dfb72e-4385-4dee-94f5-f35a37036bbf';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-332ea2e2-167a-44e1-993c-49d0ef98c9a3';
+    $pane->panel = 'middle';
+    $pane->type = 'views';
+    $pane->subtype = 'news';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 1,
+      'nodes_per_page' => '10',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'default',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '332ea2e2-167a-44e1-993c-49d0ef98c9a3';
+    $display->content['new-332ea2e2-167a-44e1-993c-49d0ef98c9a3'] = $pane;
+    $display->panels['middle'][0] = 'new-332ea2e2-167a-44e1-993c-49d0ef98c9a3';
+    $pane = new stdClass();
+    $pane->pid = 'new-9a310307-4d40-439a-9334-4262b68c1e1a';
+    $pane->panel = 'top';
+    $pane->type = 'block';
+    $pane->subtype = 'system-main-menu';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '9a310307-4d40-439a-9334-4262b68c1e1a';
+    $display->content['new-9a310307-4d40-439a-9334-4262b68c1e1a'] = $pane;
+    $display->panels['top'][0] = 'new-9a310307-4d40-439a-9334-4262b68c1e1a';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-9a310307-4d40-439a-9334-4262b68c1e1a';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['news'] = $page;
+
   return $pages;
 
 }
