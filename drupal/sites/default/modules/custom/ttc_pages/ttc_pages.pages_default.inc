@@ -799,7 +799,7 @@ function ttc_pages_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'News Announcements';
   $display->uuid = '04dfb72e-4385-4dee-94f5-f35a37036bbf';
   $display->content = array();
   $display->panels = array();
@@ -838,31 +838,8 @@ function ttc_pages_default_page_manager_pages() {
     $pane->uuid = '332ea2e2-167a-44e1-993c-49d0ef98c9a3';
     $display->content['new-332ea2e2-167a-44e1-993c-49d0ef98c9a3'] = $pane;
     $display->panels['middle'][0] = 'new-332ea2e2-167a-44e1-993c-49d0ef98c9a3';
-    $pane = new stdClass();
-    $pane->pid = 'new-9a310307-4d40-439a-9334-4262b68c1e1a';
-    $pane->panel = 'top';
-    $pane->type = 'block';
-    $pane->subtype = 'system-main-menu';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = '9a310307-4d40-439a-9334-4262b68c1e1a';
-    $display->content['new-9a310307-4d40-439a-9334-4262b68c1e1a'] = $pane;
-    $display->panels['top'][0] = 'new-9a310307-4d40-439a-9334-4262b68c1e1a';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-9a310307-4d40-439a-9334-4262b68c1e1a';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['news'] = $page;
