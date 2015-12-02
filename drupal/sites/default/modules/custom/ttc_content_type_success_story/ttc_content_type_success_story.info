@@ -26,6 +26,7 @@ features[field_instance][] = node-success_story-field_description
 features[field_instance][] = node-success_story-field_display_posted_date
 features[field_instance][] = node-success_story-field_display_reviewed_date
 features[field_instance][] = node-success_story-field_display_updated_date
+features[field_instance][] = node-success_story-field_image
 features[field_instance][] = node-success_story-field_meta_desc
 features[field_instance][] = node-success_story-field_meta_keywords
 features[node][] = success_story

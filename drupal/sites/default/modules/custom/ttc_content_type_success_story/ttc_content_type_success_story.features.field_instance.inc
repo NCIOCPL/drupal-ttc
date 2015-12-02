@@ -50,7 +50,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -90,7 +90,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -223,6 +223,56 @@ function ttc_content_type_success_story_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-success_story-field_image'.
+  $field_instances['node-success_story-field_image'] = array(
+    'bundle' => 'success_story',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Image',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-success_story-field_meta_desc'.
   $field_instances['node-success_story-field_meta_desc'] = array(
     'bundle' => 'success_story',
@@ -310,6 +360,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
   t('Display Posted Date');
   t('Display Reviewed Date');
   t('Display Updated Date');
+  t('Image');
   t('Keywords');
   t('Meta Description');
 

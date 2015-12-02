@@ -71,7 +71,7 @@ function ttc_content_type_success_story_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '12',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
           'weight' => '30',
