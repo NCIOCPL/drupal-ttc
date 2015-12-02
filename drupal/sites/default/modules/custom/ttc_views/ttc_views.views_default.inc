@@ -83,20 +83,6 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Posted Date */
-  $handler->display->display_options['fields']['field_posted_date']['id'] = 'field_posted_date';
-  $handler->display->display_options['fields']['field_posted_date']['table'] = 'field_data_field_posted_date';
-  $handler->display->display_options['fields']['field_posted_date']['field'] = 'field_posted_date';
-  $handler->display->display_options['fields']['field_posted_date']['label'] = '';
-  $handler->display->display_options['fields']['field_posted_date']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_posted_date']['settings'] = array(
-    'format_type' => 'long',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_remaining_days' => 0,
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -104,17 +90,46 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Published Date */
+  $handler->display->display_options['fields']['field_date_published']['id'] = 'field_date_published';
+  $handler->display->display_options['fields']['field_date_published']['table'] = 'field_data_field_date_published';
+  $handler->display->display_options['fields']['field_date_published']['field'] = 'field_date_published';
+  $handler->display->display_options['fields']['field_date_published']['label'] = '';
+  $handler->display->display_options['fields']['field_date_published']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['field_date_published']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_date_published']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<hr class="news-announcement-separator">';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Published Date (field_date_published) */
+  $handler->display->display_options['sorts']['field_date_published_value']['id'] = 'field_date_published_value';
+  $handler->display->display_options['sorts']['field_date_published_value']['table'] = 'field_data_field_date_published';
+  $handler->display->display_options['sorts']['field_date_published_value']['field'] = 'field_date_published_value';
+  $handler->display->display_options['sorts']['field_date_published_value']['order'] = 'DESC';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

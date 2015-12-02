@@ -827,7 +827,7 @@ function ttc_pages_default_page_manager_pages() {
     'name' => 'panel',
   );
   $display = new panels_display();
-  $display->layout = 'ttc_home';
+  $display->layout = 'flexible';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -835,6 +835,7 @@ function ttc_pages_default_page_manager_pages() {
       'top' => NULL,
       'middle' => NULL,
       'bottom' => NULL,
+      'center' => NULL,
     ),
   );
   $display->cache = array();
@@ -843,8 +844,8 @@ function ttc_pages_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-332ea2e2-167a-44e1-993c-49d0ef98c9a3';
-    $pane->panel = 'middle';
+    $pane->pid = 'new-f792e400-0602-436b-806f-73397ee07693';
+    $pane->panel = 'center';
     $pane->type = 'views';
     $pane->subtype = 'news';
     $pane->shown = TRUE;
@@ -874,9 +875,9 @@ function ttc_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '332ea2e2-167a-44e1-993c-49d0ef98c9a3';
-    $display->content['new-332ea2e2-167a-44e1-993c-49d0ef98c9a3'] = $pane;
-    $display->panels['middle'][0] = 'new-332ea2e2-167a-44e1-993c-49d0ef98c9a3';
+    $pane->uuid = 'f792e400-0602-436b-806f-73397ee07693';
+    $display->content['new-f792e400-0602-436b-806f-73397ee07693'] = $pane;
+    $display->panels['center'][0] = 'new-f792e400-0602-436b-806f-73397ee07693';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
