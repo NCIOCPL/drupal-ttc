@@ -10,13 +10,13 @@
 function ttc_content_type_news_announcement_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_published_date'.
-  $field_bases['field_published_date'] = array(
+  // Exported field_base: 'field_date_published'.
+  $field_bases['field_date_published'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_published_date',
+    'field_name' => 'field_date_published',
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -36,7 +36,7 @@ function ttc_content_type_news_announcement_field_default_field_bases() {
       'tz_handling' => 'none',
     ),
     'translatable' => 0,
-    'type' => 'datetime',
+    'type' => 'datestamp',
   );
 
   return $field_bases;

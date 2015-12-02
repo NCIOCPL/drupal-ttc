@@ -54,8 +54,8 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news_announcement-field_published_date'.
-  $field_instances['node-news_announcement-field_published_date'] = array(
+  // Exported field_instance: 'node-news_announcement-field_date_published'.
+  $field_instances['node-news_announcement-field_date_published'] = array(
     'bundle' => 'news_announcement',
     'deleted' => 0,
     'description' => '',
@@ -72,7 +72,7 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -82,9 +82,9 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_published_date',
+    'field_name' => 'field_date_published',
     'label' => 'Published Date',
-    'required' => FALSE,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -93,12 +93,14 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
         'input_format' => 'm/d/Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
