@@ -21,6 +21,28 @@
   }
 }
 
+// Mixin for Product Type (Technologies) background colors
+@mixin product-type-backgrounds($style: 'base') {
+  &.-devices {
+    background-color: palette(plum, $style);
+  }
+  &.-diagnostics {
+    background-color: palette(red, $style);
+  }
+  &.-research-materials {
+    background-color: palette(lavender, $style);
+  }
+  &.-software {
+    background-color: palette(grass-green, $style);
+  }
+  &.-therapeutics {
+    background-color: palette(sea-green, $style);
+  }
+  &.-vaccines {
+    background-color: palette(orange, $style);
+  }
+}
+
 @mixin bordered-box($style: solid, $color: palette(gray, light), $width: 8px) {
   border-style: $style;
   border-width: $width;
