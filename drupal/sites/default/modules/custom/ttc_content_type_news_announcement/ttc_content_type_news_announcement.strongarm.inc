@@ -21,7 +21,7 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_news_announcement';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['comment_default_mode_news_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -73,6 +73,9 @@ function ttc_content_type_news_announcement_strongarm() {
         'path' => array(
           'weight' => '4',
         ),
+        'xmlsitemap' => array(
+          'weight' => '5',
+        ),
       ),
       'display' => array(),
     ),
@@ -82,10 +85,15 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_news_announcement';
+  $strongarm->value = '0';
+  $export['language_content_type_news_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_news_announcement';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_news_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -99,10 +107,7 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_news_announcement';
-  $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
-  );
+  $strongarm->value = array();
   $export['node_options_news_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -116,7 +121,7 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_news_announcement';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_news_announcement'] = $strongarm;
 
   return $export;
