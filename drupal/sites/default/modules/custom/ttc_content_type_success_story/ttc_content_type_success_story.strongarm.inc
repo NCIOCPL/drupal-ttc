@@ -73,6 +73,9 @@ function ttc_content_type_success_story_strongarm() {
         'path' => array(
           'weight' => '12',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
@@ -82,15 +85,24 @@ function ttc_content_type_success_story_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_success_story';
+  $strongarm->value = '0';
+  $export['language_content_type_success_story'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_success_story';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'menu-site-structure',
+  );
   $export['menu_options_success_story'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_success_story';
-  $strongarm->value = 'main-menu:0';
+  $strongarm->value = 'menu-site-structure:0';
   $export['menu_parent_success_story'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -114,7 +126,7 @@ function ttc_content_type_success_story_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_success_story';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['node_submitted_success_story'] = $strongarm;
 
   return $export;
