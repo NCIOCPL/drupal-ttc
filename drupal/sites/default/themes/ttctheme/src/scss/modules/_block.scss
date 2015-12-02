@@ -18,35 +18,3 @@
     }
   }
 }
-
-.pane-available-technologies {
-  text-align: center;
-
-  background-color: palette(white, base);
-
-  .pane-title {
-    font-size: rem(30px);
-  }
-
-  @at-root {
-    ul.available-technologies {
-      &__list {
-        margin-bottom: 0;
-
-        @include block-grid(1);
-
-        @media #{$medium-up} {
-          @include block-grid(3);
-        }
-        @media #{$large-up} {
-          @include block-grid(6);
-        }
-
-        > li {
-          margin-bottom: 0;
-          margin-left: 0;
-        }
-      }
-    }
-  }
-}

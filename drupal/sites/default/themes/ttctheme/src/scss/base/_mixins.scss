@@ -24,5 +24,13 @@
 @mixin bordered-box($style: solid, $color: palette(gray, light), $width: 8px) {
   border-style: $style;
   border-width: $width;
-  border-color: $color;
+
+  @if type-of($color) == 'color' {
+    border-color: $color;
+  }
+  @elseif type-of($color) == 'list' {
+    @each $c in $color {
+      border-color: $c;
+    }
+  }
 }
