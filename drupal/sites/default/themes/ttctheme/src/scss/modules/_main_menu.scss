@@ -1,29 +1,49 @@
-$main-menu-margin: 1rem;
+$main-menu-margin-top: 1rem;
+$main-menu-margin-bottom: 0.5rem;
+$main-menu-indicator-size: 0.5rem;
 
 .block-system-main-menu {
   display: none;
   clear: both;
 
   @media #{$large-up} {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+
     display: block;
 
+    width: 100%;
+
     .menu {
-      position: absolute;
-      z-index: 1;
+      @include equally-spaced-list;
 
-      display: table;
+      margin: $main-menu-margin-top 5% ($main-menu-margin-bottom + $main-menu-indicator-size);
 
-      width: 100%;
-      margin-top: $main-menu-margin;
-      margin-right: auto;
-      margin-bottom: $main-menu-margin;
-      margin-left: auto;
+      text-transform: uppercase;
     }
     li {
-      display: table-cell;
+      position: relative;
 
       text-align: center;
-      text-transform: uppercase;
+
+      &.active-trail {
+        &:before {
+          position: absolute;
+          top: calc(100% + #{$main-menu-margin-bottom});
+          left: calc(50% - #{$main-menu-indicator-size});
+
+          width: 0;
+          height: 0;
+
+          content: '';
+
+          border-width: 0 $main-menu-indicator-size $main-menu-indicator-size $main-menu-indicator-size;
+          border-style: solid;
+          border-color: transparent transparent #ffffff transparent;
+        }
+      }
     }
     a {
       color: palette(white, base);
@@ -32,5 +52,5 @@ $main-menu-margin: 1rem;
 }
 
 .main {
-  padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin * 2);
+  padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin-top + $main-menu-margin-bottom + $main-menu-indicator-size);
 }

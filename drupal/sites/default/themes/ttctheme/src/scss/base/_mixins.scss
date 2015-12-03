@@ -44,8 +44,8 @@
 }
 
 @mixin bordered-box($style: solid, $color: palette(gray, light), $width: 8px) {
-  border-style: $style;
   border-width: $width;
+  border-style: $style;
 
   @if type-of($color) == 'color' {
     border-color: $color;
@@ -54,5 +54,24 @@
     @each $c in $color {
       border-color: $c;
     }
+  }
+}
+
+// @see https://gist.github.com/northk/7635946
+@mixin equally-spaced-list() {
+  text-align: justify;
+
+  font-size: 0;
+
+  &:after {
+    display: inline-block;
+
+    width: 100%;
+
+    content: '';
+  }
+
+  > li {
+    display: inline-block;
   }
 }
