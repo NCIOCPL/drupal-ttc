@@ -60,6 +60,11 @@
 // @see https://gist.github.com/northk/7635946
 @mixin equally-spaced-list() {
   text-align: justify;
+  // Note: `text-justify` appears to be implemented only by IE, but doesn't
+  // appear to be needed for other browsers
+  // @see http://www.w3.org/TR/css-text-3/#text-justify-property
+  // @see https://msdn.microsoft.com/en-us/library/ms531172.aspx
+  text-justify: distribute;
 
   font-size: 0;
 
