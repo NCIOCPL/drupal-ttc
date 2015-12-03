@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the TTC Site Structure feature.
  */
+
+include_once 'ttc_site_structure.features.inc';
