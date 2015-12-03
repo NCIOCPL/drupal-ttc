@@ -161,7 +161,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_date_published']['element_type'] = 'strong';
   $handler->display->display_options['fields']['field_date_published']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_date_published']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'medium',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
