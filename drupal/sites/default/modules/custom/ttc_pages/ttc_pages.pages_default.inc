@@ -74,7 +74,7 @@ function ttc_pages_default_page_manager_handlers() {
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'image_style' => 'medium',
-        'image_link' => '',
+        'image_link' => 'file',
       ),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,
