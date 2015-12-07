@@ -293,13 +293,14 @@ function ttc_pages_default_page_manager_handlers() {
     $pane->configuration = array(
       'sanitize' => 1,
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
-      'override_title_heading' => 'h2',
+      'override_title_heading' => 'div',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
+      'style' => 'default',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -348,7 +349,7 @@ function ttc_pages_default_page_manager_handlers() {
           'name' => 'node_type',
           'settings' => array(
             'type' => array(
-              'success_story' => 'success_story',
+              'page' => 'page',
             ),
           ),
           'context' => 'argument_entity_id:node_1',
