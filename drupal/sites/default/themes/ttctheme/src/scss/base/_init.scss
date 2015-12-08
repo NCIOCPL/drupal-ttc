@@ -69,10 +69,13 @@ $rem-base: $base-font-size;
 $row-width: 1440px;
 $column-gutter: rem-calc(30);
 
+$font-weight-normal: normal;
+$font-weight-bold: bold;
 $font-family-sans-serif: font(lato);
 $body-bg: palette(white);
 $body-font-color: palette(gray, dark);
 $header-font-color: palette(gray, dark);
+$header-font-weight: $font-weight-bold;
 $h1-font-size: rem-calc(30);
 $h2-font-size: rem-calc(18);
 $h1-font-reduction: 0;

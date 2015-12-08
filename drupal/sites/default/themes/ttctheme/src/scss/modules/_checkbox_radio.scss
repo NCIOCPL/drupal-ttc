@@ -1,0 +1,14 @@
+.radio,
+.checkbox {
+  position: relative;
+}
+
+html.borderradius.generatedcontent {
+  input[type='checkbox'],
+  input[type='radio'] {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+  }
+}
