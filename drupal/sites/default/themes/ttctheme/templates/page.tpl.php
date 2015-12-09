@@ -87,7 +87,7 @@
   <!--.l-main -->
   <main role="main" class="main row">
     <!-- .l-main region -->
-    <div class="main__inner">
+    <div class="main__inner row">
 
       <?php if ($messages && !$zurb_foundation_messages_modal): ?>
         <!--.l-messages -->

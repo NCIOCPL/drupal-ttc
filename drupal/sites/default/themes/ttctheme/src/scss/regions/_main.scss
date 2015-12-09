@@ -2,24 +2,24 @@
 .main {
   @include linear-gradient(palette(blue, dark), palette(grass-green, dark), palette(orange, dark));
 
+  padding-right: $column-gutter;
+  padding-left: $column-gutter;
+
   &__inner {
-    padding-right: $column-gutter;
-    padding-left: $column-gutter;
+    background-color: palette(white, base);
+
+    body.front & {
+      margin-right: -($column-gutter);
+      margin-left: -($column-gutter);
+
+      background-color: transparent;
+    }
   }
 
   @at-root {
-    .messages,
-    .help,
-    .featured,
-    &__content {
-      background-color: palette(white, base);
-    }
+    .sidebar,
     &__content {
       margin-bottom: ($column-gutter);
-
-      body.front & {
-        background-color: transparent;
-      }
     }
   }
 }
