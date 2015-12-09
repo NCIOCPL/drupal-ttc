@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = recaptcha
 dependencies[] = strongarm
+dependencies[] = xmlsitemap
 features[captcha_points][] = search_block_form
 features[captcha_points][] = user_login
 features[captcha_points][] = user_login_block
