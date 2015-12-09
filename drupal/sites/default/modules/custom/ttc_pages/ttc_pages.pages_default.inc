@@ -1205,7 +1205,7 @@ function ttc_pages_default_page_manager_pages() {
     $display->content['new-dde72c29-185e-4c3f-948d-cf3049c554cf'] = $pane;
     $display->panels['center'][1] = 'new-dde72c29-185e-4c3f-948d-cf3049c554cf';
     $pane = new stdClass();
-    $pane->pid = 'new-192eeb42-74d7-4d41-9640-6743797db72e';
+    $pane->pid = 'new-dd8201fd-be06-408a-92f4-7b1bcc002752';
     $pane->panel = 'center';
     $pane->type = 'views';
     $pane->subtype = 'success_stories';
@@ -1223,7 +1223,7 @@ function ttc_pages_default_page_manager_pages() {
       'link_to_view' => 0,
       'args' => '',
       'url' => '',
-      'display' => 'block',
+      'display' => 'block_home',
       'override_title' => 0,
       'override_title_text' => '',
       'override_title_heading' => 'h2',
@@ -1239,9 +1239,9 @@ function ttc_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $pane->uuid = '192eeb42-74d7-4d41-9640-6743797db72e';
-    $display->content['new-192eeb42-74d7-4d41-9640-6743797db72e'] = $pane;
-    $display->panels['center'][2] = 'new-192eeb42-74d7-4d41-9640-6743797db72e';
+    $pane->uuid = 'dd8201fd-be06-408a-92f4-7b1bcc002752';
+    $display->content['new-dd8201fd-be06-408a-92f4-7b1bcc002752'] = $pane;
+    $display->panels['center'][2] = 'new-dd8201fd-be06-408a-92f4-7b1bcc002752';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
