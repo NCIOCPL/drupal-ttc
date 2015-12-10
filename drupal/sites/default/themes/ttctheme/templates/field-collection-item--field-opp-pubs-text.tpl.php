@@ -30,11 +30,11 @@
 ?>
 
 <?php
-  $hasDesc = isset($content['field_text']);
+  $hasDesc = isset($content['field_long_text']);
   $hasLink = isset($content['field_url']);
 
   $fieldLink = $hasLink ? $content['field_url'][0]['#href'] : null;
-  $fieldDesc = $hasDesc ? $content['field_text'][0]['#markup'] : null;
+  $fieldDesc = $hasDesc ? $content['field_long_text'][0]['#markup'] : null;
 ?>
 
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
