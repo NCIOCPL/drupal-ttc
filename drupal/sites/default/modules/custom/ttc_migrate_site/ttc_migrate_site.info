@@ -8,6 +8,6 @@ dependencies[] = migrate_ui
 
 ;  include the files that contain your Migrate classes
 files[] = abstract.inc
-; files[] = forum.inc
-; files[] = gallery.inc
-; files[] = roles.inc
+files[] = inventors.inc
+files[] = patent_status.inc
+files[] = publications.inc

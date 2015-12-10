@@ -4,6 +4,9 @@ class TTCMigrateSiteAbstractMigration extends Migration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
+    
+    $this->description = t('Migration of Abstracts from a copy of the existing TTC site database.');
+    
     $query = Database::getConnection()
         ->select('codev_opps', 'opp')
         ->fields('opp', array(
@@ -27,18 +30,18 @@ class TTCMigrateSiteAbstractMigration extends Migration {
       //'opp_ds_clinical',
       //'opp_ds_commready',
       'opp_pubs_text',
-      'pat_us_none',
-      'pat_us_text_none',
-      'pat_us_filed',
-      'pat_us_text_filed',
-      'pat_us_issued',
-      'pat_us_text_issued',
-      'pat_for_none',
-      'pat_for_text_none',
-      'pat_for_filed',
-      'pat_for_text_filed',
-      'pat_for_issued',
-      'pat_for_text_issued',
+      //'pat_us_none',
+      //'pat_us_text_none',
+      //'pat_us_filed',
+      //'pat_us_text_filed',
+      //'pat_us_issued',
+      //'pat_us_text_issued',
+      //'pat_for_none',
+      //'pat_for_text_none',
+      //'pat_for_filed',
+      //'pat_for_text_filed',
+      //'pat_for_issued',
+      //'pat_for_text_issued',
       'opp_imgs',
       'contact_auto',
       'internal_notes',
@@ -229,6 +232,14 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     );
 
     // FIELD MAPPINGS
+    // non-mapped fields
+    $this->addUnmigratedSources(
+        array(
+          'counter',
+          'opp_id',
+          'opp_version'),
+        'Legacy');
+
     // title and enumbers
     $this->addFieldMapping('title', 'opp_title');
     $this->addFieldMapping('field_enumber', 'opp_enum');
