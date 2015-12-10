@@ -76,8 +76,8 @@ function ttc_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_opp_invs_text-field_opp_invs_name'.
-  $field_instances['field_collection_item-field_opp_invs_text-field_opp_invs_name'] = array(
+  // 'field_collection_item-field_opp_invs_text-field_long_text'.
+  $field_instances['field_collection_item-field_opp_invs_text-field_long_text'] = array(
     'bundle' => 'field_opp_invs_text',
     'default_value' => NULL,
     'deleted' => 0,
@@ -88,13 +88,13 @@ function ttc_field_collections_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'field_collection_item',
-    'field_name' => 'field_opp_invs_name',
+    'field_name' => 'field_long_text',
     'label' => 'Name',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -103,10 +103,10 @@ function ttc_field_collections_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'rows' => 3,
       ),
-      'type' => 'text_textfield',
-      'weight' => 1,
+      'type' => 'text_textarea',
+      'weight' => 0,
     ),
   );
 
@@ -145,30 +145,30 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'url_external',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_opp_pubs_text-field_text'.
-  $field_instances['field_collection_item-field_opp_pubs_text-field_text'] = array(
+  // 'field_collection_item-field_opp_pubs_text-field_long_text'.
+  $field_instances['field_collection_item-field_opp_pubs_text-field_long_text'] = array(
     'bundle' => 'field_opp_pubs_text',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'List publications in the format: last name, first initial, et al. PMID.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'field_collection_item',
-    'field_name' => 'field_text',
-    'label' => 'Citation',
-    'required' => 1,
+    'field_name' => 'field_long_text',
+    'label' => 'Publication',
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -177,10 +177,10 @@ function ttc_field_collections_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'rows' => 4,
       ),
-      'type' => 'text_textfield',
-      'weight' => 2,
+      'type' => 'text_textarea',
+      'weight' => 0,
     ),
   );
 
@@ -219,7 +219,7 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'url_external',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -331,11 +331,10 @@ function ttc_field_collections_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Citation');
   t('Link to the patent\'s page on the relevant site.');
-  t('List publications in the format: last name, first initial, et al. PMID.');
   t('Name');
   t('Other Email Addresses');
+  t('Publication');
   t('Send To');
   t('Status');
   t('Text');
