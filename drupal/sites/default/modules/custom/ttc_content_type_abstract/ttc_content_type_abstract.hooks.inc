@@ -28,7 +28,7 @@ function ttc_content_type_abstract_node_presave($node) {
       if ($matched) {
         $node->field_opp_year['und']['0']['value'] = $matches[1];
       } else {
-        $node->field_opp_year['und']['0']['value'] = '';
+        $node->field_opp_year['und']['0']['value'] = -1;
       }
     }
   }
