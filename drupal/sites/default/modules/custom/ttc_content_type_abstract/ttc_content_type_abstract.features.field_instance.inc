@@ -163,47 +163,6 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-abstract-field_meta_desc'.
-  $field_instances['node-abstract-field_meta_desc'] = array(
-    'bundle' => 'abstract',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_plain',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_meta_desc',
-    'label' => 'Summary',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 80,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'node-abstract-field_meta_keywords'.
   $field_instances['node-abstract-field_meta_keywords'] = array(
     'bundle' => 'abstract',
@@ -241,6 +200,46 @@ function ttc_content_type_abstract_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_meta_long_desc'.
+  $field_instances['node-abstract-field_meta_long_desc'] = array(
+    'bundle' => 'abstract',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_meta_long_desc',
+    'label' => 'Summary',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
     ),
   );
 
@@ -347,7 +346,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_opp_co_dev',
-    'label' => 'Co-Development',
+    'label' => 'Collaboration Opportunity',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -994,7 +993,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -1034,7 +1033,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_buttons',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -1044,7 +1043,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('A list of related reference numbers (E-Numbers).');
   t('Also called an E-Number.');
   t('Announce opportunity to ListServ?');
-  t('Co-Development');
+  t('Collaboration Opportunity');
   t('Competitive Advantages');
   t('Contact');
   t('Description of Technology');
