@@ -51,7 +51,7 @@
 .block-menu-menu-footer-menu-primary {
   @extend %footer-menu;
 
-  padding-top: 2.5rem;
+  margin-top: 2.5rem;
 
   @media #{$large-up} {
     .menu {

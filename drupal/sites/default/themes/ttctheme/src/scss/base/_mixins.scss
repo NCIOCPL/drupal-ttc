@@ -2,15 +2,7 @@
 // Place your mixins here. Feel free to roll your own mixins.
 
 @mixin clearprior {
-  &:before,
-  &:after {
-    display: table;
-
-    content: " ";
-  }
-  &:before {
-    clear: both;
-  }
+  clear: both;
 }
 
 @mixin field-label($level: 1) {
