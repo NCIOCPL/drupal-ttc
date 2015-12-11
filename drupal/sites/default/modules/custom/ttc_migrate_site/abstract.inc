@@ -254,7 +254,7 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     $this->addFieldMapping('log', 'internal_notes');
 
     // meta description and keywords
-    $this->addFieldMapping('field_meta_desc', 'meta_desc');
+    $this->addFieldMapping('field_meta_long_desc', 'meta_desc');
     $this->addFieldMapping('field_meta_keywords', 'meta_keywords')
         ->callbacks(array($this, 'explodeAndTrim'));
 
