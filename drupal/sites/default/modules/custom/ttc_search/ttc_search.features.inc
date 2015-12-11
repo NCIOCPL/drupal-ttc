@@ -238,6 +238,7 @@ function ttc_search_default_search_api_index() {
         "field_enumber" : { "type" : "text" },
         "field_meta_desc" : { "type" : "text" },
         "field_meta_keywords" : { "type" : "list\\u003Ctext\\u003E", "boost" : "3.0" },
+        "field_meta_long_desc" : { "type" : "text" },
         "field_opp_commapp_text:value" : { "type" : "text" },
         "field_opp_compadv_text:value" : { "type" : "text" },
         "field_opp_description_text:value" : { "type" : "text" },
@@ -245,7 +246,6 @@ function ttc_search_default_search_api_index() {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
         },
-        "field_opp_invs_text:field_opp_invs_name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_opp_pubs_text" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
@@ -360,11 +360,6 @@ function ttc_search_default_search_api_server() {
             "type" : "text",
             "boost" : "1.0"
           },
-          "field_opp_invs_text:field_opp_invs_name" : {
-            "table" : "search_api_db_default_node_index_text",
-            "type" : "list\\u003Ctext\\u003E",
-            "boost" : "1.0"
-          },
           "field_pat_status:field_text" : {
             "table" : "search_api_db_default_node_index_text",
             "type" : "list\\u003Ctext\\u003E",
@@ -374,6 +369,11 @@ function ttc_search_default_search_api_server() {
             "table" : "search_api_db_default_node_index",
             "column" : "search_api_url",
             "type" : "uri",
+            "boost" : "1.0"
+          },
+          "field_meta_long_desc" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "text",
             "boost" : "1.0"
           }
         },
