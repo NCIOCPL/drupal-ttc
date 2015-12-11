@@ -4,6 +4,57 @@
   list-style-type: none;
 }
 
+.views-exposed-widget.views-widget-sort-sort_bef_combine {
+  float: right;
+}
+
+/// Sorting fields on the Faceted Search page.
+/// @see ttctheme/src/js/facetapi.js for supporting JavaScript.
+.form-type-bef-link {
+  display: inline-block;
+
+  width: rem-calc(36px);
+  height: rem-calc(36px);
+  margin-left: 1em;
+
+  background-color: palette(gray, light);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &.-selected {
+    // Styling for currently selected sorting
+  }
+  &.-ascending {
+    // Styling for fields sorted in ascending order
+  }
+  &.-descending {
+    // Styling for fields sorted in descending order
+  }
+
+  &.-field-enumber {
+    // Styling for field 'field_enumber'
+  }
+  &.-field-opp-start-date {
+    // Styling for field 'field_opp_start_date'
+  }
+  &.-changed {
+    // Styling for field 'changed'
+  }
+  &.-title {
+    // Styling for field 'title'
+  }
+}
+.edit-sort {
+  &__link {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
 ul.facet-selection {
   $button-padding-vertical: 0.5rem;
   $button-padding-horizontal: 0.75rem;

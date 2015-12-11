@@ -1,19 +1,66 @@
 (function () {
   'use strict';
 
-  // Create a link to remove the keyword filter.
   jQuery(document).ready(function () {
-    var path = location.pathname.split('/');
+    // Create a link to remove the keyword filter.
+    (function () {
+      var path = location.pathname.split('/');
 
-    if (path[path.length - 1] === 'all') {
-      return;
-    }
+      if (path[path.length - 1] === 'all') {
+        return;
+      }
 
-    // Get the path without the keyword (but with 'all') and add any facets.
-    var baseWithFacets = path.slice(0, -1).join('/') + '/all' + location.search;
+      // Get the path without the keyword (but with 'all') and add any facets.
+      var baseWithFacets = path.slice(0, -1).join('/') + '/all' + location.search;
 
-    jQuery('.facet-selection > li').not(':has(a)')
-      .wrapInner('<a href="' + baseWithFacets + '">');
+      jQuery('.facet-selection > li').not(':has(a)')
+        .wrapInner('<a href="' + baseWithFacets + '">');
+    }());
+
+    // Wrap sorting filters in a span.
+    (function () {
+      var sortClass = 'abstract-sort';
+
+      function addClassList() {
+        var className = this.className;
+        var tooltip = this.textContent.trim();
+        var $this = jQuery(this);
+        var newClasses = [];
+
+        var regexSortName = new RegExp('edit-' + sortClass + '-(.*)-(?:asc|desc)', 'i');
+        var regexSelected = /\bselected\b/i;
+        var regexAscending = /\basc\b/i;
+        var regexDescending = /\bdesc\b/i;
+
+        newClasses.push('-' + className.match(regexSortName)[1]);
+        if (regexSelected.test(className)) {
+          newClasses.push('is-selected');
+        }
+        if (regexAscending.test(className)) {
+          newClasses.push('-ascending');
+        }
+        else if (regexDescending.test(className)) {
+          newClasses.push('-descending');
+        }
+
+        $this.addClass(newClasses.join(' '));
+
+        $this.children('a').attr({
+          'data-tooltip': '',
+          'aria-haspopup': true,
+          'title': tooltip
+        });
+      }
+
+      jQuery('.form-item-' + sortClass + ' .form-type-bef-link')
+        .each(addClassList)
+        .children('a')
+          .addClass('edit-sort__link')
+          .wrapInner('<span class="element-invisible">');
+
+      // Re-run Foundation initialization, since we've added tooltips
+      jQuery(document).foundation();
+    }());
   });
 
   Drupal.facetapi.makeCheckbox = function () {
