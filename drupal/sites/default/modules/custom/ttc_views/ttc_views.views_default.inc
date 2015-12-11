@@ -394,12 +394,12 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Node: Meta Description */
-  $handler->display->display_options['fields']['field_meta_desc']['id'] = 'field_meta_desc';
-  $handler->display->display_options['fields']['field_meta_desc']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['fields']['field_meta_desc']['field'] = 'field_meta_desc';
-  $handler->display->display_options['fields']['field_meta_desc']['label'] = '';
-  $handler->display->display_options['fields']['field_meta_desc']['element_label_colon'] = FALSE;
+  /* Field: Indexed Node: Summary */
+  $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
+  $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['label'] = '';
+  $handler->display->display_options['fields']['field_meta_long_desc']['element_label_colon'] = FALSE;
   /* Sort criterion: Indexed Node: Reference Number */
   $handler->display->display_options['sorts']['field_enumber']['id'] = 'field_enumber';
   $handler->display->display_options['sorts']['field_enumber']['table'] = 'search_api_index_abstract_faceted_index';
