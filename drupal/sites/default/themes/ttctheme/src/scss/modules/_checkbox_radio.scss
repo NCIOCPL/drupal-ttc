@@ -73,7 +73,7 @@ $checkbox-radio-size: (0.75 * $form-label-line-height) * $form-label-font-size;
 
         @if $type == 'checkbox' {
           + label:before {
-            border-radius: 0.25rem;
+            border-radius: $global-rounded;
           }
           &:checked + label:after {
             content: '✓';

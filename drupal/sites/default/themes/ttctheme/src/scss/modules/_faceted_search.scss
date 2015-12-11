@@ -1,12 +1,35 @@
 .facetapi-facetapi-checkbox-links {
-  list-style-type: none;
   margin-left: 1rem;
+
+  list-style-type: none;
 }
 
-.facet-selection {
+ul.facet-selection {
+  $button-padding-vertical: 0.5rem;
+  $button-padding-horizontal: 0.75rem;
+
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+
   list-style-type: none;
 
   > li {
     display: inline-block;
+
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+  }
+
+  a {
+    @include button-base;
+    @include button-size;
+    @include button-style($radius: $button-round);
+    @include single-transition(background-color);
+
+    &:after {
+      margin-left: 1.5rem;
+
+      content: '×';
+    }
   }
 }

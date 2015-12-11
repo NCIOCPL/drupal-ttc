@@ -1,6 +1,21 @@
 (function () {
   'use strict';
 
+  // Create a link to remove the keyword filter.
+  jQuery(document).ready(function () {
+    var path = location.pathname.split('/');
+
+    if (path[path.length - 1] === 'all') {
+      return;
+    }
+
+    // Get the path without the keyword (but with 'all') and add any facets.
+    var baseWithFacets = path.slice(0, -1).join('/') + '/all' + location.search;
+
+    jQuery('.facet-selection > li').not(':has(a)')
+      .wrapInner('<a href="' + baseWithFacets + '">');
+  });
+
   Drupal.facetapi.makeCheckbox = function () {
     var $link = jQuery(this);
     var isActive = $link.hasClass('facetapi-active');
