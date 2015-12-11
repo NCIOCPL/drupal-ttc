@@ -86,7 +86,7 @@
   <?php print render($title_suffix); ?>
 
   <?php
-    $has_summary_block = !empty($content['field_meta_desc']) ||
+    $has_summary_block = !empty($content['field_meta_long_desc']) ||
       !empty($content['field_enumber']) ||
       !empty($content['field_therapeutic_area']) ||
       !empty($content['field_meta_keywords']) ||
@@ -97,7 +97,7 @@
   <?php if ($has_summary_block): ?>
     <div class="abstract__summary">
       <?php
-        print render($content['field_meta_desc']);
+        print render($content['field_meta_long_desc']);
         print render($content['field_enumber']);
         print render($content['field_therapeutic_area']);
         print render($content['field_meta_keywords']);
