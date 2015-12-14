@@ -76,6 +76,9 @@ projects[recaptcha][version] = "2.0"
 projects[role_delegation][subdir] = "contrib"
 projects[role_delegation][version] = "1.1"
 
+projects[rules][subdir] = "contrib"
+projects[rules][version] = "2.9"
+
 projects[strongarm][subdir] = "contrib"
 projects[strongarm][version] = "2.0"
 
@@ -99,6 +102,9 @@ projects[wysiwyg][version] = "2.2"
 
 projects[wysiwyg_filter][subdir] = "contrib"
 projects[wysiwyg_filter][version] = "1.6-rc2"
+
+projects[xmlsitemap][subdir] = "contrib"
+projects[xmlsitemap][version] = "2.2"
 
 ; Themes
 projects[zurb_foundation][version] = "5.0-rc6"
