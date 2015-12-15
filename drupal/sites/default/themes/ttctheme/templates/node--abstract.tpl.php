@@ -75,26 +75,13 @@
  * @see template_process()
  */
 ?>
-
-<?php $is_pdf = ($view_mode == 'PDF' ? true : false); ?>
-
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if($is_pdf) {
-      print render($content['field_pdf_img']);
-    }
-  ?>
-    
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
-    <h2<?php print $title_attributes; ?>>
-        <?php if (!$is_pdf): ?>
-          <a href="<?php print $node_url; ?>">
-        <?php endif; ?>
-        <?php print $title; ?>
-        <?php if (!$is_pdf): ?>
-          </a>
-        <?php endif; ?>
-    </h2>
+    <?php if (!$page): ?>
+      <h2<?php print $title_attributes; ?>>
+        <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
