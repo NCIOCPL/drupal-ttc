@@ -9,7 +9,6 @@ dependencies[] = entity
 dependencies[] = features
 dependencies[] = recaptcha
 dependencies[] = rules
-dependencies[] = rules_i18n
 dependencies[] = strongarm
 dependencies[] = workbench_moderation
 dependencies[] = xmlsitemap

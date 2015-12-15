@@ -13,7 +13,7 @@ function ttc_site_config_default_rules_configuration() {
       "LABEL" : "Abstract Email Blast",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "workbench_moderation", "rules_i18n" ],
+      "REQUIRES" : [ "rules", "workbench_moderation" ],
       "ON" : { "workbench_moderation_after_moderation_transition" : [] },
       "IF" : [
         { "node_is_of_type" : {
