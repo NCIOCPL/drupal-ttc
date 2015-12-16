@@ -42,6 +42,7 @@ features[variable][] = site_404
 features[variable][] = site_default_country
 features[variable][] = site_mail
 features[variable][] = site_name
+features[variable][] = xmlsitemap_engines_engines
 features[variable][] = xmlsitemap_settings_node_abstract
 features[variable][] = xmlsitemap_settings_node_page
 features[variable][] = xmlsitemap_settings_node_success_story
