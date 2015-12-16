@@ -27,12 +27,13 @@ function ttc_site_config_default_rules_configuration() {
       ],
       "DO" : [
         { "mail" : {
-            "to" : "FAKEEMAIL@FAKEEMAIL.FAKEEMAIL",
+            "to" : "[node:field-notif:field_send_to]",
             "subject" : "New NIH Partnering Opportunity",
-            "message" : "[node:url]\\r\\nTo learn more about the opportunity [node:title] and for contact information, please go to [node:url]",
+            "message" : "To learn more about the opportunity [node:title] and for contact information, please go to [node:url]",
             "language" : [ "node:language" ]
           }
-        }
+        },
+        { "data_set" : { "data" : [ "node:field-opp-list-send" ], "value" : "0" } }
       ]
     }
   }');
