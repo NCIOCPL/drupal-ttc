@@ -4,3 +4,16 @@
   padding: 1rem 1rem 0;
   margin-bottom: $paragraph-margin-bottom;
 }
+
+.abstract__link {
+    &.-view-pdf {
+        float: right;
+        margin: $column-gutter/4 $column-gutter/2;
+        padding: 0 $column-gutter/2;
+        background-color: palette(blue, base);
+        
+        a {
+            color: palette(white, base);
+        }
+    }
+}
