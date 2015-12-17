@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation to display a node.
@@ -75,53 +74,79 @@
  * @see template_process()
  */
 ?>
-<article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <?php if (!$page): ?>
-      <h2<?php print $title_attributes; ?>>
-        <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-    <?php endif; ?>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+<html>
+    <head>
+        <style>
+            @page {
+                /* ensure you append the header/footer name with 'html_' */
+                header: html_AbstractHeader; /* sets <htmlpageheader name="AbstractHeader"> as the header */
+                footer: html_AbstractFooter; /* sets <htmlpagefooter name="AbstractFooter"> as the footer */
 
-  <?php
-    $has_summary_block = !empty($content['field_meta_long_desc']) ||
-      !empty($content['field_enumber']) ||
-      !empty($content['field_therapeutic_area']) ||
-      !empty($content['field_meta_keywords']) ||
-      !empty($content['field_opp_co_dev']) ||
-      !empty($content['field_contact_auto']);
-  ?>
+            }
+        </style>
+    </head>
+    <body>
 
-  <?php if ($has_summary_block): ?>
-    <div class="abstract__summary">
-          <?php if ($view_mode == 'full'): ?>
-            <div class='abstract__link -view-pdf'>
-                <a href='/node/<?php print $node->nid; ?>/pdf'>View PDF</a>
-            </div>
-          <?php endif; ?>
+    <htmlpageheader name="AbstractHeader">  
+        <?php
+        $pdf_img_render = render($content['field_pdf_img']);
+        print $pdf_img_render;
+        ?>
+    </htmlpageheader>
 
-          <?php
-          print render($content['field_meta_long_desc']);
-          print render($content['field_enumber']);
-          print render($content['field_therapeutic_area']);
-          print render($content['field_meta_keywords']);
-          print render($content['field_opp_co_dev']);
-          print render($content['field_contact_auto']);
-          ?>
-      </div>
-  <?php endif; ?>
+    <htmlpagefooter name="AbstractFooter">  
+        <div class="abstract__pdf-footer">
+            <?php
+            $block = module_invoke('menu', 'block_view', 'menu-footer-menu--secondary');
+            $rendered = render($block['content']);
+            $filtered = preg_replace("/<\/a>.*?<a/s", "</a> | <a",  strip_tags($rendered, "<a>"));
+            print $filtered;
+            ?>
+        </div>
+    </htmlpagefooter>
 
-  <?php
-    print render($content['field_opp_description_text']);
-    print render($content['field_opp_commapp_text']);
-    print render($content['field_opp_compadv_text']);
-    print render($content['field_opp_invs_text']);
-    print render($content['field_development_stage']);
-    print render($content['field_opp_pubs_text']);
-    print render($content['field_pat_status']);
-    print render($content['field_opp_rel_enum']);
-    print render($content['field_product_type']);
-  ?>
-</article>
+    <article id="node-<?php print $node->nid; ?>" class="abstract__pdf abstract <?php print $classes; ?>"<?php print $attributes; ?>>
+        <?php print render($title_prefix); ?>
+        <?php if (!$page): ?>
+          <h2<?php print $title_attributes; ?>>
+              <?php print $title; ?>
+          </h2>
+        <?php endif; ?>
+        <?php print render($title_suffix); ?>
+
+        <?php
+        $has_summary_block = !empty($content['field_meta_long_desc']) ||
+            !empty($content['field_enumber']) ||
+            !empty($content['field_therapeutic_area']) ||
+            !empty($content['field_meta_keywords']) ||
+            !empty($content['field_opp_co_dev']) ||
+            !empty($content['field_contact_auto']);
+        ?>
+
+        <?php if ($has_summary_block): ?>
+          <div class="abstract__summary">
+              <?php
+              print render($content['field_meta_long_desc']);
+              print render($content['field_enumber']);
+              print render($content['field_therapeutic_area']);
+              print render($content['field_meta_keywords']);
+              print render($content['field_opp_co_dev']);
+              print render($content['field_contact_auto']);
+              ?>
+          </div>
+        <?php endif; ?>
+
+        <?php
+        print render($content['field_opp_description_text']);
+        print render($content['field_opp_commapp_text']);
+        print render($content['field_opp_compadv_text']);
+        print render($content['field_opp_invs_text']);
+        print render($content['field_development_stage']);
+        print render($content['field_opp_pubs_text']);
+        print render($content['field_pat_status']);
+        print render($content['field_opp_rel_enum']);
+        print render($content['field_product_type']);
+        ?>
+    </article>
+</body>
+</html>
