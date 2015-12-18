@@ -242,14 +242,8 @@ function ttc_search_default_search_api_index() {
         "field_opp_commapp_text:value" : { "type" : "text" },
         "field_opp_compadv_text:value" : { "type" : "text" },
         "field_opp_description_text:value" : { "type" : "text" },
-        "field_opp_invs_text" : {
-          "type" : "list\\u003Cinteger\\u003E",
-          "entity_type" : "field_collection_item"
-        },
-        "field_opp_pubs_text" : {
-          "type" : "list\\u003Cinteger\\u003E",
-          "entity_type" : "field_collection_item"
-        },
+        "field_opp_invs_text:value" : { "type" : "list\\u003Ctext\\u003E", "boost" : "2.0" },
+        "field_opp_pubs_text:value" : { "type" : "list\\u003Ctext\\u003E" },
         "field_opp_year" : { "type" : "text" },
         "field_pat_status" : {
           "type" : "list\\u003Cinteger\\u003E",
@@ -322,18 +316,6 @@ function ttc_search_default_search_api_server() {
             "type" : "list\\u003Ctext\\u003E",
             "boost" : "3.0"
           },
-          "field_opp_invs_text" : {
-            "table" : "search_api_db_default_node_index_field_opp_invs_text",
-            "column" : "value",
-            "type" : "list\\u003Cinteger\\u003E",
-            "boost" : "1.0"
-          },
-          "field_opp_pubs_text" : {
-            "table" : "search_api_db_default_node_index_field_opp_pubs_text",
-            "column" : "value",
-            "type" : "list\\u003Cinteger\\u003E",
-            "boost" : "1.0"
-          },
           "field_pat_status" : {
             "table" : "search_api_db_default_node_index_field_pat_status",
             "column" : "value",
@@ -374,6 +356,16 @@ function ttc_search_default_search_api_server() {
           "field_meta_long_desc" : {
             "table" : "search_api_db_default_node_index_text",
             "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_opp_invs_text:value" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "list\\u003Ctext\\u003E",
+            "boost" : "2.0"
+          },
+          "field_opp_pubs_text:value" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "list\\u003Ctext\\u003E",
             "boost" : "1.0"
           }
         },
