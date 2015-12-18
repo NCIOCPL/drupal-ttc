@@ -8,7 +8,5 @@ dependencies[] = field_collection
 dependencies[] = ttc_field_collections
 features[features_api][] = api:2
 features[field_base][] = field_notif
-features[field_base][] = field_opp_invs_text
-features[field_base][] = field_opp_pubs_text
 features[field_base][] = field_pat_status
 project path = sites/default/modules/custom
