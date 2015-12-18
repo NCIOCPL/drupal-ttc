@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TTC Content Type: File feature.
+ */
+
+include_once 'ttc_content_type_file.features.inc';
