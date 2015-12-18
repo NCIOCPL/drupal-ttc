@@ -12,6 +12,7 @@ dependencies[] = image
 dependencies[] = list
 dependencies[] = number
 dependencies[] = options
+dependencies[] = pdf_using_mpdf
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text

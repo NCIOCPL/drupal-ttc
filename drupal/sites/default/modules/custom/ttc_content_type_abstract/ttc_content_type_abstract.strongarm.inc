@@ -38,6 +38,15 @@ function ttc_content_type_abstract_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'PDF' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -46,6 +55,9 @@ function ttc_content_type_abstract_strongarm() {
         ),
         'path' => array(
           'weight' => '26',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '27',
         ),
       ),
       'display' => array(),
