@@ -281,9 +281,10 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     $this->addFieldMapping('field_therapeutic_area:create_term')
         ->defaultValue(TRUE);
 
-    // field collections (inventors and publications)
-    // $this->addFieldMapping('field_opp_invs_text', 'opp_invs_text');
-    //$this->addFieldMapping('field_opp_pubs_text', 'opp_pubs_text');
+    // text fields (inventors and publications)
+    $this->addFieldMapping('field_opp_invs_text', 'opp_invs_text');
+    $this->addFieldMapping('field_opp_pubs_text', 'opp_pubs_text');
+    
     // image field
     //$this->addFieldMapping('field_opp_imgs', 'opp_imgs');
 

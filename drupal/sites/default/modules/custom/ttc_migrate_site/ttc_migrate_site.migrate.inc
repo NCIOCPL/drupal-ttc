@@ -21,16 +21,8 @@ function ttc_migrate_site_migrate_api() {
         'class_name' => 'TTCMigrateSiteAbstractMigration',
         'group_name' => 'site',
       ),
-      'TTCSiteAbstractInventors' => array(
-        'class_name' => 'TTCMigrateSiteAbstractInventorsMigration',
-        'group_name' => 'site',
-      ),
       'TTCSiteAbstractPatentStatus' => array(
         'class_name' => 'TTCMigrateSiteAbstractPatentStatusMigration',
-        'group_name' => 'site',
-      ),
-      'TTCSiteAbstractPublications' => array(
-        'class_name' => 'TTCMigrateSiteAbstractPublicationsMigration',
         'group_name' => 'site',
       ),
     ),
