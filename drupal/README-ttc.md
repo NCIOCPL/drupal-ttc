@@ -50,3 +50,10 @@ Installation
 		```
 	4. In a web browser, navigate to https://ttc.dd:8083 and run through the installation steps. The database steps will be completed automatically by Acquia Dev Desktop.
 4. You're done! Now you can work with Drupal as usual.
+
+
+Troubleshooting
+----------
+- If the system cannot find "node_module" paths in ttctheme, install the following patch: https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-111.patch. The related issue is at https://www.drupal.org/node/2329453
+
+
