@@ -76,4 +76,29 @@
  */
 ?>
 <!-- placeholder template for success story content type -->
-<div class='success-story-wrapper'>&nbsp;</div>
+
+<article id="node-<?php print $node->nid; ?>" class="success-story <?php print $classes; ?>"<?php print $attributes; ?>>
+
+  <?php $has_image = !empty($content['field_image']); ?>
+  <?php $show_post_date = $content['field_display_posted_date']; ?>
+  <?php $show_rev_date = $content['field_display_reviewed_date']; ?>
+  <?php $show_up_date = $content['field_display_updated_date']; ?>
+  
+  <?php print render($title_prefix); ?>
+  <?php if (!$page): ?>
+    <?php if (!$page): ?>
+      <h2<?php print $title_attributes; ?>>
+        <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+  <?php endif; ?>
+  <?php print render($title_suffix); ?>
+
+  <?php print render($content['body']); ?>
+
+  <?php if ($has_image): ?>
+    <div class='success-story-image'>
+      <?php print render($content['field_image']); ?>
+	</div>
+  <?php endif; ?>
+  
+</article>
