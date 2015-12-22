@@ -93,13 +93,17 @@
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
-  <?php print render($content['body']); ?>
+  <div class='row'>
+    <div class='medium-6 columns'>
+      <?php print render($content['body']); ?>
+    </div>
 
-  <?php if ($has_image): ?>
-    <span>
-      <?php print render($content['field_image']); ?>
-	</span>
-  <?php endif; ?>
+    <div class='medium-6 columns'>
+      <?php if ($has_image): ?>
+        <?php print render($content['field_image']); ?>
+      <?php endif; ?>
+    </div>
+  </div>
   
   <?php if ($show_post_date): ?>
     <span>
