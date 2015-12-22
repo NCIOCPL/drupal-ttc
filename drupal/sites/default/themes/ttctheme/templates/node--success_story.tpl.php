@@ -80,9 +80,9 @@
 <article id="node-<?php print $node->nid; ?>" class="success-story <?php print $classes; ?>"<?php print $attributes; ?>>
 
   <?php $has_image = !empty($content['field_image']); ?>
-  <?php $show_post_date = $content['field_display_posted_date']; ?>
-  <?php $show_rev_date = $content['field_display_reviewed_date']; ?>
-  <?php $show_up_date = $content['field_display_updated_date']; ?>
+  <?php $show_post_date = ($content['field_display_posted_date']['#items']['0']['value'] == 1) && !empty($content['field_posted_date']); ?>
+  <?php $show_rev_date = ($content['field_display_reviewed_date']['#items']['0']['value'] == 1) && !empty($content['field_reviewed_date']); ?>
+  <?php $show_up_date = ($content['field_display_updated_date']['#items']['0']['value'] == 1) && !empty($content['field_updated_date']); ?>
   
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
@@ -96,9 +96,27 @@
   <?php print render($content['body']); ?>
 
   <?php if ($has_image): ?>
-    <div class='success-story-image'>
+    <span>
       <?php print render($content['field_image']); ?>
-	</div>
+	</span>
+  <?php endif; ?>
+  
+  <?php if ($show_post_date): ?>
+    <span>
+      <?php print render($content['field_posted_date']); ?>
+    </span>
+  <?php endif; ?>
+  
+  <?php if ($show_rev_date): ?>
+    <span>
+      <?php print render($content['field_reviewed_date']); ?>
+    </span>
+  <?php endif; ?>
+  
+  <?php if ($show_up_date): ?>
+    <span>
+      <?php print render($content['field_updated_date']); ?>
+    </span>
   <?php endif; ?>
   
 </article>

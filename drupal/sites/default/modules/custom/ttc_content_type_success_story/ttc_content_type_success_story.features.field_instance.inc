@@ -230,7 +230,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
@@ -240,7 +240,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
         'weight' => 12,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -382,7 +382,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_posted_date',
-    'label' => 'Posted Date',
+    'label' => 'Posted',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -437,7 +437,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_reviewed_date',
-    'label' => 'Reviewed Date',
+    'label' => 'Reviewed',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -492,7 +492,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_updated_date',
-    'label' => 'Updated Date',
+    'label' => 'Updated',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
