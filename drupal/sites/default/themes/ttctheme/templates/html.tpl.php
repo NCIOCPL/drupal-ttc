@@ -41,7 +41,7 @@
  * @see template_process()
  */
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html>dr
 <!-- Sorry no IE7 support! -->
 <!-- @see http://foundation.zurb.com/docs/index.html#basicHTMLMarkup -->
 
@@ -64,5 +64,9 @@
   <?php print $page; ?>
   <?php print $page_bottom; ?>
   <?php print _zurb_foundation_add_reveals(); ?>
+  
+  <!-- **** NCI Web Analytics  - DO NOT ALTER **** -->
+  <script type="text/javascript" src="//static.cancer.gov/webanalytics/WA_TTC_HTTPS_PageLoad.js"></script>
+  <!-- **** End NCI Web Analytics Page **** -->
 </body>
 </html>
