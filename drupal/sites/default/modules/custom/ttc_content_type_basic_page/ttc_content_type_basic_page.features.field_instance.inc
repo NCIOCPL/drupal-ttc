@@ -90,10 +90,10 @@ function ttc_content_type_basic_page_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 0,
+        'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 7,
+      'weight' => 5,
     ),
   );
 
@@ -133,10 +133,10 @@ function ttc_content_type_basic_page_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 0,
+        'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 6,
     ),
   );
 
@@ -176,10 +176,10 @@ function ttc_content_type_basic_page_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 0,
+        'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 7,
     ),
   );
 
@@ -234,7 +234,7 @@ function ttc_content_type_basic_page_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -289,7 +289,7 @@ function ttc_content_type_basic_page_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -344,7 +344,7 @@ function ttc_content_type_basic_page_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 

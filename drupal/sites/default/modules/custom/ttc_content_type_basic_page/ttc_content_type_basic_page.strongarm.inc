@@ -51,10 +51,10 @@ function ttc_content_type_basic_page_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '8',
         ),
         'xmlsitemap' => array(
-          'weight' => '3',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
