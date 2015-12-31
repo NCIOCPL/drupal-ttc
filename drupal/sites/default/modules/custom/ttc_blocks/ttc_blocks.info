@@ -1,0 +1,9 @@
+name = TTC Blocks
+description = Blocks used on the TTC site
+core = 7.x
+package = TTC
+version = 7.x-1.0
+dependencies[] = fe_block
+features[fe_block_boxes][] = listserv_block
+features[fe_block_settings][] = block-listserv_block
+features[features_api][] = api:2

@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+/**
+Render elements that will be used by the Listserv Block template
+*/
+
+/**
+TODO:
+- Create wrapper, form, and submit functions for listserv
+- Add logic for form error message displays
+- Change name of block--7.tpl.php
+- Clean up fields on blocks feature
+*/

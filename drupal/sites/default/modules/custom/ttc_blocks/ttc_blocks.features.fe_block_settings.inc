@@ -1,49 +1,48 @@
 <?php
 /**
  * @file
- * ttc_pages.features.fe_block_settings.inc
+ * ttc_blocks.features.fe_block_settings.inc
  */
 
 /**
  * Implements hook_default_fe_block_settings().
  */
-function ttc_pages_default_fe_block_settings() {
+function ttc_blocks_default_fe_block_settings() {
   $export = array();
 
   $export['version'] = '2.0';
 
-  $export['panels_mini-ttc_abstract_faceted_search_mini'] = array(
+  $export['block-listserv_block'] = array(
     'cache' => -1,
     'custom' => 0,
-    'delta' => 'ttc_abstract_faceted_search_mini',
-    'module' => 'panels_mini',
-    'node_types' => array(
-      0 => 'abstract',
-    ),
-    'pages' => '',
+    'machine_name' => 'listserv_block',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => 'home
+availabletechnologies',
     'roles' => array(),
     'themes' => array(
       'seven' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
         'theme' => 'seven',
         'weight' => 0,
       ),
       'ttctheme' => array(
-        'region' => 'sidebar_first',
+        'region' => 'content',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => 0,
+        'weight' => -19,
       ),
       'zurb_foundation' => array(
-        'region' => 'sidebar_first',
+        'region' => 'content',
         'status' => 1,
         'theme' => 'zurb_foundation',
         'weight' => 0,
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   return $export;
