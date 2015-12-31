@@ -50,6 +50,7 @@
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
+  <link rel="shortcut icon" type="image/ico" href="sites/default/themes/ttctheme/public/images/favicon.ico">
   <?php print $styles; ?>
   <?php print $scripts; ?>
   <!--[if lt IE 9]>
