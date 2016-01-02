@@ -124,6 +124,17 @@
 
         <?php if ($breadcrumb): print $breadcrumb; endif; ?>
 
+		<div class='addthis'>
+		  <a class="addthis_button_linkedin" title="LinkedIn" href="#"></a>
+		  <a class="addthis_button_twitter" title="Twitter" href="#"></a>
+		  <a class="addthis_button_email" title="Email" href="#"></a>
+		  <a class="addthis_button_print" title="Print" href="#"></a>
+		  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+		  <!-- TODO: set up addthis account if necessary -->
+		  <!-- TODO: add styling to the buttons instead of using addthis defaults -->
+		  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5688053d43fd3757" async="async"></script>
+		</div>
+		
         <?php if ($title): ?>
           <?php print render($title_prefix); ?>
           <h1 id="page-title" class="title"><?php print $title; ?></h1>
