@@ -32,7 +32,7 @@ availabletechnologies',
         'region' => 'content',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -19,
+        'weight' => 10,
       ),
       'zurb_foundation' => array(
         'region' => 'content',
