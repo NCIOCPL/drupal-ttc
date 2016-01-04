@@ -41,4 +41,8 @@
  * @see template_process()
  */
 ?>
-<?php print _ttc_blocks_newsletter_subscribe_block(); ?>
+<?php print _ttc_blocks_listserv_subscribe_block(); ?>
+
+<?php if ($_GET['ls']): ?>
+  <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
+<?php endif ?>

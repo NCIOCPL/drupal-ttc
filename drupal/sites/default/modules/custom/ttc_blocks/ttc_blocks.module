@@ -16,7 +16,7 @@ TODO:
 - Clean up fields on blocks feature
 */
 
-function _ttc_blocks_newsletter_subscribe_block() {
+function _ttc_blocks_listserv_subscribe_block() {
 	$subscribe_block = '
 	  <form class="footer-subscribe" action="/" id="" accept-charset="UTF-8" style="text-align:center;">
 		<div class="container-inline">
@@ -37,11 +37,10 @@ function _ttc_blocks_newsletter_subscribe_block() {
     return $subscribe_block;
 }
 
-function _ttc_blocks_newsletter_subscribe($email_address) {
-    $success = 'my success message';
+function _ttc_blocks_listserv_subscribe($email_address) {
+    $success = 'Request submitted. Please check your email and follow the directions contained therein to confirm your subscription.';
  
     /* ListServ subsribe and validation happens here */
- 
     $error = 0;
  
     //Test for empty email
@@ -66,6 +65,6 @@ function _ttc_blocks_newsletter_subscribe($email_address) {
     }
  
     //If we are here, there was an error.  Redirect back to subscribe form.
-    drupal_goto('#', array('query' => array('e' => ($email_address != '' ? $email_address : -1), 'err' => $error)));
+    drupal_goto('#', array('query' => array('ls' => ($email_address != '' ? $email_address : -1), 'err' => $error)));
     return '';
 }
