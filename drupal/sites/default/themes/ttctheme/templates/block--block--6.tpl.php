@@ -43,6 +43,6 @@
 ?>
 <?php print _ttc_blocks_listserv_subscribe_block(); ?>
 
-<?php if ($_GET['ls']): ?>
+<?php if (isset($_GET['ls'])): ?>
   <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
 <?php endif ?>

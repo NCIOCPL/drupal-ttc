@@ -5,17 +5,8 @@
  */
 
 /**
-Render elements that will be used by the Listserv Block template
+* Render the HTML for the listserv subscription form
 */
-
-/**
-TODO:
-- Create submit functions for listserv
-- Add logic for form error message displays
-- Change name of block--7.tpl.php
-- Clean up fields on blocks feature
-*/
-
 function _ttc_blocks_listserv_subscribe_block() {
 	$subscribe_block = '
 	  <form class="footer-subscribe" action="/" id="" accept-charset="UTF-8" style="text-align:center;">
@@ -37,34 +28,46 @@ function _ttc_blocks_listserv_subscribe_block() {
     return $subscribe_block;
 }
 
+/**
+* Subscribe to the listserv by sending an email with the subscription parameters in the body. Subscription requests contain email only, no name.
+* @param $email_address: email address to be added to the listserv
+*/
 function _ttc_blocks_listserv_subscribe($email_address) {
     $success = 'Request submitted. Please check your email and follow the directions contained therein to confirm your subscription.';
+	$failure = 'Invalid email address';
  
     /* ListServ subsribe and validation happens here */
     $error = 0;
  
     //Test for empty email
-    if ($email_address == '') {
+    if ($email_address == '' || $email_address === null) {
         $error = 1;
     }
  
     //Test for valid email
     if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
-        //Invalid Email Address
         $error = 2;
+		$failure = 'Invalid email address.';
     }
  
-    //Try and send email.  If successful, display success message, if not
-    //redirect to subscribe page with error code 3
+    //Try and send email. If successful, display success message and return.
     if ($error == 0) {
         if (mail("FAKEEMAIL@FAKEEMAIL.FAKEEMAIL", "Listserv Subscription", "SUB OCPL-APPDEV-DEV Anonymous", "From: " . $email_address)) {
             return $success;
         } else {
             $error = 3;
+			$failure = 'Listserv subscription failed. Please try again.';
         }
     }
- 
-    //If we are here, there was an error.  Redirect back to subscribe form.
-    drupal_goto('#', array('query' => array('ls' => ($email_address != '' ? $email_address : -1), 'err' => $error)));
-    return '';
+
+    //If we are here, there was an error. Display error message 
+	//drupal_goto('/', array('query' => array('err' => $error)));
+    return $failure;
 }
+
+/**
+TODO:
+- Add logic for form error message displays
+- Change name of block--7.tpl.php
+- Clean up fields on blocks feature
+*/
