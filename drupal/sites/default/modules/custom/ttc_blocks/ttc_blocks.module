@@ -10,8 +10,62 @@ Render elements that will be used by the Listserv Block template
 
 /**
 TODO:
-- Create wrapper, form, and submit functions for listserv
+- Create submit functions for listserv
 - Add logic for form error message displays
 - Change name of block--7.tpl.php
 - Clean up fields on blocks feature
 */
+
+function _ttc_blocks_newsletter_subscribe_block() {
+	$subscribe_block = '
+	  <form class="footer-subscribe" action="/" id="" accept-charset="UTF-8" style="text-align:center;">
+		<div class="container-inline">
+		  <h4 class="field-content" style="color:#215d73">SUBSCRIBE</h4>
+		  <div class="">Subscribe to our Available Technology Listserv to receive the latest announcements</div>
+		  <div class="row">
+			<div class="small-8 columns search-form__input-container">
+			  <div class="form-item form-type-textfield form-item-search-block-form">
+				<input type="text" title="Enter the terms you wish to search for." placeholder="Your Email Address..." class="subscribe-form-input-text" id="subscribe-search-block-form--6" name="ls" value="" size="15" maxlength="128" />
+			  </div>
+			</div>
+			<div class="small-4 columns search-form__submit-container">
+			  <button class="button radius postfix expand primary form-submit" id="edit-submit" name="op" value="Subscribe" type="submit">Subscribe</button>
+			</div>
+		  </div>
+		</div>
+	  </form>';
+    return $subscribe_block;
+}
+
+function _ttc_blocks_newsletter_subscribe($email_address) {
+    $success = 'my success message';
+ 
+    /* ListServ subsribe and validation happens here */
+ 
+    $error = 0;
+ 
+    //Test for empty email
+    if ($email_address == '') {
+        $error = 1;
+    }
+ 
+    //Test for valid email
+    if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
+        //Invalid Email Address
+        $error = 2;
+    }
+ 
+    //Try and send email.  If successful, display success message, if not
+    //redirect to subscribe page with error code 3
+    if ($error == 0) {
+        if (mail("FAKEEMAIL@FAKEEMAIL.FAKEEMAIL", "Listserv Subscription", "SUB OCPL-APPDEV-DEV Anonymous", "From: " . $email_address)) {
+            return $success;
+        } else {
+            $error = 3;
+        }
+    }
+ 
+    //If we are here, there was an error.  Redirect back to subscribe form.
+    drupal_goto('#', array('query' => array('e' => ($email_address != '' ? $email_address : -1), 'err' => $error)));
+    return '';
+}
