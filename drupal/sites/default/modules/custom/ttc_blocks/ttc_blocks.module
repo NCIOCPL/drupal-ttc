@@ -64,8 +64,3 @@ function _ttc_blocks_listserv_subscribe($email_address) {
 	//drupal_goto('/', array('query' => array('err' => $error))); //Add error code query - commenting out for now
     return $failure;
 }
-
-/**
-TODO:
-- Clean up fields on blocks feature
-*/

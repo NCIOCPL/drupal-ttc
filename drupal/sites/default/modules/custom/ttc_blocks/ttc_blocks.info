@@ -1,8 +1,9 @@
 name = TTC Blocks
-description = Blocks used on the TTC site
+description = Blocks and block settings for the TTC site
 core = 7.x
 package = TTC
-version = 7.x-1.0
+version = 7.x-1.1
+dependencies[] = block
 dependencies[] = fe_block
 features[fe_block_boxes][] = listserv_block
 features[fe_block_settings][] = block-listserv_block
