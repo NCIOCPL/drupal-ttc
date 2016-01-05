@@ -56,3 +56,11 @@
   <?php !empty($content_attributes) ? print '</div>' : ''; ?>
 
   <?php $block->delta != 'main' ? print '</div>' : ''; ?>
+
+<?php /// If this page should contain the subscription form, render the block and subscribe field ?>
+<?php if(stristr($classes, 'block--listserv-block') != FALSE): ?>
+  <?php print _ttc_blocks_listserv_subscribe_block(); ?>
+  <?php if (isset($_GET['ls'])): ?>
+    <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
+  <?php endif ?>
+<?php endif ?>  
