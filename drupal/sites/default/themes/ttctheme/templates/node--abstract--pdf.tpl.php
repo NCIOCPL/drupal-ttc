@@ -74,6 +74,10 @@
  * @see template_process()
  */
 ?>
+
+<?php 
+  $nodeurl = url('pdf/'. strtolower($field_enumber[0]['value']) . '.pdf', ['absolute' => true]);
+?>
 <html>
     <head>
         <style>
@@ -96,11 +100,14 @@
 
     <htmlpagefooter name="AbstractFooter">  
         <div class="abstract__pdf-footer">
+            <div class="footer-url"><a href="<?php print $nodeurl; ?>"><?php print $nodeurl; ?></a></div>
+            <div class='footer-title'>NCI Technology Transfer Center</div>
+            
             <?php
-            $block = module_invoke('menu', 'block_view', 'menu-footer-menu--secondary');
+            /*$block = module_invoke('menu', 'block_view', 'menu-footer-menu--secondary');
             $rendered = render($block['content']);
             $filtered = preg_replace("/<\/a>.*?<a/s", "</a> | <a",  strip_tags($rendered, "<a>"));
-            print $filtered;
+            print $filtered;*/
             ?>
         </div>
     </htmlpagefooter>

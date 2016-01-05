@@ -1,5 +1,5 @@
 .abstract__pdf-header{
-    
+
     .abstract__pdf-header_image {
         max-width: 100%;
 
@@ -13,10 +13,32 @@
 
 .abstract__pdf-footer{
     width: 100%;
-    text-align: center;
-    font-size: 10pt;
+    //text-align: center;
+    //font-size: 10pt;
+
+    .footer-title {
+        font-weight: bold;
+    }
+
+    .footer-url {
+        position: fixed;
+        float: right;
+        width: 50%;
+        text-align: right;
+    }
 }
 
-.abstract__pdf {
+article.abstract__pdf, .abstract__pdf-footer {
 
+    &, & li, & p{
+        font-size: 12pt;
+    }
+
+    ul, ol, dl, p {
+        margin-bottom: 0;
+    }
+    
+    .field-type-text-long p {
+        margin-top: $paragraph-margin-bottom / 2; 
+    }
 }

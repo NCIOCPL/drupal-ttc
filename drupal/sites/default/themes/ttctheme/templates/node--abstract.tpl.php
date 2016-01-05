@@ -98,7 +98,7 @@
     <div class="abstract__summary">
           <?php if ($view_mode == 'full'): ?>
             <div class='abstract__link -view-pdf'>
-                <a href='/node/<?php print $node->nid; ?>/pdf'>View PDF</a>
+                <a href='/pdf/<?php print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>
             </div>
           <?php endif; ?>
 

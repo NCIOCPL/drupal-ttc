@@ -75,7 +75,8 @@ module.exports = function (grunt) {
           sourceMap: true
         },
         files: {
-          '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>.scss'
+          '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>.scss',
+          '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>_pdf.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>_pdf.scss'
         }
       },
       prod: {
@@ -83,7 +84,8 @@ module.exports = function (grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>.scss'
+          '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>.scss',
+          '<%= global_vars.theme.dist.css %>/<%= global_vars.theme.name %>_pdf.css': '<%= global_vars.theme.src.scss %>/<%= global_vars.theme.name %>_pdf.scss'
         }
       }
     },

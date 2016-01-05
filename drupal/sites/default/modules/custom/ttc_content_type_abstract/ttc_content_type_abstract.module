@@ -1,8 +1,125 @@
 <?php
+
 /**
  * @file
  * Code for the TTC Content Type: Abstract feature.
  */
-
 include_once 'ttc_content_type_abstract.features.inc';
 include_once 'ttc_content_type_abstract.hooks.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function ttc_content_type_abstract_menu() {
+  $items['pdf/%ttc_content_type_abstract_enumber'] = array(
+    'title' => 'Generate Abstract PDF',
+    'page callback' => 'ttc_content_type_abstract_generate_pdf',
+    'page arguments' => array(1),
+    'access callback' => '_ttc_content_type_abstract_attributes_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+
+  return $items;
+}
+
+function ttc_content_type_abstract_enumber_load($filename) {
+
+  // extract the enum from the filename
+  $matches = array();
+  $result = preg_match('~([^.]+)\.pdf~', $filename, $matches);
+
+  if (!$result)
+    return FALSE;
+
+  // if matched, the first result should be the enumber
+  $enumber = $matches[1];
+
+  // set up a field query to find nodes matching this enumber
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'abstract')
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->fieldCondition('field_enumber', 'value', strtolower($enumber), '=');
+
+  $query_result = $query->execute();
+
+  if (isset($query_result['node'])) {
+    $nids = array_keys($query_result['node']);
+    $nodes = entity_load('node', $nids);
+    $node = array_pop($nodes);
+
+    // if a node exists, return it
+    if (isset($node)) {
+      return $node;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Generate HTML of a given node.
+ *
+ * @return bool
+ *   TRUE if PDF is successfully generated and FALSE if it isn't.
+ */
+function ttc_content_type_abstract_generate_pdf($node) {
+
+  if (variable_get('pdf_using_mpdf_type_abstract') == 0) {
+    drupal_goto(urlencode('node') . '/' . $node->nid);
+    return;
+  }
+
+  if (!node_access('view', $node)) {
+    drupal_set_message(t('You are not authorized to generate PDF for this page.'), 'warning');
+    drupal_goto(urlencode('node') . '/' . $node->nid);
+    return;
+  }
+  if (empty($node)) {
+    drupal_get_messages('error');
+    drupal_set_message(t('PDF cannot be generated for this path.'), 'error');
+    return;
+  }
+
+  // Checking mPDF library existence.
+  if (pdf_using_mpdf_library_exist() == TRUE) {
+    $pdf_using_mpdf_pdf_filename = variable_get('pdf_using_mpdf_pdf_filename');
+    $pdf_using_mpdf_pdf_filename = token_replace($pdf_using_mpdf_pdf_filename, array('node' => $node));
+
+    //$view = node_view($node);
+    $view = node_view($node, 'PDF');
+    $html = drupal_render($view);
+
+    _pdf_using_mpdf_generator($html, $pdf_using_mpdf_pdf_filename);
+  } else {
+    drupal_set_message(t('mPDF library is not included. Please check your "sites/all/libraries" directory or " /sites/your-domain-name/libraries/ directory " or "!default_module_path" directory.', array(
+      '!default_module_path' => drupal_get_path('module', 'pdf_using_mpdf'),
+        )), 'warning');
+    drupal_goto(urlencode('node') . '/' . $node->nid);
+    return;
+  }
+}
+
+/**
+ * Check for generate PDF permission.
+ *
+ * @param string $filename
+ *   Filename of the desired PDF.
+ *
+ * @return bool
+ *   TRUE if permision allow and FALSE if access denied.
+ */
+function _ttc_content_type_abstract_attributes_access($filename) {
+
+  if (user_access('generate pdf using mpdf')) {
+    if (variable_get('pdf_using_mpdf_type_abstract') == 1) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+  return FALSE; // TRUE or you can user user_access() permissions as well
+}
