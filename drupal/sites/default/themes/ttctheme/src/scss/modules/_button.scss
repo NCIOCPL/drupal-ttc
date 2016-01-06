@@ -2,4 +2,14 @@
 .addthis {
   float: right;
 }
+.addthis .at-icon-wrapper {
+  border-radius: 50%;
+  background-color: #1f5b73!important;
+  width: 25px!important;
+  height: 25px!important;
+}
+.addthis .at-icon-wrapper svg{
+  width: 24px!important;
+  height: 24px!important;
+}
 /* END AddThis button styling */
