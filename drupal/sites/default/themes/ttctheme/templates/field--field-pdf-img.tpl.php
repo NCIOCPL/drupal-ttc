@@ -59,6 +59,12 @@
                 $width = $image['width'];
                 $height = $image['height'];
                 $scheme = file_uri_scheme($uri);
+                
+                // scale the width to match a desired height
+                // (styling the height directly doesn't seem to work at all in mpdf)
+                $target_height = 15;
+                $scale = $target_height / $height;
+                $scaled_width = $scale * $width;
 
                 // If the file uses the public scheme,
                 if ($scheme == 'public') {
@@ -72,12 +78,14 @@
                 }
 
                 print "<div class='abstract__pdf-header'"
-                    . "style='min-height: ${height}px;'"
+                    //. "style='min-height: ${height}px;'"
                     . ">"
-                    . "<div class='abstract__pdf-header_image'"
-                    //. "style='width: ${width}px; height: ${height}px;'"
-                    . ">"
-                    . "<img src='$uri'>"
+                    . "<div "
+                    . "width='${scaled_width}mm' "
+                    . "class='abstract__pdf-header_image'>"
+                    . "<img "
+                    . "width='${scaled_width}mm' "
+                    . "src='$uri'>"
                     . "</div>"
                     . "</div>";
               }
