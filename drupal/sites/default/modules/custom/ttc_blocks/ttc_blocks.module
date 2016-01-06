@@ -9,17 +9,17 @@
 */
 function _ttc_blocks_listserv_subscribe_block() {
 	$subscribe_block = '
-	  <form class="footer-subscribe" action="" id="" accept-charset="UTF-8" style="text-align:center;">
+	  <form class="listserv-subscribe-block" action="" id="" accept-charset="UTF-8">
 		<div class="container-inline">
-		  <h4 class="field-content" style="color:#215d73">SUBSCRIBE</h4>
+		  <h4 class="field-content">SUBSCRIBE</h4>
 		  <div class="">Subscribe to our Available Technology Listserv to receive the latest announcements</div>
 		  <div class="row">
-			<div class="small-8 columns search-form__input-container">
-			  <div class="form-item form-type-textfield form-item-search-block-form">
-				<input type="text" title="Enter the terms you wish to search for." placeholder="Your Email Address..." class="subscribe-form-input-text" id="subscribe-search-block-form--6" name="ls" value="" size="15" maxlength="128" />
+			<div class="small-8 columns listserv-input-container">
+			  <div class="form-item form-type-textfield">
+				<input type="text" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" id="subscribe-block-form-0" name="ls" value="" size="15" maxlength="128" />
 			  </div>
 			</div>
-			<div class="small-4 columns search-form__submit-container">
+			<div class="small-4 columns listserv-submit-container">
 			  <button class="button radius postfix expand primary form-submit" id="edit-submit" name="op" value="Subscribe" type="submit">Subscribe</button>
 			</div>
 		  </div>
@@ -34,22 +34,22 @@ function _ttc_blocks_listserv_subscribe_block() {
 */
 function _ttc_blocks_listserv_subscribe($email_address) {
     $success = 'Request submitted. Please check your email and follow the directions contained therein to confirm your subscription.';
-	$failure = 'Invalid email address';
+	$failure = 'Please enter a valid email address.';
  
     /* ListServ subsribe and validation happens here */
     $error = 0;
- 
+
     //Test for empty email
     if ($email_address == '' || $email_address === null) {
         $error = 1;
     }
- 
+
     //Test for valid email
     if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
         $error = 2;
-		$failure = 'Invalid email address.';
+		$failure = 'Please enter a valid email address.';
     }
- 
+
     //Try and send email. If successful, display success message and return.
     if ($error == 0) {
         if (mail("FAKEEMAIL@FAKEEMAIL.FAKEEMAIL", "Listserv Subscription", "SUB OCPL-APPDEV-DEV Anonymous", "From: " . $email_address)) {

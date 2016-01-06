@@ -61,6 +61,8 @@
 <?php if(stristr($classes, 'block--listserv-block') != FALSE): ?>
   <?php print _ttc_blocks_listserv_subscribe_block(); ?>
   <?php if (isset($_GET['ls'])): ?>
-    <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
+    <div class="listserv-subscribe-block">
+      <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
+	</div>
   <?php endif ?>
 <?php endif ?>  
