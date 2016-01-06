@@ -75,7 +75,7 @@
                     . "style='min-height: ${height}px;'"
                     . ">"
                     . "<div class='abstract__pdf-header_image'"
-                    . "style='width: ${width}px; height: ${height}px;'"
+                    //. "style='width: ${width}px; height: ${height}px;'"
                     . ">"
                     . "<img src='$uri'>"
                     . "</div>"

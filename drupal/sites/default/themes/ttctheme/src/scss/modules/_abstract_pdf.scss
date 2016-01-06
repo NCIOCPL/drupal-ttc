@@ -1,4 +1,11 @@
 .abstract__pdf-header{
+    width: 170mm;
+
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 
     .abstract__pdf-header_image {
         max-width: 100%;
@@ -37,7 +44,7 @@ article.abstract__pdf, .abstract__pdf-footer {
     ul, ol, dl, p {
         margin-bottom: 0;
     }
-    
+
     .field-type-text-long p {
         margin-top: $paragraph-margin-bottom / 2; 
     }
