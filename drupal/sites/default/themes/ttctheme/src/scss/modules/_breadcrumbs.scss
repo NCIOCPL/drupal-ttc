@@ -1,5 +1,8 @@
 .breadcrumbs {
-  margin-bottom: 0;
+  margin:15px 0 0px 15px;
+  display:inline-block;
+  max-width:90%;
+ 
   a {
     font-weight: bold;
   }
@@ -7,3 +10,5 @@
     font-weight: normal;
   }
 }
+
+.addthis{margin:20px;}

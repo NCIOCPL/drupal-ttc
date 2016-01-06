@@ -112,20 +112,12 @@
         </section>
         <!--/.l-featured -->
       <?php endif; ?>
-
-      <div class="<?php print $main_grid; ?> columns main__content">
-        <?php if (!empty($page['highlighted'])): ?>
-          <div class="highlight panel callout">
-            <?php print render($page['highlighted']); ?>
-          </div>
-        <?php endif; ?>
-
-        <a id="main-content"></a>
-
-        <?php if ($breadcrumb): ?>
+      
+       <?php if ($breadcrumb): ?>
           <?php print $breadcrumb; ?>
 		  <!-- Display share buttons -->
 		  <div class='addthis'>
+          <span class="label">Share: </span>
 			<a class="addthis_button_linkedin" title="LinkedIn" href="#"></a>
 			<a class="addthis_button_twitter" title="Twitter" href="#"></a>
 			<a class="addthis_button_email" title="Email" href="#"></a>
@@ -135,8 +127,17 @@
 			<!-- TODO: add styling to the buttons instead of using addthis defaults -->
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5688053d43fd3757" async="async"></script>
 		  </div>
-		<?php endif; ?>
-		
+		<?php endif; ?>      
+
+      <div class="<?php print $main_grid; ?> columns main__content">
+        <?php if (!empty($page['highlighted'])): ?>
+          <div class="highlight panel callout">
+            <?php print render($page['highlighted']); ?>
+          </div>
+        <?php endif; ?>
+
+        <a id="main-content"></a>
+	
         <?php if ($title): ?>
           <?php print render($title_prefix); ?>
           <h1 id="page-title" class="title"><?php print $title; ?></h1>
@@ -160,7 +161,7 @@
 
       <?php if (!empty($page['sidebar_first'])): ?>
         <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
-          <?php print render($page['sidebar_first']); ?>
+          <div class="sidebarnav_wrapper"><?php print render($page['sidebar_first']); ?></div>
         </aside>
       <?php endif; ?>
 

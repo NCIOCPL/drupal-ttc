@@ -1,1 +1,33 @@
-// Non-modular or client styles for asides or sidebars.
+
+// Non-modular or client styles for asides or sidebars.  
+
+.sidebarnav_wrapper {
+ border:solid 10px #DFDFDF;
+ margin:15px 0 0 0;
+}
+.sidebarnav_wrapper ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.sidebarnav_wrapper ul li a {
+	display: block;
+	padding: 10px 10px 10px 15px;
+	border-bottom: solid 1px #eee;
+	color: #666;
+}
+.sidebarnav_wrapper ul li.active-trail ul {
+	background-color: #fff;
+}
+.sidebarnav_wrapper ul li.active-trail a.active-trail {
+	background-color: #2D7492;
+	color: #fff !important;
+}
+.sidebarnav_wrapper ul li.active-trail .menu li.expanded.active-trail {
+	font-weight: bold;
+}
+.sidebarnav_wrapper ul li.active-trail .menu  .expanded.active-trail a {
+	background-color: #eee;
+	font-weight: normal;
+	padding-left: 30px;
+}
