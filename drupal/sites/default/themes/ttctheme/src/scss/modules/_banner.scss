@@ -1,5 +1,10 @@
 .banner {
   text-align: center;
+	padding-top:3rem;
+	-webkit-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.2);
+	box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.2);
+
 
   &__headline {
     $spacer-padding: 0.5rem;
@@ -32,7 +37,7 @@
 
   &__tagline {
     color: palette(white, base);
-
+	padding-bottom: .5rem;
     font-style: italic;
 
     @media #{$large-up} {
