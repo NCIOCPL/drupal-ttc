@@ -10,6 +10,15 @@
 function ttc_user_config_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'administer mpdf settings'.
+  $permissions['administer mpdf settings'] = array(
+    'name' => 'administer mpdf settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'pdf_using_mpdf',
+  );
+
   // Exported permission: 'create abstract content'.
   $permissions['create abstract content'] = array(
     'name' => 'create abstract content',
@@ -205,6 +214,17 @@ function ttc_user_config_user_default_permissions() {
       'site manager' => 'site manager',
     ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'generate pdf using mpdf'.
+  $permissions['generate pdf using mpdf'] = array(
+    'name' => 'generate pdf using mpdf',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'pdf_using_mpdf',
   );
 
   // Exported permission: 'use text format filtered_html'.
