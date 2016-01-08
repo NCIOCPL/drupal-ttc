@@ -59,9 +59,10 @@
 
 <?php /// If this page should contain the subscription form, render the block and subscribe field ?>
 <?php if(stristr($classes, 'block--listserv-block') != FALSE): ?>
-  <?php print _ttc_blocks_listserv_subscribe_block(); ?>
+   <div class="listserv-subscribe-block-wrapper row"><?php print _ttc_blocks_listserv_subscribe_block(); ?>
+</div>
   <?php if (isset($_GET['ls'])): ?>
-    <div class="listserv-subscribe-block">
+    <div class="listserv-subscribe-block ls row">
       <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
 	</div>
   <?php endif ?>

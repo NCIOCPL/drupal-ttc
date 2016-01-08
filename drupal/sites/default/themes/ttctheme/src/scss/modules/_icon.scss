@@ -41,3 +41,41 @@
     }
   }
 }
+.follow-us__label{font-size:.85em;}
+.follow-us__list-item {
+	position: relative;
+	font-size: 16px;
+	margin-left: 0px;
+}
+.follow-us__list li a {
+	text-align: center;
+}
+.follow-us__list li a:before {
+	font-family: 'FontAwesome';
+	color: #007297;
+	position: absolute;
+	vertical-align: middle;
+	text-align: center;
+	left: 0px;
+	right: 0px;
+	top: 6px;
+}
+.footer .follow-us__list-item {
+	font-size: 25px;
+}
+.footer .follow-us__list li a:before {
+	color: #fff;
+	top: 8px;
+}
+.follow-us__list li a.-icon-linkedin:before, .follow-us__list li a.-icon-linkedin--white:before {
+	content: '\f0e1';
+}
+.follow-us__list li a.-icon-twitter:before, .follow-us__list li a.-icon-twitter--white:before {
+	content: '\f099';
+}
+.follow-us__list li a.-icon-email:before, .follow-us__list li a.-icon-email--white:before {
+	content: '\f0e0';
+}
+
+.addthis span.label{font-size:.85em; color:#666; margin-right:7px; vertical-align:top;}
+

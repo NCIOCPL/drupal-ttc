@@ -3,14 +3,17 @@
 
   .pane-title {
     color: palette(white, base);
-
-    font-size: rem(30px);
+	margin:25px auto;
+    font-size: rem(22px);
   }
+  
+  
 }
-
+.panel-flexible .panel-separator {
+	margin:0px !important;
+   }
 .pane-available-technologies {
   @extend %homepage-panel;
-
   background-color: palette(white, base);
 
   @at-root {
@@ -25,6 +28,7 @@
         }
         @media #{$large-up} {
           @include block-grid(6);
+		  
         }
 
         > li {
@@ -38,13 +42,15 @@
 
 .pane-success-stories {
   @extend %homepage-panel;
-
-  background-color: palette(blue, dark);
+  background: palette(blue, dark) url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center center;
+  background-size:cover 100%;
+  padding:1rem 0 2.5rem;
 
   @at-root {
     .success-stories {
       @at-root ul#{&}__list {
         margin-bottom: 0;
+		border:none;
 
         @include block-grid(1, $include-spacing: false);
 
@@ -66,4 +72,26 @@
       }
     }
   }
+  .success-stories__list {margin:0 auto 1rem; width:90%;}
+  .success-stories__list li{border:none;}
+}
+
+
+.pane-available-technologies,
+.listserv-subscribe-block-wrapper{position:relative;}
+.available-technologies:after, .listserv-subscribe-block:before, .listserv-subscribe-block.ls:before{
+	font-family: 'FontAwesome';
+	content: '\f0d7';
+	color:#FFFFFF;
+	position: absolute;
+  	bottom: -45px;
+	left:48.85%;
+	font-weight: 300;
+	font-size:3em;
+	z-index:100;
+	
+}
+.listserv-subscribe-block:before, .listserv-subscribe-block.ls:before{
+	color:#F4F6F3 !important;
+
 }

@@ -29,9 +29,13 @@
   <?php if (!empty($field->separator)): ?>
     <?php print $field->separator; ?>
   <?php endif; ?>
-
+<div class="at-icons icon-<?php print $field->raw; ?>">
   <?php print $wrapper_prefix; ?>
+ 
     <?php print $field->label_html; ?>
+       
     <?php print $field->content; ?>
+   
   <?php print $field->wrapper_suffix; ?>
+ </div>
 <?php endforeach; ?>

@@ -1,9 +1,12 @@
 .banner {
   text-align: center;
 	padding-top:3rem;
+	padding-bottom: 1.5rem;
 	-webkit-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.2);
 	box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.2);
+	background:url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center center;
+	background-size:cover 100%;
 
 
   &__headline {
@@ -37,8 +40,8 @@
 
   &__tagline {
     color: palette(white, base);
-	padding-bottom: .5rem;
     font-style: italic;
+	font-weight:normal;
 
     @media #{$large-up} {
       font-size: rem-calc(24px);

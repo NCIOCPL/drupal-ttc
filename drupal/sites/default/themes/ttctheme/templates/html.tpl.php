@@ -51,6 +51,7 @@
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <link rel="shortcut icon" type="image/ico" href="sites/default/themes/ttctheme/public/images/favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <?php print $styles; ?>
   <?php print $scripts; ?>
   <!--[if lt IE 9]>

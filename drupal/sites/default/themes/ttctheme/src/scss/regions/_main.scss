@@ -21,5 +21,12 @@
     &__content {
       margin-bottom: ($column-gutter);
     }
+	
   }
 }
+body.front .main__content{margin-bottom:0px;} 
+body.not-front .main{
+	padding-bottom: ($column-gutter * 1.45);
+  padding-right: ($column-gutter * 1.75);
+  padding-left: ($column-gutter * 1.75);
+  } 

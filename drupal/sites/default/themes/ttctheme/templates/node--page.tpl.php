@@ -93,7 +93,7 @@
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
-  <div class='row'>
+  <div class="node-content-wrapper">
     <?php print render($content['body']); ?>
   </div>
   

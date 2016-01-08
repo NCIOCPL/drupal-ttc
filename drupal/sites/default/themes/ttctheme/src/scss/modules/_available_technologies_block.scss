@@ -3,21 +3,38 @@
     $text-height: $list-line-height * $list-font-size + $paragraph-margin-bottom;
 
     @include product-type-backgrounds;
-
-    // @TODO: replace with proper background image
-    // @HACK: probably shouldn't be dependent on `background-size`
-    html.backgroundsize & {
-      background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20275%20275%22%3E%0D%0A%20%3Ccircle%20cx%3D%22137.5%22%20cy%3D%22137.5%22%20r%3D%22134.25%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226.5%22%2F%3E%0D%0A%20%3Ccircle%20cx%3D%22137.5%22%20cy%3D%22137.5%22%20r%3D%22125%22%20fill%3D%22%23fff%22%2F%3E%0D%0A%3C%2Fsvg%3E');
-      background-position: center 25%;
+	background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20275%20275%22%3E%0D%0A%20%3Ccircle%20cx%3D%22137.5%22%20cy%3D%22137.5%22%20r%3D%22134.25%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226.5%22%2F%3E%0D%0A%20%3Ccircle%20cx%3D%22137.5%22%20cy%3D%22137.5%22%20r%3D%22125%22%20fill%3D%22%23fff%22%2F%3E%0D%0A%3C%2Fsvg%3E');
+		
+      background-position: center 30%;
       background-size: (2/3 * 100%);
       background-repeat: no-repeat;
-    }
-    padding-top: 100%;
-    padding-top: calc(100% - #{$text-height});
-    padding-bottom: $paragraph-margin-bottom;
+	  padding-top: 0px;
+    padding-bottom: 1rem;
 
-    a {
+    a { 
       color: palette(white, base);
     }
   }
+  
 }
+
+.at-icons .field-content{
+	background-repeat:no-repeat;
+ 	background-position: center center;
+    background-size: 28%;
+	position:relative;
+	clear:both;
+	height:100%;
+	display:block;
+	width:100%;
+	padding-top: 80%;
+}
+.-devices span{	background:url(/sites/default/themes/ttctheme/public/images/icons/devices.png);}
+.-diagnostics span{	background:url(/sites/default/themes/ttctheme/public/images/icons/diagnostics.png);}
+.-research-materials span{	background:url(/sites/default/themes/ttctheme/public/images/icons/research-materials.png);}
+.-software span{	background:url(/sites/default/themes/ttctheme/public/images/icons/software.png);}
+.-therapeutics span{	background:url(/sites/default/themes/ttctheme/public/images/icons/therapeutics.png);}
+.-vaccines span{	background:url(/sites/default/themes/ttctheme/public/images/icons/vaccines.png);}
+
+
+	
