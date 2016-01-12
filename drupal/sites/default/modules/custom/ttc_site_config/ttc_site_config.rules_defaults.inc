@@ -29,7 +29,7 @@ function ttc_site_config_default_rules_configuration() {
         { "mail" : {
             "to" : [ "node:field-notif:field-send-to:0:field-email" ],
             "subject" : "New NIH Partnering Opportunity",
-            "message" : "To learn more about the opportunity [node:title] and for contact information, please go to [node:url]",
+            "message" : "[node:field_list_intro_text]\\r\\n\\r\\nTo learn more about the opportunity [node:title] and for contact information, please go to [node:url]",
             "language" : [ "node:language" ]
           }
         },
