@@ -24,6 +24,7 @@
  * @ingroup views_templates
  */
 ?>
+
 <?php foreach ($fields as $id => $field): ?>
   <?php $wrapper_prefix = preg_replace_callback('/(class=".*")/i', 'regex_to_lowercase', $field->wrapper_prefix); ?>
   <?php if (!empty($field->separator)): ?>
