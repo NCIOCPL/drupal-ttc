@@ -52,7 +52,9 @@ module.exports = function (grunt) {
 
   // array of custom javascript files to include.
   var jsApp = [
-    '<%= global_vars.theme.src.js %>/**/*.js'
+    '<%= global_vars.theme.src.js %>/**/ttctheme.js',
+    '<%= global_vars.theme.src.js %>/**/facetapi.js'
+
   ];
 
   grunt.initConfig({
