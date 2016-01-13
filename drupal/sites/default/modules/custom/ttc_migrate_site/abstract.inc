@@ -4,9 +4,9 @@ class TTCMigrateSiteAbstractMigration extends Migration {
 
   public function __construct($arguments) {
     parent::__construct($arguments);
-    
+
     $this->description = t('Migration of Abstracts from a copy of the existing TTC site database.');
-    
+
     $query = Database::getConnection()
         ->select('codev_opps', 'opp')
         ->fields('opp', array(
@@ -235,10 +235,9 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     // non-mapped fields
     $this->addUnmigratedSources(
         array(
-          'counter',
-          'opp_id',
-          'opp_version'),
-        'Legacy');
+      'counter',
+      'opp_id',
+      'opp_version'), 'Legacy');
 
     // title and enumbers
     $this->addFieldMapping('title', 'opp_title');
@@ -284,7 +283,7 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     // text fields (inventors and publications)
     $this->addFieldMapping('field_opp_invs_text', 'opp_invs_text');
     $this->addFieldMapping('field_opp_pubs_text', 'opp_pubs_text');
-    
+
     // image field
     //$this->addFieldMapping('field_opp_imgs', 'opp_imgs');
 
@@ -328,7 +327,8 @@ class TTCMigrateSiteAbstractMigration extends Migration {
         ->defaultValue(TRUE);
 
     // pdf letterhead taxonomy
-    $this->addFieldMapping('field_pdf_img', 'pdf_img');
+    $this->addFieldMapping('field_pdf_img', 'pdf_img')
+        ->callbacks(array($this, 'mapPdfImg'));
     $this->addFieldMapping('field_pdf_img:create_term')
         ->defaultValue(TRUE);
   }
@@ -480,6 +480,39 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     }
 
     return $output;
+  }
+
+  protected function mapPdfImg($value) {
+    // maps incoming short IC strings to full org names for the pdf img taxonomy
+
+    switch ($value) {
+      case 'nci':
+        return 'NCI - National Cancer Institute';
+      case 'nia':
+        return 'NIA - National Institute on Aging';
+      case 'nichd':
+        return 'NICHD - Eunice Kennedy Shriver National Institute on Child Health and Human Development';
+      case 'nida':
+        return 'NIDA - National Institute of Drug Abuse';
+      case 'nih':
+        return 'NIH - National Institutes of Health';
+      case 'cc':
+        return 'CC - The Clinical Center';
+      case 'cit':
+        return 'CIT - The NIH Center for Information Technology';
+      case 'nccih':
+        return 'NCCIH - The National Center for Complimentary and Integrative Health';
+      case 'nei':
+        return 'NEI - The National Eye Institute';
+      case 'nimhd':
+        return 'NIMHD - National Institute on Minority Health and Health Disparities';
+      case 'ninds':
+        return 'NINDS - National Institute on Neurological Disorders and Stroke';
+      case 'nlm':
+        return 'NLM - The National Library of Medicine';
+    }
+
+    return $value;
   }
 
   protected function statusByNotifState($value) {
