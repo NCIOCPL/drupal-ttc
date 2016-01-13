@@ -234,6 +234,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['style_options']['class'] = 'success-stories__list';
   $handler->display->display_options['style_options']['wrapper_class'] = 'item-list success-stories';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -289,22 +290,28 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['element_wrapper_class'] = 'success-stories__image';
+  $handler->display->display_options['fields']['field_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
     'image_style' => 'medium',
-    'image_link' => 'file',
+    'image_link' => '',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="success-stories__image">[field_image]</div>
+<div class="success-stories__title">[title]</div>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'success-stories__title';
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'listwrapper';
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
 
   /* Display: Landing Page Block */
   $handler = $view->new_display('block', 'Landing Page Block', 'block_landing');
@@ -387,38 +394,38 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No results are available that match the selected search filters.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Field: Indexed Node: Title */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Node: Summary */
+  /* Field: Indexed Content: Summary */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['label'] = '';
   $handler->display->display_options['fields']['field_meta_long_desc']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Node: Reference Number */
+  /* Sort criterion: Indexed Content: Reference Number */
   $handler->display->display_options['sorts']['field_enumber']['id'] = 'field_enumber';
   $handler->display->display_options['sorts']['field_enumber']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['sorts']['field_enumber']['field'] = 'field_enumber';
   $handler->display->display_options['sorts']['field_enumber']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_enumber']['expose']['label'] = 'Reference Number';
-  /* Sort criterion: Indexed Node: Start Date */
+  /* Sort criterion: Indexed Content: Start Date */
   $handler->display->display_options['sorts']['field_opp_start_date']['id'] = 'field_opp_start_date';
   $handler->display->display_options['sorts']['field_opp_start_date']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['sorts']['field_opp_start_date']['field'] = 'field_opp_start_date';
   $handler->display->display_options['sorts']['field_opp_start_date']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_opp_start_date']['expose']['label'] = 'Start Date';
-  /* Sort criterion: Indexed Node: Date changed */
+  /* Sort criterion: Indexed Content: Date changed */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   $handler->display->display_options['sorts']['changed']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['changed']['expose']['label'] = 'Date changed';
-  /* Sort criterion: Indexed Node: Title */
+  /* Sort criterion: Indexed Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
@@ -497,14 +504,14 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['label'] = 'Search term';
   $handler->display->display_options['header']['area_text_custom']['content'] = '!1';
   $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
-  /* Field: Indexed Node: Title */
+  /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Node: URL */
+  /* Field: Indexed Content: URL */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -512,14 +519,14 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Field: Indexed Node: Meta Description */
+  /* Field: Indexed Content: Meta Description */
   $handler->display->display_options['fields']['field_meta_desc']['id'] = 'field_meta_desc';
   $handler->display->display_options['fields']['field_meta_desc']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['field_meta_desc']['field'] = 'field_meta_desc';
   $handler->display->display_options['fields']['field_meta_desc']['label'] = '';
   $handler->display->display_options['fields']['field_meta_desc']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_meta_desc']['hide_empty'] = TRUE;
-  /* Field: Indexed Node: The main body text */
+  /* Field: Indexed Content: The main body text */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['body']['field'] = 'body';
