@@ -3,6 +3,10 @@
 
   padding: 1rem 1rem 0;
   margin-bottom: $paragraph-margin-bottom;
+  
+  .field-name-field-contact-auto .field {
+      margin-bottom: 0;
+  }
 }
 
 .abstract__link {
