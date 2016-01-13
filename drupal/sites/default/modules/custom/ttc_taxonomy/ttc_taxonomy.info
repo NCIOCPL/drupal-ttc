@@ -24,4 +24,5 @@ features[taxonomy][] = patent_status
 features[taxonomy][] = product_type
 features[taxonomy][] = send_to_email_addresses
 features[taxonomy][] = therapeutic_area
+features[variable][] = field_bundle_settings_taxonomy_term__contacts
 project path = sites/default/modules/custom2
