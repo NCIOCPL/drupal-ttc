@@ -51,7 +51,6 @@ if (isset($node->field_pdf_img['und'][0])) {
   $ic_value = field_view_value('node', $node, 'field_pdf_img', $node->field_pdf_img['und'][0]);
 
   if (isset($ic_value['#title'])) {
-    dsm($ic_value, 'ic value');
     $ic_name = $ic_value['#title'];
   }
 }
@@ -80,8 +79,6 @@ if (isset($node->field_pdf_img['und'][0])) {
                   $contact_view['field_contact_phone']['#weight'] = 2;
                   $contact_view['field_contact_email']['#weight'] = 3;
                 }
-                
-                dsm($contact_view, 'contact view');
                 
                 print render($contact_view);
               } else {
