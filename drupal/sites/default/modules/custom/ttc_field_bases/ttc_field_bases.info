@@ -25,6 +25,7 @@ features[field_base][] = field_email
 features[field_base][] = field_enumber
 features[field_base][] = field_file
 features[field_base][] = field_first_name
+features[field_base][] = field_formatted_email_list
 features[field_base][] = field_image
 features[field_base][] = field_last_name
 features[field_base][] = field_list_intro_text

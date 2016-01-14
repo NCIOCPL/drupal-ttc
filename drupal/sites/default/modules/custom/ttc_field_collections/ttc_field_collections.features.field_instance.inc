@@ -11,6 +11,40 @@ function ttc_field_collections_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'field_collection_item-field_notif-field_formatted_email_list'.
+  $field_instances['field_collection_item-field_notif-field_formatted_email_list'] = array(
+    'bundle' => 'field_notif',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_formatted_email_list',
+    'label' => 'Formatted Email List',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_notif-field_notif_manual'.
   $field_instances['field_collection_item-field_notif-field_notif_manual'] = array(
     'bundle' => 'field_notif',
@@ -183,6 +217,7 @@ function ttc_field_collections_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Formatted Email List');
   t('Other Email Addresses');
   t('Send To');
   t('Status');
