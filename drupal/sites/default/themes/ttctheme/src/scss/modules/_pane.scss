@@ -91,9 +91,12 @@
 	z-index:100;
 	
 }
-.listserv-subscribe-block:before, .listserv-subscribe-block.ls:before{
-	color:#F4F6F3 !important;
-
-}
-
+.listserv-subscribe-block:before, .listserv-subscribe-block.ls:before{color:#F4F6F3 !important;}
 .listwrapper{border:solid 5px #ccc;}
+
+
+.pane-news{background-color:#fff; padding:25px;}
+.pane-news .pane-title{margin:0 auto; text-align:center; margin:10px auto 30px; font-size:1.3rem;}
+.pane-news h4{font-size:.85em;}
+.pane-news .views-field-field-date-published, .pane-news .views-field-body{font-size:.75em;}
+.pane-news .latest-announcements{max-width:900px; margin:0 auto; }
