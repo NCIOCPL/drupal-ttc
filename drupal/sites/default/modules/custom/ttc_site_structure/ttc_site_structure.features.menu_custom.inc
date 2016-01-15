@@ -16,6 +16,12 @@ function ttc_site_structure_menu_default_menu_custom() {
     'title' => 'Main menu',
     'description' => 'The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.',
   );
+  // Exported menu: menu-information.
+  $menus['menu-information'] = array(
+    'menu_name' => 'menu-information',
+    'title' => 'Information For',
+    'description' => 'information links menu for homepage block. ',
+  );
   // Exported menu: menu-site-structure.
   $menus['menu-site-structure'] = array(
     'menu_name' => 'menu-site-structure',
@@ -31,11 +37,13 @@ function ttc_site_structure_menu_default_menu_custom() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Contains structured menu links for TTC site content.');
+  t('Information For');
   t('Main menu');
   t('Navigation');
   t('Site Structure');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');
   t('The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules.');
+  t('information links menu for homepage block. ');
 
   return $menus;
 }
