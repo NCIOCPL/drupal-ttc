@@ -27,3 +27,4 @@ features[variable][] = menu_parent_file
 features[variable][] = node_options_file
 features[variable][] = node_preview_file
 features[variable][] = node_submitted_file
+features[variable][] = pathauto_node_file_pattern
