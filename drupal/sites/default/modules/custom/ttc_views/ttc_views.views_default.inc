@@ -35,17 +35,32 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['style_options']['class'] = 'available-technologies__list';
   $handler->display->display_options['style_options']['wrapper_class'] = 'item-list available-technologies';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['fields']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['fields']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['fields']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['fields']['machine_name']['label'] = '';
+  $handler->display->display_options['fields']['machine_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['machine_name']['element_label_colon'] = FALSE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'availabletechnologies/all?f[0]=field_[machine_name]%3A[tid]';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['element_wrapper_class'] = 'available-technologies__block -[name]';
   $handler->display->display_options['fields']['name']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
