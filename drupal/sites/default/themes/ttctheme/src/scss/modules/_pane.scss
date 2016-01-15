@@ -80,8 +80,8 @@
 .pane-available-technologies, .pane-menu-menu-information,
 .listserv-subscribe-block-wrapper{position:relative;}
 .available-technologies:after,
-.listserv-subscribe-block:before, 
-.listserv-subscribe-block.ls:before{
+body.front .listserv-subscribe-block:before, 
+body.front .listserv-subscribe-block.ls:before{
 	font-family: 'FontAwesome';
 	content: '\f0d7';
 	color:#FFFFFF;
@@ -92,6 +92,7 @@
 	font-size:3em;
 	z-index:100;
 }
+body.not-front .listserv-subscribe-block-wrapper{margin-bottom:-30px;}
 .pane-menu-menu-information .pane-content:after{
 	color:#777A3B !important;
     font-family: 'FontAwesome';
