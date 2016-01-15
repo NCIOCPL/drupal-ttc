@@ -360,7 +360,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_opp_30day_warned',
     'label' => '30-Day Warned',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),

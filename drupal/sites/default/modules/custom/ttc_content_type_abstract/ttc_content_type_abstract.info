@@ -57,6 +57,7 @@ features[variable][] = menu_parent_abstract
 features[variable][] = node_options_abstract
 features[variable][] = node_preview_abstract
 features[variable][] = node_submitted_abstract
+features[variable][] = pathauto_node_abstract_pattern
 features[variable][] = workbench_moderation_default_state_abstract
 features_exclude[field_base][field_notif_auto] = field_notif_auto
 features_exclude[field_base][field_notif_manual] = field_notif_manual
