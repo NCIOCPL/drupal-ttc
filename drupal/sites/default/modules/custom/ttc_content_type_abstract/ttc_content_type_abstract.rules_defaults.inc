@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * ttc_site_config.rules_defaults.inc
+ * ttc_content_type_abstract.rules_defaults.inc
  */
 
 /**
  * Implements hook_default_rules_configuration().
  */
-function ttc_site_config_default_rules_configuration() {
+function ttc_content_type_abstract_default_rules_configuration() {
   $items = array();
   $items['ttc_site_config_rules_abstract_email_blast'] = entity_import('rules_config', '{ "ttc_site_config_rules_abstract_email_blast" : {
       "LABEL" : "Abstract Email Blast",
@@ -27,7 +27,7 @@ function ttc_site_config_default_rules_configuration() {
       ],
       "DO" : [
         { "mail" : {
-            "to" : [ "node:field-notif:field-send-to:0:field-email" ],
+            "to" : "FAKEEMAIL@FAKEEMAIL.FAKEEMAIL",
             "subject" : "New NIH Partnering Opportunity",
             "message" : "[node:field_list_intro_text]\\r\\n\\r\\nTo learn more about the opportunity [node:title] and for contact information, please go to [node:url]",
             "language" : [ "node:language" ]
