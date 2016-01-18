@@ -15,5 +15,7 @@
     $('.pane-menu-menu-information a.active').on('click', function (e) {
       e.preventDefault();
     });
+    // social links target blank new window
+    $('.follow-us__list-item a').attr('target', '_blank');
   });
 }(jQuery));
