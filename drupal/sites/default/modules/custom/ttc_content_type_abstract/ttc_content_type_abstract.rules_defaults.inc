@@ -27,7 +27,7 @@ function ttc_content_type_abstract_default_rules_configuration() {
       ],
       "DO" : [
         { "mail" : {
-            "to" : "FAKEEMAIL@FAKEEMAIL.FAKEEMAIL",
+            "to" : [ "node:field-formatted-email-list" ],
             "subject" : "New NIH Partnering Opportunity",
             "message" : "[node:field_list_intro_text]\\r\\n\\r\\nTo learn more about the opportunity [node:title] and for contact information, please go to [node:url]",
             "language" : [ "node:language" ]

@@ -54,10 +54,10 @@ function ttc_content_type_abstract_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '26',
+          'weight' => '27',
         ),
         'xmlsitemap' => array(
-          'weight' => '27',
+          'weight' => '28',
         ),
       ),
       'display' => array(),

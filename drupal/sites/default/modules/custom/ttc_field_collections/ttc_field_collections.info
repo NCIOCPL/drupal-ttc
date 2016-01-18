@@ -13,7 +13,6 @@ dependencies[] = ttc_field_bases
 dependencies[] = ttc_taxonomy_bases
 dependencies[] = url
 features[features_api][] = api:2
-features[field_instance][] = field_collection_item-field_notif-field_formatted_email_list
 features[field_instance][] = field_collection_item-field_notif-field_notif_manual
 features[field_instance][] = field_collection_item-field_notif-field_send_to
 features[field_instance][] = field_collection_item-field_pat_status-field_patent_status

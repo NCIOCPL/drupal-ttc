@@ -145,6 +145,51 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-abstract-field_formatted_email_list'.
+  $field_instances['node-abstract-field_formatted_email_list'] = array(
+    'bundle' => 'abstract',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_formatted_email_list',
+    'label' => 'Formatted Email List',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 26,
+    ),
+  );
+
   // Exported field_instance: 'node-abstract-field_list_intro_text'.
   $field_instances['node-abstract-field_list_intro_text'] = array(
     'bundle' => 'abstract',
@@ -1233,6 +1278,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Description of Technology');
   t('Development Stage');
   t('End Date');
+  t('Formatted Email List');
   t('Inventor(s)');
   t('Keywords');
   t('Last announced to listserv on');
