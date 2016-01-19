@@ -15,6 +15,7 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
   $form['field_opp_year']['#access'] = false;
   $form['field_opp_list_lastsent']['#access'] = false;
   $form['field_opp_30day_warned']['#access'] = false;
+  $form['field_formatted_email_list']['#access'] = false;
 }
 
 function ttc_content_type_abstract_node_presave($node) {
@@ -31,5 +32,9 @@ function ttc_content_type_abstract_node_presave($node) {
         $node->field_opp_year['und']['0']['value'] = -1;
       }
     }
+	
+	// Set the list of emails (listserv & manual entries, comma-separated) for the 
+	// email blast rule.
+	$node->field_formatted_email_list['und']['0']['value'] = _abstract_get_formatted_email_list($node);
   }
 }
