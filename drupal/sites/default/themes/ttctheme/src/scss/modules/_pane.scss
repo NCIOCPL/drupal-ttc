@@ -13,7 +13,7 @@
 	margin:0px !important;
    }
 .pane-available-technologies {
-  @extend %homepage-panel;
+  // @extend %homepage-panel;
   background-color: palette(white, base);
 
   @at-root {
