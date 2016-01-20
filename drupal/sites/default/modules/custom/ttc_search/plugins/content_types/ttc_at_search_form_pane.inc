@@ -5,19 +5,20 @@
  * and open the template in the editor.
  */
 $plugin = array(
-    'single' => TRUE, // Just do this one, it is needed.
-    'title' => t('TTC Available Technologies Search Form Pane'), // Title to show up on the pane screen.
-    'description' => t('Search Box for Available Technologies. Redirects to availabletechnologies/* by default, but can be configured.'), // Description to show up on the pane screen.
-    'category' => t('TTC Search'), // A category to put this under
-    //'admin info' => 'mynci_search_form_pane_admin_info', // A function that will return the information displayed on the admin screen (optional).
-    'edit form' => 'ttc_at_search_form_pane_edit_form', // A function that will return the settings form for the pane.
-    'render callback' => 'ttc_at_search_form_pane_render', // A function that will return the renderable content
-    //'required context' => new ctools_context_optional(t('Keywords'), 'string'),
-    'required context' => new ctools_context_optional(t('Keys'), 'string'), // Node context is required
-    'defaults' => array(
-        'index_url' => 'availabletechnologies',
-        'search_form_label' => '',
-    ),
+  'single' => TRUE, // Just do this one, it is needed.
+  'title' => t('TTC Available Technologies Search Form Pane'), // Title to show up on the pane screen.
+  'description' => t('Search Box for Available Technologies. Redirects to availabletechnologies/* by default, but can be configured.'), // Description to show up on the pane screen.
+  'category' => t('TTC Search'), // A category to put this under
+  //'admin info' => 'mynci_search_form_pane_admin_info', // A function that will return the information displayed on the admin screen (optional).
+  'edit form' => 'ttc_at_search_form_pane_edit_form', // A function that will return the settings form for the pane.
+  'render callback' => 'ttc_at_search_form_pane_render', // A function that will return the renderable content
+  //'required context' => new ctools_context_optional(t('Keywords'), 'string'),
+  'required context' => new ctools_context_optional(t('Keys'), 'string'), // Node context is required
+  'defaults' => array(
+    'index_url' => 'availabletechnologies',
+    'search_form_label' => '',
+    'vocab_name' => 'product_type',
+  ),
 );
 
 /**
@@ -30,28 +31,37 @@ $plugin = array(
  * An edit form for the pane's settings.
  */
 function ttc_at_search_form_pane_edit_form($form, &$form_state) {
-    $conf = $form_state['conf'];
+  $conf = $form_state['conf'];
 
-    // Index URL for this form
-    $form['index_url'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Search Index URL'),
-        '#default_value' => $conf['index_url'],
-        '#required' => TRUE,
-        '#description' => t('URL that you would like a user redirected to when 
+  // Index URL for this form
+  $form['index_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Search Index URL'),
+    '#default_value' => $conf['index_url'],
+    '#required' => TRUE,
+    '#description' => t('URL that you would like a user redirected to when 
           preforming the search.'),
-    );
-    
-    // Optional Label
-    $form['search_form_label'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Optional Label'),
-        '#default_value' => $conf['search_form_label'],
-        '#required' => FALSE,
-        '#description' => t('Enter text that you want to appear above the search field (optional).'),
-    );
+  );
 
-    return $form;
+  // vocabulary name for this form
+  $form['vocab_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Vocabulary Name'),
+    '#default_value' => $conf['vocab_name'],
+    '#required' => TRUE,
+    '#description' => t('The vocabulary to show in a select box; should be part of a faceted search.'),
+  );
+
+  // Optional Label
+  $form['search_form_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Optional Label'),
+    '#default_value' => $conf['search_form_label'],
+    '#required' => FALSE,
+    '#description' => t('Enter text that you want to appear above the search field (optional).'),
+  );
+
+  return $form;
 }
 
 /**
@@ -60,31 +70,35 @@ function ttc_at_search_form_pane_edit_form($form, &$form_state) {
  */
 function ttc_at_search_form_pane_edit_form_submit($form, &$form_state) {
 
-    foreach (array_keys($form_state['plugin']['defaults']) as $key) {
-        if (isset($form_state['values'][$key])) {
-            $form_state['conf'][$key] = $form_state['values'][$key];
-        }
+  foreach (array_keys($form_state['plugin']['defaults']) as $key) {
+    if (isset($form_state['values'][$key])) {
+      $form_state['conf'][$key] = $form_state['values'][$key];
     }
+  }
 }
 
 function ttc_at_search_form_pane_render($subtype, $conf, $panel_args, $context) {
 
-    // Get the URL from the settings on the form
-    $index_url = ($conf && array_key_exists('index_url', $conf)) ? $conf['index_url'] : NULL;
+  // Get the URL from the settings on the form
+  $index_url = ($conf && array_key_exists('index_url', $conf)) ? $conf['index_url'] : NULL;
 
-    // Determine if a search argument has already been passed in
-    $keys = isset($context->data) ? $context->data : NULL;
-    
-    $label = ($conf && array_key_exists('search_form_label', $conf)) ? $conf['search_form_label'] : NULL;
+  // Determine if a search argument has already been passed in
+  $keys = isset($context->data) ? $context->data : NULL;
+
+  // Get the vocabulary name from the settings on the form
+  $vocab_name = ($conf && array_key_exists('vocab_name', $conf)) ? $conf['vocab_name'] : NULL;
 
 
-    // Get the form
-    module_load_include('form.inc', 'ttc_search', 'includes/ttc_at_search');
-    $form = drupal_get_form('ttc_at_search_form', $index_url, $keys, $label);
+  $label = ($conf && array_key_exists('search_form_label', $conf)) ? $conf['search_form_label'] : NULL;
 
-    // Output the block 
-    $block = new stdClass();
-    $block->content = $form;
 
-    return $block;
+  // Get the form
+  module_load_include('form.inc', 'ttc_search', 'includes/ttc_at_search');
+  $form = drupal_get_form('ttc_at_search_form', $index_url, $keys, $label, $vocab_name);
+
+  // Output the block 
+  $block = new stdClass();
+  $block->content = $form;
+
+  return $block;
 }

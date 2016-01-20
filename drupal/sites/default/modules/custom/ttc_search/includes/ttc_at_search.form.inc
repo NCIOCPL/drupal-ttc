@@ -12,7 +12,7 @@
  * @param type $index_machine The index's machine name that we are searching against.
  * @return type A form.
  */
-function ttc_at_search_form($form, &$form_state, $index_url = NULL, $keys = NULL, $label = NULL) {
+function ttc_at_search_form($form, &$form_state, $index_url = NULL, $keys = NULL, $label = NULL, $vocab_name = NULL) {
 
   // Set the index_url if its in the form_state and not passed in
   if (!$index_url && array_key_exists('index_url', $form_state['input'])) {
@@ -32,9 +32,6 @@ function ttc_at_search_form($form, &$form_state, $index_url = NULL, $keys = NULL
   if (!isset($vocab_name) && array_key_exists('vocab_name', $form_state['input'])) {
     $vocab_name = $form_state['input']['vocab_name'];
   }
-
-  // initialize the vocab name for now
-  $vocab_name = 'product_type';
 
   // Index URL element
   // Hidden

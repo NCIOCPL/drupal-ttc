@@ -474,6 +474,7 @@ function ttc_pages_default_page_manager_pages() {
       'override_title' => 1,
       'override_title_text' => 'Search',
       'override_title_heading' => 'h2',
+      'vocab_name' => 'product_type',
     );
     $pane->cache = array();
     $pane->style = array(
