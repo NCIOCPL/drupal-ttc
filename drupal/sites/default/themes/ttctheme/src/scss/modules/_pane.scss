@@ -12,8 +12,12 @@
 .panel-flexible .panel-separator {
 	margin:0px !important;
    }
+   
+body.front .pane-available-technologies {
+  @extend %homepage-panel;
+}
+   
 .pane-available-technologies {
-  // @extend %homepage-panel;
   background-color: palette(white, base);
 
   @at-root {
