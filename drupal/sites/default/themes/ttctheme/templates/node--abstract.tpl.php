@@ -76,6 +76,10 @@
  */
 ?>
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
+  <?php if(!empty($content['field_image'])) {
+    print render($content['field_image']);
+  } ?>
+  
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
     <?php if (!$page): ?>

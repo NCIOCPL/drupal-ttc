@@ -190,6 +190,62 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-abstract-field_image'.
+  $field_instances['node-abstract-field_image'] = array(
+    'bundle' => 'abstract',
+    'deleted' => 0,
+    'description' => 'Image shown in available technologies search results.',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Search Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'file_directory' => 'images',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'medium',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 30,
+    ),
+  );
+
   // Exported field_instance: 'node-abstract-field_list_intro_text'.
   $field_instances['node-abstract-field_list_intro_text'] = array(
     'bundle' => 'abstract',
@@ -1279,6 +1335,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Development Stage');
   t('End Date');
   t('Formatted Email List');
+  t('Image shown in available technologies search results.');
   t('Inventor(s)');
   t('Keywords');
   t('Last announced to listserv on');
@@ -1292,6 +1349,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Publications');
   t('Reference Number');
   t('Related Technologies');
+  t('Search Image');
   t('Send To');
   t('Start Date');
   t('Summary');

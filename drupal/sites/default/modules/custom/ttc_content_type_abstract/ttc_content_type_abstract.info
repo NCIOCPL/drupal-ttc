@@ -32,6 +32,7 @@ features[field_instance][] = node-abstract-field_contact_auto
 features[field_instance][] = node-abstract-field_development_stage
 features[field_instance][] = node-abstract-field_enumber
 features[field_instance][] = node-abstract-field_formatted_email_list
+features[field_instance][] = node-abstract-field_image
 features[field_instance][] = node-abstract-field_list_intro_text
 features[field_instance][] = node-abstract-field_meta_keywords
 features[field_instance][] = node-abstract-field_meta_long_desc
@@ -112,6 +113,7 @@ features_exclude[field_instance][field_collection_item-field_pat_status-field_ur
 features_exclude[field_instance][taxonomy_term-contacts-field_contact_email] = taxonomy_term-contacts-field_contact_email
 features_exclude[field_instance][taxonomy_term-contacts-field_contact_phone] = taxonomy_term-contacts-field_contact_phone
 features_exclude[field_instance][taxonomy_term-letterheads-field_image] = taxonomy_term-letterheads-field_image
+features_exclude[field_instance][field_collection_item-field_notif-field_formatted_email_list] = field_collection_item-field_notif-field_formatted_email_list
 features_exclude[taxonomy][contacts] = contacts
 features_exclude[taxonomy][letterheads] = letterheads
 project path = sites/default/modules/custom2
