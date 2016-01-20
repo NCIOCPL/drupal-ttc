@@ -423,7 +423,7 @@ function ttc_pages_default_page_manager_pages() {
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
-    'body_classes_to_add' => '',
+    'body_classes_to_add' => 'landing-page',
     'css_id' => '',
     'css' => '',
     'contexts' => array(),
@@ -451,6 +451,9 @@ function ttc_pages_default_page_manager_pages() {
       'default' => NULL,
       'center' => NULL,
     ),
+    'center' => array(
+      'style' => '-1',
+    ),
   );
   $display->cache = array();
   $display->title = 'Available Technologies';
@@ -458,28 +461,19 @@ function ttc_pages_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-89e8619b-9437-4e49-a7bf-f2df67606f8e';
+    $pane->pid = 'new-9a3e8de7-de7c-45c5-a59b-a27026969d1a';
     $pane->panel = 'center';
-    $pane->type = 'views';
-    $pane->subtype = 'featured_inventors_technologies_carousel';
+    $pane->type = 'ttc_at_search_form_pane';
+    $pane->subtype = 'ttc_at_search_form_pane';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_pager_settings' => 1,
-      'use_pager' => 0,
-      'nodes_per_page' => '10',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block',
+      'index_url' => 'availabletechnologies',
+      'search_form_label' => '',
+      'context' => 'argument_string_1',
       'override_title' => 1,
-      'override_title_text' => 'Featured Inventors & Technologies',
-      'override_title_heading' => 'h3',
+      'override_title_text' => 'Search',
+      'override_title_heading' => 'h2',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -489,9 +483,9 @@ function ttc_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '89e8619b-9437-4e49-a7bf-f2df67606f8e';
-    $display->content['new-89e8619b-9437-4e49-a7bf-f2df67606f8e'] = $pane;
-    $display->panels['center'][0] = 'new-89e8619b-9437-4e49-a7bf-f2df67606f8e';
+    $pane->uuid = '9a3e8de7-de7c-45c5-a59b-a27026969d1a';
+    $display->content['new-9a3e8de7-de7c-45c5-a59b-a27026969d1a'] = $pane;
+    $display->panels['center'][0] = 'new-9a3e8de7-de7c-45c5-a59b-a27026969d1a';
     $pane = new stdClass();
     $pane->pid = 'new-8ba64bdb-0255-43f2-8223-058655c58eb4';
     $pane->panel = 'center';
@@ -512,8 +506,8 @@ function ttc_pages_default_page_manager_pages() {
       'args' => '',
       'url' => '',
       'display' => 'block',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Browse',
       'override_title_heading' => 'h2',
     );
     $pane->cache = array();
