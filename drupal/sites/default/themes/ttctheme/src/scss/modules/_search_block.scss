@@ -41,14 +41,13 @@
   }
 }
 .header .form-type-textfield input{padding-left: rem-calc(35px);}
-.header .form-type-textfield {position:relative;}
 .header .form-type-textfield:before {
 	font-family: 'FontAwesome';
 	color: #ccc;
 	content:'\f002';
 	position: absolute;
-	left: 10px;
-	top: 22px;
+	left: 16px;
+	top: 12px;
 	z-index:10;
    }
 body.page-availabletechnologies h1{margin-bottom:30px;}
