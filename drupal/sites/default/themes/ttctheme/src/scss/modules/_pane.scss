@@ -123,6 +123,8 @@
 .pane-news{
     background-color:#fff; padding:25px;
     
+    .views-field-field-image img{border:solid 4px #ccc; border-radius:50%; height:60px; width:60px; float:left; margin:0 18px 80px 0;}
+    
     .pane-title{margin:0 auto; text-align:center; margin:10px auto 30px; font-size:1.3rem;}
     h4{font-size:.85em;}
     .views-field-field-date-published, .views-field-body{font-size:.75em;}

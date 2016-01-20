@@ -22,7 +22,7 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -31,7 +31,7 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -50,7 +50,7 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -72,13 +72,13 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -105,14 +105,111 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 2,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-news_announcement-field_image'.
+  $field_instances['node-news_announcement-field_image'] = array(
+    'bundle' => 'news_announcement',
+    'deleted' => 0,
+    'description' => 'Enter a required news or latest announcements article image. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'large',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Image',
+    'required' => 1,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '2 mb',
+      'max_resolution' => '1500x1000',
+      'min_resolution' => '150x150',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-news_announcement-field_short_title'.
+  $field_instances['node-news_announcement-field_short_title'] = array(
+    'bundle' => 'news_announcement',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
+  t('Enter a required news or latest announcements article image. ');
+  t('Image');
   t('Published Date');
+  t('Short Title');
 
   return $field_instances;
 }
