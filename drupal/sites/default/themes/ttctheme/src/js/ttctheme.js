@@ -23,14 +23,12 @@
       $(this).parent('.success-stories__image').css('background-image', 'url(' + thisurl + ')');
     });
 
-    /* highlight the email listserv subscribe block if there is an error
+    // highlight the subscribe form if there is a submittal error
     $('.listserv-subscribe-block').each(function () {
-	  var innerHtml = $(this).('listserv-subscribe-message.ls');
-      if ($('.container-inline').html().indexOf('valid email') > -1) {
+      if ($(this).html().indexOf('Please enter a valid email') > -1) {
         $('.row').addClass('highlighted-error');
       }
     });
-    */
 
     // stay on listserv form after submitting
     if (location.search.indexOf('op=Subscribe') > -1) {
