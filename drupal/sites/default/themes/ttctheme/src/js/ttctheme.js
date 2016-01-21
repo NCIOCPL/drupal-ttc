@@ -23,9 +23,20 @@
       $(this).parent('.success-stories__image').css('background-image', 'url(' + thisurl + ')');
     });
 
+    /* highlight the email listserv subscribe block if there is an error
+    $('.listserv-subscribe-block').each(function () {
+	  var innerHtml = $(this).('listserv-subscribe-message.ls');
+      if ($('.container-inline').html().indexOf('valid email') > -1) {
+        $('.row').addClass('highlighted-error');
+      }
+    });
+    */
+
     // stay on listserv form after submitting
     if (location.search.indexOf('op=Subscribe') > -1) {
-      window.scrollTo(0, document.body.scrollHeight);
+      var scrollheight = document.body.scrollHeight;
+      var offset = 1100;
+      window.scrollTo(0, (scrollheight - offset));
     }
   });
 }(jQuery));
