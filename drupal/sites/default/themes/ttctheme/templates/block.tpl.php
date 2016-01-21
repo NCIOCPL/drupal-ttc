@@ -57,13 +57,30 @@
 
   <?php $block->delta != 'main' ? print '</div>' : ''; ?>
 
+
 <?php /// If this page should contain the subscription form, render the block and subscribe field ?>
 <?php if(stristr($classes, 'block--listserv-block') != FALSE): ?>
-   <div class="listserv-subscribe-block-wrapper row"><?php print _ttc_blocks_listserv_subscribe_block(); ?>
-</div>
-  <?php if (isset($_GET['ls'])): ?>
-    <div class="listserv-subscribe-block ls row">
-      <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
-	</div>
-  <?php endif ?>
-<?php endif ?>  
+  <div class="listserv-subscribe-block-wrapper row">
+    <form class="listserv-subscribe-block" action="" id="" accept-charset="UTF-8">
+      <div class="container-inline">
+        <h4 class="field-content">SUBSCRIBE</h4>
+        <div class="listserv-subscribe-message">Subscribe to our Available Technology Listserv to receive the latest announcements</div>
+        <?php if (isset($_GET['ls'])): ?>
+          <p class="listserv-subscribe-message ls">
+           <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
+          </p>
+        <?php endif ?>
+        <div class="row">
+          <div class="small-8 columns listserv-input-container">
+            <div class="form-item form-type-textfield">
+              <input type="text" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" id="subscribe-block-form-0" name="ls" value="" size="15" maxlength="128" />
+            </div>
+          </div>
+          <div class="small-4 columns listserv-submit-container">
+            <button class="button radius postfix expand primary form-submit" id="edit-submit" name="op" value="Subscribe" type="submit">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+<?php endif //End block--listserv-block ?>

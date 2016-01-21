@@ -5,30 +5,6 @@
  */
 
 /**
-* Render the HTML for the listserv subscription form
-*/
-function _ttc_blocks_listserv_subscribe_block() {
-	$subscribe_block = '
-	  <form class="listserv-subscribe-block" action="" id="" accept-charset="UTF-8">
-		<div class="container-inline">
-		  <h4 class="field-content">SUBSCRIBE</h4>
-		  <div class="">Subscribe to our Available Technology Listserv to receive the latest announcements</div>
-		  <div class="row">
-			<div class="small-8 columns listserv-input-container">
-			  <div class="form-item form-type-textfield">
-				<input type="text" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" id="subscribe-block-form-0" name="ls" value="" size="15" maxlength="128" />
-			  </div>
-			</div>
-			<div class="small-4 columns listserv-submit-container">
-			  <button class="button radius postfix expand primary form-submit" id="edit-submit" name="op" value="Subscribe" type="submit">Subscribe</button>
-			</div>
-		  </div>
-		</div>
-	  </form>';
-    return $subscribe_block;
-}
-
-/**
 * Subscribe to the listserv by sending an email with the subscription parameters in the body. Subscription requests contain email only, no name.
 * @param $email_address: email address to be added to the listserv
 */
