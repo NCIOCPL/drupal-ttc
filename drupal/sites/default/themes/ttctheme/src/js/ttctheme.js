@@ -23,5 +23,9 @@
       $(this).parent('.success-stories__image').css('background-image', 'url(' + thisurl + ')');
     });
 
+    // stay on listserv form after submitting
+    if (location.search.indexOf('op=Subscribe') > -1) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   });
 }(jQuery));

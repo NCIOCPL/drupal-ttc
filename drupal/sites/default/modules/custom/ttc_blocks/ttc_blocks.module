@@ -10,7 +10,7 @@
 */
 function _ttc_blocks_listserv_subscribe($email_address) {
     $success = 'Request submitted. Please check your email and follow the directions contained therein to confirm your subscription.';
-	$failure = 'Please enter a valid email address.';
+    $failure = 'Please enter a valid email address.';
  
     /* ListServ subsribe and validation happens here */
     $error = 0;
@@ -23,7 +23,7 @@ function _ttc_blocks_listserv_subscribe($email_address) {
     //Test for valid email
     if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
         $error = 2;
-		$failure = 'Please enter a valid email address.';
+        $failure = 'Please enter a valid email address.';
     }
 
     //Try and send email. If successful, display success message and return.
@@ -32,11 +32,11 @@ function _ttc_blocks_listserv_subscribe($email_address) {
             return $success;
         } else {
             $error = 3;
-			$failure = 'Listserv subscription failed. Please try again.';
+            $failure = 'Listserv subscription failed. Please try again.';
         }
     }
 
     //If we are here, there was an error. Display error message 
-	//drupal_goto('/', array('query' => array('err' => $error))); //Add error code query - commenting out for now
+    //drupal_goto('/', array('query' => array('err' => $error))); //Add error code query - commenting out for now
     return $failure;
 }
