@@ -14,16 +14,15 @@
         // force override Foundation styles
         &#{&} {
           margin-bottom: 0;
-		  
         }
 
 
         &-container {
           padding: rem-calc(7px);
           padding-right: rem-calc(4px);
-
           background-color: palette(gray, light);
         }
+        
       }
       &__submit {
         margin-bottom: 0;
@@ -37,6 +36,9 @@
           background-color: palette(gray, light);
         }
       }
+    }
+    @at-root .small-4 {
+      padding-left: rem-calc(2px);
     }
   }
 }
