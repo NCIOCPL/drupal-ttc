@@ -70,9 +70,13 @@ body.front .pane-available-technologies {
         }
       }
       &__title {
-        background-color: palette(gray, x-light);
-        padding-top: rem(30px);
-        padding-bottom: rem(30px);
+        background-color:#007196;
+        padding-top: rem(20px);
+        padding-bottom: rem(20px);
+        color:#fafafa;
+      }
+      &__title:hover {
+        text-decoration:underline;
       }
     }
   }
