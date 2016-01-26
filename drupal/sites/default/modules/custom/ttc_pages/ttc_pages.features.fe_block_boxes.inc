@@ -18,7 +18,7 @@ function ttc_pages_default_fe_block_boxes() {
 <form class="footer-subscribe" action="/" method="post" id="" accept-charset="UTF-8" style=\'text-align:center;\'>
     <div class="container-inline">
       <h4 class="field-content" style=\'color:#215d73\'>SUBSCRIBE</h4>
-      <div class="">Subscribe to our Available Technology Listserv to receive the latest announcements</div>
+      <div class="">Subscribe to our Available Technology Listserv to receive the latest announcements.</div>
       <div class="row">
         <div class="small-8 columns search-form__input-container">
           <div class="form-item form-type-textfield form-item-search-block-form">
