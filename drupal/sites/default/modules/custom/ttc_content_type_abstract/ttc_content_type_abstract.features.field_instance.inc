@@ -213,7 +213,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => 'content',
-          'image_style' => 'medium',
+          'image_style' => 'abstract_search_result',
         ),
         'type' => 'image',
         'weight' => 0,
@@ -224,13 +224,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'label' => 'Search Image',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 1,
+      'alt_field' => 0,
       'default_image' => 0,
       'file_directory' => 'images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '300x225',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -238,7 +238,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'preview_image_style' => 'medium',
+        'preview_image_style' => 'abstract_search_result',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',

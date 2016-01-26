@@ -22,6 +22,7 @@ dependencies[] = text
 dependencies[] = ttc_collection_bases
 dependencies[] = ttc_field_bases
 dependencies[] = ttc_field_collections
+dependencies[] = ttc_site_config
 dependencies[] = ttc_taxonomy
 dependencies[] = ttc_taxonomy_bases
 dependencies[] = url
