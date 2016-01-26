@@ -44,7 +44,7 @@ body.front .pane-available-technologies {
   }
 }
 
-.pane-success-stories {
+body.front .pane-success-stories {
   @extend %homepage-panel;
   background: palette(blue, dark) url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center center;
   background-size:cover 100%;
