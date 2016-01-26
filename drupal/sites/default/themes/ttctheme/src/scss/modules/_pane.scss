@@ -10,7 +10,7 @@
   
 }
 .panel-flexible .panel-separator {
-	margin:0px !important;
+    margin:0px !important;
    }
    
 body.front .pane-available-technologies {
@@ -32,7 +32,6 @@ body.front .pane-available-technologies {
         }
         @media #{$large-up} {
           @include block-grid(6);
-		  
         }
 
         > li {
@@ -90,8 +89,16 @@ body.front .pane-success-stories {
         img{visibility:hidden;}
   }
 }
+body.not-front .pane-success-stories .pane-title{display:none;}
+body.not-front .pane-success-stories ul.success-stories__list {
 
-
+    @include block-grid(1, $include-spacing: false);
+    
+    li{border:none;}
+    li.views-row-odd{margin:30px 0px;}
+    
+    a:first-child{float:left; margin:0 25px auto 0px; padding:0px; border:solid 8px #ccc;  display:table-column;}
+    }
 
 .pane-menu-menu-information .pane-content:after{
 	color:#777A3B !important;
