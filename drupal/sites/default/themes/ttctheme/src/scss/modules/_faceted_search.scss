@@ -83,7 +83,7 @@ ul.facet-selection {
     }
   }
 }
-.block-panels-mini-ttc-abstract-faceted-search-mini{
+.panels-flexible-region-new-facets-inside{
     
     .pane-ttc-search-form-pane {
         #edit-search-container{
@@ -99,10 +99,9 @@ ul.facet-selection {
         button{float:right; margin:0px; width:auto; padding:9px 9px; text-align:center;}    
     }
     .pane-title{
-        border-top:solid 1px #CCC; 
-        border-bottom:solid 1px #CCC;  
+        border-top:solid 1px #CCC;   
         vertical-align:middle; padding:13px 13px; 
-        margin-bottom:15px; 
+        margin-bottom:0px;
         display:block;
         position:relative;
         font-weight:600;
@@ -122,10 +121,24 @@ ul.facet-selection {
         display:block;
         border-radius:3px;
     }
+    .pane-title.open:after{
+        content:"-";
+        padding:0px 13px;
+
+    }    
+    .pane-block .pane-content{display:none;}
     .pane-content ul{margin:0px; padding:0px;
              
-            li{margin:0px 10px; padding:7px 0px; border-bottom:solid 1px #f0f0f0;  vertical-align:top;
-                label{font-size:14px;  vertical-align:top; display:inline-flex;}
+            li{
+                margin:0px 10px; 
+                padding:7px 0px; 
+                border-bottom:solid 1px #f0f0f0;  
+                vertical-align:top;
+                
+                label{
+                  font-size:14px;  
+                  vertical-align:top; 
+                  display:inline-flex;}
             }
             li:last-child{border:none; margin-bottom:10px;}
     

@@ -36,5 +36,11 @@
       var offset = 1100;
       window.scrollTo(0, (scrollheight - offset));
     }
+
+    // facet search drop down functionality
+    $('.panels-flexible-region-new-facets-inside .pane-title').on('click', function () {
+      $(this).next('.pane-content').toggle();
+      $(this).toggleClass('open');
+    });
   });
 }(jQuery));
