@@ -318,14 +318,14 @@ function ttc_theme_config_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ttctheme' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ttctheme',
         'weight' => 0,
       ),
       'zurb_foundation' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'zurb_foundation',
         'weight' => 0,
       ),
