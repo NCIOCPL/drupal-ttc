@@ -1,6 +1,5 @@
 .facetapi-facetapi-checkbox-links {
   margin-left: 1rem;
-
   list-style-type: none;
 }
 
@@ -84,3 +83,55 @@ ul.facet-selection {
     }
   }
 }
+.block-panels-mini-ttc-abstract-faceted-search-mini{
+    
+    .pane-ttc-search-form-pane {
+        #edit-search-container{
+            margin:0px; padding:10px 10px 0px 10px; 
+            background-color:#306E86;
+        }
+    
+        .form-type-textfield{
+            margin:0px; padding:0px;
+            float:left;
+            width:81%;
+        }
+        button{float:right; margin:0px; width:auto; padding:9px 9px; text-align:center;}    
+    }
+    .pane-title{
+        border-top:solid 1px #CCC; 
+        border-bottom:solid 1px #CCC;  
+        vertical-align:middle; padding:13px 13px; 
+        margin-bottom:15px; 
+        display:block;
+        position:relative;
+        font-weight:600;
+        font-size:16px;
+        }
+    .pane-title:after{
+        content:"+";
+        text-align:center;
+        cursor:pointer;
+        font-size:20px;
+        position:absolute;
+        color:#f0f0f0;
+        right:8px;
+        background:#225D71;
+        top:11px;
+        padding:0px 11px;
+        display:block;
+        border-radius:3px;
+    }
+    .pane-content ul{margin:0px; padding:0px;
+             
+            li{margin:0px 10px; padding:7px 0px; border-bottom:solid 1px #f0f0f0;  vertical-align:top;
+                label{font-size:14px;  vertical-align:top; display:inline-flex;}
+            }
+            li:last-child{border:none; margin-bottom:10px;}
+    
+    }
+}
+
+
+
+
