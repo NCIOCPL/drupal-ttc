@@ -38,7 +38,7 @@
     }
 
     // facet search drop down functionality
-    $('.panels-flexible-region-new-facets-inside .pane-title').on('click', function () {
+    $('.panels-flexible-region-new-facets-inside .pane-title, .sidebarnav_wrapper .pane-title').on('click', function () {
       $(this).next('.pane-content').toggle();
       $(this).toggleClass('open');
     });

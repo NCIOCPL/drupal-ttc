@@ -83,7 +83,7 @@ ul.facet-selection {
     }
   }
 }
-.panels-flexible-region-new-facets-inside{
+.panels-flexible-region-new-facets-inside, .sidebarnav_wrapper{
     
     .pane-ttc-search-form-pane {
         #edit-search-container{
@@ -166,6 +166,25 @@ ul.facet-selection {
 }
 #edit-abstract-sort-title-asc a:after{
     	content: '\f15d';
+}
+body.page-availabletechnologies{
+    .field-type-taxonomy-term-reference {
+        clear:both;
+        margin-bottom:50px;
+    }
+    .field-type-taxonomy-term-reference li{ 
+        list-style:none; 
+        background:#f0f0f0; 
+        display:inline-block; 
+        margin:0px 5px 0px 0px; 
+        padding:5px 10px; 
+        border-radius:3px; 
+        font-size:14px !important;
+       }
+       .abstract__summary{border:none; padding:0px;}
+       ul.facet-selection{margin:20px 0px; padding:0px;}
+       ul.facet-selection a{padding:.6rem .75rem;}
+       
 }
 
 
