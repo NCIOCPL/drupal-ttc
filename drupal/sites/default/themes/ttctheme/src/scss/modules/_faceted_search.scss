@@ -144,6 +144,29 @@ ul.facet-selection {
     
     }
 }
+.edit-sort__link{position:relative; text-align:center; background:none;}
+.edit-sort__link:after{
+	color:#333 !important;
+    font-family: 'FontAwesome';
+	position: absolute;
+    top:0;
+    left:15%;
+	font-weight: 300;
+	font-size:1.25em;
+	z-index:100;
+}
+#edit-abstract-sort-field-enumber-desc a:after{
+    	content: '\f162';
+}
+#edit-abstract-sort-field-opp-start-date-asc a:after{
+    	content: '\f274';
+}
+#edit-abstract-sort-changed-asc a:after{
+    	content: '\f271';
+}
+#edit-abstract-sort-title-asc a:after{
+    	content: '\f15d';
+}
 
 
 
