@@ -57,7 +57,7 @@ class TTCMigrateSiteAbstractPatentStatusMigration extends Migration {
     // create encapsulating query
     $pat_status_query = db_select($us_none_query, 'pat_status')
         ->fields('pat_status', array('opp_id', 'status_type', 'pat_text'));
-    
+
     // add copy of opp_id to use as foreign key to the abstract
     $pat_status_query->addField('pat_status', 'opp_id', 'host_id');
 
@@ -96,18 +96,6 @@ class TTCMigrateSiteAbstractPatentStatusMigration extends Migration {
     $this->addFieldMapping('field_text', 'pat_text');
   }
 
-  /**
-   * Prepare a proper unique key.
-   */
-  /* public function prepareKey($source_key, $row) {
-    $key = array();
-    $row->pat_id = implode('_', array($row->opp_id, $row->status_type));
-    $key['pat_id'] = $row->pat_id;
-
-    dsm($row, 'prepareKey row');
-    return $key;
-    } */
-
   protected function explodeAndTrim($value) {
     $output = array_map('trim', explode(',', $value));
     return $output;
@@ -128,6 +116,65 @@ class TTCMigrateSiteAbstractPatentStatusMigration extends Migration {
         return 'Foreign Issued';
       default:
         return 'Unrecognized';
+    }
+  }
+
+  /**
+   * Run after a patent status import - finds all nodes with null patent statuses
+   * and sets all found to 'Not Patented'.
+   */
+  public function postImport() {
+    parent::postImport();
+
+    // look for 'not patented' term
+    $npTerms = taxonomy_get_term_by_name('Not Patented');
+    $npTerm = array_shift($npTerms);
+
+    if ($npTerm) {
+      // if term exists, 
+      // find all abstracts with empty patent status field collections
+      $notNullQuery = new EntityFieldQuery();
+
+      $notNullQuery->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'abstract')
+          ->propertyCondition('status', NODE_PUBLISHED)
+          ->fieldCondition('field_pat_status', 'value', 'NULL', '!=');
+
+      $notNullResult = $notNullQuery->execute();
+
+      if (isset($notNullResult['node'])) {
+        $notNullNids = array_keys($notNullResult['node']);
+
+        // find all abstracts not in the returned list (that have null statuses)
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', 'abstract')
+            ->propertyCondition('status', NODE_PUBLISHED)
+            ->entityCondition('entity_id', $notNullNids, 'NOT IN');
+        $nullResult = $query->execute();
+
+        // if nodes are returned...
+        if (isset($nullResult['node'])) {
+          // load the null-patent-status nodes
+          $nullNids = array_keys($nullResult['node']);
+          $nullNodes = entity_load('node', $nullNids);
+
+          foreach ($nullNodes as $node) {
+            // Create a new field collection 
+            $field_collection_item = entity_create('field_collection_item', array('field_name' => 'field_pat_status'));
+
+            // add field_patent_status
+            $field_collection_item->field_patent_status['und'][]['tid'] = $npTerm->tid;
+
+            // Save field collection item
+            $field_collection_item->setHostEntity('node', $node);
+            $field_collection_item->save(TRUE);
+            
+            // save node
+            node_save($node);
+          }
+        }
+      }
     }
   }
 

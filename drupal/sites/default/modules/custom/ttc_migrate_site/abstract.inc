@@ -274,7 +274,7 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     $this->addFieldMapping('field_product_type:create_term')
         ->defaultValue(TRUE);
 
-    // product type taxonomy
+    // therapeutic area taxonomy
     $this->addFieldMapping('field_therapeutic_area', 'opp_ta')
         ->callbacks(array($this, 'explodeTherArea'));
     $this->addFieldMapping('field_therapeutic_area:create_term')
@@ -331,6 +331,10 @@ class TTCMigrateSiteAbstractMigration extends Migration {
         ->callbacks(array($this, 'mapPdfImg'));
     $this->addFieldMapping('field_pdf_img:create_term')
         ->defaultValue(TRUE);
+    
+    // provide defaults for certain fields.
+    $this->addFieldMapping('field_opp_co_dev')
+        ->defaultValue(0);
   }
 
   protected function explodeAndTrim($value) {

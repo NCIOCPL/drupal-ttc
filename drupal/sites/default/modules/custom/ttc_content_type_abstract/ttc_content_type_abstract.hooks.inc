@@ -7,10 +7,6 @@
  * Contains all hooks for abstract nodes.
  */
 function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
-  if (function_exists('dsm')) {
-    dsm($form, 'node form');
-  }
-
   // hide machine-generated fields
   $form['field_opp_year']['#access'] = false;
   $form['field_opp_list_lastsent']['#access'] = false;
