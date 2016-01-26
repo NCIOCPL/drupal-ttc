@@ -51,6 +51,7 @@ features[field_base][] = field_opp_year
 features[field_base][] = field_phone_number
 features[field_base][] = field_posted_date
 features[field_base][] = field_reviewed_date
+features[field_base][] = field_short_title
 features[field_base][] = field_text
 features[field_base][] = field_updated_date
 features[field_base][] = field_url
