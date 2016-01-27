@@ -13,13 +13,27 @@
     &.-view-pdf {
         float: right;
         margin: $column-gutter/4 $column-gutter/2;
-        padding: 0 $column-gutter/2;
+        padding: 5px $column-gutter/2 5px 30px;
         background-color: palette(blue, base);
+        border-radius:3px;
+        font-size:14px;
+        position:relative;
         
         a {
             color: palette(white, base);
         }
     }
+}
+.abstract__link:before{
+	color:#fff !important;
+    font-family: 'FontAwesome';
+	content: '\f1c1';
+	position: absolute;
+  	top:5px;
+	left:9px;
+	font-weight: 300;
+	font-size:1em;
+	z-index:100;
 }
 
 .node .body ul li{margin-bottom:10px;}
