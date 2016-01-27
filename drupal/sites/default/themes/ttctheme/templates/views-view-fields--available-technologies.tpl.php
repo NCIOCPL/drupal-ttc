@@ -26,7 +26,12 @@
 ?>
 
 <?php foreach ($fields as $id => $field): ?>
-  <?php $wrapper_prefix = preg_replace_callback('/(class=".*")/i', 'regex_to_lowercase', $field->wrapper_prefix); ?>
+  <?php 
+  $wrapper_prefix = preg_replace_callback('/(class=".*")/i', 'regex_to_lowercase', $field->wrapper_prefix); 
+  $lc_value = str_replace(' ', '-', strtolower($field->raw));
+  $field->content = str_replace("-$field->raw", "-$lc_value", $field->content);
+  
+  ?>
   <?php if (!empty($field->separator)): ?>
     <?php print $field->separator; ?>
   <?php endif; ?>
