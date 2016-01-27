@@ -95,8 +95,14 @@ ul.facet-selection {
             margin:0px; padding:0px;
             float:left;
             width:81%;
+            color:#fff;
+            
+            input{background-color:#578FA8; border-radius:3px; border:none; color:#fff;}
+            *::-moz-placeholder {color: #fff;}
+            
+             
         }
-        button{float:right; margin:0px; width:auto; padding:9px 9px; text-align:center;}    
+        button{float:right; margin:0px; width:auto; padding:9px 9px; text-align:center; border-radius:3px;}    
     }
     .pane-title{
         border-top:solid 1px #CCC;   
@@ -168,6 +174,7 @@ ul.facet-selection {
     	content: '\f15d';
 }
 body.page-availabletechnologies{
+    
     .pane-page-title{
         border-bottom:solid 1px #f0f0f0;
         }
@@ -192,8 +199,7 @@ body.page-availabletechnologies{
        .abstract__summary{border:none; padding:0px;}
        ul.facet-selection{margin:20px 0px; padding:0px;}
        ul.facet-selection a{padding:.6rem .75rem;}
-       
-       
+
 }
 
 
