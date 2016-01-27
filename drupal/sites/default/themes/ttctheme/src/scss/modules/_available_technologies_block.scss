@@ -18,7 +18,16 @@
   
 }
 
-.at-icons .field-content{
+.at-icons {
+    a{
+        color: white;
+        
+        &:hover, &:focus {
+            color:white;
+        }
+    }
+    
+ .field-content{
     color: white;
 	background-repeat:no-repeat;
  	background-position: center center;
@@ -30,6 +39,7 @@
 	width:100%;
 	padding-top: 80%;
         text-align: center;
+ }
 }
 .-devices span{	background:url(/sites/default/themes/ttctheme/public/images/icons/devices.png);}
 .-diagnostics span{	background:url(/sites/default/themes/ttctheme/public/images/icons/diagnostics.png);}
