@@ -26,7 +26,18 @@
 }
 body.front .main__content{margin-bottom:0px;} 
 body.not-front .main{
-	padding-bottom: ($column-gutter * 1.45);
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-top:0px;
+  padding-top:0px;
+
+  
+  .main-wrapper{
+    background: transparent url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center -500px;
+    background-size:cover auto;
+  padding-bottom: ($column-gutter * 1.45);
   padding-right: ($column-gutter * 1.75);
   padding-left: ($column-gutter * 1.75);
-  } 
+  padding-top:3.475rem;
+  }
+} 

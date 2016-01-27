@@ -87,6 +87,7 @@
 
   <!--.l-main -->
   <main role="main" class="main row">
+  <div class="main-wrapper">
     <!-- .l-main region -->
     <div class="main__inner row">
 
@@ -172,6 +173,7 @@
         </aside>
       <?php endif; ?>
     </div>
+   </div>
   </main>
   <!--/.l-main -->
 
