@@ -56,7 +56,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['text'] = '<a href=\'availabletechnologies/all?f[0]=field_[machine_name]:[tid]\'>
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<a href=\'availabletechnologies/all?f[0]=field_[machine_name]%3A[tid]\'>
 <div class=\'available-technologies__block -[name]\'>
 <span class=\'field-content\'>[name]</span>
 </div></a>';
