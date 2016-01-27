@@ -144,7 +144,7 @@ ul.facet-selection {
     
     }
 }
-.edit-sort__link{position:relative; text-align:center; background:none;}
+.edit-sort__link{position:relative; text-align:center; background:#fff;}
 .edit-sort__link:after{
 	color:#333 !important;
     font-family: 'FontAwesome';
@@ -152,7 +152,7 @@ ul.facet-selection {
     top:0;
     left:15%;
 	font-weight: 300;
-	font-size:1.25em;
+	font-size:1em;
 	z-index:100;
 }
 #edit-abstract-sort-field-enumber-desc a:after{
@@ -168,6 +168,14 @@ ul.facet-selection {
     	content: '\f15d';
 }
 body.page-availabletechnologies{
+    .pane-page-title{
+        border-bottom:solid 1px #f0f0f0;
+        }
+    .pane-page-title h1 {
+        border-bottom:none; padding:0px 0px 6px 0; margin:0px; line-height:1;
+        }
+    .pane-views-header{margin:15px 0 0 0;}
+    .views-exposed-widgets {float:right; clear:none;}
     .field-type-taxonomy-term-reference {
         clear:both;
         margin-bottom:50px;
@@ -184,6 +192,7 @@ body.page-availabletechnologies{
        .abstract__summary{border:none; padding:0px;}
        ul.facet-selection{margin:20px 0px; padding:0px;}
        ul.facet-selection a{padding:.6rem .75rem;}
+       
        
 }
 
