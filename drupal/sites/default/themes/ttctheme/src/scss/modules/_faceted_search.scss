@@ -185,7 +185,7 @@ body.page-availabletechnologies{
     .views-exposed-widgets {float:right; clear:none;}
     .field-type-taxonomy-term-reference {
         clear:both;
-        margin-bottom:50px;
+        margin-bottom:50px;        
     }
     .field-type-taxonomy-term-reference li{ 
         list-style:none; 
@@ -194,9 +194,9 @@ body.page-availabletechnologies{
         margin:0px 5px 0px 0px; 
         padding:5px 10px; 
         border-radius:3px; 
-        font-size:14px !important;
+        font-size:13px !important;
        }
-       .abstract__summary{border:none; padding:0px;}
+       .abstract__summary{border:none; padding:0px; font-size:.85em; max-width:95%;}
        ul.facet-selection{margin:20px 0px; padding:0px;}
        ul.facet-selection a{padding:.6rem .75rem;}
 
