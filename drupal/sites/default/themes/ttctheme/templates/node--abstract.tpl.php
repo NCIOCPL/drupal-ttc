@@ -114,9 +114,9 @@
           print render($content['field_opp_co_dev']);
           print render($content['field_contact_auto']);
           ?>
-      </div>
+         </div> 
+     
   <?php endif; ?>
-
   <?php
     print render($content['field_opp_description_text']);
     print render($content['field_opp_commapp_text']);

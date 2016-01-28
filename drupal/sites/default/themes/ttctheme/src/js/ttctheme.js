@@ -42,5 +42,11 @@
       $(this).next('.pane-content').toggle();
       $(this).toggleClass('open');
     });
+
+    // color coding for taxonomy terms copy the text and make it the lowercase class
+    $('.taxonomy-terms li').each(function () {
+      var taxclass = $(this).text().toLowerCase();
+      $(this).addClass(taxclass);
+    });
   });
 }(jQuery));
