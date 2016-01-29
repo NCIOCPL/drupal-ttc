@@ -322,7 +322,8 @@ class TTCMigrateSiteAbstractMigration extends Migration {
     //$this->addFieldMapping('field_notif_auto', 'notif_auto');
     //$this->addFieldMapping('field_notif_manual', 'notif_manual');
     // contact taxonomy
-    $this->addFieldMapping('field_contact_auto', 'contact_auto');
+    $this->addFieldMapping('field_contact_auto', 'contact_auto')
+        ->callbacks(array($this, 'mapContactAuto'));
     $this->addFieldMapping('field_contact_auto:create_term')
         ->defaultValue(TRUE);
 
@@ -331,7 +332,7 @@ class TTCMigrateSiteAbstractMigration extends Migration {
         ->callbacks(array($this, 'mapPdfImg'));
     $this->addFieldMapping('field_pdf_img:create_term')
         ->defaultValue(TRUE);
-    
+
     // provide defaults for certain fields.
     $this->addFieldMapping('field_opp_co_dev')
         ->defaultValue(0);
@@ -514,6 +515,51 @@ class TTCMigrateSiteAbstractMigration extends Migration {
         return 'NINDS - National Institute on Neurological Disorders and Stroke';
       case 'nlm':
         return 'NLM - The National Library of Medicine';
+    }
+
+    return $value;
+  }
+
+  protected function mapContactAuto($value) {
+    // maps incoming contact usernames to full names.
+
+    switch ($value) {
+      case 'conley': 
+        return 'Vio Conley';
+      case 'conrad': 
+        return 'Joseph Conrad';
+      case 'guyton': 
+        return 'Nikki Guyton';
+      case 'hewes': 
+        return 'John Hewes';
+      case 'hubbs': 
+        return 'Alan Hubbs';
+      case 'rose': 
+        return 'Ken Rose';
+      case 'rosenberg': 
+        return 'Steven A. Rosenberg';
+      case 'thomas': 
+        return 'Jeffrey Thomas';
+      case 'hastings': 
+        return 'Whitney A. Hastings, Ph.D.';
+      case 'fenn': 
+        return 'Tedd Fenn';
+      case 'abelmouti': 
+        return 'Tawanda Abelmouti';
+      case 'vathyam': 
+        return 'Surekha Vathyam';
+      case 'mcguiness': 
+        return 'Charlotte McGuiness';
+      case 'tong': 
+        return 'Betty Tong';
+      case 'samari': 
+        return 'Andrea Samari';
+      case 'gunas': 
+        return 'Heather Gunas';
+      case 'lubet': 
+        return 'Martha Lubet';
+      case 'schlom': 
+        return 'Jeffrey Schlom';
     }
 
     return $value;
