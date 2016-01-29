@@ -64,7 +64,7 @@
     <form class="listserv-subscribe-block" action="" id="" accept-charset="UTF-8">
       <div class="container-inline">
         <h4 class="field-content">SUBSCRIBE</h4>
-        <div class="listserv-subscribe-message">Subscribe to our Available Technology Listserv to receive the latest announcements</div>
+        <div class="listserv-subscribe-message">Subscribe to our Available Technology Listserv to receive the latest announcements.</div>
         <?php if (isset($_GET['ls'])): ?>
           <p class="listserv-subscribe-message ls">
            <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
