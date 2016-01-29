@@ -25,18 +25,27 @@ body.front .pane-available-technologies {
       &__list {
         margin-bottom: 0;
 
-        @include block-grid(1);
+        @include block-grid(3, rem-calc(12));
 
         @media #{$medium-up} {
-          @include block-grid(3);
+          @include block-grid(6, rem-calc(12));
         }
-        @media #{$large-up} {
+        /*@media #{$large-up} {
           @include block-grid(6);
-        }
+        }*/
 
         > li {
           margin-bottom: 0;
           margin-left: 0;
+        }
+      }
+    }
+    
+    body.page-availabletechnologies ul.available-technologies {
+      &__list {
+
+        @media #{$medium-up} {
+          @include block-grid(3, rem-calc(8));
         }
       }
     }
