@@ -110,11 +110,11 @@ body.not-front .pane-success-stories ul.success-stories__list {
     }
 
 .pane-menu-menu-information .pane-content:after{
-	color:#777A3B !important;
+	color:#6E7741 !important;
     font-family: 'FontAwesome';
 	content: '\f0d7';
 	position: absolute;
-  	bottom: -45px;
+  	bottom: -40px;
 	left:48.85%;
 	font-weight: 300;
 	font-size:3em;
@@ -138,7 +138,7 @@ body.not-front .pane-success-stories ul.success-stories__list {
         max-width:800px; margin:0 auto;
         
         ul ul li {list-style:outside;
-            a{font-size:.75em; color:#333; display:block; line-height:1.5rem;}
+            a{ color:#333; display:block; line-height:1.5rem;}
         }
         ul ul{margin-top:.5rem;}
           .li-wrapper{
@@ -154,11 +154,11 @@ body.not-front .pane-success-stories ul.success-stories__list {
 .pane-news{
     background-color:#fff; padding:25px;
     
-    .views-field-field-image img{border:solid 4px #ccc; border-radius:50%; height:60px; width:60px; float:left; margin:0 18px 80px 0;}
+    .views-field-field-image img{border:solid 4px #ccc; border-radius:50%; height:60px; width:60px; float:left; margin:0 18px 90px 0;}
     
     .pane-title{margin:0 auto; text-align:center; margin:10px auto 30px; font-size:1.3rem;}
-    h4{font-size:.85em;}
-    .views-field-field-date-published, .views-field-body{font-size:.75em;}
+    h4{font-size:16px;}
+    .views-field-field-date-published, .views-field-body{font-size:14px;}
     .latest-announcements{max-width:900px; margin:0 auto; }
 }
 body.not-front .pane-news{padding:0px;}
@@ -172,7 +172,7 @@ body.front .listserv-subscribe-block.ls:before{
 	content: '\f0d7';
 	color:#FFFFFF;
 	position: absolute;
-  	bottom: -45px;
+  	bottom: -40px;
 	left:48.85%;
 	font-weight: 300;
 	font-size:3em;
