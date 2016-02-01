@@ -112,6 +112,18 @@ module.exports = function (grunt) {
           '<%= global_vars.theme.dist.js %>/foundation.min.js': [jsFoundation],
           '<%= global_vars.theme.dist.js %>/app.min.js': [jsApp]
         }
+      },
+      dev: {
+        options: {
+          mangle: false,
+          compress: false,
+          beautify: true
+        },
+        files: {
+          '<%= global_vars.theme.dist.js %>/libs.min.js': [jsLibs],
+          '<%= global_vars.theme.dist.js %>/foundation.min.js': [jsFoundation],
+          '<%= global_vars.theme.dist.js %>/app.min.js': [jsApp]
+        }
       }
     },
 
@@ -135,12 +147,13 @@ module.exports = function (grunt) {
           jsFoundation,
           '<%= eslint.all %>'
         ],
-        tasks: ['eslint', 'uglify']
+        tasks: ['eslint', 'uglify:dist']
       }
     }
   });
 
-  grunt.registerTask('build', ['eslint', 'uglify', 'sass:dev']);
-  grunt.registerTask('deploy', ['eslint', 'uglify', 'sass:prod']);
+  grunt.registerTask('build-dev', ['eslint', 'uglify:dev', 'sass:dev']);
+  grunt.registerTask('build', ['eslint', 'uglify:dist', 'sass:dev']);
+  grunt.registerTask('deploy', ['eslint', 'uglify:dist', 'sass:prod']);
   grunt.registerTask('default', ['build', 'watch']);
 };
