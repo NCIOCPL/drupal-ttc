@@ -132,7 +132,7 @@ body.not-front .pane-success-stories ul.success-stories__list {
         @include block-grid($per-row:2, $spacing:rem-calc(70));
     }
    
-   .pane-title{font-size:1.3rem; color:#fff; text-align:center; margin:1rem auto 3rem;}
+   .pane-title{font-size:rem(22px); color:#fff; text-align:center; margin:1rem auto 3rem;}
 
    .pane-content{
         max-width:800px; margin:0 auto;
