@@ -117,8 +117,13 @@
       
        <?php if ($breadcrumb): ?>
           <?php print $breadcrumb; ?>
+        
 		  <!-- Display share buttons -->
 		  <div class='addthis'>
+          <span class="fontsize-wrapper">
+          <i class="fa fa-plus-square-o decfont"></i>
+          <i class="fa fa-minus-square-o incfont"></i>
+          </span>
           <span class="label">Share: </span>
 			<a class="addthis_button_linkedin" title="LinkedIn" href="#"></a>
 			<a class="addthis_button_twitter" title="Twitter" href="#"></a>
@@ -131,7 +136,7 @@
 		  </div>
 		<?php endif; ?>      
 
-      <div class="<?php print $main_grid; ?> columns main__content">
+      <div id="mainid" class="<?php print $main_grid; ?> columns main__content">
         <?php if (!empty($page['highlighted'])): ?>
           <div class="highlight panel callout">
             <?php print render($page['highlighted']); ?>

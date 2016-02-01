@@ -48,5 +48,20 @@
       var taxclass = $(this).text().toLowerCase();
       $(this).addClass(taxclass);
     });
+
+    // font size adjuster
+    $('.decfont').click(function () {
+      var curSize = parseInt($('#mainid article *').css('font-size')) + 1;
+      if (curSize <= 22) {
+        $('#mainid p, #mainid li, #mainid article *, #mainid article p').css('font-size', curSize);
+      }
+    });
+    $('.incfont').click(function () {
+      var curSize = parseInt($('#mainid article *').css('font-size')) - 1;
+      if (curSize >= 16) {
+        $('#mainid p, #mainid li, #mainid article *, #mainid article p').css('font-size', curSize);
+
+      }
+    });
   });
 }(jQuery));
