@@ -45,7 +45,7 @@
 
     // color coding for taxonomy terms copy the text and make it the lowercase class
     $('.taxonomy-terms li').each(function () {
-      var taxclass = $(this).text().toLowerCase();
+      var taxclass = '-' + $(this).text().toLowerCase().replace(' ', '-');
       $(this).addClass(taxclass);
     });
 
