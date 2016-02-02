@@ -80,9 +80,12 @@
 <article id="node-<?php print $node->nid; ?>" class="success-story <?php print $classes; ?>"<?php print $attributes; ?>>
 
   <?php $has_image = !empty($content['field_image']); ?>
-  <?php $show_post_date = ($content['field_display_posted_date']['#items']['0']['value'] == 1) && !empty($content['field_posted_date']); ?>
-  <?php $show_rev_date = ($content['field_display_reviewed_date']['#items']['0']['value'] == 1) && !empty($content['field_reviewed_date']); ?>
-  <?php $show_up_date = ($content['field_display_updated_date']['#items']['0']['value'] == 1) && !empty($content['field_updated_date']); ?>
+  <?php $show_post_date = isset($content['field_display_posted_date']['#items']['0']['value']) &&
+      ($content['field_display_posted_date']['#items']['0']['value'] == 1) && !empty($content['field_posted_date']); ?>
+  <?php $show_rev_date = isset($content['field_display_reviewed_date']['#items']['0']['value']) &&
+      ($content['field_display_reviewed_date']['#items']['0']['value'] == 1) && !empty($content['field_reviewed_date']); ?>
+  <?php $show_up_date = isset($content['field_display_updated_date']['#items']['0']['value']) &&
+      ($content['field_display_updated_date']['#items']['0']['value'] == 1) && !empty($content['field_updated_date']); ?>
   
   <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
