@@ -2,7 +2,8 @@
   &__block {
     @include product-type-card('dark');
 
-    overflow:auto
+    display: inline-block;
+    width: 100%;
   }
 
 }
