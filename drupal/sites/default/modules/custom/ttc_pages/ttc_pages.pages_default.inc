@@ -256,7 +256,7 @@ function ttc_pages_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-1acd20da-b850-41be-935e-6cc4c10a8c37';
+    $pane->pid = 'new-6b6e79ed-bbde-46d4-9618-6bfbde85fd2f';
     $pane->panel = 'center';
     $pane->type = 'views';
     $pane->subtype = 'success_stories';
@@ -274,7 +274,7 @@ function ttc_pages_default_page_manager_handlers() {
       'link_to_view' => 0,
       'args' => '',
       'url' => '',
-      'display' => 'block',
+      'display' => 'block_landing',
       'override_title' => 0,
       'override_title_text' => '',
       'override_title_heading' => 'h2',
@@ -287,9 +287,9 @@ function ttc_pages_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '1acd20da-b850-41be-935e-6cc4c10a8c37';
-    $display->content['new-1acd20da-b850-41be-935e-6cc4c10a8c37'] = $pane;
-    $display->panels['center'][0] = 'new-1acd20da-b850-41be-935e-6cc4c10a8c37';
+    $pane->uuid = '6b6e79ed-bbde-46d4-9618-6bfbde85fd2f';
+    $display->content['new-6b6e79ed-bbde-46d4-9618-6bfbde85fd2f'] = $pane;
+    $display->panels['center'][0] = 'new-6b6e79ed-bbde-46d4-9618-6bfbde85fd2f';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
