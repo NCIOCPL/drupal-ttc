@@ -106,7 +106,9 @@ body.not-front .pane-success-stories ul.success-stories__list {
     li{border:none;}
     li.views-row-odd{margin:30px 0px;}
     
-    a:first-child{float:left; margin:0 25px auto 0px; padding:0px; border:solid 8px #ccc;  display:table-column;}
+    a img{float:left; margin:0 25px auto 0px; padding:0px; border:solid 8px #ccc;  display:table-column; max-width:220px; min-width:220px; height:auto;}
+    h2 a{display:block;}
+    P{display:table;}
     }
 
 .pane-menu-menu-information .pane-content:after{
