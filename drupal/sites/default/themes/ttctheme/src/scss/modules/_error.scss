@@ -13,6 +13,6 @@
    font-size: 1.5em;
   text-align: center;
 }
-#mainid{display:block; width:100%; margin:0px auto; padding:100px 50px; float:none; left:0px; text-align:center;}
-.addthis, .sidebar, .title{display:none;}
+body.section-pagenotfound #mainid{display:block; width:100%; margin:0px auto; padding:100px 50px; float:none; left:0px; text-align:center;}
+body.section-pagenotfound .addthis, body.section-pagenotfound .sidebar, body.section-pagenotfound .title{display:none;}
 /** End styles for error pages */
