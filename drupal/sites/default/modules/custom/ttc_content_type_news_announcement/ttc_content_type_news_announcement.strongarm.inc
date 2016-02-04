@@ -14,7 +14,7 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_news_announcement';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_news_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -125,14 +125,16 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_news_announcement';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'menu-site-structure',
+  );
   $export['menu_options_news_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_news_announcement';
-  $strongarm->value = 'main-menu:0';
+  $strongarm->value = 'menu-site-structure:750';
   $export['menu_parent_news_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -163,7 +165,7 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_news_announcement_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'news/[node:title]';
   $export['pathauto_node_news_announcement_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
