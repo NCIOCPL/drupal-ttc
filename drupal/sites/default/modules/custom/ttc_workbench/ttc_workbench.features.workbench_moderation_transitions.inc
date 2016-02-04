@@ -9,6 +9,11 @@
  */
 function ttc_workbench_workbench_moderation_export_transitions() {
   $items = array(
+    'archived:draft' => array(
+      'from_name' => 'archived',
+      'to_name' => 'draft',
+      'name' => 'Restore',
+    ),
     'draft:needs_review' => array(
       'from_name' => 'draft',
       'to_name' => 'needs_review',

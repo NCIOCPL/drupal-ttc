@@ -13,6 +13,13 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_news_announcement';
+  $strongarm->value = 'edit-workflow';
+  $export['additional_settings__active_tab_news_announcement'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_news_announcement';
   $strongarm->value = 0;
   $export['comment_anonymous_news_announcement'] = $strongarm;
@@ -132,7 +139,10 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_news_announcement';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_news_announcement'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -155,6 +165,13 @@ function ttc_content_type_news_announcement_strongarm() {
   $strongarm->name = 'pathauto_node_news_announcement_pattern';
   $strongarm->value = '';
   $export['pathauto_node_news_announcement_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_news_announcement';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_news_announcement'] = $strongarm;
 
   return $export;
 }

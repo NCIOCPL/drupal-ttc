@@ -24,6 +24,39 @@ function ttc_user_config_user_default_permissions() {
     'name' => 'create abstract content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create news_announcement content'.
+  $permissions['create news_announcement content'] = array(
+    'name' => 'create news_announcement content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'create success_story content'.
+  $permissions['create success_story content'] = array(
+    'name' => 'create success_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -33,6 +66,33 @@ function ttc_user_config_user_default_permissions() {
     'name' => 'delete any abstract content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any news_announcement content'.
+  $permissions['delete any news_announcement content'] = array(
+    'name' => 'delete any news_announcement content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete any success_story content'.
+  $permissions['delete any success_story content'] = array(
+    'name' => 'delete any success_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -42,6 +102,33 @@ function ttc_user_config_user_default_permissions() {
     'name' => 'delete own abstract content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own news_announcement content'.
+  $permissions['delete own news_announcement content'] = array(
+    'name' => 'delete own news_announcement content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own success_story content'.
+  $permissions['delete own success_story content'] = array(
+    'name' => 'delete own success_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -127,6 +214,36 @@ function ttc_user_config_user_default_permissions() {
     'name' => 'edit any abstract content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any news_announcement content'.
+  $permissions['edit any news_announcement content'] = array(
+    'name' => 'edit any news_announcement content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit any success_story content'.
+  $permissions['edit any success_story content'] = array(
+    'name' => 'edit any success_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -136,6 +253,39 @@ function ttc_user_config_user_default_permissions() {
     'name' => 'edit own abstract content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own news_announcement content'.
+  $permissions['edit own news_announcement content'] = array(
+    'name' => 'edit own news_announcement content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own success_story content'.
+  $permissions['edit own success_story content'] = array(
+    'name' => 'edit own success_story content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -225,6 +375,20 @@ function ttc_user_config_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'pdf_using_mpdf',
+  );
+
+  // Exported permission: 'moderate content from archived to draft'.
+  $permissions['moderate content from archived to draft'] = array(
+    'name' => 'moderate content from archived to draft',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'workbench_moderation',
   );
 
   // Exported permission: 'use text format filtered_html'.
