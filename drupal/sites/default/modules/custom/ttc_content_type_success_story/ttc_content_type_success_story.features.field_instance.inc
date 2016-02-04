@@ -463,6 +463,46 @@ function ttc_content_type_success_story_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-success_story-field_short_title'.
+  $field_instances['node-success_story-field_short_title'] = array(
+    'bundle' => 'success_story',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-success_story-field_updated_date'.
   $field_instances['node-success_story-field_updated_date'] = array(
     'bundle' => 'success_story',
@@ -528,9 +568,10 @@ function ttc_content_type_success_story_field_default_field_instances() {
   t('Image');
   t('Keywords');
   t('Meta Description');
-  t('Posted Date');
-  t('Reviewed Date');
-  t('Updated Date');
+  t('Posted');
+  t('Reviewed');
+  t('Short Title');
+  t('Updated');
 
   return $field_instances;
 }
