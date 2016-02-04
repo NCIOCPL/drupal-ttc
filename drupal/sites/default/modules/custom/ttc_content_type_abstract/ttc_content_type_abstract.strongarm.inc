@@ -14,7 +14,7 @@ function ttc_content_type_abstract_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_abstract';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_abstract'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -69,14 +69,16 @@ function ttc_content_type_abstract_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_abstract';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'menu-site-structure',
+  );
   $export['menu_options_abstract'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_abstract';
-  $strongarm->value = 'main-menu:0';
+  $strongarm->value = 'menu-site-structure:578';
   $export['menu_parent_abstract'] = $strongarm;
 
   $strongarm = new stdClass();
