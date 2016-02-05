@@ -171,6 +171,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'h4';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Published Date */
   $handler->display->display_options['fields']['field_date_published']['id'] = 'field_date_published';
   $handler->display->display_options['fields']['field_date_published']['table'] = 'field_data_field_date_published';
@@ -241,6 +242,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Published Date */
   $handler->display->display_options['fields']['field_date_published']['id'] = 'field_date_published';
   $handler->display->display_options['fields']['field_date_published']['table'] = 'field_data_field_date_published';
