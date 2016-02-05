@@ -53,6 +53,8 @@ function nci_user_config_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
       'site manager' => 'site manager',
       'site moderator' => 'site moderator',
     ),
@@ -84,6 +86,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'access site in maintenance mode',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'system',
   );
@@ -126,6 +129,9 @@ function nci_user_config_user_default_permissions() {
     'name' => 'access user profiles',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'user',
   );
@@ -321,7 +327,9 @@ function nci_user_config_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
       'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -540,7 +548,10 @@ function nci_user_config_user_default_permissions() {
   // Exported permission: 'assign advanced content editor role'.
   $permissions['assign advanced content editor role'] = array(
     'name' => 'assign advanced content editor role',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
     'module' => 'role_delegation',
   );
 
@@ -556,28 +567,40 @@ function nci_user_config_user_default_permissions() {
   // Exported permission: 'assign content author role'.
   $permissions['assign content author role'] = array(
     'name' => 'assign content author role',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
     'module' => 'role_delegation',
   );
 
   // Exported permission: 'assign content editor role'.
   $permissions['assign content editor role'] = array(
     'name' => 'assign content editor role',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
     'module' => 'role_delegation',
   );
 
   // Exported permission: 'assign site manager role'.
   $permissions['assign site manager role'] = array(
     'name' => 'assign site manager role',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
     'module' => 'role_delegation',
   );
 
   // Exported permission: 'assign site moderator role'.
   $permissions['assign site moderator role'] = array(
     'name' => 'assign site moderator role',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
     'module' => 'role_delegation',
   );
 
@@ -595,6 +618,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'bypass node access',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'node',
   );
@@ -604,6 +628,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'bypass workbench moderation',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'workbench_moderation',
   );
@@ -642,6 +667,11 @@ function nci_user_config_user_default_permissions() {
     'name' => 'create page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -662,6 +692,9 @@ function nci_user_config_user_default_permissions() {
     'name' => 'delete any page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -671,6 +704,9 @@ function nci_user_config_user_default_permissions() {
     'name' => 'delete own page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -680,6 +716,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'node',
   );
@@ -709,6 +746,11 @@ function nci_user_config_user_default_permissions() {
     'name' => 'display site structure menu',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'config_perms',
   );
@@ -718,6 +760,9 @@ function nci_user_config_user_default_permissions() {
     'name' => 'edit any page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -727,6 +772,11 @@ function nci_user_config_user_default_permissions() {
     'name' => 'edit own page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'node',
   );
@@ -754,6 +804,11 @@ function nci_user_config_user_default_permissions() {
     'name' => 'moderate content from draft to needs_review',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -763,6 +818,11 @@ function nci_user_config_user_default_permissions() {
     'name' => 'moderate content from needs_review to draft',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -772,6 +832,10 @@ function nci_user_config_user_default_permissions() {
     'name' => 'moderate content from needs_review to published',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -781,6 +845,10 @@ function nci_user_config_user_default_permissions() {
     'name' => 'moderate content from published to archived',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -945,6 +1013,11 @@ function nci_user_config_user_default_permissions() {
     'name' => 'use workbench_moderation my drafts tab',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -954,6 +1027,10 @@ function nci_user_config_user_default_permissions() {
     'name' => 'use workbench_moderation needs review tab',
     'roles' => array(
       'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
     ),
     'module' => 'workbench_moderation',
   );

@@ -10,6 +10,133 @@
 function ttc_user_config_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'administer contacts vocabulary terms'.
+  $permissions['administer contacts vocabulary terms'] = array(
+    'name' => 'administer contacts vocabulary terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'vppr',
+  );
+
+  // Exported permission: 'administer devel menu items'.
+  $permissions['administer devel menu items'] = array(
+    'name' => 'administer devel menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer development_stage vocabulary terms'.
+  $permissions['administer development_stage vocabulary terms'] = array(
+    'name' => 'administer development_stage vocabulary terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'vppr',
+  );
+
+  // Exported permission: 'administer features menu items'.
+  $permissions['administer features menu items'] = array(
+    'name' => 'administer features menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer letterheads vocabulary terms'.
+  $permissions['administer letterheads vocabulary terms'] = array(
+    'name' => 'administer letterheads vocabulary terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'vppr',
+  );
+
+  // Exported permission: 'administer main-menu menu items'.
+  $permissions['administer main-menu menu items'] = array(
+    'name' => 'administer main-menu menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer management menu items'.
+  $permissions['administer management menu items'] = array(
+    'name' => 'administer management menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer menu-footer-menu--primary menu items'.
+  $permissions['administer menu-footer-menu--primary menu items'] = array(
+    'name' => 'administer menu-footer-menu--primary menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer menu-footer-menu--secondary menu items'.
+  $permissions['administer menu-footer-menu--secondary menu items'] = array(
+    'name' => 'administer menu-footer-menu--secondary menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer menu-information menu items'.
+  $permissions['administer menu-information menu items'] = array(
+    'name' => 'administer menu-information menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer menu-site-structure menu items'.
+  $permissions['administer menu-site-structure menu items'] = array(
+    'name' => 'administer menu-site-structure menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
   // Exported permission: 'administer mpdf settings'.
   $permissions['administer mpdf settings'] = array(
     'name' => 'administer mpdf settings',
@@ -17,6 +144,76 @@ function ttc_user_config_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'pdf_using_mpdf',
+  );
+
+  // Exported permission: 'administer navigation menu items'.
+  $permissions['administer navigation menu items'] = array(
+    'name' => 'administer navigation menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
+  );
+
+  // Exported permission: 'administer patent_status vocabulary terms'.
+  $permissions['administer patent_status vocabulary terms'] = array(
+    'name' => 'administer patent_status vocabulary terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'vppr',
+  );
+
+  // Exported permission: 'administer product_type vocabulary terms'.
+  $permissions['administer product_type vocabulary terms'] = array(
+    'name' => 'administer product_type vocabulary terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'vppr',
+  );
+
+  // Exported permission: 'administer send_to_email_addresses vocabulary terms'.
+  $permissions['administer send_to_email_addresses vocabulary terms'] = array(
+    'name' => 'administer send_to_email_addresses vocabulary terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'vppr',
+  );
+
+  // Exported permission: 'administer therapeutic_area vocabulary terms'.
+  $permissions['administer therapeutic_area vocabulary terms'] = array(
+    'name' => 'administer therapeutic_area vocabulary terms',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'vppr',
+  );
+
+  // Exported permission: 'administer user-menu menu items'.
+  $permissions['administer user-menu menu items'] = array(
+    'name' => 'administer user-menu menu items',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'menu_admin_per_menu',
   );
 
   // Exported permission: 'create abstract content'.
