@@ -24,16 +24,6 @@ function ttc_user_config_user_default_permissions() {
     'module' => 'vppr',
   );
 
-  // Exported permission: 'administer devel menu items'.
-  $permissions['administer devel menu items'] = array(
-    'name' => 'administer devel menu items',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'site manager' => 'site manager',
-    ),
-    'module' => 'menu_admin_per_menu',
-  );
-
   // Exported permission: 'administer development_stage vocabulary terms'.
   $permissions['administer development_stage vocabulary terms'] = array(
     'name' => 'administer development_stage vocabulary terms',

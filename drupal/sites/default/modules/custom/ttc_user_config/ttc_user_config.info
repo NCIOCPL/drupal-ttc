@@ -21,7 +21,6 @@ features[field_instance][] = user-user-field_first_name
 features[field_instance][] = user-user-field_last_name
 features[field_instance][] = user-user-field_phone_number
 features[user_permission][] = administer contacts vocabulary terms
-features[user_permission][] = administer devel menu items
 features[user_permission][] = administer development_stage vocabulary terms
 features[user_permission][] = administer features menu items
 features[user_permission][] = administer letterheads vocabulary terms
