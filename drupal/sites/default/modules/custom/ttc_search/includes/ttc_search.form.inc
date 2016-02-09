@@ -141,7 +141,7 @@ function ttc_search_form_submit($form, &$form_state) {
   unset($_GET['destination']);
 
   // include any current parameters to work with facet filters etc.
-  $options = array();
+  $options = array('external' => FALSE, 'https' => TRUE);
   $query_parms = drupal_get_query_parameters();
   if (!empty($query_parms)) {
     $options['query'] = $query_parms;
