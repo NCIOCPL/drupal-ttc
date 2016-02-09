@@ -93,9 +93,7 @@ function ttc_content_type_success_story_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_success_story';
-  $strongarm->value = array(
-    0 => 'menu-site-structure',
-  );
+  $strongarm->value = array();
   $export['menu_options_success_story'] = $strongarm;
 
   $strongarm = new stdClass();
