@@ -7,6 +7,7 @@
   .field-name-field-contact-auto .field {
     margin-bottom: 0;
   }
+.field-type-taxonomy-term-reference ul.taxonomy-terms {margin-left:0px;}
 }
 
 .abstract__link {
@@ -41,6 +42,7 @@
 .fontsize-wrapper{display:inline-block; margin-right:30px; vertical-align:top;}
 .fontsize-wrapper i{padding:5px 3px; cursor:pointer; font-size:1.3em; color:#265D74;}
 
+.field-type-taxonomy-term-reference ul.taxonomy-terms {margin-left:15px;}
 .field-name-field-product-type.field-type-taxonomy-term-reference li{ 
   list-style:none; 
   display:inline-block;
