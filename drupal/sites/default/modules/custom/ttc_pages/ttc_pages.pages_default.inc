@@ -658,7 +658,7 @@ function ttc_pages_default_page_manager_pages() {
       'class' => '',
       'id' => '',
       'override_title' => 1,
-      'override_title_text' => 'Available Technologies',
+      'override_title_text' => 'Search Technologies',
       'override_title_heading' => 'h1',
     );
     $pane->cache = array();
