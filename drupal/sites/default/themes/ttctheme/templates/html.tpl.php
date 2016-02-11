@@ -62,11 +62,24 @@
   <div class="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
   </div>
- 
-  <?php print $page_top; ?>
-  <?php print $page; ?>
-  <?php print $page_bottom; ?>
-  <?php print _zurb_foundation_add_reveals(); ?>
+
+  
+  <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+          <nav class="left-off-canvas-menu">
+          <?php print render($main_menu_expanded);?>
+           <?php
+            $menu = menu_navigation_links('menu-site-structure');
+            print theme('links__system_main_menu', array('links' => $menu));
+            ?>
+          </nav> <!-- /#main-menu -->    
+      <?php print $page_top; ?>
+        
+      <?php print $page; ?>
+      <?php print $page_bottom; ?>
+      <?php print _zurb_foundation_add_reveals(); ?>
+      </div>
+  </div>
   <!-- **** NCI Web Analytics  - DO NOT ALTER **** -->
   <script type="text/javascript" src="//static.cancer.gov/webanalytics/WA_TTC_HTTPS_PageLoad.js"></script>
   <!-- **** End NCI Web Analytics Page **** -->

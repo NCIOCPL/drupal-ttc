@@ -87,6 +87,12 @@
 
   <!--.l-main -->
   <main role="main" class="main row">
+    <nav class="mobile-menu hidden-for-large-up">
+        <a role="button" href="#idOfLeftMenu" class="left-off-canvas-toggle small-3">Menu <i class="fa fa-bars"></i></a>
+        <a role="button" href="#idOfRightMenu" class="right-off-canvas-toggle small-3">Search <i class="fa fa-search"></i></a>
+        <a role="button" href="#idOfRightMenu" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer"></i>
+</a>
+    </nav>
   <div class="main-wrapper">
     <!-- .l-main region -->
     <div class="main__inner row">
