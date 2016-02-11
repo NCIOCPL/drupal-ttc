@@ -11,8 +11,14 @@
 function _ttc_blocks_listserv_subscribe($email_address) {
     $success = 'Request submitted. Please check your email and follow the directions contained therein to confirm your subscription.';
     $failure = 'Please enter a valid email address.';
- 
-    /* ListServ subsribe and validation happens here */
+    $email_body = 'SUB NCITECHTRANSFER Anonymous';
+
+    //Get the body of the listserv subscription email - the body will determine which listserv the user is subscribing to
+    if (null !== (variable_get('subscribe_email_body'))) {
+        $email_body = variable_get('subscribe_email_body');
+    }
+
+    //ListServ subsribe and validation happens here
     $error = 0;
 
     //Test for empty email
@@ -28,7 +34,8 @@ function _ttc_blocks_listserv_subscribe($email_address) {
 
     //Try and send email. If successful, display success message and return.
     if ($error == 0) {
-        if (mail("FAKEEMAIL@FAKEEMAIL.FAKEEMAIL", "Listserv Subscription", "SUB OCPL-APPDEV-DEV Anonymous", "From: " . $email_address)) {
+
+        if (mail("FAKEEMAIL@FAKEEMAIL.FAKEEMAIL", "Listserv Subscription", $email_body, "From: " . $email_address)) {
             return $success;
         } else {
             $error = 3;
