@@ -76,56 +76,63 @@
  */
 ?>
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if(!empty($content['field_image'])) {
-    print render($content['field_image']);
-  } ?>
+  <?php 
+    if(!empty($content['field_image'])) {
+      print render($content['field_image']); 
+    }
+    else {
+      print "<div class='image'></div>";
+    }
+  ?>
   
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
+  <div class='abstract__contents'>
+    <?php print render($title_prefix); ?>
     <?php if (!$page): ?>
-      <h2<?php print $title_attributes; ?>>
-        <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <?php if (!$page): ?>
+        <h2<?php print $title_attributes; ?>>
+          <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <?php endif; ?>
     <?php endif; ?>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+    <?php print render($title_suffix); ?>
 
-  <?php
-    $has_summary_block = !empty($content['field_meta_long_desc']) ||
-      !empty($content['field_enumber']) ||
-      !empty($content['field_product_type']) ||
-      !empty($content['field_meta_keywords']) ||
-      !empty($content['field_opp_co_dev']) ||
-      !empty($content['field_contact_auto']);
-  ?>
+    <?php
+      $has_summary_block = !empty($content['field_meta_long_desc']) ||
+        !empty($content['field_enumber']) ||
+        !empty($content['field_product_type']) ||
+        !empty($content['field_meta_keywords']) ||
+        !empty($content['field_opp_co_dev']) ||
+        !empty($content['field_contact_auto']);
+    ?>
 
-  <?php if ($has_summary_block): ?>
-    <div class="abstract__summary">
-          <?php if ($view_mode == 'full'): ?>
-            <div class='abstract__link -view-pdf'>
-                <a href='/pdf/<?php print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>
-            </div>
-          <?php endif; ?>
+    <?php if ($has_summary_block): ?>
+      <div class="abstract__summary">
+            <?php if ($view_mode == 'full'): ?>
+              <div class='abstract__link -view-pdf'>
+                  <a href='/pdf/<?php print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>
+              </div>
+            <?php endif; ?>
 
-          <?php
-          print render($content['field_meta_long_desc']);
-          print render($content['field_enumber']);
-          print render($content['field_product_type']);
-          print render($content['field_meta_keywords']);
-          print render($content['field_opp_co_dev']);
-          print render($content['field_contact_auto']);
-          ?>
-         </div> 
-     
-  <?php endif; ?>
-  <?php
-    print render($content['field_opp_description_text']);
-    print render($content['field_opp_commapp_text']);
-    print render($content['field_opp_compadv_text']);
-    print render($content['field_opp_invs_text']);
-    print render($content['field_development_stage']);
-    print render($content['field_opp_pubs_text']);
-    print render($content['field_pat_status']);
-    print render($content['field_opp_rel_enum']);
-    print render($content['field_therapeutic_area']);
-  ?>
+            <?php
+            print render($content['field_meta_long_desc']);
+            print render($content['field_enumber']);
+            print render($content['field_product_type']);
+            print render($content['field_meta_keywords']);
+            print render($content['field_opp_co_dev']);
+            print render($content['field_contact_auto']);
+            ?>
+           </div> 
+
+    <?php endif; ?>
+    <?php
+      print render($content['field_opp_description_text']);
+      print render($content['field_opp_commapp_text']);
+      print render($content['field_opp_compadv_text']);
+      print render($content['field_opp_invs_text']);
+      print render($content['field_development_stage']);
+      print render($content['field_opp_pubs_text']);
+      print render($content['field_pat_status']);
+      print render($content['field_opp_rel_enum']);
+      print render($content['field_therapeutic_area']);
+    ?>
+  </div>
 </article>

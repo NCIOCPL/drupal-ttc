@@ -84,126 +84,151 @@ ul.facet-selection {
   }
 }
 .panels-flexible-region-new-facets-inside, .sidebarnav_wrapper{
-    .panels-flexible-region-new-center{width:100%;}
-    .pane-ttc-search-form-pane {
-        #edit-search-container{
-            margin:0px; padding:10px 10px 0px 10px; 
-            background-color:#306E86;
-        }
-    
-        .form-type-textfield{
-            margin:0px; padding:0px;
-            float:left;
-            width:81%;
-            color:#fff;
-            
-            input{background-color:#578FA8; border-radius:3px; border:none; color:#fff;}
-            *::-moz-placeholder {color: #fff;}
-            
-             
-        }
-        button{float:right; margin:0px; width:auto; padding:9px 9px; text-align:center; border-radius:3px;}    
+  .panels-flexible-region-new-center{width:100%;}
+  .pane-ttc-search-form-pane {
+    #edit-search-container{
+      margin:0px; padding:10px 10px 0px 10px; 
+      background-color:#306E86;
     }
-    .pane-title{
-        border-top:solid 1px #CCC;   
-        vertical-align:middle; padding:13px 13px; 
-        margin-bottom:0px;
-        display:block;
-        position:relative;
-        font-weight:600;
-        font-size:16px;
-        }
-    .pane-title:after{
-        content:"+";
-        text-align:center;
-        cursor:pointer;
-        font-size:20px;
-        position:absolute;
-        color:#f0f0f0;
-        right:8px;
-        background:#225D71;
-        top:11px;
-        padding:0px 11px;
-        display:block;
-        border-radius:3px;
-    }
-    .pane-title.open:after{
-        content:"-";
-        padding:0px 13px;
 
-    }    
-    .pane-block .pane-content{display:none;}
-    .pane-content ul{margin:0px; padding:0px;
-             
-            li{
-                margin:0px 10px; 
-                padding:7px 0px; 
-                border-bottom:solid 1px #f0f0f0;  
-                vertical-align:top;
-                
-                label{
-                  font-size:14px;  
-                  vertical-align:top; 
-                  display:inline-flex;}
-            }
-            li:last-child{border:none; margin-bottom:10px;}
-    
+    .form-type-textfield{
+      margin:0px; padding:0px;
+      float:left;
+      width:81%;
+      color:#fff;
+
+      input{background-color:#578FA8; border-radius:3px; border:none; color:#fff;}
+      *::-moz-placeholder {color: #fff;}
+
+
     }
+    button{float:right; margin:0px; width:auto; padding:9px 9px; text-align:center; border-radius:3px;}    
+  }
+  .pane-title{
+    border-top:solid 1px #CCC;   
+    vertical-align:middle; padding:13px 13px; 
+    margin-bottom:0px;
+    display:block;
+    position:relative;
+    font-weight:600;
+    font-size:16px;
+  }
+  .pane-title:after{
+    content:"+";
+    text-align:center;
+    cursor:pointer;
+    font-size:20px;
+    position:absolute;
+    color:#f0f0f0;
+    right:8px;
+    background:#225D71;
+    top:11px;
+    padding:0px 11px;
+    display:block;
+    border-radius:3px;
+  }
+  .pane-title.open:after{
+    content:"-";
+    padding:0px 13px;
+
+  }    
+  .pane-block .pane-content{display:none;}
+  .pane-content ul{margin:0px; padding:0px;
+
+                   li{
+                     margin:0px 10px; 
+                     padding:7px 0px; 
+                     border-bottom:solid 1px #f0f0f0;  
+                     vertical-align:top;
+
+                     label{
+                       font-size:14px;  
+                       vertical-align:top; 
+                       display:inline-flex;}
+                   }
+                   li:last-child{border:none; margin-bottom:10px;}
+
+  }
 }
 .edit-sort__link{position:relative; text-align:center; background:#fff;}
 .edit-sort__link:after{
-	color:#333 !important;
-    font-family: 'FontAwesome';
-	position: absolute;
-    top:0;
-    left:15%;
-	font-weight: 300;
-	font-size:1em;
-	z-index:100;
+  color:#333 !important;
+  font-family: 'FontAwesome';
+  position: absolute;
+  top:0;
+  left:15%;
+  font-weight: 300;
+  font-size:1em;
+  z-index:100;
 }
 #edit-abstract-sort-field-enumber-desc a:after{
-    	content: '\f162';
+  content: '\f162';
 }
 #edit-abstract-sort-field-opp-start-date-asc a:after{
-    	content: '\f274';
+  content: '\f274';
 }
 #edit-abstract-sort-changed-asc a:after{
-    	content: '\f271';
+  content: '\f271';
 }
 #edit-abstract-sort-title-asc a:after{
-    	content: '\f15d';
+  content: '\f15d';
 }
 body.page-availabletechnologies{
-    
-    .pane-page-title{
-        border-bottom:solid 1px #f0f0f0;
-        }
-    .pane-page-title h1 {
-        border-bottom:none; padding:0px 0px 6px 0; margin:0px; line-height:1;
-        }
-    .pane-views-header{margin:15px 0 0 0;}
-    .views-exposed-widgets {float:right; clear:none;}
-    .field-type-taxonomy-term-reference {
-        clear:both;
-        margin-bottom:50px;        
-    }
-    .field-type-taxonomy-term-reference li{ 
-        list-style:none; 
-        display:inline-block;
-        color:#fff;
-        margin:0px 5px 0px 0px; 
-        padding:5px 10px; 
-        border-radius:3px; 
-        font-size:13px !important;
-       }
-       .abstract__summary{border:none; padding:0px; font-size:.85em; max-width:95%;}
-       ul.facet-selection{margin:20px 0px; padding:0px;}
-       ul.facet-selection a{padding:.6rem .75rem;}
+
+  .pane-page-title{
+    border-bottom:solid 1px #f0f0f0;
+  }
+  .pane-page-title h1 {
+    border-bottom:none; padding:0px 0px 6px 0; margin:0px; line-height:1;
+  }
+  .pane-views-header{margin:15px 0 0 0;}
+  .views-exposed-widgets {float:right; clear:none;}
+
+  .field-type-taxonomy-term-reference li{ 
+    list-style:none; 
+    display:inline-block;
+    color:#fff;
+    margin:0px 5px 0px 0px; 
+    padding:5px 10px; 
+    border-radius:3px; 
+    font-size:13px !important;
+  }
+  .abstract__summary{border:none; padding:0px; font-size:.85em; max-width:95%;}
+  ul.facet-selection{margin:20px 0px; padding:0px;}
+  ul.facet-selection a{padding:.6rem .75rem;}
 
 
 }
 ul.taxonomy-terms, ul.facet-selection li{margin-left:0px;}
 
+article.node-abstract.node-teaser {
+  @include clearfix;
+  @include clearprior;
 
+  margin-bottom: $column-gutter;
 
+  .image {
+    width: rem-calc(220);
+    min-height: 1px;
+    margin-right: $column-gutter/2;
 
+    @media #{$medium-only} {
+      width: rem-calc(150);
+    }
+
+    @media #{$medium-up} {
+      float: left;
+    }
+  }
+
+  .abstract__contents {
+    display: table;
+  }
+
+  .abstract__summary {
+    &, .field-type-taxonomy-term-reference, .field-type-taxonomy-term-reference ul{
+      margin-bottom: 0;
+    }
+  }
+
+}
