@@ -799,6 +799,20 @@ function nci_user_config_user_default_permissions() {
     'module' => 'features',
   );
 
+  // Exported permission: 'moderate content from archived to draft'.
+  $permissions['moderate content from archived to draft'] = array(
+    'name' => 'moderate content from archived to draft',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content author' => 'content author',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: 'moderate content from draft to needs_review'.
   $permissions['moderate content from draft to needs_review'] = array(
     'name' => 'moderate content from draft to needs_review',

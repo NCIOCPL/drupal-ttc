@@ -122,6 +122,7 @@ features[user_permission][] = edit any page content
 features[user_permission][] = edit own page content
 features[user_permission][] = generate features
 features[user_permission][] = manage features
+features[user_permission][] = moderate content from archived to draft
 features[user_permission][] = moderate content from draft to needs_review
 features[user_permission][] = moderate content from needs_review to draft
 features[user_permission][] = moderate content from needs_review to published

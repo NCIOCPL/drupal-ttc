@@ -564,20 +564,6 @@ function ttc_user_config_user_default_permissions() {
     'module' => 'pdf_using_mpdf',
   );
 
-  // Exported permission: 'moderate content from archived to draft'.
-  $permissions['moderate content from archived to draft'] = array(
-    'name' => 'moderate content from archived to draft',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'advanced content editor' => 'advanced content editor',
-      'content author' => 'content author',
-      'content editor' => 'content editor',
-      'site manager' => 'site manager',
-      'site moderator' => 'site moderator',
-    ),
-    'module' => 'workbench_moderation',
-  );
-
   // Exported permission: 'use text format filtered_html'.
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
