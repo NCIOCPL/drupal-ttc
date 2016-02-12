@@ -1,13 +1,27 @@
 .breadcrumbs {
   margin:15px 0 0px 15px;
   display:block;
- 
+   
   a {
     font-weight: bold;
+      @media #{$small-only, $medium-only} {
+        font-size:12px;
+      }
   }
   .current a {
     font-weight: normal;
+      @media #{$small-only, $medium-only} {
+      display:none;
+  }
   }
 }
 
-.addthis{margin:-40px 20px 40px 0;}
+.addthis{
+    margin:-40px 20px 40px 0;
+    
+    @media #{$small-only, $medium-only} {
+          display:block; clear:both;
+          float:none !important;
+          margin:15px 0 20px 15px;
+      }
+  }

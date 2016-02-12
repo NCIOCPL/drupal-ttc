@@ -180,8 +180,20 @@ body.page-availabletechnologies{
   }
   .pane-page-title h1 {
     border-bottom:none; padding:0px 0px 6px 0; margin:0px; line-height:1;
+     
+     @media #{$small-only, $medium-only} {
+        margin-top:40px;
+        margin-bottom:-25px;
+        padding-bottom:10px;
+        font-size:1.5em;
+    }
+    
   }
-  .pane-views-header{margin:15px 0 0 0;}
+  .pane-views-header{margin:15px 0 0 0;
+      @media #{$small-only, $medium-only} {
+        font-size:1.5em;
+        }
+    }
   .views-exposed-widgets {float:right; clear:none;}
 
   .field-type-taxonomy-term-reference li{ 

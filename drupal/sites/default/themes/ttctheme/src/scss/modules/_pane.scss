@@ -75,6 +75,10 @@ body.front .pane-success-stories {
 
           margin-bottom: 0;
           margin-left: 0;
+          
+          @media #{$small-only,  $medium-only} {
+             margin: 25px auto;
+            }
         }
       }
       &__title {
@@ -94,7 +98,13 @@ body.front .pane-success-stories {
       background-repeat:no-repeat; 
       background-position:center; 
       background-size:cover;
-      
+        
+        @media #{$small-only} {
+           min-height:50vw;
+        }
+        @media #{$medium-only} {
+           min-height:30vw;
+        }
         img{visibility:hidden;}
   }
 }
