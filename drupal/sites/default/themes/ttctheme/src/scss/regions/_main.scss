@@ -35,9 +35,15 @@ body.not-front .main{
   .main-wrapper{
     background: transparent url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center -500px;
     background-size:cover auto;
-  padding-bottom: ($column-gutter * 1.45);
-  padding-right: ($column-gutter * 1.75);
-  padding-left: ($column-gutter * 1.75);
-  padding-top:3.475rem;
+  padding-bottom: ($column-gutter );
+  padding-right: ($column-gutter );
+  padding-left: ($column-gutter);
+  
+    @media #{$large-up} {
+        padding-top:3.475rem;
+        padding-bottom: ($column-gutter * 1.45);
+        padding-right: ($column-gutter * 1.75);
+        padding-left: ($column-gutter * 1.75);
+  }
   }
 } 
