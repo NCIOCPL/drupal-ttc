@@ -1,6 +1,13 @@
 (function ($) {
   'use strict';
   $(document).ready(function () {
+
+    var cookies = document.cookie;
+    if (cookies.indexOf('has_js') >= 0) {
+      // ensure has_js is set to secure
+      document.cookie = 'has_js=1;secure;';
+    }
+
     // Create a link to remove the keyword filter.
     // match column heights
     $('.listwrapper img').each(function () {
