@@ -584,7 +584,7 @@ function ttc_pages_default_page_manager_pages() {
           0 => 'main-row',
         ),
         'parent' => 'canvas',
-        'class' => 'medium-9',
+        'class' => 'small-12 large-9',
         'hide_empty' => 0,
       ),
       'main-row' => array(
@@ -610,7 +610,7 @@ function ttc_pages_default_page_manager_pages() {
         'children' => array(
           0 => 2,
         ),
-        'class' => 'medium-3',
+        'class' => 'small-12 large-3',
         'hide_empty' => 0,
       ),
       2 => array(
