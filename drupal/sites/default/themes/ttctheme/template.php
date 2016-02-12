@@ -25,6 +25,14 @@ function ttctheme_preprocess_page(&$variables) {
     $variables['alt_main_menu'] ||
     $variables['alt_secondary_menu']
   );
+  
+  $disclaimer_default_text = array('value' => 'This site is undergoing remediation for compliance with Section 508. ' .
+      'The remediation will be complete by April 30, 2016. In the interim, ' . 
+      'should you require any accessibility assistance with any content, ' . 
+      'please contact the NCI Technology Transfer team at [use the tech transfer ' . 
+      'email here]. Thank you!');
+  
+  $variables['site_hhs_disclaimer'] = (variable_get('show_hhs_disclaimer', TRUE) ? filter_xss_admin(variable_get('site_hhs_disclaimer', $disclaimer_default_text)['value']) : '');
 }
 
 /**

@@ -238,6 +238,12 @@
         <?php print render($page['footer']); ?>
       </div>
     <?php endif; ?>
+    
+    <?php if ($site_hhs_disclaimer) : ?>
+      <div class="disclaimer columns">
+        <?php print $site_hhs_disclaimer; ?>
+      </div>
+    <?php endif; ?>
 
     <?php if ($site_name) : ?>
       <div class="copyright columns">
