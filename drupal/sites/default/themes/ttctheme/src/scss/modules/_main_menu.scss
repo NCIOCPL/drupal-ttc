@@ -56,12 +56,13 @@ $main-menu-indicator-size: 0.5rem;
   padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin-top + $main-menu-margin-bottom + $main-menu-indicator-size);
 }
 body.not-front .block-system-main-menu{border-bottom:none;}
-
+body.front .mobile-menu{margin-top:-55px;}    
 .mobile-menu{
-    margin:-55px auto 0px; padding:0px;
+    margin:0 auto; padding:0px;
     display:block;
     text-align:center;
-    
+
+
     
     
     a{
