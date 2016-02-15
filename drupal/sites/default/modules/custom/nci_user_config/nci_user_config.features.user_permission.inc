@@ -164,6 +164,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'administer account settings',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'config_perms',
   );
@@ -440,6 +441,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'administer site information',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'config_perms',
   );
@@ -449,6 +451,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'administer site maintenance',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'config_perms',
   );
@@ -737,6 +740,7 @@ function nci_user_config_user_default_permissions() {
     'name' => 'display site reports menu',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'config_perms',
   );
