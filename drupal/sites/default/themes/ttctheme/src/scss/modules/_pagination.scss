@@ -13,13 +13,6 @@
           margin-left: 0;
         }
       }
-
-      // after second arrow ('< <<  1')
-      &.arrow + li:not(.arrow),
-      // after last real item ('4  >')
-      &:not(.arrow) + .arrow {
-        margin-left: $pager-wide-spacing;
-      }
     }
 
     a {
@@ -31,7 +24,7 @@
       color: palette(white);
     }
 
-    &.current {
+    &.current, &.unavailable {
       a {
         @include button-style($bg:$secondary-button-bg-color, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
 
