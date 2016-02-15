@@ -795,6 +795,30 @@ function ttc_pages_default_page_manager_pages() {
     $display->content['new-fd741315-5abd-4c20-a6a5-cae1f20c15b3'] = $pane;
     $display->panels['center'][5] = 'new-fd741315-5abd-4c20-a6a5-cae1f20c15b3';
     $pane = new stdClass();
+    $pane->pid = 'new-c1365cac-0637-4349-8e35-39a423c35ac1';
+    $pane->panel = 'center';
+    $pane->type = 'views_pager';
+    $pane->subtype = 'views_pager';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'relationship_view_from_argument:ttc_abstract_faceted_results-ctools_context_1_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 6;
+    $pane->locks = array();
+    $pane->uuid = 'c1365cac-0637-4349-8e35-39a423c35ac1';
+    $display->content['new-c1365cac-0637-4349-8e35-39a423c35ac1'] = $pane;
+    $display->panels['center'][6] = 'new-c1365cac-0637-4349-8e35-39a423c35ac1';
+    $pane = new stdClass();
     $pane->pid = 'new-bad4fbc2-aecf-4bb8-ba20-6e60dfdf817b';
     $pane->panel = 'facets';
     $pane->type = 'ttc_search_form_pane';
