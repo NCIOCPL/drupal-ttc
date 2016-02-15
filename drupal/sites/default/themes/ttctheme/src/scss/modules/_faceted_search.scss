@@ -190,11 +190,32 @@ body.page-availabletechnologies{
     
   }
   .pane-views-header{margin:15px 0 0 0;
-      @media #{$small-only, $medium-only} {
+      @media #{$small-only} {
+        font-size:1.25em;
+        min-width:200px;
+        display:block;
+        clear:both;
+       
+      
+        }
+        @media #{$medium-only} {
         font-size:1.5em;
         }
     }
-  .views-exposed-widgets {float:right; clear:none;}
+  .views-exposed-widgets {
+      float:right; clear:none;
+        @media #{$small-only} {float:left; clear:both;}
+     
+     .views-exposed-widget{
+    
+        @media #{$small-only} {
+            float:none;
+            clear:both;
+            text-align:left !important;
+            display:block;
+        }
+    }
+  }
 
   .field-type-taxonomy-term-reference li{ 
     list-style:none; 
