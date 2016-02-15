@@ -9,6 +9,7 @@ dependencies[] = features
 dependencies[] = menu
 dependencies[] = menu_breadcrumb
 dependencies[] = nodequeue
+dependencies[] = redirect
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[fe_nodequeue][] = featured_inventors_technologies
