@@ -64,17 +64,11 @@
   </div>
 
   
-  <div class="off-canvas-wrap" data-offcanvas>
+
+    <?php print $page_top; ?>
+    <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
-          <nav class="left-off-canvas-menu">
-          <?php print render($main_menu_expanded);?>
-           <?php
-            $menu = menu_navigation_links('menu-site-structure');
-            print theme('links__system_main_menu', array('links' => $menu));
-            ?>
-          </nav> <!-- /#main-menu -->    
-      <?php print $page_top; ?>
-        
+     
       <?php print $page; ?>
       <?php print $page_bottom; ?>
       <?php print _zurb_foundation_add_reveals(); ?>

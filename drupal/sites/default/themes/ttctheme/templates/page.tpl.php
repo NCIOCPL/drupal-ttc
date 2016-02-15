@@ -83,8 +83,6 @@
 
   </header>
   <!--/.l-header -->
-
-
   <!--.l-main -->
   <main role="main" class="main row">
     <nav class="mobile-menu hidden-for-large-up">
@@ -256,3 +254,6 @@
   <?php if ($messages && $zurb_foundation_messages_modal): print $messages; endif; ?>
 </div>
 <!--/.page -->
+          <nav class="left-off-canvas-menu">
+            <?php print render($menu_site_structure_expanded); ?> 
+          </nav> <!-- /#main-menu -->     

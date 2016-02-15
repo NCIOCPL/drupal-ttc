@@ -70,19 +70,15 @@
 
       }
     });
-    $(document).foundation('offcanvas', 'reflow');
-    $('.off-canvas-submenu').hide();
-    $('.off-canvas-submenu-call').click(function () {
-      var icon = $(this).parent().next('.off-canvas-submenu').is(':visible') ? '+' : '-';
-      $(this).parent().next('.off-canvas-submenu').slideToggle('fast');
-      $(this).find('span').text(icon);
-    });
+
 
     // show all abstract search images if any concrete img elements exist
     var $images = jQuery('article.node-abstract.node-teaser .image');
     if ($images.find('img').size() > 0) {
       $images.show();
     }
+    $('nav.left-off-canvas-menu li.expanded a.active').next('ul.menu').addClass('show');
+    $('nav.left-off-canvas-menu li.expanded a.active').parents('li.expanded').find('a.active').addClass('open');
 
   });
 }(jQuery));
