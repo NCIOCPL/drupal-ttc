@@ -78,5 +78,11 @@
       $(this).find('span').text(icon);
     });
 
+    // show all abstract search images if any concrete img elements exist
+    var $images = jQuery('article.node-abstract.node-teaser .image');
+    if ($images.find('img').size() > 0) {
+      $images.show();
+    }
+
   });
 }(jQuery));
