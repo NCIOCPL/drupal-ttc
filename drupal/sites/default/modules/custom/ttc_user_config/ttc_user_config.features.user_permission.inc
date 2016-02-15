@@ -170,6 +170,16 @@ function ttc_user_config_user_default_permissions() {
     'module' => 'vppr',
   );
 
+  // Exported permission: 'administer redirects'.
+  $permissions['administer redirects'] = array(
+    'name' => 'administer redirects',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'site manager' => 'site manager',
+    ),
+    'module' => 'redirect',
+  );
+
   // Exported permission: 'administer send_to_email_addresses vocabulary terms'.
   $permissions['administer send_to_email_addresses vocabulary terms'] = array(
     'name' => 'administer send_to_email_addresses vocabulary terms',
