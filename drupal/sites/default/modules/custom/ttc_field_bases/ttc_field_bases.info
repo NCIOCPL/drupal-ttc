@@ -17,7 +17,6 @@ features[field_base][] = body
 features[field_base][] = field_contact_email
 features[field_base][] = field_contact_phone
 features[field_base][] = field_date_published
-features[field_base][] = field_description
 features[field_base][] = field_display_posted_date
 features[field_base][] = field_display_reviewed_date
 features[field_base][] = field_display_updated_date
