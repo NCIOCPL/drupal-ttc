@@ -574,6 +574,15 @@ function ttc_user_config_user_default_permissions() {
     'module' => 'pdf_using_mpdf',
   );
 
+  // Exported permission: 'use PHP for settings'.
+  $permissions['use PHP for settings'] = array(
+    'name' => 'use PHP for settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'php',
+  );
+
   // Exported permission: 'use text format filtered_html'.
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
