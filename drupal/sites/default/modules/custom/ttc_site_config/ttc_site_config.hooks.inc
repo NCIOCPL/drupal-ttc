@@ -40,3 +40,43 @@ function ttc_site_config_form_system_site_information_settings_alter(&$form, &$f
     '#default_value' => variable_get('site_hhs_disclaimer', $disclaimer_default_text)['value'],
   );
 }
+
+/**
+ * Implementation of hook_field_widget_form_alter().
+ *
+ * Add WYSIWYG treatment to textarea summary form items.
+ */
+function ttc_site_config_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (!isset($element['summary'])) {
+    return;
+  }
+
+  drupal_add_css(drupal_get_path('module', 'MY_MODULE') . '/assets/textarea-summary.css');
+  drupal_add_js(drupal_get_path('module', 'MY_MODULE') . '/assets/textarea-summary.js');
+  $element['summary']['#type'] = 'text_format';
+  $element['summary']['#format'] = $element['#format'];
+}
+
+/**
+ * Implements hook_field_attach_presave().
+ */
+function ttc_site_config_field_attach_presave($entity_type, $entity) {
+  list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+
+  foreach (field_info_instances($entity_type, $bundle) as $instance) {
+    $field = field_info_field_by_id($instance['field_id']);
+    $field_name = $field['field_name'];
+    if ($field['type'] !== 'text_with_summary' || empty($entity->$field_name)) {
+      continue;
+    }
+
+    $language = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
+    foreach ($entity->{$field_name}[$language] as $id => &$value) {
+      if (!is_array($value['summary'])) {
+        continue;
+      }
+
+      $value['summary'] = $value['summary']['value'];
+    }
+  }
+}
