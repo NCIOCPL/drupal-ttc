@@ -87,8 +87,8 @@
   <main role="main" class="main row">
     <nav class="mobile-menu hidden-for-large-up">
         <a role="button" href="#idOfLeftMenu" class="left-off-canvas-toggle small-3">Menu <i class="fa fa-bars"></i></a>
-        <a role="button" href="#idOfRightMenu" class="right-off-canvas-toggle small-3">Search <i class="fa fa-search"></i></a>
-        <a role="button" href="#idOfRightMenu" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer"></i>
+        <a role="button" href="#search" class="search-toggle small-3">Search <i class="fa fa-search"></i></a>
+        <a role="button" href="#follow" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer"></i>
 </a>
     </nav>
   <div class="main-wrapper">
@@ -256,4 +256,11 @@
 <!--/.page -->
           <nav class="left-off-canvas-menu">
             <?php print render($menu_site_structure_expanded); ?> 
-          </nav> <!-- /#main-menu -->     
+          </nav> <!-- /#mobile-menu --> 
+          
+          <nav class="right-off-canvas-menu" id="follow">
+            <?php
+            $block = module_invoke('block', 'block_view', '2');
+            print render($block['content']);
+            ?>
+          </nav> <!-- /#mobile-follow-menu -->     

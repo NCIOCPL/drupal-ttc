@@ -33,6 +33,11 @@ function ttctheme_preprocess_page(&$variables) {
       'email here]. Thank you!');
   
   $variables['site_hhs_disclaimer'] = (variable_get('show_hhs_disclaimer', TRUE) ? filter_xss_admin(variable_get('site_hhs_disclaimer', $disclaimer_default_text)['value']) : '');
+  
+    $main_menu_tree = menu_tree_all_data('menu-site-structure');
+
+  // Add the rendered output to the $main_menu_expanded variable
+  $variables['menu_site_structure_expanded'] = menu_tree_output($main_menu_tree);
 }
 
 /**

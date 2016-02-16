@@ -23,6 +23,9 @@
     @media #{$large-up} {
       font-size: rem-calc(40px);
     }
+    @media #{$small, $medium} {
+    font-size: rem-calc(30px);
+    }
 
     &:after {
       position: absolute;
