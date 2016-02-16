@@ -273,46 +273,6 @@ function ttc_content_type_success_story_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-success_story-field_meta_desc'.
-  $field_instances['node-success_story-field_meta_desc'] = array(
-    'bundle' => 'success_story',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_meta_desc',
-    'label' => 'Meta Description',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 10,
-    ),
-  );
-
   // Exported field_instance: 'node-success_story-field_meta_keywords'.
   $field_instances['node-success_story-field_meta_keywords'] = array(
     'bundle' => 'success_story',
@@ -350,6 +310,45 @@ function ttc_content_type_success_story_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-success_story-field_meta_long_desc'.
+  $field_instances['node-success_story-field_meta_long_desc'] = array(
+    'bundle' => 'success_story',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This short description is provided to search engines, and is not directly visible on the page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_meta_long_desc',
+    'label' => 'Meta Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 42,
     ),
   );
 
@@ -571,6 +570,7 @@ function ttc_content_type_success_story_field_default_field_instances() {
   t('Posted');
   t('Reviewed');
   t('Short Title');
+  t('This short description is provided to search engines, and is not directly visible on the page.');
   t('Updated');
 
   return $field_instances;
