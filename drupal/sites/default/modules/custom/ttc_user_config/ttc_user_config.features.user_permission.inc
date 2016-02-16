@@ -127,6 +127,15 @@ function ttc_user_config_user_default_permissions() {
     'module' => 'menu_admin_per_menu',
   );
 
+  // Exported permission: 'administer meta tags'.
+  $permissions['administer meta tags'] = array(
+    'name' => 'administer meta tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'metatag',
+  );
+
   // Exported permission: 'administer mpdf settings'.
   $permissions['administer mpdf settings'] = array(
     'name' => 'administer mpdf settings',
@@ -443,6 +452,15 @@ function ttc_user_config_user_default_permissions() {
       'site moderator' => 'site moderator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'edit meta tags'.
+  $permissions['edit meta tags'] = array(
+    'name' => 'edit meta tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'metatag',
   );
 
   // Exported permission: 'edit own abstract content'.
