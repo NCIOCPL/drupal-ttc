@@ -141,7 +141,7 @@ body.front .mobile-menu{margin-top:-55px;}
     }
 }
 
-@media #{$small-only} {
+@media #{$small-only, $medium-only} {
   .right-off-canvas-menu {
     width: ($mobile-off-canvas-width); 
   }
