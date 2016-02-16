@@ -108,6 +108,9 @@ function ttc_content_type_news_announcement_strongarm() {
         'xmlsitemap' => array(
           'weight' => '6',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
