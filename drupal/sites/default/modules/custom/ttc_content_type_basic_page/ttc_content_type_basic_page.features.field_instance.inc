@@ -183,6 +183,45 @@ function ttc_content_type_basic_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-page-field_meta_long_desc'.
+  $field_instances['node-page-field_meta_long_desc'] = array(
+    'bundle' => 'page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This short description is provided to search engines, and is not directly visible on the page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_meta_long_desc',
+    'label' => 'Meta Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 42,
+    ),
+  );
+
   // Exported field_instance: 'node-page-field_posted_date'.
   $field_instances['node-page-field_posted_date'] = array(
     'bundle' => 'page',
@@ -354,8 +393,10 @@ function ttc_content_type_basic_page_field_default_field_instances() {
   t('Display Posted Date');
   t('Display Reviewed Date');
   t('Display Updated Date');
+  t('Meta Description');
   t('Posted');
   t('Reviewed');
+  t('This short description is provided to search engines, and is not directly visible on the page.');
   t('Updated');
 
   return $field_instances;
