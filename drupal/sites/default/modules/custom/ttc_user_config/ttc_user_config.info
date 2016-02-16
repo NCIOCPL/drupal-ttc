@@ -23,6 +23,7 @@ features[field_instance][] = user-user-field_email
 features[field_instance][] = user-user-field_first_name
 features[field_instance][] = user-user-field_last_name
 features[field_instance][] = user-user-field_phone_number
+features[filter][] = php_code
 features[user_permission][] = administer contacts vocabulary terms
 features[user_permission][] = administer development_stage vocabulary terms
 features[user_permission][] = administer features menu items
