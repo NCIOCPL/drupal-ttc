@@ -15,6 +15,10 @@
    
 body.front .pane-available-technologies {
   @extend %homepage-panel;
+  
+  @media #{$small-only} {
+              padding:0 3vw;
+          }
 }
    
 .pane-available-technologies {
@@ -43,7 +47,7 @@ body.front .pane-available-technologies {
     
     body.page-availabletechnologies ul.available-technologies {
       &__list {
-
+         
         @media #{$medium-up} {
           @include block-grid(3, rem-calc(8));
         }
