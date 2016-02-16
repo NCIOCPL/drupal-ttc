@@ -4,7 +4,7 @@
 
   padding-right: $column-gutter;
   padding-left: $column-gutter;
-
+    background-size:100% 50%;
   &__inner {
     background-color: palette(white, base);
 
@@ -30,6 +30,8 @@ body.not-front .main{
   padding-left: 0px;
   margin-top:0px;
   padding-top:0px;
+  background-size:100% 100%;
+
 
   
   .main-wrapper{
