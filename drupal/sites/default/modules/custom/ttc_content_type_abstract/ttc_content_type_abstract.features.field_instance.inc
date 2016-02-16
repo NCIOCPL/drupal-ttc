@@ -377,7 +377,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'bundle' => 'abstract',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'A short description of the abstract, also provided to search engines..',
     'display' => array(
       'PDF' => array(
         'label' => 'above',
@@ -1360,6 +1360,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('30-Day Warned');
   t('A list of related reference numbers (E-Numbers).');
+  t('A short description of the abstract, also provided to search engines..');
   t('Also called an E-Number.');
   t('Announce opportunity to ListServ?');
   t('Collaboration Opportunity');
