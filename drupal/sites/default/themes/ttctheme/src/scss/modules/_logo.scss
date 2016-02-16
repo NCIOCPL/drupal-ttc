@@ -11,7 +11,7 @@
 %block--logo {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-
+  @media #{$small-only, $medium-only} {margin:0 auto;}
   @media #{$large-up} {
     display: block;
     float: left;
