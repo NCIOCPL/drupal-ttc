@@ -22,7 +22,6 @@ dependencies[] = url
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = node-success_story-body
-features[field_instance][] = node-success_story-field_description
 features[field_instance][] = node-success_story-field_display_posted_date
 features[field_instance][] = node-success_story-field_display_reviewed_date
 features[field_instance][] = node-success_story-field_display_updated_date

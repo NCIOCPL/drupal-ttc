@@ -54,46 +54,6 @@ function ttc_content_type_success_story_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-success_story-field_description'.
-  $field_instances['node-success_story-field_description'] = array(
-    'bundle' => 'success_story',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_description',
-    'label' => 'Description',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 1,
-    ),
-  );
-
   // Exported field_instance: 'node-success_story-field_display_posted_date'.
   $field_instances['node-success_story-field_display_posted_date'] = array(
     'bundle' => 'success_story',
@@ -560,7 +520,6 @@ function ttc_content_type_success_story_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Description');
   t('Display Posted Date');
   t('Display Reviewed Date');
   t('Display Updated Date');
