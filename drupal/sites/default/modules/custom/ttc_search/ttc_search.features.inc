@@ -121,9 +121,16 @@ function ttc_search_default_search_api_index() {
       "cron_limit" : "50",
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "-10",
-          "settings" : { "default" : "1", "bundles" : [] }
+          "settings" : {
+            "default" : "0",
+            "bundles" : {
+              "abstract" : "abstract",
+              "page" : "page",
+              "success_story" : "success_story"
+            }
+          }
         },
         "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_node_status" : { "status" : 1, "weight" : "0", "settings" : [] },
@@ -138,17 +145,18 @@ function ttc_search_default_search_api_index() {
           "weight" : "0",
           "settings" : { "fields" : {
               "title" : true,
+              "field_meta_long_desc" : true,
+              "field_meta_keywords" : true,
               "field_enumber" : true,
               "field_opp_year" : true,
-              "field_meta_desc" : true,
-              "field_meta_keywords" : true,
               "body:value" : true,
               "body:summary" : true,
               "field_opp_description_text:value" : true,
               "field_opp_commapp_text:value" : true,
               "field_opp_compadv_text:value" : true,
-              "field_opp_invs_text:field_opp_invs_name" : true,
-              "field_pat_status:field_text" : true
+              "field_pat_status:field_text" : true,
+              "field_opp_invs_text:value" : true,
+              "field_opp_pubs_text:value" : true
             }
           }
         },
@@ -158,16 +166,14 @@ function ttc_search_default_search_api_index() {
           "settings" : {
             "fields" : {
               "title" : true,
+              "field_meta_keywords" : true,
               "field_enumber" : true,
               "field_opp_year" : true,
-              "field_meta_desc" : true,
-              "field_meta_keywords" : true,
               "body:value" : true,
               "body:summary" : true,
               "field_opp_description_text:value" : true,
               "field_opp_commapp_text:value" : true,
               "field_opp_compadv_text:value" : true,
-              "field_opp_invs_text:field_opp_invs_name" : true,
               "field_pat_status:field_text" : true
             },
             "title" : 0,
@@ -181,16 +187,14 @@ function ttc_search_default_search_api_index() {
           "settings" : {
             "fields" : {
               "title" : true,
+              "field_meta_keywords" : true,
               "field_enumber" : true,
               "field_opp_year" : true,
-              "field_meta_desc" : true,
-              "field_meta_keywords" : true,
               "body:value" : true,
               "body:summary" : true,
               "field_opp_description_text:value" : true,
               "field_opp_commapp_text:value" : true,
               "field_opp_compadv_text:value" : true,
-              "field_opp_invs_text:field_opp_invs_name" : true,
               "field_pat_status:field_text" : true
             },
             "spaces" : "[^\\\\p{L}\\\\p{N}]",
@@ -203,16 +207,14 @@ function ttc_search_default_search_api_index() {
           "settings" : {
             "fields" : {
               "title" : true,
+              "field_meta_keywords" : true,
               "field_enumber" : true,
               "field_opp_year" : true,
-              "field_meta_desc" : true,
-              "field_meta_keywords" : true,
               "body:value" : true,
               "body:summary" : true,
               "field_opp_description_text:value" : true,
               "field_opp_commapp_text:value" : true,
               "field_opp_compadv_text:value" : true,
-              "field_opp_invs_text:field_opp_invs_name" : true,
               "field_pat_status:field_text" : true
             },
             "file" : "",
@@ -236,7 +238,6 @@ function ttc_search_default_search_api_index() {
         "body:summary" : { "type" : "text" },
         "body:value" : { "type" : "text" },
         "field_enumber" : { "type" : "text" },
-        "field_meta_desc" : { "type" : "text" },
         "field_meta_keywords" : { "type" : "list\\u003Ctext\\u003E", "boost" : "3.0" },
         "field_meta_long_desc" : { "type" : "text" },
         "field_opp_commapp_text:value" : { "type" : "text" },
@@ -303,11 +304,6 @@ function ttc_search_default_search_api_server() {
           "field_opp_year" : {
             "table" : "search_api_db_default_node_index_text",
             "column" : "field_opp_year",
-            "type" : "text",
-            "boost" : "1.0"
-          },
-          "field_meta_desc" : {
-            "table" : "search_api_db_default_node_index_text",
             "type" : "text",
             "boost" : "1.0"
           },
