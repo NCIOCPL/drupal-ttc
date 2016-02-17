@@ -157,7 +157,15 @@ body.front .mobile-menu{margin-top:-55px;}
   }
 }
 
-.exit-off-canvas{ color:#272E3F; font-weight:600; font-size:18px; text-decoration:none; padding:13px 20px; display:none;}
+.exit-off-canvas{ 
+color:#fff; 
+font-weight:600; 
+font-size:18px; 
+text-decoration:none; 
+padding:13px 20px; 
+display:none;
+background:rgba(0, 0, 0, 0.5) repeat !important;
+}
 
 
 
