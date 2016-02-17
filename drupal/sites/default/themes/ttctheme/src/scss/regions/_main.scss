@@ -5,6 +5,9 @@
   padding-right: $column-gutter;
   padding-left: $column-gutter;
     background-size:100% 50%;
+    
+    @media #{$large-up} {background-size:100% 70%;}
+    
   &__inner {
     background-color: palette(white, base);
 
