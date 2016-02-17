@@ -153,7 +153,7 @@ body.not-front .pane-success-stories ul.success-stories__list {
     }
     
     .pane-content:after{
-        color:#6E7741 !important;
+        color:#877131 !important;
         font-family: 'FontAwesome';
         content: '\f0d7';
         position: absolute;
@@ -162,6 +162,13 @@ body.not-front .pane-success-stories ul.success-stories__list {
         font-weight: 300;
         font-size:3em;
         z-index:100;
+        
+         @media #{$small-only} {
+            color:#877132 !important;
+         }
+         @media #{$medium-only} {
+            color:#7F7736 !important;
+         }
     }    
    
    .pane-title{font-size:rem(22px); color:#fff; text-align:center; margin:1rem auto 3rem;}
