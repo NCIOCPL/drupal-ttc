@@ -8,7 +8,7 @@
     width: 30%;
     margin-top: 0.25rem;
     margin-bottom: 1rem;
-
+ }
     @at-root .search-form {
       &__input {
         // force override Foundation styles
@@ -36,7 +36,7 @@
           background-color: palette(gray, light);
         }
       }
-    }
+   
     @at-root .small-4 {
       padding-left: rem-calc(2px);
       
