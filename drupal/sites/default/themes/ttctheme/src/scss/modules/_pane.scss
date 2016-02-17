@@ -19,6 +19,9 @@ body.front .pane-available-technologies {
   @media #{$small-only} {
               padding:0 3vw;
           }
+    @media #{ $medium-only} {
+              padding:0 1.7vw;
+          }
 }
    
 .pane-available-technologies {
@@ -50,6 +53,9 @@ body.front .pane-available-technologies {
          
         @media #{$medium-up} {
           @include block-grid(3, rem-calc(8));
+        }
+        @media #{$small-only} {
+          @include block-grid(1, rem-calc(8));
         }
       }
     }
