@@ -19,11 +19,11 @@ function ttc_site_config_wysiwyg_editor_settings_alter(&$settings, $context) {
 }
 
 function ttc_site_config_form_system_site_information_settings_alter(&$form, &$form_state, $form_id) {
-  $disclaimer_default_text = 'This site is undergoing remediation for compliance with Section 508. ' .
+  $disclaimer_default_text = array('value' => 'This site is undergoing remediation for compliance with Section 508. ' .
       'The remediation will be complete by April 30, 2016. In the interim, ' . 
       'should you require any accessibility assistance with any content, ' . 
       'please contact the NCI Technology Transfer team at [use the tech transfer ' . 
-      'email here]. Thank you!';
+      'email here]. Thank you!');
   
   $form['hhs_disclaimer'] = array(
     '#type' => 'fieldset',
