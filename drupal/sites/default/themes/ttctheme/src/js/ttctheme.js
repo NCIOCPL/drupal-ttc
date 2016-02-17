@@ -79,9 +79,9 @@
     }
     $('nav.left-off-canvas-menu li.expanded a.active').next('ul.menu').addClass('show');
     $('nav.left-off-canvas-menu li.expanded a.active').parents('li.expanded').find('a.active').addClass('open');
-    $('.block-search-form').clone().insertAfter('.mobile-menu').removeClass('header').addClass('mobile-search');
+    $('.block-search-form').clone().insertAfter('.mobile-menu').removeClass('header').addClass('mobile-search hidden-for-large-up');
     $('.search-toggle').click(function () {
-      $('.mobile-search').toggle();
+      $('.mobile-search').toggleClass('show');
     });
   });
 }(jQuery));
