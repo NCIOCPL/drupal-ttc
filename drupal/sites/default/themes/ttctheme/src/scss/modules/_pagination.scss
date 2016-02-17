@@ -3,6 +3,8 @@
     $pager-spacing: 0.5rem;
     $pager-wide-spacing: 2rem;
 
+
+        
     // specificity override
     .item-list & {
       margin-left: $pager-spacing;
@@ -22,6 +24,10 @@
       @include single-transition(background-color);
 
       color: palette(white);
+      
+          @media #{$small-only, $medium-only} {
+        padding:8px 13px;
+        }
     }
 
     &.current, &.unavailable {
