@@ -164,14 +164,26 @@ ul.facet-selection {
 #edit-abstract-sort-field-enumber-desc a:after{
   content: '\f162';
 }
+#edit-abstract-sort-field-enumber-asc a:after{
+  content: '\f163';
+}
 #edit-abstract-sort-field-opp-start-date-asc a:after{
   content: '\f274';
+}
+#edit-abstract-sort-field-opp-start-date-desc a:after{
+  content: '\f273';
 }
 #edit-abstract-sort-changed-asc a:after{
   content: '\f271';
 }
+#edit-abstract-sort-changed-desc a:after{
+  content: '\f272';
+}
 #edit-abstract-sort-title-asc a:after{
   content: '\f15d';
+}
+#edit-abstract-sort-title-desc a:after{
+  content: '\f15e';
 }
 body.page-availabletechnologies{
 
