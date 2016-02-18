@@ -2,6 +2,7 @@ $main-menu-margin-top: 1rem;
 $main-menu-margin-bottom: 0.5rem;
 $main-menu-indicator-size: 0.5rem;
 $mobile-off-canvas-width: 100px;
+
 .block-system-main-menu {
   display: none;
   clear: both;
@@ -80,7 +81,7 @@ body.front .mobile-menu{margin-top:-55px;}
 
 .off-canvas-wrap .left-off-canvas-menu{
     background-color:#272E3F;
-    
+width: 290px; 
         ul.menu{
             margin:0px; padding:0px;
                 li{
@@ -147,6 +148,9 @@ body.front .mobile-menu{margin-top:-55px;}
   }
   .move-left > .inner-wrap {
     transform: translate3d(-$mobile-off-canvas-width, 0, 0);
+  }
+    .move-right > .inner-wrap {
+    transform: translate3d(290px, 0, 0);
   }
 
   .no-csstransforms .left-off-canvas-menu {

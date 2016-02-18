@@ -36,6 +36,7 @@ body.not-front .main{
   background-size:100% 100%;
 
 
+
   
   .main-wrapper{
     background: transparent url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center -500px;
@@ -52,3 +53,13 @@ body.not-front .main{
   }
   }
 } 
+
+body.page-node{
+    .sidebar{margin-top:50px;}
+    
+    .main__content{
+        @include grid-column(12);  
+        @media #{$large-up} {@include grid-column(9);  }
+    }
+    
+}

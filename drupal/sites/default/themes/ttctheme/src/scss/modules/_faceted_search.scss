@@ -286,6 +286,9 @@ article.node-abstract.node-teaser {
       margin-bottom: 0;
     }
   }
-
 }
-    .pane-current-search-current-abstract-faceted-search ul li{margin-right:10px;}
+.pane-current-search-current-abstract-faceted-search ul li{margin-right:10px;}
+
+body.node-type-abstract .sidebar.show-for-large-up{
+         display:block !important;
+}

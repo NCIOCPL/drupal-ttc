@@ -140,7 +140,15 @@
 		  </div>
 		<?php endif; ?>      
 
-      <div id="mainid" class="<?php print $main_grid; ?> columns main__content">
+      <?php if (!empty($page['sidebar_first'])): ?>
+        <aside role="complementary" class="sidebar-first columns sidebar show-for-large-up large-3">
+          <div class="sidebarnav_wrapper"><?php print render($page['sidebar_first']); ?></div>
+        </aside>
+      <?php endif; ?>
+
+          <div id="mainid" class="large-12 columns main__content">
+
+    
         <?php if (!empty($page['highlighted'])): ?>
           <div class="highlight panel callout">
             <?php print render($page['highlighted']); ?>
@@ -170,11 +178,6 @@
       </div>
       <!--/.l-main region -->
 
-      <?php if (!empty($page['sidebar_first'])): ?>
-        <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
-          <div class="sidebarnav_wrapper"><?php print render($page['sidebar_first']); ?></div>
-        </aside>
-      <?php endif; ?>
 
       <?php if (!empty($page['sidebar_second'])): ?>
         <aside role="complementary" class="<?php print $sidebar_sec_grid; ?> sidebar-second columns sidebar">
