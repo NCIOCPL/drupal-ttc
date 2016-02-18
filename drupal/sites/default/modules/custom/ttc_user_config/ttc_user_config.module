@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the TTC User Config feature.
  */
+
+include_once 'ttc_user_config.features.inc';
