@@ -15,7 +15,7 @@ function ttc_user_config_config_perms() {
   $config_perms->api_version = 1;
   $config_perms->machine_name = 'access_generate_pdf_path';
   $config_perms->status = TRUE;
-  $config_perms->name = 'access generate-pdf path';
+  $config_perms->name = 'access generate pdf path';
   $config_perms->path = array(
     0 => 'pdf/*',
   );

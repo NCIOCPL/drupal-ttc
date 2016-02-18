@@ -10,9 +10,9 @@
 function ttc_user_config_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'access generate-pdf path'.
-  $permissions['access generate-pdf path'] = array(
-    'name' => 'access generate-pdf path',
+  // Exported permission: 'access generate pdf path'.
+  $permissions['access generate pdf path'] = array(
+    'name' => 'access generate pdf path',
     'roles' => array(
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
