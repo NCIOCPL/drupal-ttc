@@ -119,7 +119,6 @@ function ttc_site_config_metatag_export_default() {
   // Exported Metatag config instance: global:403.
   $config['global:403'] = array(
     'instance' => 'global:403',
-    'disabled' => FALSE,
     'config' => array(
       'canonical' => array(
         'value' => '[site:url]',
@@ -133,7 +132,6 @@ function ttc_site_config_metatag_export_default() {
   // Exported Metatag config instance: global:404.
   $config['global:404'] = array(
     'instance' => 'global:404',
-    'disabled' => FALSE,
     'config' => array(
       'canonical' => array(
         'value' => '[site:url]',
@@ -147,7 +145,6 @@ function ttc_site_config_metatag_export_default() {
   // Exported Metatag config instance: global:frontpage.
   $config['global:frontpage'] = array(
     'instance' => 'global:frontpage',
-    'disabled' => FALSE,
     'config' => array(
       'title' => array(
         'value' => '[site:name] | [current-page:pager]',
