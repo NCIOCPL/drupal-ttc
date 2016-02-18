@@ -72,7 +72,7 @@ function ttc_site_structure_strongarm() {
       'name' => 'menu-footer-menu--secondary',
     ),
     'menu-information' => array(
-      'enabled' => 1,
+      'enabled' => 0,
       'weight' => '0',
       'type' => 'menu',
       'title' => 'Information For',
