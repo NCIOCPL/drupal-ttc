@@ -176,8 +176,11 @@ body.not-front .pane-success-stories ul.success-stories__list {
    .pane-content{
         max-width:800px; margin:0 auto;
         
+        .menu li.expanded .active{cursor: default; }
+        .menu li.expanded .active:hover{text-decoration:none;}
+        
         ul ul li {list-style:outside;
-            a{ color:#333; display:block; line-height:1.5rem;}
+            a{ color:#333; display:block; line-height:1.7rem;}
         }
         ul ul{margin-top:.5rem;}
           .li-wrapper{
