@@ -83,5 +83,9 @@
     $('.search-toggle').click(function () {
       $('.mobile-search').toggleClass('show');
     });
+    $('<span class="mplus"/>').insertAfter('ul.menu li.expanded > a');
+    $('.mplus').on('click', function () {
+      $(this).toggleClass('open').next('ul.menu').slideToggle();
+    });
   });
 }(jQuery));
