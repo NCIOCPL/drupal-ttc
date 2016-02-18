@@ -10,9 +10,6 @@
   }
   .current a {
     font-weight: normal;
-      @media #{$small-only, $medium-only} {
-      display:none;
-  }
   }
 }
 
