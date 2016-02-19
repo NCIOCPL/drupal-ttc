@@ -50,6 +50,22 @@
   <?php endif; ?>
   <ul class="field-items"<?php print $content_attributes; ?>>
     <?php foreach ($items as $delta => $item): ?>
+    <?php if(isset($item['#markup'])) {
+      // form alias
+      $relEnumAlias = strtolower("availabletechnologies/${item['#markup']}");
+      // lookup path from alias
+      $relEnumPath = drupal_lookup_path("source", $relEnumAlias);
+      if($relEnumPath !== FALSE) {
+        // if path esists, find node from it
+        $node = menu_get_object("node", 1, $relEnumPath);
+        if(isset($node->title)) {
+          // extend the markup with the title if possible
+          $item['#markup'] .= " - $node->title";
+        }
+        // replace the markup with a new link to the node
+        $item['#markup'] = l($item['#markup'], $relEnumAlias);
+      }
+    } ?>
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></li>
     <?php endforeach; ?>
   </ul>
