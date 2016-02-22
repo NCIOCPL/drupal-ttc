@@ -256,6 +256,36 @@ function ttc_pages_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
+    $pane->pid = 'new-4f96b8ae-0afa-4960-ad55-81e6abf304fa';
+    $pane->panel = 'center';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:body';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '4f96b8ae-0afa-4960-ad55-81e6abf304fa';
+    $display->content['new-4f96b8ae-0afa-4960-ad55-81e6abf304fa'] = $pane;
+    $display->panels['center'][0] = 'new-4f96b8ae-0afa-4960-ad55-81e6abf304fa';
+    $pane = new stdClass();
     $pane->pid = 'new-6b6e79ed-bbde-46d4-9618-6bfbde85fd2f';
     $pane->panel = 'center';
     $pane->type = 'views';
@@ -285,11 +315,11 @@ function ttc_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '6b6e79ed-bbde-46d4-9618-6bfbde85fd2f';
     $display->content['new-6b6e79ed-bbde-46d4-9618-6bfbde85fd2f'] = $pane;
-    $display->panels['center'][0] = 'new-6b6e79ed-bbde-46d4-9618-6bfbde85fd2f';
+    $display->panels['center'][1] = 'new-6b6e79ed-bbde-46d4-9618-6bfbde85fd2f';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
