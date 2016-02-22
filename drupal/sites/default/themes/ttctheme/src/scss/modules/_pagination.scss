@@ -25,9 +25,7 @@
 
       color: palette(white);
       
-          @media #{$small-only, $medium-only} {
-        padding:8px 13px;
-        }
+         padding:8px 13px;
     }
 
     &.current, &.unavailable {
