@@ -87,5 +87,11 @@
     $('.mplus').on('click', function () {
       $(this).toggleClass('open').next('ul.menu').slideToggle();
     });
+    // wrap sidebar with span and html to match comps for mobile
+    $('<span class="sidebar-mobile-link hide-for-large-up">Find Other Available Technologies</span>').prependTo('body.section-availabletechnologies .sidebarnav_wrapper');
+    $('.sidebar-mobile-link').on('click', function () {
+      $('* .sidebarnav_wrapper .block-panels-mini').slideToggle();
+      $(this).toggleClass('open');
+    });
   });
 }(jQuery));

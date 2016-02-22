@@ -291,4 +291,17 @@ article.node-abstract.node-teaser {
 
 body.node-type-abstract .sidebar.show-for-large-up{
          display:block !important;
+         
+    @media #{$small-only, $medium-only} {
+      .sidebarnav_wrapper .block{display: none; margin:0 15px;}
+    }
+.sidebar-mobile-link {
+    display:block;
+    padding:15px;
+    text-align:left;
+    cursor:pointer;
+    
+    &:after{content:"+"; float:right; font-size:20px; margin-top:-4px; color:#fff;   background:#306E86; border-radius:3px; width:35px; text-align:center;}
+}
+.sidebar-mobile-link.open:after{content:"-";}
 }
