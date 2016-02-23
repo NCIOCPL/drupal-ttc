@@ -165,6 +165,15 @@ function ttc_user_config_user_default_permissions() {
     'module' => 'menu_admin_per_menu',
   );
 
+  // Exported permission: 'administer nodequeue'.
+  $permissions['administer nodequeue'] = array(
+    'name' => 'administer nodequeue',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'nodequeue',
+  );
+
   // Exported permission: 'administer patent_status vocabulary terms'.
   $permissions['administer patent_status vocabulary terms'] = array(
     'name' => 'administer patent_status vocabulary terms',
@@ -599,6 +608,28 @@ function ttc_user_config_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'pdf_using_mpdf',
+  );
+
+  // Exported permission: 'manipulate all queues'.
+  $permissions['manipulate all queues'] = array(
+    'name' => 'manipulate all queues',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'nodequeue',
+  );
+
+  // Exported permission: 'manipulate queues'.
+  $permissions['manipulate queues'] = array(
+    'name' => 'manipulate queues',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'advanced content editor' => 'advanced content editor',
+      'content editor' => 'content editor',
+      'site manager' => 'site manager',
+      'site moderator' => 'site moderator',
+    ),
+    'module' => 'nodequeue',
   );
 
   // Exported permission: 'use PHP for settings'.
