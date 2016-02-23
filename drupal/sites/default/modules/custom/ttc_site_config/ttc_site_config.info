@@ -9,6 +9,7 @@ dependencies[] = entity
 dependencies[] = features
 dependencies[] = image
 dependencies[] = metatag
+dependencies[] = metatag_panels
 dependencies[] = pdf_using_mpdf
 dependencies[] = recaptcha
 dependencies[] = rules

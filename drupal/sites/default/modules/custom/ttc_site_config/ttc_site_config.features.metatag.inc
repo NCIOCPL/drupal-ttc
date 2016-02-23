@@ -147,7 +147,7 @@ function ttc_site_config_metatag_export_default() {
     'instance' => 'global:frontpage',
     'config' => array(
       'title' => array(
-        'value' => '[site:name] | [current-page:pager]',
+        'value' => '[site:name]',
       ),
       'canonical' => array(
         'value' => '[site:url]',
