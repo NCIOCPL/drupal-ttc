@@ -19,12 +19,12 @@ function ttc_site_structure_ctools_plugin_api($module = NULL, $api = NULL) {
 function ttc_site_structure_fe_nodequeue_export_fields() {
   $nodequeues = array();
 
-  // Exported nodequeues: featured_inventors_technologies
-  $nodequeues['featured_inventors_technologies'] = array(
-    'name' => 'featured_inventors_technologies',
-    'title' => 'Featured Inventors & Technologies',
+  // Exported nodequeues: success_stories
+  $nodequeues['success_stories'] = array(
+    'name' => 'success_stories',
+    'title' => 'Success Stories',
     'subqueue_title' => '',
-    'size' => 3,
+    'size' => 0,
     'link' => '',
     'link_remove' => '',
     'owner' => 'nodequeue',
@@ -32,14 +32,19 @@ function ttc_site_structure_fe_nodequeue_export_fields() {
     'show_in_tab' => 1,
     'show_in_links' => 0,
     'reference' => 0,
-    'reverse' => 0,
+    'reverse' => 1,
     'insert_at_front' => 1,
     'i18n' => 0,
     'subqueues' => 1,
     'types' => array(
-      0 => 'abstract',
+      0 => 'success_story',
     ),
-    'roles' => array(),
+    'roles' => array(
+      0 => 'advanced content editor',
+      1 => 'content editor',
+      2 => 'site manager',
+      3 => 'site moderator',
+    ),
     'count' => 0,
   );
 
