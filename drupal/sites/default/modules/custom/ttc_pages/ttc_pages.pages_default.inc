@@ -672,7 +672,7 @@ function ttc_pages_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Search Technologies';
   $display->uuid = '277f2171-f017-40ff-baab-698ef998bbd8';
   $display->content = array();
   $display->panels = array();
@@ -687,7 +687,7 @@ function ttc_pages_default_page_manager_pages() {
       'markup' => 'h1',
       'class' => '',
       'id' => '',
-      'override_title' => 1,
+      'override_title' => 0,
       'override_title_text' => 'Search Technologies',
       'override_title_heading' => 'h1',
     );
@@ -966,7 +966,7 @@ function ttc_pages_default_page_manager_pages() {
     $pane->uuid = '6cb1a064-2aff-487d-af15-258fb4be714b';
     $display->content['new-6cb1a064-2aff-487d-af15-258fb4be714b'] = $pane;
     $display->panels['facets'][4] = 'new-6cb1a064-2aff-487d-af15-258fb4be714b';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
