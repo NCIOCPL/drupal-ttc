@@ -97,6 +97,8 @@
     // leaf items menu trail
     $('li.leaf a.active.open').parent().addClass('active');
     $('li.leaf.active, li.expanded.active').parent().addClass('show');
+    $('ul.show').parent().addClass('active');
+    $('li.active').parent().addClass('show');
 
     // wrap sidebar with span and html to match comps for mobile
     $('<span class="sidebar-mobile-link hide-for-large-up">Find Other Available Technologies</span>').prependTo('body.section-availabletechnologies .sidebarnav_wrapper');
