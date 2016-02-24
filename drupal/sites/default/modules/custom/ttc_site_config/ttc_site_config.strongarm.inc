@@ -126,7 +126,7 @@ function ttc_site_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'extlink_css_exclude';
-  $strongarm->value = '';
+  $strongarm->value = '.follow-us';
   $export['extlink_css_exclude'] = $strongarm;
 
   $strongarm = new stdClass();
