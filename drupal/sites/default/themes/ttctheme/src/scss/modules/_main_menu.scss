@@ -93,7 +93,27 @@ width: 290px;
                         background-color:#286782;  border-bottom:solid 1px #286782;
                     }
                     
-                   .menu{ background-color:#fff; list-style:none; display:none; margin-left:10px; color:#000 !important;}
+                   .menu{ background-color:#fff; list-style:none; display:none;  color:#333 !important;
+                   
+                        li a{padding-left:25px; border-bottom-color:#ccc; color:#333;  text-transform:capitalize; font-size:14px; padding-right:20px;}
+                        
+                        .menu{
+                            background-color:#f0f0f0; 
+                            margin-left:10px;
+                            
+                            
+                            .menu{
+                                padding-top:10px; padding-bottom:20px;
+                                
+                                li{border-bottom:none;  list-style:disc; margin-left:30px;
+                                
+                                a{ border-bottom:none  !important;  padding:7px 0px; margin:0px; font-size:12px; }
+                                }
+                            }
+                            
+                        }
+                   
+                   }
                    .menu a{color:#333; padding-left:10px; font-size:12px;}
                 }
                 li.expanded{
