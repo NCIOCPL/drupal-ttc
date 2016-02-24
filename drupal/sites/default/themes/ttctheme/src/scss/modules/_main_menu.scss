@@ -89,7 +89,7 @@ width: 290px;
                         font-size:13px;
                         text-transform:uppercase;
                     }
-                    a.active{ 
+                    a.active, body.front .home{ 
                         background-color:#286782;  border-bottom:solid 1px #286782;
                     }
                     
@@ -148,7 +148,19 @@ width: 290px;
                 }
                  .mplus.open:after{content:"-";}
         }
+        li .active {color:#fff !important; 
+        
+       
+        }
+        .mplus.open{content:"-" !important; }
+        
+       
 }
+
+
+body.front .home{ 
+                        background-color:#286782;  border-bottom:solid 1px #286782;
+                    }
 
 .right-off-canvas-menu  {
    background-color:#272E3F;

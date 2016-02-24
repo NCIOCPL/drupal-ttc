@@ -67,7 +67,6 @@
       var curSize = parseInt($('#mainid article *').css('font-size')) - 1;
       if (curSize >= 16) {
         $('#mainid p, #mainid li, #mainid article *, #mainid article p').css('font-size', curSize);
-
       }
     });
 
@@ -83,10 +82,22 @@
     $('.search-toggle').click(function () {
       $('.mobile-search').toggleClass('show');
     });
+    // Add home link to mobile menu
+    $('<li class="home"><a href="/">Home</a></li>').prependTo('.left-off-canvas-menu > ul.menu');
     $('<span class="mplus"/>').insertAfter('ul.menu li.expanded > a');
     $('.mplus').on('click', function () {
       $(this).toggleClass('open').next('ul.menu').slideToggle();
+      $(this).parents('li').addClass('ulopen');
     });
+    // active mobile menu for pages
+    $('li .expanded .active').next('.mplus').addClass('open').next('ul.menu').addClass('show');
+    $('.mplus.open').parent().addClass('active');
+    $('li.active').parent().addClass('show');
+    $('ul.menu.show').parent().addClass('active');
+    // leaf items menu trail
+    $('li.leaf a.active.open').parent().addClass('active');
+    $('li.leaf.active, li.expanded.active').parent().addClass('show');
+
     // wrap sidebar with span and html to match comps for mobile
     $('<span class="sidebar-mobile-link hide-for-large-up">Find Other Available Technologies</span>').prependTo('body.section-availabletechnologies .sidebarnav_wrapper');
     $('.sidebar-mobile-link').on('click', function () {
