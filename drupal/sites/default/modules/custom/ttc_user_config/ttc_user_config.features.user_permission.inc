@@ -142,6 +142,7 @@ function ttc_user_config_user_default_permissions() {
     'name' => 'administer meta tags',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'metatag',
   );
@@ -478,6 +479,7 @@ function ttc_user_config_user_default_permissions() {
     'name' => 'edit meta tags',
     'roles' => array(
       'administrator' => 'administrator',
+      'site manager' => 'site manager',
     ),
     'module' => 'metatag',
   );
