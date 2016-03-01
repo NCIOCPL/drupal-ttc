@@ -183,6 +183,45 @@ function ttc_content_type_basic_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-page-field_meta_keywords'.
+  $field_instances['node-page-field_meta_keywords'] = array(
+    'bundle' => 'page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_meta_keywords',
+    'label' => 'Keywords',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 44,
+    ),
+  );
+
   // Exported field_instance: 'node-page-field_meta_long_desc'.
   $field_instances['node-page-field_meta_long_desc'] = array(
     'bundle' => 'page',
@@ -393,6 +432,7 @@ function ttc_content_type_basic_page_field_default_field_instances() {
   t('Display Posted Date');
   t('Display Reviewed Date');
   t('Display Updated Date');
+  t('Keywords');
   t('Meta Description');
   t('Posted');
   t('Reviewed');

@@ -17,6 +17,7 @@ features[field_instance][] = node-page-body
 features[field_instance][] = node-page-field_display_posted_date
 features[field_instance][] = node-page-field_display_reviewed_date
 features[field_instance][] = node-page-field_display_updated_date
+features[field_instance][] = node-page-field_meta_keywords
 features[field_instance][] = node-page-field_meta_long_desc
 features[field_instance][] = node-page-field_posted_date
 features[field_instance][] = node-page-field_reviewed_date
