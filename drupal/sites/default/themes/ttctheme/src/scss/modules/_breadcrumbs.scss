@@ -1,12 +1,19 @@
 .breadcrumbs {
-  margin:15px 0 0px 15px;
+  margin:15px 0 0 15px;
   display:block;
-   
+
+  @media #{$large-up} {
+    max-width: 70%;
+    margin:15px 0 30px 15px;
+  }
+
   a {
     font-weight: bold;
-      @media #{$small-only, $medium-only} {
-        font-size:12px;
-      }
+    line-height: 1.5rem;
+    @media #{$small-only, $medium-only} {
+      font-size:12px;
+      line-height: 1.25rem;
+    }
   }
   .current a {
     font-weight: normal;
@@ -14,11 +21,15 @@
 }
 
 .addthis{
-    margin:-40px 20px 40px 0;
-    
-    @media #{$small-only, $medium-only} {
-          display:block; clear:both;
-          float:none !important;
-          margin:15px 0 20px 15px;
-      }
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  @media #{$small-only, $medium-only} {
+    position: static;
+    display:block; 
+    clear:both;
+    float:none !important;
+    margin: 15px 0 20px 15px;
   }
+}
