@@ -4,10 +4,10 @@
 
   padding-right: $column-gutter;
   padding-left: $column-gutter;
-    background-size:100% 50%;
-    
-    @media #{$large-up} {background-size:100% 70%;}
-    
+  background-size:100% 50%;
+
+  @media #{$large-up} {background-size:100% 70%;}
+
   &__inner {
     background-color: palette(white, base);
 
@@ -24,7 +24,7 @@
     &__content {
       margin-bottom: ($column-gutter);
     }
-	
+
   }
 }
 body.front .main__content{margin-bottom:0px;} 
@@ -37,29 +37,33 @@ body.not-front .main{
 
 
 
-  
+
   .main-wrapper{
     background: transparent url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center -500px;
     background-size:cover auto;
-  padding-bottom: ($column-gutter );
-  padding-right: ($column-gutter );
-  padding-left: ($column-gutter);
-  
+    padding-bottom: ($column-gutter );
+    padding-right: ($column-gutter );
+    padding-left: ($column-gutter);
+
     @media #{$large-up} {
-        padding-top:3.475rem;
-        padding-bottom: ($column-gutter * 1.45);
-        padding-right: ($column-gutter * 1.75);
-        padding-left: ($column-gutter * 1.75);
-  }
+      padding-top:3.475rem;
+      padding-bottom: ($column-gutter * 1.45);
+      padding-right: ($column-gutter * 1.75);
+      padding-left: ($column-gutter * 1.75);
+    }
+    
+    .main__inner {
+      position: relative;
+    }
   }
 } 
 
 body.page-node{
-    .sidebar{margin-top:50px;}
-    
-    .main__content{
-        @include grid-column(12);  
-        @media #{$large-up} {@include grid-column(9);  }
-    }
-    
+  .sidebar{margin-top:20px;}
+
+  .main__content{
+    @include grid-column(12);  
+    @media #{$large-up} {@include grid-column(9);  }
+  }
+
 }
