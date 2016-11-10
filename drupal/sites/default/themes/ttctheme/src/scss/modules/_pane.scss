@@ -102,8 +102,20 @@ body.front .pane-success-stories {
       }
     }
   }
-  .success-stories__list {margin:3rem auto 1rem; width:90%;}
-  .success-stories__list li{border:none;}
+  .success-stories__list {
+    margin:3rem auto 1rem; 
+    width:90%;
+    li{
+      border:none;
+      &:focus{
+        border: 2px solid blue;
+      }
+/*      a:focus{
+        border: 2px solid blue;
+      }*/
+    }
+    
+  }
   .success-stories__image {
       background-repeat:no-repeat; 
       background-position:center; 

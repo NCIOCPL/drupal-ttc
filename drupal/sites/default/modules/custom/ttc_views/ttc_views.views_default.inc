@@ -566,7 +566,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['label'] = '';
   $handler->display->display_options['fields']['field_meta_long_desc']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Content: Reference Number */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['field_enumber']['id'] = 'field_enumber';
   $handler->display->display_options['sorts']['field_enumber']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['sorts']['field_enumber']['field'] = 'field_enumber';
@@ -584,7 +584,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   $handler->display->display_options['sorts']['changed']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['changed']['expose']['label'] = 'Date changed';
-  /* Sort criterion: Indexed Content: Title */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
@@ -594,14 +594,10 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['arguments']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['arguments']['search_api_views_fulltext']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['arguments']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['default_argument_options']['argument'] = 'all';
+  $handler->display->display_options['arguments']['search_api_views_fulltext']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['search_api_views_fulltext']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['break_phrase'] = 1;
+  $handler->display->display_options['arguments']['search_api_views_fulltext']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['search_api_views_fulltext']['not'] = 0;
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['fields'] = array(
-    'field_meta_keywords' => 'field_meta_keywords',
-  );
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'OR',
   );

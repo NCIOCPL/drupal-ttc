@@ -73,6 +73,7 @@
         <div class="row">
           <div class="small-8 columns listserv-input-container">
             <div class="form-item form-type-textfield">
+              <label class="element-invisible" for="subscribe-block-form-0">Enter Your Email Address</label>              
               <input type="text" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" id="subscribe-block-form-0" name="ls" value="" size="15" maxlength="128" />
             </div>
           </div>

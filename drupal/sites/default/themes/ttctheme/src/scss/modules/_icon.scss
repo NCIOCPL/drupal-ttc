@@ -24,6 +24,7 @@
 
     &--white {
       border-color: palette(white);
+      color: white;
     }
   }
   &.-icon-linkedin {
@@ -31,6 +32,7 @@
 
     &--white {
       border-color: palette(white);
+      color: white;
     }
   }
   &.-icon-twitter {
@@ -38,8 +40,13 @@
 
     &--white {
       border-color: palette(white);
+      color: white;
     }
   }
+  .fa{
+    vertical-align: bottom;
+  }
+  
 }
 .follow-us__label{font-size:.85em;}
 .follow-us__list-item {
@@ -66,15 +73,6 @@
 .footer .follow-us__list li a:before {
 	color: #fff;
 	top: 8px;
-}
-.follow-us__list li a.-icon-linkedin:before, .follow-us__list li a.-icon-linkedin--white:before {
-	content: '\f0e1';
-}
-.follow-us__list li a.-icon-twitter:before, .follow-us__list li a.-icon-twitter--white:before {
-	content: '\f099';
-}
-.follow-us__list li a.-icon-email:before, .follow-us__list li a.-icon-email--white:before {
-	content: '\f0e0';
 }
 
 .addthis span.label{font-size:.85em; color:#666; margin-right:7px; vertical-align:top;}

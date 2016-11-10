@@ -33,12 +33,6 @@ function ttc_search_default_fe_block_settings() {
         'theme' => 'ttctheme',
         'weight' => 0,
       ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
-      ),
     ),
     'title' => '',
     'visibility' => 0,

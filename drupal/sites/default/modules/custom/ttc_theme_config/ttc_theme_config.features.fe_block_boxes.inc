@@ -16,9 +16,9 @@ function ttc_theme_config_default_fe_block_boxes() {
   $fe_block_boxes->machine_name = 'follow_us_footer';
   $fe_block_boxes->body = '<div class="follow-us">
   <ul class="follow-us__list">
-    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4688463" title="LinkedIn" class="icon -size-54 -icon-linkedin--white"><span class="element-invisible">follow us on LinkedIn</span></a></li>
-    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-54 -icon-twitter--white"><span class="element-invisible">follow us on Twitter</span></a></li>
-    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-54 -icon-email--white"><span class="element-invisible">email us</span></a></li>
+    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4688463" title="LinkedIn" class="icon -size-54 -icon-linkedin--white"><i class="fa fa-linkedin" aria-hidden="true"></i><span class="element-invisible">follow us on LinkedIn</span></a></li>
+    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-54 -icon-twitter--white"><i class="fa fa-twitter" aria-hidden="true"></i><span class="element-invisible">follow us on Twitter</span></a></li>
+    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-54 -icon-email--white"><i class="fa fa-envelope" aria-hidden="true"></i><span class="element-invisible">email us</span></a></li>
   </ul>
 </div>';
 
@@ -31,9 +31,9 @@ function ttc_theme_config_default_fe_block_boxes() {
   $fe_block_boxes->body = '<div class="follow-us">
   <span class="follow-us__label">Follow Us</span>
   <ul class="follow-us__list">
-    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4688463" title="LinkedIn" class="icon -size-36 -icon-linkedin"><span class="element-invisible">follow us on LinkedIn</span></a></li>
-    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-36 -icon-twitter"><span class="element-invisible">follow us on Twitter</span></a></li>
-    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-36 -icon-email"><span class="element-invisible">email us</span></a></li>
+    <li class="follow-us__list-item"><a href="https://www.linkedin.com/groups/4688463" title="LinkedIn" class="icon -size-36 -icon-linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i><span class="element-invisible">follow us on LinkedIn</span></a></li>
+    <li class="follow-us__list-item"><a href="https://twitter.com/NCITechTransfer" title="Twitter" class="icon -size-36 -icon-twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span class="element-invisible">follow us on Twitter</span></a></li>
+    <li class="follow-us__list-item"><a href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email" class="icon -size-36 -icon-email"><i class="fa fa-envelope" aria-hidden="true"></i><span class="element-invisible">email us</span></a></li>
   </ul>
 </div>';
 

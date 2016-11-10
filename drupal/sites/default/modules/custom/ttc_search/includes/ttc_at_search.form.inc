@@ -64,8 +64,8 @@ function ttc_at_search_form($form, &$form_state, $index_url = NULL, $keys = NULL
   $form['search_container']['keys'] = array(
     '#type' => 'textfield',
     '#default_value' => $keys == 'all' ? '' : $keys,
-    '#title' => 'Search Words',
-    '#title_display' => 'none',
+    '#title' => 'Search',
+    '#title_display' => 'invisible',
     '#prefix' => '<div class="small-6 columns search-form__input-container">',
     '#suffix' => '</div>',
     '#attributes' => array(
@@ -88,7 +88,7 @@ function ttc_at_search_form($form, &$form_state, $index_url = NULL, $keys = NULL
   $form['search_container'][$vocab_name] = array(
     '#type' => 'select',
     '#title' => $vocabulary->name,
-    '#title_display' => 'none',
+    '#title_display' => 'invisible',
     '#prefix' => '<div class="small-4 columns search-form__input-container">',
     '#suffix' => '</div>',
     '#options' => array(

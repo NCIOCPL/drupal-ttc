@@ -15,7 +15,11 @@
     &, &:hover, &:focus {
       color: palette(white);
     }
+    &:focus {
+      border-bottom: 1px dotted #000;
+    }
   }
+  
 
   .field-content{
     text-align: center;

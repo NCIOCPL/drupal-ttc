@@ -38,14 +38,8 @@ pagenotfound',
         'theme' => 'ttctheme',
         'weight' => -18,
       ),
-      'zurb_foundation' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
-      ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 

@@ -75,6 +75,17 @@
  * @see template_process()
  */
 ?>
+
+<?php $show_post_date = isset($content['field_display_posted_date']['#items']['0']['value']) &&
+  ($content['field_display_posted_date']['#items']['0']['value'] == 1) && !empty($content['field_posted_date']); ?>
+<?php $show_rev_date = isset($content['field_display_reviewed_date']['#items']['0']['value']) &&
+  ($content['field_display_reviewed_date']['#items']['0']['value'] == 1) && !empty($content['field_reviewed_date']); ?>
+<?php $show_up_date = isset($content['field_display_updated_date']['#items']['0']['value']) &&
+  ($content['field_display_updated_date']['#items']['0']['value'] == 1) && !empty($content['field_updated_date']); ?>
+<?php $show_default_date = empty($content['field_updated_date']) && empty($content['field_reviewed_date']) && empty($content['field_posted_date'])
+  && empty($content['field_display_updated_date']) && empty($content['field_display_reviewed_date']) && empty($content['field_display_posted_date']); ?>
+
+
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
   <?php 
     if(!empty($content['field_image'])) {
@@ -134,5 +145,40 @@
       print render($content['field_opp_rel_enum']);
       print render($content['field_therapeutic_area']);
     ?>
+
+    <?php if ($view_mode!='teaser'):?>
+    <div>
+    <?php if ($show_post_date): ?>
+      <span>
+        <?php print render($content['field_posted_date']); ?>
+      </span>
+    <?php endif; ?>
+
+    <?php if ($show_rev_date): ?>
+      <span>
+        <?php print render($content['field_reviewed_date']); ?>
+      </span>
+    <?php endif; ?>
+
+    <?php if ($show_up_date): ?>
+      <span>
+        <?php print render($content['field_updated_date']); ?>
+      </span>
+    <?php endif; ?>
+
+    <?php if ($show_default_date): ?>
+      <span>
+        <div class="field field-name-field-updated-date field-type-datestamp field-label-above field-wrapper">
+          <div class="field-label">Updated</div>
+          <div class="field-items"><div class="field-item even"><span class="date-display-single"><?php print date("l, F j, Y", $node->changed) ;?></span></div></div>
+        </div>      
+      </span>
+    <?php endif; ?>
+
+    </div>
+    <?php endif; ?>
+
   </div>
+
+  
 </article>

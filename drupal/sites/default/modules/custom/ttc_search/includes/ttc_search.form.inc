@@ -45,13 +45,13 @@ function ttc_search_form($form, &$form_state, $index_url = NULL, $keys = NULL, $
   $form['search_container']['keys'] = array(
     '#type' => 'textfield',
     '#default_value' => $keys == 'all' ? '' : $keys,
-    '#title' => 'Search Words',
-    '#title_display' => 'none',
+    '#title' => 'Search',
+    '#title_display' => 'invisible',
     //'#prefix' => '<div class="small-10 columns search-form__input-container">',
     //'#suffix' => '</div>',
     '#attributes' => array(
       //'class' => array('search-form__input'),
-      'placeholder' => 'Search Words',
+      'placeholder' => 'Search...',
     ),
   );
 

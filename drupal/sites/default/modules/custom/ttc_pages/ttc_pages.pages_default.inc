@@ -890,7 +890,10 @@ function ttc_pages_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-facetapi',
+    );
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
@@ -913,7 +916,10 @@ function ttc_pages_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-facetapi',
+    );
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
@@ -936,7 +942,10 @@ function ttc_pages_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-facetapi',
+    );
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
@@ -959,7 +968,10 @@ function ttc_pages_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pane-facetapi',
+    );
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();

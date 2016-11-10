@@ -97,7 +97,7 @@ ul.facet-selection {
       width:81%;
       color:#fff;
 
-      input{background-color:#578FA8; border-radius:3px; border:none; color:#fff;}
+      input{background-color:#FFF; border-radius:3px; border:none; }
       *::-moz-placeholder {color: #fff;}
 
 
@@ -150,41 +150,8 @@ ul.facet-selection {
 
   }
 }
-.edit-sort__link{position:relative; text-align:center; background:#fff;}
-.edit-sort__link:after{
-  color:#333 !important;
-  font-family: 'FontAwesome';
-  position: absolute;
-  top:0;
-  left:15%;
-  font-weight: 300;
-  font-size:1em;
-  z-index:100;
-}
-#edit-abstract-sort-field-enumber-desc a:after{
-  content: '\f162';
-}
-#edit-abstract-sort-field-enumber-asc a:after{
-  content: '\f163';
-}
-#edit-abstract-sort-field-opp-start-date-asc a:after{
-  content: '\f274';
-}
-#edit-abstract-sort-field-opp-start-date-desc a:after{
-  content: '\f273';
-}
-#edit-abstract-sort-changed-asc a:after{
-  content: '\f271';
-}
-#edit-abstract-sort-changed-desc a:after{
-  content: '\f272';
-}
-#edit-abstract-sort-title-asc a:after{
-  content: '\f15d';
-}
-#edit-abstract-sort-title-desc a:after{
-  content: '\f15e';
-}
+.edit-sort__link{position:relative; text-align:center; background:#fff; color:#333}
+
 body.page-availabletechnologies{
 
   .pane-page-title{

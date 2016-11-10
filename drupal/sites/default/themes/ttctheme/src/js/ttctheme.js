@@ -56,21 +56,33 @@
       $(this).addClass(taxclass);
     });
 
-    // font size adjuster
-    $('.decfont').click(function () {
-      var curSize = parseInt($('#mainid article *').css('font-size')) + 1;
+    var adjust_font_size = function (inc) {
+      var curSize = parseInt($('#mainid article *').css('font-size')) + inc;
       if (curSize <= 22) {
         $('#mainid p, #mainid li, #mainid article *, #mainid article p').css('font-size', curSize);
       }
-    });
+    };
+
+    // font size adjuster
     $('.incfont').click(function () {
-      var curSize = parseInt($('#mainid article *').css('font-size')) - 1;
-      if (curSize >= 16) {
-        $('#mainid p, #mainid li, #mainid article *, #mainid article p').css('font-size', curSize);
+      event.preventDefault();
+      adjust_font_size(1);
+    });
+    $('.decfont').click(function () {
+      event.preventDefault();
+      adjust_font_size(-1);
+    });
+    $(window).keydown(function (event) {
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      switch (keycode) {
+        case 187:
+          adjust_font_size(1);
+          break;
+        case 189:
+          adjust_font_size(-1);
+          break;
       }
     });
-
-
     // show all abstract search images if any concrete img elements exist
     var $images = jQuery('article.node-abstract.node-teaser .image');
     if ($images.find('img').size() > 0) {
@@ -106,5 +118,12 @@
       $('* .sidebarnav_wrapper .block-panels-mini, .sidebarnav_wrapper .inside').slideToggle();
       $(this).toggleClass('open');
     });
+    // 508 fix on duplicated labels
+    var value = $('.mobile-search .form-item-search-block-form label').attr('for');
+    $('.mobile-search .form-item-search-block-form label').attr('for', value + 'm');
+    value = $('.mobile-search .form-item-search-block-form input').attr('id');
+    $('.mobile-search .form-item-search-block-form input').attr('id', value + 'm');
+    // 508 fix for tabindex
+    $('.left-off-canvas-menu a, .right-off-canvas-menu a, .skip-link a, .mobile-menu a').attr('tabindex', '-1');
   });
 }(jQuery));

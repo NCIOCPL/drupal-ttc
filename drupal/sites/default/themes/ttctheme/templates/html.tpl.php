@@ -50,13 +50,27 @@
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
-  <link rel="shortcut icon" type="image/ico" href="sites/default/themes/ttctheme/public/images/favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/ico" href="/sites/default/themes/ttctheme/public/images/favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <?php print $styles; ?>
   <?php print $scripts; ?>
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <!-- **** Google Analytics **** -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+    { (i[r].q=i[r].q||[]).push(arguments)}
+
+    ,i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-73617437-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+  <!-- **** End Google Analytics **** -->
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div class="skip-link">
@@ -79,19 +93,5 @@
   <!-- **** NCI Web Analytics  - DO NOT ALTER **** -->
   <script type="text/javascript" src="//static.cancer.gov/webanalytics/WA_TTC_HTTPS_PageLoad.js"></script>
   <!-- **** End NCI Web Analytics Page **** -->
-  <!-- **** Google Analytics **** -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
-    { (i[r].q=i[r].q||[]).push(arguments)}
-
-    ,i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-73617437-1', 'auto');
-    ga('send', 'pageview');
-
-    </script>
-  <!-- **** End Google Analytics **** -->
 </body>
 </html>

@@ -50,7 +50,7 @@ function ttctheme_preprocess_node(&$variables) {
 /**
  * Implements template_preprocess_block().
  */
-function ttc_theme_config_preprocess_block(&$vars) {
+function ttctheme_preprocess_block(&$vars) {
   $block = $vars['block'];
 
   // Add the block's machine name to its class list.

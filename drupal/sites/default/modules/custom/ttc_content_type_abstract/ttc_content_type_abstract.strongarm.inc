@@ -59,6 +59,12 @@ function ttc_content_type_abstract_strongarm() {
         'xmlsitemap' => array(
           'weight' => '28',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

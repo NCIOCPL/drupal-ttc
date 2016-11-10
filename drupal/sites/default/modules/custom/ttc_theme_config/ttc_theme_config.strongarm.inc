@@ -77,7 +77,7 @@ function ttc_theme_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_admin_theme';
-  $strongarm->value = '1';
+  $strongarm->value = 1;
   $export['node_admin_theme'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -170,7 +170,7 @@ function ttc_theme_config_strongarm() {
     'zurb_foundation_html_tags' => 1,
     'zurb_foundation_messages_modal' => 0,
     'zurb_foundation_pager_center' => 1,
-    'zurb_foundation__active_tab' => 'edit-misc',
+    'zurb_foundation__active_tab' => 'edit-general',
     'jquery_update_jquery_version' => '',
   );
   $export['theme_ttctheme_settings'] = $strongarm;

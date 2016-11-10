@@ -35,12 +35,6 @@ function ttc_pages_default_fe_block_settings() {
         'theme' => 'ttctheme',
         'weight' => 0,
       ),
-      'zurb_foundation' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'zurb_foundation',
-        'weight' => 0,
-      ),
     ),
     'title' => '',
     'visibility' => 0,

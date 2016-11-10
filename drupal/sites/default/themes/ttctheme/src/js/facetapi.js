@@ -125,3 +125,29 @@
       .remove();
   };
 }());
+
+(function ($) {
+  'use strict';
+  $(document).ready(function () {
+    // font awesome 508 fix
+    $('#edit-abstract-sort-field-enumber-desc a').prepend('<i class="fa fa-sort-numeric-desc" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-field-enumber-asc a').prepend('<i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-field-opp-start-date-asc a').prepend('<i class="fa fa-calendar-check-o" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fa fa-calendar" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-changed-asc a').prepend('<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-changed-desc a').prepend('<i class="fa fa-calendar-minus-o" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-title-asc a').prepend('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-title-desc a').prepend('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>');
+    // facet selector keyboard support
+    $('.pane-facetapi .pane-title').wrapInner("<a href='#' class='facet-type'></a>");
+    $('.pane-facetapi .pane-title a').focus(function () {
+      $(this).parents('.pane-facetapi').children('.pane-content').toggle();
+      $(this).parent('.pane-title').toggleClass('open');
+    });
+    $('.pane-facetapi .facetapi-checkbox').focus(function () {
+      $(this).parent('.checkbox').css({'border-color': '#7777ff', 'border-width': '1px', 'border-style': 'solid'});
+    }).focusout(function () {
+      $(this).parent('.checkbox').css('border', 'none');
+    });
+  });
+}(jQuery));

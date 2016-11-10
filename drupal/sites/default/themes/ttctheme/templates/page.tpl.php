@@ -86,9 +86,9 @@
   <!--.l-main -->
   <main role="main" class="main row">
     <nav class="mobile-menu hidden-for-large-up">
-        <a role="button" href="#idOfLeftMenu" class="left-off-canvas-toggle small-3">Menu <i class="fa fa-bars"></i></a>
-        <a role="button" href="#search" class="search-toggle small-3">Search <i class="fa fa-search"></i></a>
-        <a role="button" href="#follow" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer"></i>
+        <a role="button" href="#idOfLeftMenu" class="left-off-canvas-toggle small-3">Menu <i class="fa fa-bars" aria-hidden="true"></i></a>
+        <a role="button" href="#search" class="search-toggle small-3">Search <i class="fa fa-search" aria-hidden="true"></i></a>
+        <a role="button" href="#follow" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
 </a>
     </nav>
   <div class="main-wrapper">
@@ -124,10 +124,6 @@
         
 		  <!-- Display share buttons -->
 		  <div class='addthis'>
-          <span class="fontsize-wrapper">
-          <i class="fa fa-plus-square-o decfont"></i>
-          <i class="fa fa-minus-square-o incfont"></i>
-          </span>
           <span class="label">Share: </span>
 			<a class="addthis_button_linkedin" title="LinkedIn" href="#"></a>
 			<a class="addthis_button_twitter" title="Twitter" href="#"></a>
