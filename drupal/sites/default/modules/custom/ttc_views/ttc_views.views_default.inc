@@ -838,5 +838,324 @@ function ttc_views_views_default_views() {
   );
   $export['ttc_content_search_results'] = $view;
 
+  $view = new view();
+  $view->name = 'workbench_abstracts';
+  $view->description = 'Content overview page for Workbench.';
+  $view->tag = 'Workbench';
+  $view->base_table = 'node';
+  $view->human_name = 'Workbench: Abstracts';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['title'] = 'Abstracts by EIR';
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'view all';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access workbench';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '10, 25, 50, 100, 200';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'is_current' => 'is_current',
+    'field_enumber' => 'field_enumber',
+    'field_opp_year' => 'field_opp_year',
+    'title' => 'title',
+    'field_product_type' => 'field_product_type',
+    'name' => 'name',
+    'field_pat_status' => 'field_pat_status',
+    'changed' => 'changed',
+    'state' => 'state',
+    'moderation_actions' => 'moderation_actions',
+    'name_1' => 'name_1',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'is_current' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_enumber' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_opp_year' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_product_type' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_pat_status' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'changed' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'moderation_actions' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['content'] = 'There is no content available for you to edit.';
+  $handler->display->display_options['empty']['area']['format'] = 'plain_text';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: Content revision: User */
+  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['relationships']['uid_1']['table'] = 'node_revision';
+  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
+  /* Field: Workbench Moderation: Current */
+  $handler->display->display_options['fields']['is_current']['id'] = 'is_current';
+  $handler->display->display_options['fields']['is_current']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['is_current']['field'] = 'is_current';
+  $handler->display->display_options['fields']['is_current']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['is_current']['not'] = 0;
+  /* Field: Content: Reference Number */
+  $handler->display->display_options['fields']['field_enumber']['id'] = 'field_enumber';
+  $handler->display->display_options['fields']['field_enumber']['table'] = 'field_data_field_enumber';
+  $handler->display->display_options['fields']['field_enumber']['field'] = 'field_enumber';
+  /* Field: Content: Opportunity Year */
+  $handler->display->display_options['fields']['field_opp_year']['id'] = 'field_opp_year';
+  $handler->display->display_options['fields']['field_opp_year']['table'] = 'field_data_field_opp_year';
+  $handler->display->display_options['fields']['field_opp_year']['field'] = 'field_opp_year';
+  $handler->display->display_options['fields']['field_opp_year']['type'] = 'number_unformatted';
+  $handler->display->display_options['fields']['field_opp_year']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Product Type */
+  $handler->display->display_options['fields']['field_product_type']['id'] = 'field_product_type';
+  $handler->display->display_options['fields']['field_product_type']['table'] = 'field_data_field_product_type';
+  $handler->display->display_options['fields']['field_product_type']['field'] = 'field_product_type';
+  $handler->display->display_options['fields']['field_product_type']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_product_type']['alter']['text'] = '[field_product_type]';
+  $handler->display->display_options['fields']['field_product_type']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_product_type']['alter']['path'] = '/availabletechnologies/all?f[0]=field_product_type%3A[field_product_type-tid]';
+  $handler->display->display_options['fields']['field_product_type']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_product_type']['delta_offset'] = '0';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Patent Status */
+  $handler->display->display_options['fields']['field_pat_status']['id'] = 'field_pat_status';
+  $handler->display->display_options['fields']['field_pat_status']['table'] = 'field_data_field_pat_status';
+  $handler->display->display_options['fields']['field_pat_status']['field'] = 'field_pat_status';
+  $handler->display->display_options['fields']['field_pat_status']['type'] = 'field_collection_fields';
+  $handler->display->display_options['fields']['field_pat_status']['settings'] = array(
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_pat_status']['delta_offset'] = '0';
+  /* Field: Content: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'node';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = 'Last updated';
+  $handler->display->display_options['fields']['changed']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['changed']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['changed']['date_format'] = 'time ago';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'users';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['name_1']['label'] = 'Last Updated By';
+  /* Field: Workbench Moderation: State */
+  $handler->display->display_options['fields']['state']['id'] = 'state';
+  $handler->display->display_options['fields']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['state']['field'] = 'state';
+  $handler->display->display_options['fields']['state']['machine_name'] = 0;
+  /* Field: Workbench Moderation: Moderation links */
+  $handler->display->display_options['fields']['moderation_actions']['id'] = 'moderation_actions';
+  $handler->display->display_options['fields']['moderation_actions']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['moderation_actions']['field'] = 'moderation_actions';
+  $handler->display->display_options['fields']['moderation_actions']['label'] = 'Actions';
+  /* Sort criterion: Content: Opportunity Year (field_opp_year) */
+  $handler->display->display_options['sorts']['field_opp_year_value']['id'] = 'field_opp_year_value';
+  $handler->display->display_options['sorts']['field_opp_year_value']['table'] = 'field_data_field_opp_year';
+  $handler->display->display_options['sorts']['field_opp_year_value']['field'] = 'field_opp_year_value';
+  $handler->display->display_options['sorts']['field_opp_year_value']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_opp_year_value']['expose']['label'] = 'Opportunity Year';
+  /* Sort criterion: Content: Reference Number (field_enumber) */
+  $handler->display->display_options['sorts']['field_enumber_value']['id'] = 'field_enumber_value';
+  $handler->display->display_options['sorts']['field_enumber_value']['table'] = 'field_data_field_enumber';
+  $handler->display->display_options['sorts']['field_enumber_value']['field'] = 'field_enumber_value';
+  $handler->display->display_options['sorts']['field_enumber_value']['expose']['label'] = 'Reference Number';
+  /* Filter criterion: Content: Reference Number (field_enumber) */
+  $handler->display->display_options['filters']['field_enumber_value']['id'] = 'field_enumber_value';
+  $handler->display->display_options['filters']['field_enumber_value']['table'] = 'field_data_field_enumber';
+  $handler->display->display_options['filters']['field_enumber_value']['field'] = 'field_enumber_value';
+  $handler->display->display_options['filters']['field_enumber_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_enumber_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_enumber_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_enumber_value']['expose']['operator_id'] = 'field_enumber_value_op';
+  $handler->display->display_options['filters']['field_enumber_value']['expose']['label'] = 'Reference Number';
+  $handler->display->display_options['filters']['field_enumber_value']['expose']['operator'] = 'field_enumber_value_op';
+  $handler->display->display_options['filters']['field_enumber_value']['expose']['identifier'] = 'field_enumber_value';
+  $handler->display->display_options['filters']['field_enumber_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    8 => 0,
+    4 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
+  /* Filter criterion: Workbench Moderation: State */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['group'] = 1;
+  $handler->display->display_options['filters']['state']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['state']['expose']['operator_id'] = 'state_op';
+  $handler->display->display_options['filters']['state']['expose']['label'] = 'State';
+  $handler->display->display_options['filters']['state']['expose']['operator'] = 'state_op';
+  $handler->display->display_options['filters']['state']['expose']['identifier'] = 'state';
+  $handler->display->display_options['filters']['state']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['state']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    8 => 0,
+    4 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'abstract' => 'abstract',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
+  /* Filter criterion: Workbench Moderation: Current */
+  $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
+  $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
+  $handler->display->display_options['filters']['is_current']['value'] = '1';
+  $handler->display->display_options['filters']['is_current']['group'] = 1;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['path'] = 'admin/workbench/abstracts/all';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Abstracts by EIR';
+  $handler->display->display_options['menu']['weight'] = '1';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $export['workbench_abstracts'] = $view;
+
   return $export;
 }
