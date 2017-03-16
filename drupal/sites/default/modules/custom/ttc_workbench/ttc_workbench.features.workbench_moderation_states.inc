@@ -24,7 +24,7 @@ function ttc_workbench_workbench_moderation_export_states() {
     'needs_review' => array(
       'name' => 'needs_review',
       'label' => 'Needs Review',
-      'description' => 'Ready for moderation',
+      'description' => 'Ready for approval',
       'weight' => 0,
     ),
     'published' => array(
