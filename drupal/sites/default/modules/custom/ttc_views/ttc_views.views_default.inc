@@ -1019,6 +1019,7 @@ function ttc_views_views_default_views() {
     'view_mode' => 'full',
   );
   $handler->display->display_options['fields']['field_pat_status']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_pat_status']['multi_type'] = 'ul';
   /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';

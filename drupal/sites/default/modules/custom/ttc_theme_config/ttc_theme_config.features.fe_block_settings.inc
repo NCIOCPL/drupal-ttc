@@ -27,6 +27,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -11,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -52,6 +58,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'seven',
         'weight' => 0,
+      ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -11,
       ),
       'ttctheme' => array(
         'region' => 'header',
@@ -79,6 +91,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -12,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -104,6 +122,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'seven',
         'weight' => 0,
+      ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -12,
       ),
       'ttctheme' => array(
         'region' => 'header',
@@ -131,6 +155,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -8,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -156,6 +186,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'seven',
         'weight' => 0,
+      ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -10,
       ),
       'ttctheme' => array(
         'region' => 'footer',
@@ -183,6 +219,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -9,
+      ),
       'ttctheme' => array(
         'region' => 'footer',
         'status' => 1,
@@ -204,9 +246,15 @@ function ttc_theme_config_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'seven' => array(
-        'region' => 'dashboard_sidebar',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'seven',
+        'weight' => -10,
+      ),
+      'ttcadmin' => array(
+        'region' => 'dashboard_inactive',
+        'status' => 1,
+        'theme' => 'ttcadmin',
         'weight' => -10,
       ),
       'ttctheme' => array(
@@ -235,6 +283,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -9,
+      ),
       'ttctheme' => array(
         'region' => 'header',
         'status' => 1,
@@ -261,6 +315,12 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
         'weight' => 0,
       ),
       'ttctheme' => array(
