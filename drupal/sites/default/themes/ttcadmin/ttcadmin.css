@@ -1,0 +1,13 @@
+/* 
+    Contains styling specific to the TTC admin view.
+    Created on : Mar 21, 2017, 5:17:17 PM
+    Author     : youngdr
+*/
+
+.views-field.views-field-moderation-actions ul {
+    margin-left: 0.5em;
+}
+
+.views-field.views-field-moderation-actions ul li {
+    width: 13em;
+}
