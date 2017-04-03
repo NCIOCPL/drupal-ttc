@@ -32,6 +32,12 @@ pagenotfound',
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => -18,
+      ),
       'ttctheme' => array(
         'region' => 'sidebar_first',
         'status' => 1,
