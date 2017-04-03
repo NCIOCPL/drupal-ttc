@@ -48,7 +48,7 @@ function ttc_abstract_drush_command() {
         'bootstrap' => 'DRUSH_BOOTSTRAP_FULL',
     );
 
-    // The 'abstract-set-sendto' command.
+    // The 'abstract-export-excel' command.
     $items['ttc-abstract-export-excel'] = array(
         'description' => "Generates an Excel document containing node field information.",
         'options' => array(
@@ -64,11 +64,36 @@ function ttc_abstract_drush_command() {
                 'description' => 'Comma delimited list of spreads.',
                 'example-value' => '1000',
             ),
+            'filename' => array(
+                'description' => 'Path and filename of Excel export.',
+                'example-value' => 'c:\tmp\abstracts.xls',
+            ),
         ),
         'examples' => array(
             'drush taee --limit=10' => 'Export just the first 10 abstracts.',
         ),
         'aliases' => array('taee'),
+        // require full site
+        'bootstrap' => 'DRUSH_BOOTSTRAP_FULL',
+    );
+
+    // The 'abstract-import-excel' command.
+    $items['ttc-abstract-import-excel'] = array(
+        'description' => "Parses an Excel document to find and update listed nodes.",
+        'options' => array(
+            'limit' => array(
+                'description' => 'Comma delimited list of spreads.',
+                'example-value' => '1000',
+            ),
+            'filename' => array(
+                'description' => 'Filename of Excel import.',
+                'example-value' => 'abstracts.xls',
+            ),
+        ),
+        'examples' => array(
+            'drush taie --limit=10' => 'Import just the first 10 abstracts.',
+        ),
+        'aliases' => array('taie'),
         // require full site
         'bootstrap' => 'DRUSH_BOOTSTRAP_FULL',
     );
@@ -92,6 +117,8 @@ function ttc_abstract_drush_help($section) {
             return dt("This command will update or overwrite field_notif on all existing abstracts with the given term id.");
         case 'drush:ttc-abstract-export-excel':
             return dt("This command will export existing Abstract nodes to an Excel file.");
+        case 'drush:ttc-abstract-import-excel':
+            return dt("This command will import Abstract data from an Excel file.");
 
         // The 'title' meta item is used to name a group of
         // commands in `drush help`.  If a title is not defined,
@@ -157,6 +184,31 @@ function drush_ttc_abstract_notif_sendto_validate($tid) {
  * for more details.
  */
 function drush_ttc_abstract_export_excel_validate() {
+    // test loading of phpexcel
+    $module = module_load_include('inc', 'phpexcel');
+
+    if ($module === FALSE) {
+        return drush_set_error('PHPEXCEL_MISSING', dt('Unable to load PHPExcel library.'));
+    }
+
+    drush_log("Found PHPExcel library at $module", 'ok');
+
+    $limit = drush_get_option('limit', -1);
+
+    if (!is_numeric($limit))
+        return drush_set_error('NON_NUMERIC_LIMIT', dt('Please provide a numeric limit option.'));
+}
+
+/**
+ * Implements drush_hook_COMMAND_validate().
+ *
+ * The validate command should exit with
+ * `return drush_set_error(...)` to stop execution of
+ * the command.  In practice, calling drush_set_error
+ * OR returning FALSE is sufficient.  See drush.api.php
+ * for more details.
+ */
+function drush_ttc_abstract_import_excel_validate() {
     // test loading of phpexcel
     $module = module_load_include('inc', 'phpexcel');
 
@@ -320,7 +372,13 @@ function _ttc_abstract_reset_notify_term($tid, $start = 0, $length = 10) {
  */
 function drush_ttc_abstract_export_excel() {
     $limit = drush_get_option('limit', 50);
+
     drush_log("Export Excel called with a limit of $limit", 'ok');
+
+    // Store the file in sites/default/files
+    $dir = file_stream_wrapper_get_instance_by_uri('public://')->realpath();
+    $filename = drush_get_option('filename', 'abstracts.xls');
+    $path = "$dir/$filename";
 
     module_load_include('inc', 'phpexcel');
     $data = array();
@@ -338,35 +396,30 @@ function drush_ttc_abstract_export_excel() {
     $result = $query->execute();
 
     if (isset($result['node'])) {
+        $count = sizeof($result['node']);
         $abstract_nids = array_keys($result['node']);
         $abstract_items = entity_load('node', $abstract_nids);
+        $headers = array();
+        $data = array();
 
-        // set up column indexes
-        $nid_ix = _get_column_index($registry, 'nid');
-        $title_ix = _get_column_index($registry, 'title');
+        //_fill_field_column($registry, $abstract_row, $abstract, 'field_opp_invs_text');
+        //_fill_field_column($registry, $abstract_row, $abstract, 'field_opp_pubs_text');
 
-        $field_name = 'field_opp_invs_text';
-        foreach ($abstract_items as $abstract) {
-            $abstract_row = array();
-            $abstract_row[$nid_ix] = $abstract->nid;
-            $abstract_row[$title_ix] = $abstract->title;
+        //_fill_entity_column($registry, $abstract_row, $abstract, 'field_pat_status', 'field_collection_item', array('field_patent_status', 'field_text'));
 
-            _fill_field_column($registry, $abstract_row, $abstract, 'field_opp_invs_text');
-            _fill_field_column($registry, $abstract_row, $abstract, 'field_opp_pubs_text');
-
-            $data[] = $abstract_row;
-        }
-
-        $headers = $registry;
+        _build_field_sheet($headers, $data, $abstract_items, 'field_opp_invs_text', 
+                'Inventors');
+        _build_field_sheet($headers, $data, $abstract_items, 'field_opp_pubs_text', 
+                'Publications');
+        
+        _build_entity_sheet($headers, $data, $abstract_items, 'field_pat_status', 
+                'Patent Status', 'field_collection_item', 
+                array('field_patent_status', 'field_text', 'field_url'));
+        
+        drush_log("Generated data for $count nodes.  Found headers:", 'ok');
+        print_r($headers);
     }
 
-    var_dump($headers);
-    var_dump($data);
-
-    // Store the file in sites/default/files
-    $dir = file_stream_wrapper_get_instance_by_uri('public://')->realpath();
-    $filename = 'export1.xls';
-    $path = "$dir/$filename";
     // Use the .xls format
     $options = array('format' => 'xls');
     $export_result = phpexcel_export($headers, $data, $path, $options);
@@ -377,6 +430,65 @@ function drush_ttc_abstract_export_excel() {
     }
 
     return;
+}
+
+function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label) {
+    // set up column indexes
+    $field_sheet = array();
+
+    foreach ($nodes as $node) {
+        foreach ($node->$field_name as $lang => $lang_entries) {
+            foreach ($lang_entries as $ix => $entry) {
+                $row = array();
+                $row[] = $node->nid;
+                $row[] = $node->title;
+                $row[] = trim($entry['value']);
+                
+                $field_sheet[] = $row;
+            }
+        }
+    }
+
+    $headers[$field_label] = array('nid', 'title', $field_label);
+    $data[$field_label] = $field_sheet;
+}
+
+function _build_entity_sheet(&$headers, &$data, $nodes, $field_name, $field_label, $entity_type, $entity_fields) {
+    // set up column indexes
+    $field_sheet = array();
+    
+    foreach ($nodes as $node) {
+        foreach ($node->$field_name as $lang => $lang_entries) {
+            foreach ($lang_entries as $ix => $entry) {
+                $entity = entity_revision_load($entity_type, $entry['revision_id']);
+                
+                $row = array();
+                $row[] = $node->nid;
+                $row[] = $node->title;
+        
+                foreach($entity_fields as $entity_field_name) {
+                    foreach ($entity->$entity_field_name as $entity_lang => $entity_lang_entries) {
+                        foreach ($entity_lang_entries as $entity_ix => $entity_entry) {
+                            if(isset($entity_entry['tid'])) {
+                                $term = taxonomy_term_load($entity_entry['tid']);
+                                $row[] = trim($term->name);
+                            } else {
+                                $row[] = trim($entity_entry['value']);
+                            }
+                        }
+                    }
+                }
+                
+                $field_sheet[] = $row;
+            }
+        }
+    }
+
+    $headers[$field_label] = array('nid', 'title');
+    foreach($entity_fields as $entity_field_name) {
+        $headers[$field_label][] = $entity_field_name;
+    }
+    $data[$field_label] = $field_sheet;
 }
 
 function _get_column_index(&$registry, $name) {
@@ -390,13 +502,137 @@ function _get_column_index(&$registry, $name) {
     return $index;
 }
 
-function _fill_field_column(&$registry, &$row, $node, $field_name) {
+function _fill_field_column(&$registry, &$row, $node, $field_name, $path_root = "") {
     foreach ($node->$field_name as $lang => $lang_entries) {
         foreach ($lang_entries as $ix => $entry) {
             $path = "$field_name|$lang|$ix|value";
+            if (strlen($path_root) > 0) {
+                $path = "$path_root|$path";
+            }
             $path_ix = _get_column_index($registry, $path);
 
             $row[$path_ix] = trim($entry['value']);
+        }
+    }
+}
+
+function _fill_entity_column(&$registry, &$row, $node, $field_name, $entity_type, $entity_fields) {
+    foreach ($node->$field_name as $lang => $lang_entries) {
+        foreach ($lang_entries as $ix => $entry) {
+            $entity = entity_revision_load($entity_type, $entry['revision_id']);
+
+            foreach ($entity_fields as $entity_field) {
+                $path = "$field_name|$lang|$ix|revision_id!$entity_type";
+                _fill_field_column($registry, $row, $entity, $entity_field, $path);
+            }
+        }
+    }
+}
+
+/**
+ * Implements drush_hook_COMMAND().
+ */
+function drush_ttc_abstract_import_excel() {
+    $limit = drush_get_option('limit', 50);
+
+    //drush_log("Import Excel called with a limit of $limit", 'ok');
+    // Store the file in sites/default/files
+    $dir = file_stream_wrapper_get_instance_by_uri('public://')->realpath();
+    $filename = drush_get_option('filename', 'abstracts.xls');
+    $path = "$dir/$filename";
+
+    //drush_log("Import Excel called with a filename of $path", 'ok');
+
+    module_load_include('inc', 'phpexcel');
+    $result = phpexcel_import($path);
+
+    if (is_array($result)) {
+        foreach ($result as $pageno => $page) {
+            foreach ($page as $rowno => $row) {
+
+                //drush_log("Checking row $rowno of page $pageno:", 'ok');
+                _import_check_row($row);
+            }
+        }
+    } else {
+        drush_log(t("Failed to load Excel file at path $path."), 'error');
+    }
+}
+
+function _import_check_row($row) {
+    if (isset($row['nid'])) {
+        $nid = $row['nid'];
+        $node = node_load($nid);
+
+        if ($node === FALSE) {
+            drush_log("Failed to load node $nid", 'warning');
+            return FALSE;
+        }
+
+        // drush_log("Loaded node $nid.", 'ok');
+
+        foreach ($row as $header => $value) {
+            $value = trim($value);
+            if (strlen($value) == 0) {
+                // drush_log("Skipping empty value for column $header of node $nid", 'ok');
+                continue;
+            }
+
+            // check header for entity-containing fields
+            $field_parts = explode("!", $header);
+            $current_element = null;
+            $entity = $node;
+
+            foreach ($field_parts as $part_ix => $field_part) {
+                $field_path = explode('|', $field_part);
+
+                // if current element is set (as it would be if a loop has completed)
+                // then load it as an entity
+                if ($current_element != null) {
+                    // retreive the entity type from the start of the path
+                    $entity_type = array_shift($field_path);
+                    $entity = entity_revision_load($entity_type, $current_element);
+                    if ($entity !== FALSE) {
+                        //drush_log("Loaded $entity_type entity for path $header in node $nid", 'ok');
+                    } else {
+                        drush_log("Failed to load $entity_type entity with revision $current_element in path $header.", 'warning');
+                        break;
+                    }
+                }
+
+                // retrieve the field name to find in the current entity
+                $field_name = array_shift($field_path);
+
+                //drush_log("Looking for field $field_name in current entity.", 'ok');
+                // select current field from entity
+                if (isset($entity->$field_name)) {
+                    $current_element = $entity->$field_name;
+                } else {
+                    drush_log("Cannot find field $field_name in current entity.", 'warning');
+                    break;
+                }
+
+                foreach ($field_path as $path_fragment) {
+                    if (isset($current_element[$path_fragment])) {
+                        // drush_log("Found fragment $path_fragment in $header.", 'ok');
+                        $current_element = $current_element[$path_fragment];
+                    } else {
+                        drush_log("Could not find $path_fragment in $header of node $nid.", 'warning');
+                        unset($current_element);
+                        break;
+                    }
+                }
+            }
+
+            if (isset($current_element)) {
+                $comp = strcmp(trim($current_element), $value);
+
+                if ($comp !== 0) {
+                    drush_log("Value mismatch at path $header for node $nid, comp = $comp", 'ok');
+                } else {
+                    // drush_log("Value matched at path $header for node $nid.", 'ok');
+                }
+            }
         }
     }
 }
