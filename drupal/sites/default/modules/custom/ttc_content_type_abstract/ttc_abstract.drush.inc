@@ -402,20 +402,19 @@ function drush_ttc_abstract_export_excel() {
         $headers = array();
         $data = array();
 
-        //_fill_field_column($registry, $abstract_row, $abstract, 'field_opp_invs_text');
-        //_fill_field_column($registry, $abstract_row, $abstract, 'field_opp_pubs_text');
-
-        //_fill_entity_column($registry, $abstract_row, $abstract, 'field_pat_status', 'field_collection_item', array('field_patent_status', 'field_text'));
-
         _build_field_sheet($headers, $data, $abstract_items, 'field_opp_invs_text', 
-                'Inventors');
-        _build_field_sheet($headers, $data, $abstract_items, 'field_opp_pubs_text', 
-                'Publications');
+                'Inventors', 'field_inventors', 'field_collection_item',
+                array('field_first_name', 'field_last_name', 'field_url',
+                    'field_is_lead', 'field_division_name'), 10);
         
+        /*_build_field_sheet($headers, $data, $abstract_items, 'field_opp_pubs_text', 
+                'Publications', null, null, null, 0);
+
         _build_entity_sheet($headers, $data, $abstract_items, 'field_pat_status', 
                 'Patent Status', 'field_collection_item', 
-                array('field_patent_status', 'field_text', 'field_url'));
-        
+                array('field_patent_status', 'field_text', 'field_url'), 
+                null, null, null, 0);*/
+
         drush_log("Generated data for $count nodes.  Found headers:", 'ok');
         print_r($headers);
     }
@@ -432,7 +431,7 @@ function drush_ttc_abstract_export_excel() {
     return;
 }
 
-function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label) {
+function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label, $dest_field, $input_type, $input_fields, $input_copies) {
     // set up column indexes
     $field_sheet = array();
 
@@ -443,33 +442,52 @@ function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label
                 $row[] = $node->nid;
                 $row[] = $node->title;
                 $row[] = trim($entry['value']);
-                
+
+                // create empty rows to space out dest_field and input_type columns
+                for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
+                    foreach ($input_fields as $input_field) {
+                        $row[] = "";
+                    }
+                }
+
+                $row[] = $dest_field;
+                $row[] = $input_type;
+
                 $field_sheet[] = $row;
             }
         }
     }
 
-    $headers[$field_label] = array('nid', 'title', $field_label);
     $data[$field_label] = $field_sheet;
+    $headers[$field_label] = array('nid', 'title', $field_label);
+    // add the specified number of input field copies
+    for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
+        foreach ($input_fields as $input_field) {
+            $headers[$field_label][] = "$input_ix|$input_field";
+        }
+    }
+
+    $headers[$field_label][] = 'dest_field';
+    $headers[$field_label][] = 'input_type';
 }
 
-function _build_entity_sheet(&$headers, &$data, $nodes, $field_name, $field_label, $entity_type, $entity_fields) {
+function _build_entity_sheet(&$headers, &$data, $nodes, $field_name, $field_label, $entity_type, $entity_fields, $dest_field, $input_type, $input_fields, $input_copies) {
     // set up column indexes
     $field_sheet = array();
-    
+
     foreach ($nodes as $node) {
         foreach ($node->$field_name as $lang => $lang_entries) {
             foreach ($lang_entries as $ix => $entry) {
                 $entity = entity_revision_load($entity_type, $entry['revision_id']);
-                
+
                 $row = array();
                 $row[] = $node->nid;
                 $row[] = $node->title;
-        
-                foreach($entity_fields as $entity_field_name) {
+
+                foreach ($entity_fields as $entity_field_name) {
                     foreach ($entity->$entity_field_name as $entity_lang => $entity_lang_entries) {
                         foreach ($entity_lang_entries as $entity_ix => $entity_entry) {
-                            if(isset($entity_entry['tid'])) {
+                            if (isset($entity_entry['tid'])) {
                                 $term = taxonomy_term_load($entity_entry['tid']);
                                 $row[] = trim($term->name);
                             } else {
@@ -477,16 +495,32 @@ function _build_entity_sheet(&$headers, &$data, $nodes, $field_name, $field_labe
                             }
                         }
                     }
+
+                    // create empty rows to space out dest_field and input_type columns
+                    for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
+                        foreach ($input_fields as $input_field) {
+                            $row[] = "";
+                        }
+                    }
+
+                    $row[] = $dest_field;
+                    $row[] = $input_type;
                 }
-                
+
                 $field_sheet[] = $row;
             }
         }
     }
 
     $headers[$field_label] = array('nid', 'title');
-    foreach($entity_fields as $entity_field_name) {
+    foreach ($entity_fields as $entity_field_name) {
         $headers[$field_label][] = $entity_field_name;
+    }
+    // add the specified number of input field copies
+    for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
+        foreach ($input_fields as $input_field) {
+            $headers[$field_label][] = "$input_type|$input_ix|$input_field";
+        }
     }
     $data[$field_label] = $field_sheet;
 }
@@ -545,17 +579,142 @@ function drush_ttc_abstract_import_excel() {
 
     module_load_include('inc', 'phpexcel');
     $result = phpexcel_import($path);
+    $data = array();
 
     if (is_array($result)) {
         foreach ($result as $pageno => $page) {
             foreach ($page as $rowno => $row) {
-
                 //drush_log("Checking row $rowno of page $pageno:", 'ok');
-                _import_check_row($row);
+                _import_parse_row($row, $data);
             }
         }
     } else {
         drush_log(t("Failed to load Excel file at path $path."), 'error');
+    }
+    
+    // if any data exists, import it.
+    if(!empty($data)) {
+        _import_node_data($data);
+    }
+}
+
+function _import_parse_row($row, &$data) {
+    $nid = null;
+    $dest_field = null;
+    $input_type = null;
+    $values = array();
+    
+    foreach($row as $key => $value) {
+        $trimmed_value = trim($value);
+        
+        if(empty($trimmed_value)) continue;
+        
+        switch($key) {
+            case "nid":
+            case "dest_field":
+            case "input_type":
+                $$key = $value;
+                break;
+            default:
+                $key_parts = explode('|', $key);
+                if(sizeof($key_parts) > 1) {
+                    $values[$key_parts[0]][$key_parts[1]] = $value;
+                }
+                break;
+        }
+    }
+    
+    // combine values with existing node values (if any)
+    if($nid != null && !empty($values)) {
+        $data[$nid]['dest_field'] = $dest_field;
+        $data[$nid]['input_type'] = $input_type;
+        foreach($values as $value) {
+            $data[$nid]['values'][] = $value;
+        }
+    }
+}
+
+function _import_node_data($data) {
+    drush_log("Found node data:", 'ok');
+    print_r($data);
+    
+    foreach($data as $nid => $datum) {
+        if(!isset($datum['values']) || empty($datum['values'])) {
+            drush_log("No values for node $nid; skipping.", 'warning');
+            continue;
+        }
+        
+        $node = node_load($nid);
+        $dest_field = $datum['dest_field'];
+        $input_type = $datum['input_type'];
+        $values = $datum['values'];
+        
+        if(isset($node->$dest_field)) {
+            drush_log("Found field $dest_field for node $nid.", 'ok');
+            $node_field = $node->$dest_field;
+            
+            // create and save entities without regard to existing entities first
+            $current_ix = 0;
+            foreach($values as $value_map) {
+                // load existing entity or create new one.
+                if(isset($node_field[LANGUAGE_NONE][$current_ix]['value'])) {
+                    $entity_id = $node_field[LANGUAGE_NONE][$current_ix]['value'];
+                    $fc_items = entity_load($input_type, array($entity_id));
+                    if(empty($fc_items)) {
+                        drush_log("Could not load entity $entity_id of type $input_type in node $nid", 'warning');
+                        continue;
+                    }
+                    else {
+                        // retrieve the first item
+                        $fc_item = reset($fc_items);
+                    }
+                }
+                else{
+                    $fc_item = entity_create('field_collection_item', 
+                            array('field_name' => $dest_field));
+                    $fc_item->setHostEntity('node', $node);
+                }
+                $fc_wrapper = entity_metadata_wrapper('field_collection_item', 
+                        $fc_item);
+                
+                // print_r($fc_wrapper->getPropertyInfo());
+                
+                foreach($value_map as $key => $value) {
+                    try {
+                        $fc_wrapper->$key->set($value);
+                    }
+                    catch(Exception $e) {
+                        drush_log("Failed setting $key to $value.", 'warning');
+                        print_r($fc_item->$key);
+                    }
+                }
+                
+                $fc_wrapper->save(TRUE);
+                // successfully updated field collection entity, advance to next
+                // item
+                $current_ix++;
+            }
+            
+            node_save($node);
+            
+            // find any extra entities and delete them
+            while(isset($node_field[LANGUAGE_NONE][$current_ix]['value'])) {
+                $entity_id = $node_field[LANGUAGE_NONE][$current_ix]['value'];
+                $fc_items = entity_load($input_type, array($entity_id));
+                if(empty($fc_items)) {
+                    drush_log("Could not load entity $entity_id of type $input_type in node $nid at index $current_ix", 'warning');
+                    $current_ix++;
+                    continue;
+                }
+                else {
+                    // retrieve the first item
+                    $fc_item = reset($fc_items);
+                    drush_log("Deleting entity $entity_id from parent index $current_ix", 'ok');
+                    $fc_item->delete();
+                    $current_ix++;
+                }
+            }
+        }
     }
 }
 
