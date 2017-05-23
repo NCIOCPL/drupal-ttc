@@ -81,13 +81,21 @@ function ttc_abstract_drush_command() {
     $items['ttc-abstract-import-excel'] = array(
         'description' => "Parses an Excel document to find and update listed nodes.",
         'options' => array(
-            'limit' => array(
-                'description' => 'Comma delimited list of spreads.',
-                'example-value' => '1000',
+            'nids' => array(
+                'description' => 'Comma delimited list of node ids.',
+                'example-value' => '1351,2000',
             ),
             'filename' => array(
                 'description' => 'Filename of Excel import.',
                 'example-value' => 'abstracts.xls',
+            ),
+            'trim-extras' => array(
+                'description' => 'Remove extra field collections for nodes with present data.',
+                'example-value' => 'true',
+            ),
+            'list-extras' => array(
+                'description' => 'Lists nodes containing fields with extra entries vs. the data.',
+                'example-value' => 'true',
             ),
         ),
         'examples' => array(
@@ -218,10 +226,15 @@ function drush_ttc_abstract_import_excel_validate() {
 
     drush_log("Found PHPExcel library at $module", 'ok');
 
-    $limit = drush_get_option('limit', -1);
+    $nid_list = drush_get_option('nids', '-1');
+    $nids = explode(',', $nid_list);
 
-    if (!is_numeric($limit))
-        return drush_set_error('NON_NUMERIC_LIMIT', dt('Please provide a numeric limit option.'));
+    foreach($nids as $nid) {
+        if (!is_numeric($nid)) {
+            return drush_set_error('NON_NUMERIC_NID', dt('Non-numeric nid of %nid found in input string %nid_list.',
+            array('%nid' => $nid, '%nid_list' => $nid_list)));
+        }
+    }
 }
 
 /**
@@ -404,16 +417,19 @@ function drush_ttc_abstract_export_excel() {
 
         _build_field_sheet($headers, $data, $abstract_items, 'field_opp_invs_text', 
                 'Inventors', 'field_inventors', 'field_collection_item',
-                array('field_first_name', 'field_last_name', 'field_url',
+                array('field_first_name', 'field_last_name', 'field_url|value',
                     'field_is_lead', 'field_division_name'), 10);
         
-        /*_build_field_sheet($headers, $data, $abstract_items, 'field_opp_pubs_text', 
-                'Publications', null, null, null, 0);
+        _build_field_sheet($headers, $data, $abstract_items, 'field_opp_pubs_text', 
+                'Publications', 'field_publications', 'field_collection_item', 
+                array('field_title', 'field_url|value', 'field_url|title'),
+                 10);
 
-        _build_entity_sheet($headers, $data, $abstract_items, 'field_pat_status', 
-                'Patent Status', 'field_collection_item', 
-                array('field_patent_status', 'field_text', 'field_url'), 
-                null, null, null, 0);*/
+        _build_field_sheet($headers, $data, $abstract_items, 'field_pat_status', 
+                'Patent Status', 'field_pat_status', 'field_collection_item', 
+                array('field_application_number', 'field_patent_authority', 'field_patent_number', 
+                'field_patent_filing_date', 'field_patent_issue_date', 'field_is_related_patent'), 
+                1);
 
         drush_log("Generated data for $count nodes.  Found headers:", 'ok');
         print_r($headers);
@@ -471,105 +487,16 @@ function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label
     $headers[$field_label][] = 'input_type';
 }
 
-function _build_entity_sheet(&$headers, &$data, $nodes, $field_name, $field_label, $entity_type, $entity_fields, $dest_field, $input_type, $input_fields, $input_copies) {
-    // set up column indexes
-    $field_sheet = array();
-
-    foreach ($nodes as $node) {
-        foreach ($node->$field_name as $lang => $lang_entries) {
-            foreach ($lang_entries as $ix => $entry) {
-                $entity = entity_revision_load($entity_type, $entry['revision_id']);
-
-                $row = array();
-                $row[] = $node->nid;
-                $row[] = $node->title;
-
-                foreach ($entity_fields as $entity_field_name) {
-                    foreach ($entity->$entity_field_name as $entity_lang => $entity_lang_entries) {
-                        foreach ($entity_lang_entries as $entity_ix => $entity_entry) {
-                            if (isset($entity_entry['tid'])) {
-                                $term = taxonomy_term_load($entity_entry['tid']);
-                                $row[] = trim($term->name);
-                            } else {
-                                $row[] = trim($entity_entry['value']);
-                            }
-                        }
-                    }
-
-                    // create empty rows to space out dest_field and input_type columns
-                    for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
-                        foreach ($input_fields as $input_field) {
-                            $row[] = "";
-                        }
-                    }
-
-                    $row[] = $dest_field;
-                    $row[] = $input_type;
-                }
-
-                $field_sheet[] = $row;
-            }
-        }
-    }
-
-    $headers[$field_label] = array('nid', 'title');
-    foreach ($entity_fields as $entity_field_name) {
-        $headers[$field_label][] = $entity_field_name;
-    }
-    // add the specified number of input field copies
-    for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
-        foreach ($input_fields as $input_field) {
-            $headers[$field_label][] = "$input_type|$input_ix|$input_field";
-        }
-    }
-    $data[$field_label] = $field_sheet;
-}
-
-function _get_column_index(&$registry, $name) {
-    $index = array_search($name, $registry);
-    if ($index === FALSE) {
-        $registry[] = $name;
-
-        $index = array_search($name, $registry);
-    }
-
-    return $index;
-}
-
-function _fill_field_column(&$registry, &$row, $node, $field_name, $path_root = "") {
-    foreach ($node->$field_name as $lang => $lang_entries) {
-        foreach ($lang_entries as $ix => $entry) {
-            $path = "$field_name|$lang|$ix|value";
-            if (strlen($path_root) > 0) {
-                $path = "$path_root|$path";
-            }
-            $path_ix = _get_column_index($registry, $path);
-
-            $row[$path_ix] = trim($entry['value']);
-        }
-    }
-}
-
-function _fill_entity_column(&$registry, &$row, $node, $field_name, $entity_type, $entity_fields) {
-    foreach ($node->$field_name as $lang => $lang_entries) {
-        foreach ($lang_entries as $ix => $entry) {
-            $entity = entity_revision_load($entity_type, $entry['revision_id']);
-
-            foreach ($entity_fields as $entity_field) {
-                $path = "$field_name|$lang|$ix|revision_id!$entity_type";
-                _fill_field_column($registry, $row, $entity, $entity_field, $path);
-            }
-        }
-    }
-}
-
 /**
  * Implements drush_hook_COMMAND().
  */
 function drush_ttc_abstract_import_excel() {
-    $limit = drush_get_option('limit', 50);
+    $nid_list = drush_get_option('nids', '');
+    $nids = array();
+    if(!empty($nid_list)) {
+        $nids = explode(',', $nid_list);
+    }
 
-    //drush_log("Import Excel called with a limit of $limit", 'ok');
     // Store the file in sites/default/files
     $dir = file_stream_wrapper_get_instance_by_uri('public://')->realpath();
     $filename = drush_get_option('filename', 'abstracts.xls');
@@ -585,7 +512,7 @@ function drush_ttc_abstract_import_excel() {
         foreach ($result as $pageno => $page) {
             foreach ($page as $rowno => $row) {
                 //drush_log("Checking row $rowno of page $pageno:", 'ok');
-                _import_parse_row($row, $data);
+                _import_parse_row($row, $data, $nids);
             }
         }
     } else {
@@ -596,9 +523,12 @@ function drush_ttc_abstract_import_excel() {
     if(!empty($data)) {
         _import_node_data($data);
     }
+    else {
+        drush_log("No node data found.", "warning");
+    }
 }
 
-function _import_parse_row($row, &$data) {
+function _import_parse_row($row, &$data, $nids) {
     $nid = null;
     $dest_field = null;
     $input_type = null;
@@ -611,14 +541,37 @@ function _import_parse_row($row, &$data) {
         
         switch($key) {
             case "nid":
+                // skip this row if nids is not empty and this nid is not listed
+                if(!empty($nids) && !in_array($value, $nids)) {
+                    drush_log("Skipping nid $value, not present in nid list.", 'debug');
+                    return;
+                }
+
+                // falls through intentionally if nid is not rejected
             case "dest_field":
             case "input_type":
                 $$key = $value;
                 break;
             default:
                 $key_parts = explode('|', $key);
-                if(sizeof($key_parts) > 1) {
-                    $values[$key_parts[0]][$key_parts[1]] = $value;
+                $parts_length = sizeof($key_parts);
+                $last_part = $parts_length - 1;
+                // if there's a path to a field value...
+                if($parts_length > 1) {
+                    $path = &$values;
+                    foreach($key_parts as $index => $key_part) {
+                        // if this is not the last part, then ensure the array path to the desired value can exist.
+                        if($index < $last_part ) {
+                            if(!isset($path[$key_part])) {
+                                $path[$key_part] = array();
+                            }
+                            $path = &$path[$key_part];
+                        }
+                        // if this is the last item, then set the final key to the value.
+                        else {
+                            $path[$key_part] = $value;
+                        }
+                    }
                 }
                 break;
         }
@@ -626,96 +579,153 @@ function _import_parse_row($row, &$data) {
     
     // combine values with existing node values (if any)
     if($nid != null && !empty($values)) {
-        $data[$nid]['dest_field'] = $dest_field;
-        $data[$nid]['input_type'] = $input_type;
+        $data[$nid][$dest_field]['input_type'] = $input_type;
         foreach($values as $value) {
-            $data[$nid]['values'][] = $value;
+            $data[$nid][$dest_field]['values'][] = $value;
         }
     }
 }
 
 function _import_node_data($data) {
-    drush_log("Found node data:", 'ok');
-    print_r($data);
-    
-    foreach($data as $nid => $datum) {
-        if(!isset($datum['values']) || empty($datum['values'])) {
-            drush_log("No values for node $nid; skipping.", 'warning');
-            continue;
-        }
-        
+    $list_extras = drush_get_option('list-extras', false);
+    $trim_extras = drush_get_option('trim-extras', false);
+
+    foreach($data as $nid => $fields) {
         $node = node_load($nid);
-        $dest_field = $datum['dest_field'];
-        $input_type = $datum['input_type'];
-        $values = $datum['values'];
+        $node_wrapper = entity_metadata_wrapper('node', $node, array('bundle' => 'abstract'));
+        $node_prop_info = $node_wrapper->getPropertyInfo();
         
-        if(isset($node->$dest_field)) {
-            drush_log("Found field $dest_field for node $nid.", 'ok');
-            $node_field = $node->$dest_field;
-            
-            // create and save entities without regard to existing entities first
-            $current_ix = 0;
-            foreach($values as $value_map) {
-                // load existing entity or create new one.
-                if(isset($node_field[LANGUAGE_NONE][$current_ix]['value'])) {
-                    $entity_id = $node_field[LANGUAGE_NONE][$current_ix]['value'];
-                    $fc_items = entity_load($input_type, array($entity_id));
-                    if(empty($fc_items)) {
-                        drush_log("Could not load entity $entity_id of type $input_type in node $nid", 'warning');
-                        continue;
-                    }
-                    else {
-                        // retrieve the first item
-                        $fc_item = reset($fc_items);
+        foreach($fields as $dest_field => $datum) {
+            $input_type = $datum['input_type'];
+            $values = $datum['values'];
+            $value_count = sizeof($values);
+
+            drush_log("Importing $value_count values into $dest_field of type $input_type on node $nid", 'debug');
+
+            if(isset($node_prop_info[$dest_field])) {
+                // handle any bad entries currently in the field
+                _field_clear_errors($node_wrapper, $dest_field);
+
+                $entity_count = $node_wrapper->$dest_field->count();
+                drush_log("Found $entity_count entities in $dest_field on node $nid", 'debug');
+
+                // create and save entities without regard to existing entities first
+                foreach($values as $ix => $value_map) {
+                    foreach($value_map as $field => $value) {
+                        try {
+                            //create the field collection if needed
+                            if(!$node_wrapper->$dest_field->offsetExists($ix)) {
+                                drush_log("Creating new $dest_field item at delta $ix on node $nid.", 'debug');
+                                
+                                $fc_item = entity_create('field_collection_item', 
+                                    array('field_name' => $dest_field));
+                                $fc_item->setHostEntity('node', $node, LANGUAGE_NONE, false);
+
+                                $node_wrapper->$dest_field->offsetSet($ix, $fc_item);
+                            }
+                            else {
+                                $eid = $node_wrapper->{$dest_field}[$ix]->getIdentifier();
+                                drush_log("Loading entity $eid from $dest_field $ix on node $nid", 'debug');
+                                $fc_item = reset(entity_load('field_collection_item', array($eid), array(), true));
+                            }
+
+                            if(is_array($value)) {
+                                foreach($value as $key => $sub_value) {
+                                    drush_log("Set ${field}[$key] in ${dest_field}[$ix] (entity $eid) on node $nid to $sub_value", 'debug');
+                                    $fc_item->{$field}[LANGUAGE_NONE][0][$key] = $sub_value;
+                                }
+                            }
+                            else {
+                                drush_log("Set $field in ${dest_field}[$ix] (entity $eid) on node $nid to $value", 'debug');
+                                $fc_item->{$field}[LANGUAGE_NONE][0]['value'] = $value;
+                            }
+                            $fc_item->save(TRUE);
+
+                            
+                        }
+                        catch(Exception $e) {
+                            drush_log("Failed setting $field in $dest_field $ix to $value for field collection $input_type.", 'warning');
+                            echo $e;
+                            return;
+                        }
                     }
                 }
-                else{
-                    $fc_item = entity_create('field_collection_item', 
-                            array('field_name' => $dest_field));
-                    $fc_item->setHostEntity('node', $node);
-                }
-                $fc_wrapper = entity_metadata_wrapper('field_collection_item', 
-                        $fc_item);
                 
-                // print_r($fc_wrapper->getPropertyInfo());
-                
-                foreach($value_map as $key => $value) {
-                    try {
-                        $fc_wrapper->$key->set($value);
+                if($list_extras != false || $trim_extras != false) {
+                    // find any extra entities and delete them
+                    foreach($node_wrapper->$dest_field as $delta => $field_wrapper) {
+                        $entity_id = $field_wrapper->getIdentifier();
+                        
+                        if(!isset($values[$delta])) {
+                            if($trim_extras == false) {
+                                drush_log("Found extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
+                            }
+                            else {
+                                // delete the current field collection item.
+                                drush_log("Deleting extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
+
+                                $fc_item = entity_load_single($input_type, $entity_id);
+                                $fc_item->delete();
+
+                                $node_wrapper->$dest_field->offsetUnset($delta);
+                            }
+                        }
                     }
-                    catch(Exception $e) {
-                        drush_log("Failed setting $key to $value.", 'warning');
-                        print_r($fc_item->$key);
-                    }
                 }
-                
-                $fc_wrapper->save(TRUE);
-                // successfully updated field collection entity, advance to next
-                // item
-                $current_ix++;
             }
-            
-            node_save($node);
-            
-            // find any extra entities and delete them
-            while(isset($node_field[LANGUAGE_NONE][$current_ix]['value'])) {
-                $entity_id = $node_field[LANGUAGE_NONE][$current_ix]['value'];
-                $fc_items = entity_load($input_type, array($entity_id));
-                if(empty($fc_items)) {
-                    drush_log("Could not load entity $entity_id of type $input_type in node $nid at index $current_ix", 'warning');
-                    $current_ix++;
-                    continue;
-                }
-                else {
-                    // retrieve the first item
-                    $fc_item = reset($fc_items);
-                    drush_log("Deleting entity $entity_id from parent index $current_ix", 'ok');
-                    $fc_item->delete();
-                    $current_ix++;
-                }
+            else {
+                drush_log("Could not find target field $dest_field in abstract $nid", 'warning');
             }
+        }
+
+        $node_wrapper->save();
+    }
+}
+
+function _field_clear_errors($node_wrapper, $field_name) {
+    $nid = $node_wrapper->getIdentifier();
+    $changed = false;
+    try {
+        // load existing entity or create new one.
+        foreach ($node_wrapper->$field_name->getIterator() as $delta => $fc_wrapper) {
+            if($fc_wrapper == null) {
+                drush_log("Null field wrapper at delta $delta in field $field_name on node $nid.", "warning");
+                $node_wrapper->$field_name->offsetUnset($delta);
+                drush_log("Unset delta $delta in $field_name on node $nid.", 'ok');
+                $changed = true;
+                continue;
+            }
+            else if($fc_wrapper->value() == null) {
+                drush_log("Null field value at delta $delta in field $field_name on node $nid.", "warning");
+                $node_wrapper->$field_name->offsetUnset($delta);
+                drush_log("Unset delta $delta in $field_name on node $nid.", 'ok');
+                $changed = true;
+                continue;
+            }
+        }
+
+        if($changed) {
+            drush_log("Saving node $nid after clearing null entries in $field_name", 'ok');
+            $node_wrapper->save();
         }
     }
+    catch (Exception $e) {
+        drush_log("_field_clear_errors(): Failed accessing item $delta in $field_name on node $nid", 'warning');
+        echo $e;
+    }
+}
+
+function _wrapper_debug($w, $k) {
+  $values = array();
+  foreach ($w->getPropertyInfo() as $key => $val) {
+      if($k == $key) {
+          $values[$key] = $w->$key->value();
+      }
+      else {
+          $values[$key] = 'found';
+      }
+  }
+  return $values;
 }
 
 function _import_check_row($row) {
