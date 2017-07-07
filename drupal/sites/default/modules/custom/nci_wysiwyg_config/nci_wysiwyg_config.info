@@ -10,6 +10,7 @@ dependencies[] = imce
 dependencies[] = imce_wysiwyg
 dependencies[] = strongarm
 dependencies[] = wysiwyg
+dependencies[] = wysiwyg_filter
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[filter][] = filtered_html

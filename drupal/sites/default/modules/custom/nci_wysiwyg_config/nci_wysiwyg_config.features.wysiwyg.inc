@@ -75,6 +75,7 @@ function nci_wysiwyg_config_wysiwyg_default_profiles() {
       'advanced__active_tab' => 'edit-css',
       'forcePasteAsPlainText' => 0,
     ),
+    'rdf_mapping' => array(),
   );
 
   // Exported profile: full_html
@@ -143,6 +144,7 @@ function nci_wysiwyg_config_wysiwyg_default_profiles() {
       'advanced__active_tab' => 'edit-css',
       'forcePasteAsPlainText' => 0,
     ),
+    'rdf_mapping' => array(),
   );
 
   return $profiles;
