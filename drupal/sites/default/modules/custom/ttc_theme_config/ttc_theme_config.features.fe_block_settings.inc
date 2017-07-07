@@ -34,8 +34,8 @@ function ttc_theme_config_default_fe_block_settings() {
         'weight' => -11,
       ),
       'ttctheme' => array(
-        'region' => 'footer',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ttctheme',
         'weight' => -11,
       ),
