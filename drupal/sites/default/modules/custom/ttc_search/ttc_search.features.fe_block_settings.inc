@@ -27,6 +27,12 @@ function ttc_search_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => 0,
+      ),
       'ttctheme' => array(
         'region' => '',
         'status' => 0,

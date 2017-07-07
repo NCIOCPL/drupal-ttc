@@ -46,3 +46,12 @@ function ttc_site_structure_tokens_alter(array &$replacements, array $context) {
     }
   }
 }
+
+/**
+ * Implementation of hook_pathauto_alias_alter
+ * 
+ * MS special charactors treatment for generated URL
+ */
+function ttc_site_structure_pathauto_alias_alter(&$alias, array &$context) {
+  $alias = iconv('UTF-8', 'ASCII//IGNORE', $alias);
+}

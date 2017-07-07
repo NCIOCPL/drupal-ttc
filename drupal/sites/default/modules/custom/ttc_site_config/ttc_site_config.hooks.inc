@@ -51,8 +51,6 @@ function ttc_site_config_field_widget_form_alter(&$element, &$form_state, $conte
     return;
   }
 
-  drupal_add_css(drupal_get_path('module', 'MY_MODULE') . '/assets/textarea-summary.css');
-  drupal_add_js(drupal_get_path('module', 'MY_MODULE') . '/assets/textarea-summary.js');
   $element['summary']['#type'] = 'text_format';
   $element['summary']['#format'] = $element['#format'];
 }

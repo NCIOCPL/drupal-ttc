@@ -28,6 +28,12 @@ availabletechnologies',
         'theme' => 'seven',
         'weight' => 0,
       ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => 10,
+      ),
       'ttctheme' => array(
         'region' => 'content',
         'status' => 1,
