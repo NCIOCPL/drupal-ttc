@@ -148,6 +148,8 @@ function ttc_views_views_default_views() {
     'field_opp_rel_enum' => 'field_opp_rel_enum',
     'field_pat_status' => 'field_pat_status',
     'field_publications' => 'field_publications',
+    'field_product_type' => 'field_product_type',
+    'field_contact_auto' => 'field_contact_auto',
   );
   $handler->display->display_options['style_options']['cdata_wrapper'] = array(
     'field_opp_compadv_text' => 'field_opp_compadv_text',
@@ -286,13 +288,17 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_product_type']['id'] = 'field_product_type';
   $handler->display->display_options['fields']['field_product_type']['table'] = 'field_data_field_product_type';
   $handler->display->display_options['fields']['field_product_type']['field'] = 'field_product_type';
-  $handler->display->display_options['fields']['field_product_type']['label'] = 'Classification';
+  $handler->display->display_options['fields']['field_product_type']['label'] = 'Provider Classifications';
+  $handler->display->display_options['fields']['field_product_type']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_product_type']['delta_offset'] = '0';
-  /* Field: Content: Description of Technology */
-  $handler->display->display_options['fields']['field_opp_description_text']['id'] = 'field_opp_description_text';
-  $handler->display->display_options['fields']['field_opp_description_text']['table'] = 'field_data_field_opp_description_text';
-  $handler->display->display_options['fields']['field_opp_description_text']['field'] = 'field_opp_description_text';
-  $handler->display->display_options['fields']['field_opp_description_text']['label'] = 'Description';
+  /* Field: Content: Contact */
+  $handler->display->display_options['fields']['field_contact_auto']['id'] = 'field_contact_auto';
+  $handler->display->display_options['fields']['field_contact_auto']['table'] = 'field_data_field_contact_auto';
+  $handler->display->display_options['fields']['field_contact_auto']['field'] = 'field_contact_auto';
+  $handler->display->display_options['fields']['field_contact_auto']['label'] = 'Licensing Contacts';
+  $handler->display->display_options['fields']['field_contact_auto']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_contact_auto']['alter']['text'] = '[field_contact_auto-tid]';
+  $handler->display->display_options['fields']['field_contact_auto']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
