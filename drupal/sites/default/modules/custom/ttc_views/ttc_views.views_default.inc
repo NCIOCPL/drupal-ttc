@@ -115,6 +115,14 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['operator'] = 'and';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Feed */
   $handler = $view->new_display('feed', 'Feed', 'abstract_feed');
@@ -686,7 +694,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Meta Description */
+  /* Field: Indexed Content: Summary */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
@@ -800,7 +808,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Meta Description */
+  /* Field: Indexed Content: Summary */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
