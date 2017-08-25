@@ -457,7 +457,29 @@ function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label
                 $row = array();
                 $row[] = $node->nid;
                 $row[] = $node->title;
-                $row[] = trim($entry['value']);
+                $value = $entry['value'];
+                if($field_name == 'field_pat_status') {
+                    $entity = field_collection_item_load($value);
+                    if($entity) {
+                        $wrapper = entity_metadata_wrapper('field_collection_item', $entity);
+                        $value = trim($wrapper->field_text->value());
+                        if(empty($value)) {
+                            // empty text field; skip this row.
+                            continue;
+                        }
+                        $row[] = $value;
+                        unset($wrapper);
+                        unset($entity);
+                    }
+                    else {
+                        // no status found
+                        drush_log("No patent status found for nid $node->nid and status id $value", 'warning');
+                        continue;
+                    }
+                }
+                else {
+                    $row[] = trim($value);
+                }
 
                 // create empty rows to space out dest_field and input_type columns
                 for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
