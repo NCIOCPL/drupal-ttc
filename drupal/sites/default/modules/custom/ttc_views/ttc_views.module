@@ -24,7 +24,48 @@ function ttc_views_views_pre_render(&$view) {
             $title = $term->name;
             $view->build_info['title'] = "TTC $title";
         }
+
+        if($view->current_display == 'abstract_xml') {
+            foreach($view->result as $r => $result) {
+                // retrieve the unpublished date for each nid
+                $nid = $view->result[$r]->nid;
+                $date = _get_unpublished_date($nid);
+                $view->result[$r]->nid = _get_unpublished_date($view->result[$r]->nid);
+            }
+        }
     }
+}
+
+function _get_unpublished_date($nid) {
+    $published = db_select('workbench_moderation_node_history', 'p_top')
+        ->fields('p_top')
+        ->condition('p_top.nid', $nid)
+        ->condition('p_top.state', 'published')
+        ->orderBy('p_top.hid', 'DESC')
+        ->range(0,1);
+
+    $archived = db_select('workbench_moderation_node_history', 'a')
+        ->condition('a.nid', $nid)
+        ->condition('a.state', 'archived')
+        ->orderBy('a.hid', 'ASC')
+        ->range(0,1);
+
+    $archived->addField('a', 'stamp', 'archive_stamp');
+
+    $publishedAlias = $archived->join($published, 'p', 'a.hid >= p.hid');
+
+    $result = $archived->execute();
+
+    $date = false;
+
+    foreach ($result as $r => $record) {
+        // Do something with each $record
+        $stamp = $record->archive_stamp;
+        $date = date('Y-m-d', $stamp);
+        break;
+    }
+
+    return $date;
 }
 
 /***
