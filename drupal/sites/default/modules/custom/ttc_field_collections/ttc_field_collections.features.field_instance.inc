@@ -41,7 +41,7 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -76,7 +76,7 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 0,
     ),
   );
 
@@ -114,7 +114,7 @@ function ttc_field_collections_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 6,
     ),
   );
 
@@ -149,7 +149,77 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_inventors-field_middle_initial'.
+  $field_instances['field_collection_item-field_inventors-field_middle_initial'] = array(
+    'bundle' => 'field_inventors',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_middle_initial',
+    'label' => 'Middle Initial',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_inventors-field_suffix'.
+  $field_instances['field_collection_item-field_inventors-field_suffix'] = array(
+    'bundle' => 'field_inventors',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_suffix',
+    'label' => 'Suffix',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
     ),
   );
 
@@ -187,7 +257,7 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'url_external',
-      'weight' => 7,
+      'weight' => 5,
     ),
   );
 
@@ -269,6 +339,41 @@ function ttc_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_pat_status-field_add_pat_desc'.
+  $field_instances['field_collection_item-field_pat_status-field_add_pat_desc'] = array(
+    'bundle' => 'field_pat_status',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_add_pat_desc',
+    'label' => 'Additional Patent Description',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 2,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_pat_status-field_application_number'.
   $field_instances['field_collection_item-field_pat_status-field_application_number'] = array(
     'bundle' => 'field_pat_status',
@@ -337,7 +442,7 @@ function ttc_field_collections_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -387,12 +492,12 @@ function ttc_field_collections_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 7,
@@ -403,7 +508,7 @@ function ttc_field_collections_field_default_field_instances() {
     'label' => 'Patent Filing Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -414,14 +519,16 @@ function ttc_field_collections_field_default_field_instances() {
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
-        'input_format' => 'Y-m-d H:i:s',
-        'input_format_custom' => '',
+        'input_format' => 'custom',
+        'input_format_custom' => 'Y-m-d',
         'label_position' => 'above',
         'no_fieldset' => 0,
-        'text_parts' => array(),
+        'text_parts' => array(
+          0 => 'year',
+        ),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_text',
+      'type' => 'date_select',
       'weight' => 6,
     ),
   );
@@ -437,12 +544,12 @@ function ttc_field_collections_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'short',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 8,
@@ -453,7 +560,7 @@ function ttc_field_collections_field_default_field_instances() {
     'label' => 'Patent Issue Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -464,14 +571,16 @@ function ttc_field_collections_field_default_field_instances() {
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
-        'input_format' => 'Y-m-d H:i:s',
-        'input_format_custom' => '',
+        'input_format' => 'custom',
+        'input_format_custom' => 'Y-m-d',
         'label_position' => 'above',
         'no_fieldset' => 0,
-        'text_parts' => array(),
+        'text_parts' => array(
+          0 => 'year',
+        ),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_text',
+      'type' => 'date_select',
       'weight' => 7,
     ),
   );
@@ -693,12 +802,14 @@ function ttc_field_collections_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Additional Patent Description');
   t('Application Number');
   t('Division Name');
   t('First Name');
   t('Is Lead');
   t('Is Related Patent');
   t('Last Name');
+  t('Middle Initial');
   t('Other Email Addresses');
   t('Patent Authority');
   t('Patent Filing Date');
@@ -706,6 +817,7 @@ function ttc_field_collections_field_default_field_instances() {
   t('Patent Number');
   t('Send To');
   t('Status');
+  t('Suffix');
   t('Text');
   t('This patent is only related to the technology, and not directly applicable.');
   t('Title');
