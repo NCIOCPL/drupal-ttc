@@ -219,14 +219,12 @@ function ttc_views_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Workbench Moderation: Timestamp */
-  $handler->display->display_options['fields']['stamp']['id'] = 'stamp';
-  $handler->display->display_options['fields']['stamp']['table'] = 'workbench_moderation_node_history';
-  $handler->display->display_options['fields']['stamp']['field'] = 'stamp';
-  $handler->display->display_options['fields']['stamp']['label'] = 'Date Unpublished';
-  $handler->display->display_options['fields']['stamp']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['stamp']['custom_date_format'] = 'Y-m-d';
-  $handler->display->display_options['fields']['stamp']['second_date_format'] = 'long';
+  /* Field: Date Unpublished */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['ui_name'] = 'Date Unpublished';
+  $handler->display->display_options['fields']['nid']['label'] = 'Date Unpublished';
   /* Field: Content: Inventor Data */
   $handler->display->display_options['fields']['field_inventors']['id'] = 'field_inventors';
   $handler->display->display_options['fields']['field_inventors']['table'] = 'field_data_field_inventors';
@@ -938,7 +936,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Summary */
+  /* Field: Indexed Content: Meta Description */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
@@ -1052,7 +1050,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Summary */
+  /* Field: Indexed Content: Meta Description */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
