@@ -41,6 +41,7 @@ try {
                 $application_number = $wrapper->field_application_number->value();
                 $patent_authority = $wrapper->field_patent_authority->value();
                 $patent_number = $wrapper->field_patent_number->value();
+                $additional_patent_description = $wrapper->field_add_pat_desc->value();
                 $filing_date_value = $wrapper->field_patent_filing_date->value();
                 $filing_date = $filing_date_value ? format_date($filing_date_value, 'custom', 'Y-m-d') : '';
                 $issue_date_value = $wrapper->field_patent_issue_date->value();
@@ -56,12 +57,13 @@ try {
                     $writer->startElement('RelatedPatent');
                 }
                     $writer->startElement('Patent');
-                        $writer->writeElement('PatentStatus', $patent_status);
                         $writer->writeElement('ApplicationNumber', $application_number);
-                        $writer->writeElement('PatentAuthority', $patent_authority);
-                        $writer->writeElement('PatentNumber', $patent_number);
                         $writer->writeElement('ApplicationFiledOn', $filing_date);
                         $writer->writeElement('PatentIssuedOn', $issue_date);
+                        $writer->writeElement('PatentNumber', $patent_number);
+                        $writer->writeElement('PatentAuthority', $patent_authority);
+                        $writer->writeElement('AdditionalPatentDescription', $additional_patent_description);
+                        $writer->writeElement('PatentStatus', $patent_status);
                     $writer->endElement(); // Patent
                 $writer->endElement(); // IncludedPatent/RelatedPatent
             }
