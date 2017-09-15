@@ -18,6 +18,7 @@ features[features_api][] = api:2
 features[field_instance][] = node-news_announcement-body
 features[field_instance][] = node-news_announcement-field_date_published
 features[field_instance][] = node-news_announcement-field_image
+features[field_instance][] = node-news_announcement-field_opp_list_send
 features[field_instance][] = node-news_announcement-field_short_title
 features[node][] = news_announcement
 features[rules_config][] = rules_404_news_nodes
