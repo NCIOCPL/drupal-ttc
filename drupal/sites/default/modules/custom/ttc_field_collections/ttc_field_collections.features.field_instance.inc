@@ -732,7 +732,7 @@ function ttc_field_collections_field_default_field_instances() {
     'bundle' => 'field_publications',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The title of the publication, including any author data and links to relevant information.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -747,16 +747,16 @@ function ttc_field_collections_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'rows' => 2,
       ),
-      'type' => 'text_textfield',
+      'type' => 'text_textarea',
       'weight' => 1,
     ),
   );
@@ -819,6 +819,7 @@ function ttc_field_collections_field_default_field_instances() {
   t('Status');
   t('Suffix');
   t('Text');
+  t('The title of the publication, including any author data and links to relevant information.');
   t('This patent is only related to the technology, and not directly applicable.');
   t('Title');
   t('URL');
