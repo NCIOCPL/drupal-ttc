@@ -613,94 +613,130 @@ function _import_node_data($data) {
     $trim_extras = drush_get_option('trim-extras', false);
 
     foreach($data as $nid => $fields) {
-        $node = node_load($nid);
-        $node_wrapper = entity_metadata_wrapper('node', $node, array('bundle' => 'abstract'));
-        $node_prop_info = $node_wrapper->getPropertyInfo();
-        
-        foreach($fields as $dest_field => $datum) {
-            $input_type = $datum['input_type'];
-            $values = $datum['values'];
-            $value_count = sizeof($values);
+        try {
+            drush_log("Starting node $nid", 'debug');
+            $node = node_load($nid, NULL, true);
+            $node_wrapper = entity_metadata_wrapper('node', $node, array('bundle' => 'abstract'));
+            $node_prop_info = $node_wrapper->getPropertyInfo();
+            
+            foreach($fields as $dest_field => $datum) {
+                $input_type = $datum['input_type'];
+                $values = $datum['values'];
+                $value_count = sizeof($values);
 
-            drush_log("Importing $value_count values into $dest_field of type $input_type on node $nid", 'debug');
+                drush_log("Importing $value_count values into $dest_field of type $input_type on node $nid", 'debug');
 
-            if(isset($node_prop_info[$dest_field])) {
-                // handle any bad entries currently in the field
-                _field_clear_errors($node_wrapper, $dest_field);
+                if(isset($node_prop_info[$dest_field])) {
+                    // handle any bad entries currently in the field
+                    _field_clear_errors($node_wrapper, $dest_field);
 
-                $entity_count = $node_wrapper->$dest_field->count();
-                drush_log("Found $entity_count entities in $dest_field on node $nid", 'debug');
+                    $entity_count = $node_wrapper->$dest_field->count();
+                    drush_log("Found $entity_count entities in $dest_field on node $nid", 'debug');
 
-                // create and save entities without regard to existing entities first
-                foreach($values as $ix => $value_map) {
-                    foreach($value_map as $field => $value) {
+                    // create and save entities without regard to existing entities first
+                    foreach($values as $ix => $value_map) {
                         try {
                             //create the field collection if needed
+                            $eid = false;
                             if(!$node_wrapper->$dest_field->offsetExists($ix)) {
                                 drush_log("Creating new $dest_field item at delta $ix on node $nid.", 'debug');
                                 
                                 $fc_item = entity_create('field_collection_item', 
                                     array('field_name' => $dest_field));
                                 $fc_item->setHostEntity('node', $node, LANGUAGE_NONE, false);
-
-                                $node_wrapper->$dest_field->offsetSet($ix, $fc_item);
                             }
                             else {
                                 $eid = $node_wrapper->{$dest_field}[$ix]->getIdentifier();
                                 drush_log("Loading entity $eid from $dest_field $ix on node $nid", 'debug');
-                                $fc_item = reset(entity_load('field_collection_item', array($eid), array(), true));
+                                $fc_items = entity_load('field_collection_item', array($eid), array(), true);
+                                $fc_item = reset($fc_items);
                             }
 
-                            if(is_array($value)) {
-                                foreach($value as $key => $sub_value) {
-                                    drush_log("Set ${field}[$key] in ${dest_field}[$ix] (entity $eid) on node $nid to $sub_value", 'debug');
-                                    $fc_item->{$field}[LANGUAGE_NONE][0][$key] = $sub_value;
+                            drush_log("Using $dest_field item at delta $ix with id $fc_item->item_id, revision $fc_item->revision_id.", 'ok');
+
+                            if(!$eid) $eid = 'new';
+
+                            foreach($value_map as $field => $value) {
+                                $field_info = field_info_field($field);
+                                $max_length = false;
+                                if(isset($field_info['settings']['max_length'])) {
+                                    $max_length = $field_info['settings']['max_length'];
+                                }
+
+                                if($field == 'field_title') {
+                                    $value = array('value' => $value, 'format' => 'filtered_html');
+                                }
+
+                                if(is_array($value)) {
+                                    foreach($value as $key => $sub_value) {
+                                        if($max_length && strlen($sub_value) > $max_length) {
+                                            drush_log("Truncating ${field}[$key] in ${dest_field}[$ix] on node $nid, value longer than max of $max_length", 'warning');
+                                            $sub_value = substr($sub_value, 0, $max_length);
+                                        }
+
+                                        drush_log("Set ${field}[$key] in ${dest_field}[$ix] (field collection item $eid) on node $nid to $sub_value", 'debug');
+                                        $fc_item->{$field}[LANGUAGE_NONE][0][$key] = $sub_value;
+                                    }
+                                }
+                                else {
+                                    if($max_length && strlen($value) > $max_length) {
+                                        drush_log("Truncating $field in ${dest_field}[$ix] on node $nid, value longer than max of $max_length", 'warning');
+                                        $value = substr($value, 0, $max_length);
+                                    }
+                                    
+                                    drush_log("Set $field in ${dest_field}[$ix] (entity $eid) on node $nid to $value", 'debug');
+                                    $fc_item->{$field}[LANGUAGE_NONE][0]['value'] = $value;
                                 }
                             }
-                            else {
-                                drush_log("Set $field in ${dest_field}[$ix] (entity $eid) on node $nid to $value", 'debug');
-                                $fc_item->{$field}[LANGUAGE_NONE][0]['value'] = $value;
-                            }
-                            $fc_item->save(TRUE);
 
-                            
+                            drush_log("Saving ${dest_field}[$ix] (entity $eid) on node $nid", 'debug');
+                            $fc_item->save(TRUE);
+                            $node_wrapper->$dest_field->offsetSet($ix, $fc_item);
                         }
                         catch(Exception $e) {
-                            drush_log("Failed setting $field in $dest_field $ix to $value for field collection $input_type.", 'warning');
-                            echo $e;
-                            return;
+                            drush_log("Failed updating $dest_field $ix for field collection $input_type.", 'error');
+                            drush_log("Error message: " . $e->getMessage(), 'error');
+                            drush_log("Attempted values: ", 'error');
+                            var_dump($value_map);
+                            continue;
+                        }
+                    }
+                    
+                    if($list_extras != false || $trim_extras != false) {
+                        // find any extra entities and delete them
+                        foreach($node_wrapper->$dest_field as $delta => $field_wrapper) {
+                            $entity_id = $field_wrapper->getIdentifier();
+                            
+                            if(!isset($values[$delta])) {
+                                if($trim_extras == false) {
+                                    drush_log("Found extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
+                                }
+                                else {
+                                    // delete the current field collection item.
+                                    drush_log("Deleting extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
+
+                                    $fc_item = entity_load_single($input_type, $entity_id);
+                                    $fc_item->delete();
+
+                                    $node_wrapper->$dest_field->offsetUnset($delta);
+                                }
+                            }
                         }
                     }
                 }
-                
-                if($list_extras != false || $trim_extras != false) {
-                    // find any extra entities and delete them
-                    foreach($node_wrapper->$dest_field as $delta => $field_wrapper) {
-                        $entity_id = $field_wrapper->getIdentifier();
-                        
-                        if(!isset($values[$delta])) {
-                            if($trim_extras == false) {
-                                drush_log("Found extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
-                            }
-                            else {
-                                // delete the current field collection item.
-                                drush_log("Deleting extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
-
-                                $fc_item = entity_load_single($input_type, $entity_id);
-                                $fc_item->delete();
-
-                                $node_wrapper->$dest_field->offsetUnset($delta);
-                            }
-                        }
-                    }
+                else {
+                    drush_log("Could not find target field $dest_field in abstract $nid", 'warning');
                 }
             }
-            else {
-                drush_log("Could not find target field $dest_field in abstract $nid", 'warning');
-            }
+
+            $node_wrapper->save();
+            drush_log("Saved node $nid", 'ok');
         }
-
-        $node_wrapper->save();
+        catch(Exception $e) {
+            drush_log("Failed loading or saving node $nid", 'error');
+            drush_log("Error message: " . $e->getMessage(), 'error');
+            continue;
+        }
     }
 }
 

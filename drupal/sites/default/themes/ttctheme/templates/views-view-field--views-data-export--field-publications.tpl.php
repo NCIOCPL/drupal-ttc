@@ -35,7 +35,12 @@ try {
             if($publication_item) {
                 $wrapper = entity_metadata_wrapper('field_collection_item', $publication_item);
 
+                // title is a long text field, check for value in array
                 $title = $wrapper->field_title->value();
+                if(isset($title['value'])) $title = $title['value'];
+                $title = filter_xss($title, array());
+                if(!$title) $title = '';
+
                 $url_value = $wrapper->field_url->value();
                 $url = isset($url_value['value']) ? $url_value['value'] : '';
                 $url_title = isset($url_value['title']) ? $url_value['title'] : '';

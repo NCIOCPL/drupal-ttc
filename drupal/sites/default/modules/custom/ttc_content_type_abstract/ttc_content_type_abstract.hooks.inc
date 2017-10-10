@@ -99,38 +99,48 @@ function ttc_content_type_abstract_node_presave($node) {
 
     // update display fields
     $inventors_values = _ttc_content_type_abstract_retrieve_values($node, 'field_inventors', $inventor_fields);
-    $inventors_formatted = _ttc_content_type_abstract_format_inventors($inventors_values);
-    _ttc_content_type_abstract_set_text($node, 'field_opp_invs_text', $inventors_formatted);
+    if($inventors_values) {
+      $inventors_formatted = _ttc_content_type_abstract_format_inventors($inventors_values);
+      _ttc_content_type_abstract_set_text($node, 'field_opp_invs_text', $inventors_formatted);
+    }
 
     $publications_values = _ttc_content_type_abstract_retrieve_values($node, 'field_publications', $publication_fields);
-    $publications_formatted = _ttc_content_type_abstract_format_publications($publications_values);
-    _ttc_content_type_abstract_set_text($node, 'field_opp_pubs_text', $publications_formatted);
+    if($publications_values) {
+      $publications_formatted = _ttc_content_type_abstract_format_publications($publications_values);
+      _ttc_content_type_abstract_set_text($node, 'field_opp_pubs_text', $publications_formatted);
+    }
 
     $status_values = _ttc_content_type_abstract_retrieve_values($node, 'field_pat_status', $pat_status_fields);
-    $status_formatted = _ttc_content_type_abstract_format_status($status_values);
-    _ttc_content_type_abstract_set_text($node, 'field_pat_status', $status_formatted, 'field_text');
+    if($status_values) {
+      $status_formatted = _ttc_content_type_abstract_format_status($status_values);
+      _ttc_content_type_abstract_set_text($node, 'field_pat_status', $status_formatted, 'field_text');
+    }
   }
 }
 
 function _ttc_content_type_abstract_retrieve_values($node, $collection, $subfields) {
   $collection_items = field_get_items('node', $node, $collection);
 
+  if(!is_array($collection_items)) return false;
+
   $values = array();
 
   foreach($collection_items as $delta => $collection_item) {
-    $entity = $collection_item['entity'];
+    if(isset($collection_item['entity'])) {
+      $entity = $collection_item['entity'];
 
-    foreach($subfields as $name => $subfield) {
-      $items = field_get_items('field_collection_item', $entity, $subfield);
+      foreach($subfields as $name => $subfield) {
+        $items = field_get_items('field_collection_item', $entity, $subfield);
 
-      $display = array();
-      if(strpos($subfield, 'date') !== false) {
-        $display = array('settings' => array('format_type' => 'brief_date'));
-      }
+        $display = array();
+        if(strpos($subfield, 'date') !== false) {
+          $display = array('settings' => array('format_type' => 'brief_date'));
+        }
 
-      foreach($items as $item) {
-        $value = field_view_value('field_collection_item', $entity, $subfield, $item, $display);
-        $values[$delta][$subfield][] = $value;
+        foreach($items as $item) {
+          $value = field_view_value('field_collection_item', $entity, $subfield, $item, $display);
+          $values[$delta][$subfield][] = $value;
+        }
       }
     }
   }
