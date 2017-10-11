@@ -128,7 +128,7 @@ function ttc_views_views_default_views() {
   $handler = $view->new_display('feed', 'Feed', 'abstract_feed');
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['style_plugin'] = 'rss';
-  $handler->display->display_options['style_options']['description'] = 'Available Technologies from the Technology Tranfer Center.';
+  $handler->display->display_options['style_options']['description'] = 'Available Technologies from the Technology Transfer Center.';
   $handler->display->display_options['row_plugin'] = 'rss_fields';
   $handler->display->display_options['row_options']['title_field'] = 'title';
   $handler->display->display_options['row_options']['link_field'] = 'path';
@@ -148,7 +148,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['title'] = 'TTC News';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['style_plugin'] = 'rss';
-  $handler->display->display_options['style_options']['description'] = 'Available Technologies from the Technology Tranfer Center.';
+  $handler->display->display_options['style_options']['description'] = 'News from the Technology Transfer Center.';
   $handler->display->display_options['row_plugin'] = 'rss_fields';
   $handler->display->display_options['row_options']['title_field'] = 'title';
   $handler->display->display_options['row_options']['link_field'] = 'path';
