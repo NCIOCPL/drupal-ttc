@@ -1024,11 +1024,11 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'bundle' => 'abstract',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.',
     'display' => array(
       'PDF' => array(
         'label' => 'above',
@@ -1051,7 +1051,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_opp_list_send',
-    'label' => 'Announce opportunity to ListServ?',
+    'label' => 'Announce opportunity to GovDelivery?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
