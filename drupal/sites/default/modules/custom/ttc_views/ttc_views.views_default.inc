@@ -523,6 +523,29 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'news_announcement' => 'news_announcement',
+  );
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['value'] = array(
+    1 => '1',
+  );
   $handler->display->display_options['path'] = 'rss/news.xml';
   $handler->display->display_options['sitename_title'] = 0;
   $export['news'] = $view;
