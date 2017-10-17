@@ -68,7 +68,7 @@
       <input type="hidden" name="subscription_type" id="subscription_type" value="email" />
       <div class="container-inline">
         <h4 class="field-content">SUBSCRIBE</h4>
-        <div class="listserv-subscribe-message">Subscribe to TTC topics via GovDelivery to receive the latest announcements.</div>
+        <div class="listserv-subscribe-message">Subscribe to TTC topics to receive the latest updates.</div>
         
         <div class="row">
           <div class="small-8 columns listserv-input-container">
