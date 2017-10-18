@@ -168,7 +168,7 @@ function ttc_content_type_news_announcement_field_default_field_instances() {
     'bundle' => 'news_announcement',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,

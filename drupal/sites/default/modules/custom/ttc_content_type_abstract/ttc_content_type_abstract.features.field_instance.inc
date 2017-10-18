@@ -1024,7 +1024,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'bundle' => 'abstract',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -1698,7 +1698,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('A list of related reference numbers (E-Numbers).');
   t('A short description of the abstract, also provided to search engines..');
   t('Also called an E-Number.');
-  t('Announce opportunity to ListServ?');
+  t('Announce opportunity to GovDelivery?');
   t('Collaboration Opportunity');
   t('Competitive Advantages');
   t('Contact');
@@ -1709,6 +1709,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Display Updated Date');
   t('End Date');
   t('Formatted Email List');
+  t('If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.');
   t('Image shown in available technologies search results.');
   t('Inventor(s)');
   t('Keywords');
