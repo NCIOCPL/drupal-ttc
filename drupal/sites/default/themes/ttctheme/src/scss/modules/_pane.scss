@@ -105,14 +105,25 @@ body.front .pane-success-stories {
   .success-stories__list {
     margin:3rem auto 1rem; 
     width:90%;
+    display: flex;
+    flex-wrap: wrap;
+
     li{
       border:none;
+      display: flex;
+      flex-wrap: wrap;
+
       &:focus{
         border: 2px solid blue;
       }
 /*      a:focus{
         border: 2px solid blue;
       }*/
+
+      .listwrapper {
+        background: #007196;
+        width: 100%;
+      }
     }
     
   }
