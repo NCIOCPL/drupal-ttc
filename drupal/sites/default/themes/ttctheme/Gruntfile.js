@@ -5,6 +5,8 @@ module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
 
+  grunt.loadNpmTasks('grunt-postcss');
+
   var theme_name = 'ttctheme';
   var base_theme_path = 'bower_components/foundation';
 
@@ -127,6 +129,24 @@ module.exports = function (grunt) {
       }
     },
 
+    postcss: {
+      options: {
+        map: true,
+        processors: [
+          require('autoprefixer')
+        ]
+      },
+      dev: {
+        src: '<%= global_vars.theme.dist.css %>/*.css'
+      },
+      dist: {
+        options: {
+          map: false
+        },
+        src: '<%= global_vars.theme.dist.css %>/*.css'
+      }
+    },
+
     watch: {
       options: {
         livereload: true
@@ -138,7 +158,7 @@ module.exports = function (grunt) {
 
       sass: {
         files: '<%= global_vars.theme.src.scss %>/**/*.scss',
-        tasks: ['sass:dev']
+        tasks: ['sass:dev', 'postcss:dev']
       },
 
       js: {
@@ -152,8 +172,8 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('build-dev', ['eslint', 'uglify:dev', 'sass:dev']);
-  grunt.registerTask('build', ['eslint', 'uglify:dist', 'sass:dev']);
-  grunt.registerTask('deploy', ['eslint', 'uglify:dist', 'sass:prod']);
+  grunt.registerTask('build-dev', ['eslint', 'uglify:dev', 'sass:dev', 'postcss:dev']);
+  grunt.registerTask('build', ['eslint', 'uglify:dist', 'sass:dev', 'postcss:dev']);
+  grunt.registerTask('deploy', ['eslint', 'uglify:dist', 'sass:prod', 'postcss:dist']);
   grunt.registerTask('default', ['build', 'watch']);
 };
