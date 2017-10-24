@@ -1028,7 +1028,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.',
     'display' => array(
       'PDF' => array(
         'label' => 'above',
@@ -1051,7 +1051,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_opp_list_send',
-    'label' => 'Announce opportunity to ListServ?',
+    'label' => 'Announce opportunity to GovDelivery?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1698,7 +1698,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('A list of related reference numbers (E-Numbers).');
   t('A short description of the abstract, also provided to search engines..');
   t('Also called an E-Number.');
-  t('Announce opportunity to ListServ?');
+  t('Announce opportunity to GovDelivery?');
   t('Collaboration Opportunity');
   t('Competitive Advantages');
   t('Contact');
@@ -1709,6 +1709,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Display Updated Date');
   t('End Date');
   t('Formatted Email List');
+  t('If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.');
   t('Image shown in available technologies search results.');
   t('Inventor(s)');
   t('Keywords');
