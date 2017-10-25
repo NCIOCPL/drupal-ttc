@@ -103,13 +103,13 @@ function ttc_content_type_news_announcement_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
-        ),
-        'xmlsitemap' => array(
           'weight' => '6',
         ),
+        'xmlsitemap' => array(
+          'weight' => '7',
+        ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '8',
         ),
       ),
       'display' => array(),
