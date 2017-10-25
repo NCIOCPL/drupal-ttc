@@ -24,14 +24,14 @@ function ttc_views_views_pre_render(&$view) {
             $title = $term->name;
             $view->build_info['title'] = "TTC $title";
         }
+    }
 
-        if($view->current_display == 'abstract_xml') {
-            foreach($view->result as $r => $result) {
-                // retrieve the unpublished date for each nid
-                $nid = $view->result[$r]->nid;
-                $date = _get_unpublished_date($nid);
-                $view->result[$r]->nid = _get_unpublished_date($view->result[$r]->nid);
-            }
+    if($view->current_display == 'abstract_xml') {
+        foreach($view->result as $r => $result) {
+            // retrieve the unpublished date for each nid
+            $nid = $view->result[$r]->nid;
+            $date = _get_unpublished_date($nid);
+            $view->result[$r]->nid = _get_unpublished_date($view->result[$r]->nid);
         }
     }
 }

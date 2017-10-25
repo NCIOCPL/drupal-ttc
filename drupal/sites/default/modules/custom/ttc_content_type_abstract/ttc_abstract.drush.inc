@@ -692,6 +692,12 @@ function _import_node_data($data) {
                             drush_log("Saving ${dest_field}[$ix] (entity $eid) on node $nid", 'debug');
                             $fc_item->save(TRUE);
                             $node_wrapper->$dest_field->offsetSet($ix, $fc_item);
+
+                            $node_item = $node_wrapper->$dest_field->value()[$ix];
+                            $ni_id = $node_item->item_id;
+                            $ni_vid = $node_item->revision_id;
+
+                            drush_log("Saved $dest_field item $ix on $nid with eid $ni_id and revision $ni_vid", 'debug');
                         }
                         catch(Exception $e) {
                             drush_log("Failed updating $dest_field $ix for field collection $input_type.", 'error');
@@ -700,6 +706,10 @@ function _import_node_data($data) {
                             var_dump($value_map);
                             continue;
                         }
+
+                        //var_dump($node_wrapper->$dest_field->raw());
+                        //var_dump($node->$dest_field);
+
                     }
                     
                     if($list_extras != false || $trim_extras != false) {
