@@ -33,7 +33,7 @@ function ttc_theme_config_default_fe_block_boxes() {
   <ul class="follow-us__list">
     <li class="follow-us__list-item"><a class="icon -size-36 -icon-linkedin" href="https://www.linkedin.com/groups/4688463" title="LinkedIn"><span class="fa fa-linkedin" aria-hidden="true"></span><span class="element-invisible">follow us on LinkedIn</span></a></li>
     <li class="follow-us__list-item"><a class="icon -size-36 -icon-twitter" href="https://twitter.com/NCITechTransfer" title="Twitter"><span class="fa fa-twitter" aria-hidden="true"></span><span class="element-invisible">follow us on Twitter</span></a></li>
-    <li class="follow-us__list-item"><a class="icon -size-36 -icon-email" href="mailto:FAKEEMAIL@FAKEEMAIL.FAKEEMAIL" title="Email"><span class="fa fa-envelope" aria-hidden="true"></span><span class="element-invisible">email us</span></a></li>
+    <li class="follow-us__list-item"><a class="icon -size-36 -icon-govdelivery" href="https://public.govdelivery.com/accounts/USNIHNCI/subscriber/new?category_id=USNIHNCI_C25" title="Subscribe via GovDelivery"><span class="fa" aria-hidden="true"></span><span class="element-invisible">subscribe via GovDelivery</span></a></li>
   </ul>
 </div>';
 
