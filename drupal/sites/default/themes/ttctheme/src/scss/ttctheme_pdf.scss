@@ -45,6 +45,9 @@
 @import "foundation/components/type";
 @import "foundation/components/visibility";
 
+// hiding deprecation warnings now that autoprefixer is in place
+$output-bourbon-deprecation-warnings: false !default;
+
 // Comment out this import if you don't want to use Bourbon, a replacement for Compass mixins.
 @import "bourbon";
 
