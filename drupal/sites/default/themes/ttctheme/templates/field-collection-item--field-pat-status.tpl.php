@@ -32,8 +32,9 @@
 <?php
   $hasDesc = isset($content['field_text']);
   $hasLink = isset($content['field_url']);
+  $hasLabel = isset($content['field_patent_status'][0]['#title']);
 
-  $fieldLabel = $content['field_patent_status'][0]['#title'];
+  $fieldLabel = $hasLabel ? $content['field_patent_status'][0]['#title'] : '';
   $fieldLink = $hasLink ? $content['field_url'][0]['#href'] : null;
   $fieldDesc = $hasDesc ? $content['field_text'][0]['#markup'] : null;
 ?>
@@ -45,7 +46,7 @@
         <a href="<?php print $fieldLink; ?>">
       <?php endif; ?>
 
-      <?php print $fieldLabel; ?><?php if ($hasDesc): ?>:&nbsp;<?php endif; ?>
+      <?php print $fieldLabel; ?><?php if ($hasLabel && $hasDesc): ?>:&nbsp;<?php endif; ?>
 
       <?php if (!$hasDesc && $hasLink): ?>
         </a>

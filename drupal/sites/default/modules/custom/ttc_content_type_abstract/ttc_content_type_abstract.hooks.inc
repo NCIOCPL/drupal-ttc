@@ -128,10 +128,25 @@ function _ttc_content_type_abstract_retrieve_values($node, $collection, $subfiel
   foreach($collection_items as $delta => $collection_item) {
     if(isset($collection_item['entity'])) {
       $entity = $collection_item['entity'];
+    }
+    else if(isset($collection_item['revision_id'])) {
+      $entity = entity_revision_load('field_collection_item', $collection_item['revision_id']);
+    }
+    else if(isset($collection_item['value'])) {
+      $entity = entity_load_single('field_collection_item', $collection_item['value']);
+    }
 
-      foreach($subfields as $name => $subfield) {
-        $items = field_get_items('field_collection_item', $entity, $subfield);
+    if(!$entity) {
+      watchdog("ttc_content_type_abstract", "failed to load entity '%eid' in collection %collection", 
+      array('%eid' => $collection_item['value'], '%collection' => $collection), WATCHDOG_WARNING, "node/$node->nid");
 
+      continue;
+    }
+
+    foreach($subfields as $name => $subfield) {
+      $items = field_get_items('field_collection_item', $entity, $subfield);
+
+      if($items) {
         $display = array();
         if(strpos($subfield, 'date') !== false) {
           $display = array('settings' => array('format_type' => 'brief_date'));
@@ -155,10 +170,26 @@ function _ttc_content_type_abstract_set_text($node, $field, $values, $subfield =
   }
 
   foreach($values as $delta => $value) {
-    if($subfield !== false && isset($node->{$field}['und'][$delta]['entity'])) {
-      unset($node->{$field}['und'][$delta]['entity']->{$subfield}['und']);
-      $node->{$field}['und'][$delta]['entity']->{$subfield}['und'][0]['value'] = $value;
-      $node->{$field}['und'][$delta]['entity']->{$subfield}['und'][0]['format'] = 'filtered_html';
+    if($subfield !== false){
+
+      $entity = false;
+      if(isset($node->{$field}['und'][$delta]['entity'])) {
+        $entity = $node->{$field}['und'][$delta]['entity'];
+      }
+      if(!$entity && isset($node->{$field}['und'][$delta]['revision_id'])) {
+        $entity = entity_revision_load('field_collection_item', $node->{$field}['und'][$delta]['revision_id']);
+      }
+      if(!$entity && isset($node->{$field}['und'][$delta]['value'])) {
+        $entity = entity_load_single('field_collection_item', $node->{$field}['und'][$delta]['value']);
+      }
+  
+      if($entity) {
+        unset($entity->{$subfield}['und']);
+        $entity->{$subfield}['und'][0]['value'] = $value;
+        $entity->{$subfield}['und'][0]['format'] = 'filtered_html';
+
+        $entity->save(true);
+      }
     }
     else {
       $node->{$field}['und'][$delta]['value'] = $value;
@@ -203,20 +234,25 @@ function _ttc_content_type_abstract_format_inventors($values){
       if(!empty($org)) $name = $org;
     }
 
+    // correct an empty attributes option, if present
+    if(isset($inventor['field_url'][0]['#options']) &&
+        $inventor['field_url'][0]['#options']['attributes'] === NULL) {
+          $inventor['field_url'][0]['#options']['attributes'] = array();
+    }
+
     // look up url, if any
     if(!empty($name)) {
       if(isset($inventor['field_url'][0]['#href'])) {
         // set the title of the url as the name before rendering
         $inventor['field_url'][0]['#title'] = $name;
-
-        $inventors[] = render($inventor['field_url'][0]);
+        $inventors[$delta] = render($inventor['field_url'][0]);
       }
       else {
-        $inventors[] = $name;
+        $inventors[$delta] = $name;
       }
     }
     else if(isset($inventor['field_url'][0]['#href'])) {
-        $inventors[] = render($inventor['field_url'][0]);
+        $inventors[$delta] = render($inventor['field_url'][0]);
     }
   }
 
@@ -234,17 +270,30 @@ function _ttc_content_type_abstract_format_publications($values){
       $title = $publication['field_title'][0]['#markup'];
     }
 
+    // correct an empty attributes option, if present
+    if(isset($publication['field_url'][0]['#options']) &&
+    $publication['field_url'][0]['#options']['attributes'] === NULL) {
+      $publication['field_url'][0]['#options']['attributes'] = array();
+    }
+
     // look up url, if any
     if(!empty($title)) {
       if(isset($publication['field_url'][0]['#href'])) {
-        $publications[] = $title . ' [' . render($publication['field_url'][0]) .']';
+        $end_p_pos = strripos($title, '</p>');
+
+        if($end_p_pos !== false) {
+          $publications[$delta] = substr_replace($title, ' [' . render($publication['field_url'][0]) .']', $end_p_pos, 0);
+        }
+        else {
+          $publications[$delta] = $title . ' [' . render($publication['field_url'][0]) .']';
+        }
       }
       else {
-        $publications[] = $title;
+        $publications[$delta] = $title;
       }
     }
     else if(isset($publication['field_url'][0]['#href'])) {
-      $publications[] = render($publication['field_url'][0]);
+      $publications[$delta] = render($publication['field_url'][0]);
     }
   }
 
@@ -267,6 +316,7 @@ function _ttc_content_type_abstract_format_status($values){
       $application = $application ? "Provisional Application No. $application filed $app_date" : "Filed $app_date";
     }
 
+    $patent = false;
     if(isset($status['field_patent_number'][0]['#markup'])) {
       $patent = $status['field_patent_number'][0]['#markup'];
     }
@@ -295,20 +345,26 @@ function _ttc_content_type_abstract_format_status($values){
 
     $collected = implode(' ', $parts);
 
+    // correct an empty attributes option, if present
+    if(isset($status['field_url'][0]['#options']) &&
+        $status['field_url'][0]['#options']['attributes'] === NULL) {
+      $status['field_url'][0]['#options']['attributes'] = array();
+    }
+
     // look up url, if any
     if(!empty($collected)) {
       if(isset($status['field_url'][0]['#href'])) {
         // set the title of the url as the name before rendering
         $status['field_url'][0]['#title'] = $collected;
 
-        $statii[] = render($status['field_url'][0]);
+        $statii[$delta] = render($status['field_url'][0]);
       }
       else {
-        $statii[] = $collected;
+        $statii[$delta] = $collected;
       }
     }
     else if(isset($status['field_url'][0]['#href'])) {
-        $statii[] = render($status['field_url'][0]);
+        $statii[$delta] = render($status['field_url'][0]);
     }
   }
 
