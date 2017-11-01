@@ -739,7 +739,7 @@ function ttc_field_collections_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -757,7 +757,7 @@ function ttc_field_collections_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -796,7 +796,7 @@ function ttc_field_collections_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'url_external',
-      'weight' => 3,
+      'weight' => 1,
     ),
   );
 
