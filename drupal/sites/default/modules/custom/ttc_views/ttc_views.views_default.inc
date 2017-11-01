@@ -321,6 +321,12 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
   $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
   $handler->display->display_options['filters']['is_current']['value'] = '1';
+  /* Filter criterion: Content: Opportunity Year (field_opp_year) */
+  $handler->display->display_options['filters']['field_opp_year_value']['id'] = 'field_opp_year_value';
+  $handler->display->display_options['filters']['field_opp_year_value']['table'] = 'field_data_field_opp_year';
+  $handler->display->display_options['filters']['field_opp_year_value']['field'] = 'field_opp_year_value';
+  $handler->display->display_options['filters']['field_opp_year_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_opp_year_value']['value']['value'] = '2008';
   $handler->display->display_options['path'] = 'abstracts.xml';
   $handler->display->display_options['segment_size'] = '50';
   $export['abstracts_rss'] = $view;
