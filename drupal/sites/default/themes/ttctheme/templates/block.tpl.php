@@ -61,24 +61,24 @@
 <?php /// If this page should contain the subscription form, render the block and subscribe field ?>
 <?php if(stristr($classes, 'block--listserv-block') != FALSE): ?>
   <div class="listserv-subscribe-block-wrapper row">
-    <form class="listserv-subscribe-block" action="" id="" accept-charset="UTF-8">
+    <form id="GD-snippet-form" action="https://public.govdelivery.com/accounts/USNIHNCI/subscribers/qualify" class="listserv-subscribe-block" target="_blank" accept-charset="UTF-8" method="post">
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="hidden" name="authenticity_token" value="NbWlxeuxWUI5bV49T0epIil4bZhHHIPhDXOaTkIa4XNU1OCf5LcfC/my+aU4yrWGPR2cfeXn5NqhjzuwZ8EDJQ==" />
+      <input type="hidden" name="category_id" id="category_id" value="USNIHNCI_C25" />
+      <input type="hidden" name="subscription_type" id="subscription_type" value="email" />
       <div class="container-inline">
         <h4 class="field-content">SUBSCRIBE</h4>
-        <div class="listserv-subscribe-message">Subscribe to our Available Technology Listserv to receive the latest announcements.</div>
-        <?php if (isset($_GET['ls'])): ?>
-          <p class="listserv-subscribe-message ls">
-           <?php print _ttc_blocks_listserv_subscribe($_GET['ls']); ?>
-          </p>
-        <?php endif ?>
+        <div class="listserv-subscribe-message">Subscribe to TTC topics via GovDelivery to receive the latest announcements.</div>
+        
         <div class="row">
           <div class="small-8 columns listserv-input-container">
             <div class="form-item form-type-textfield">
-              <label class="element-invisible" for="subscribe-block-form-0">Enter Your Email Address</label>              
-              <input type="text" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" id="subscribe-block-form-0" name="ls" value="" size="15" maxlength="128" />
+              <label class="element-invisible" for="email">Enter Your Email Address</label>  
+              <input type="text" name="email" id="email" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" />
             </div>
           </div>
           <div class="small-4 columns listserv-submit-container">
-            <button class="button radius postfix expand primary form-submit" id="edit-submit" name="op" value="Subscribe" type="submit">Subscribe</button>
+            <button class="button radius postfix expand primary form-submit" id="edit-submit" name="commit" value="Subscribe" type="submit">Subscribe</button>
           </div>
         </div>
       </div>
