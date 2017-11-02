@@ -68,5 +68,6 @@ try {
     unset($writer);
 }
 catch(Exception $e) {
-    echo "Error occurred loading entity $entity_id";
+    watchdog("ttctheme->views-view-field--views-data-export--field-publications.tpl.php",
+        $e->getMessage());
 }

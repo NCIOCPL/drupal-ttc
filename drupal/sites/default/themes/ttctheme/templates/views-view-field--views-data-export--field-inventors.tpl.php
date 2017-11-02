@@ -80,7 +80,8 @@ try {
     print $output;
 }
 catch(Exception $e) {
-    echo "Error occurred loading entity $entity_id";
+    watchdog("ttctheme->views-view-field--views-data-export--field-inventors.tpl.php",
+        $e->getMessage());
 }
 
 $writer->flush();
