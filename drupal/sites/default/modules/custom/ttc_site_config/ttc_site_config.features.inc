@@ -17,6 +17,25 @@ function ttc_site_config_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_fe_date_custom_date_formats().
+ */
+function ttc_site_config_fe_date_custom_date_formats() {
+  $custom_date_formats = array();
+  $custom_date_formats['j M Y'] = 'j M Y';
+  return $custom_date_formats;
+}
+
+/**
+ * Implements hook_date_format_types().
+ */
+function ttc_site_config_date_format_types() {
+  $format_types = array();
+  // Exported date format type: brief_date
+  $format_types['brief_date'] = 'Brief Date';
+  return $format_types;
+}
+
+/**
  * Implements hook_image_default_styles().
  */
 function ttc_site_config_image_default_styles() {
