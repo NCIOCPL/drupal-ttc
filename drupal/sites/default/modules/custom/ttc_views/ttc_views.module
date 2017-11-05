@@ -67,6 +67,7 @@ function ttc_views_views_pre_render(&$view) {
 
                 $view->result[$r]->extracted_values[$field_collection] = $values;
             }
+        }
     }
 }
 
