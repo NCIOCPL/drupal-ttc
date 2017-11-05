@@ -28,37 +28,24 @@ try {
     $writer->openMemory();
     $writer->setIndent(true);
 
-    foreach($row->field_field_publications as $delta => $publication) {
-        if(isset($publication['raw']['value'])) {
-            $publication_id = $publication['raw']['value'];
-            $publication_item = entity_load_single('field_collection_item', $publication_id);
-            if($publication_item) {
-                $wrapper = entity_metadata_wrapper('field_collection_item', $publication_item);
+    foreach($row->extracted_values['field_field_publications'] as $delta => $publication) {
+        // title is a long text field, check for value in array
+        $title = isset($publication['field_title']['value']) ? $publication['field_title']['value'] : '';
+        $title = filter_xss($title, array());
+        if(!$title) $title = '';
 
-                // title is a long text field, check for value in array
-                $title = $wrapper->field_title->value();
-                if(isset($title['value'])) $title = $title['value'];
-                $title = filter_xss($title, array());
-                if(!$title) $title = '';
+        $url = isset($publication['field_url']['value']) ? $publication['field_url']['value'] : '';
+        $url_title = isset($publication['field_url']['title']) ? $publication['field_url']['title'] : '';
 
-                $url_value = $wrapper->field_url->value();
-                $url = isset($url_value['value']) ? $url_value['value'] : '';
-                $url_title = isset($url_value['title']) ? $url_value['title'] : '';
-
-                unset($wrapper);
-                unset($status_item);
-
-                $writer->startElement('Publication');
-                    $writer->writeElement('Title', $title);
-                    $writer->startElement('LinkoutURLs');
-                            $writer->startElement('URL');
-                                $writer->writeElement('Href', print_r($url, true));
-                                $writer->writeElement('Caption', print_r($url_title, true));
-                            $writer->endElement(); //URL
-                        $writer->endElement(); //LinkoutURLs
-                $writer->endElement(); // IncludedPatent/RelatedPatent
-            }
-        }
+        $writer->startElement('Publication');
+            $writer->writeElement('Title', $title);
+            $writer->startElement('LinkoutURLs');
+                    $writer->startElement('URL');
+                        $writer->writeElement('Href', print_r($url, true));
+                        $writer->writeElement('Caption', print_r($url_title, true));
+                    $writer->endElement(); //URL
+                $writer->endElement(); //LinkoutURLs
+        $writer->endElement(); // IncludedPatent/RelatedPatent
     }
 
     $output = $writer->outputMemory(true);

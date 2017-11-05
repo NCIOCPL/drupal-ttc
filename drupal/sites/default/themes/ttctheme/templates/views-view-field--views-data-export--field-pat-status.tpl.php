@@ -28,46 +28,33 @@ try {
     $writer->openMemory();
     $writer->setIndent(true);
 
-    foreach($row->field_field_pat_status as $delta => $status) {
-        if(isset($status['raw']['value'])) {
-            $status_id = $status['raw']['value'];
-            $status_item = entity_load_single('field_collection_item', $status_id);
-            if($status_item) {
-                $wrapper = entity_metadata_wrapper('field_collection_item', $status_item);
+    foreach($row->extracted_values['field_field_pat_status'] as $delta => $status) {
+        $is_related = isset($status['field_is_related_patent']['value']) ? $status['field_is_related_patent']['value'] : '';
+        $patent_status = isset($status['field_patent_status']['taxonomy_term']->name) 
+            ? $status['field_patent_status']['taxonomy_term']->name: '' ;
+        $application_number = isset($status['field_application_number']['value']) ? $status['field_application_number']['value'] : '';
+        $patent_authority = isset($status['field_patent_authority']['value']) ? $status['field_patent_authority']['value'] : '' ;
+        $patent_number = isset($status['field_patent_number']['value']) ? $status['field_patent_number']['value'] : '' ;
+        $additional_patent_description = isset($status['field_add_pat_desc']['value']) ? $status['field_add_pat_desc']['value'] : '';
+        $filing_date = isset($status['field_patent_filing_date']['value']) ? $status['field_patent_filing_date']['value'] : false;
+        $issue_date = isset($status['field_patent_issue_date']['value']) ? $status['field_patent_issue_date']['value'] : false;
 
-                $is_related = $wrapper->field_is_related_patent->value();
-                $patent_status_term = $wrapper->field_patent_status->value();
-                $patent_status = isset($patent_status_term->name) ? $patent_status_term->name : '';
-                $application_number = $wrapper->field_application_number->value();
-                $patent_authority = $wrapper->field_patent_authority->value();
-                $patent_number = $wrapper->field_patent_number->value();
-                $additional_patent_description = $wrapper->field_add_pat_desc->value();
-                $filing_date_value = $wrapper->field_patent_filing_date->value();
-                $filing_date = $filing_date_value ? format_date($filing_date_value, 'custom', 'Y-m-d') : '';
-                $issue_date_value = $wrapper->field_patent_issue_date->value();
-                $issue_date = $issue_date_value ? format_date($issue_date_value, 'custom', 'Y-m-d') : '';
-
-                unset($wrapper);
-                unset($status_item);
-
-                if(!$is_related) {
-                    $writer->startElement('IncludedPatent');
-                }
-                else {
-                    $writer->startElement('RelatedPatent');
-                }
-                    $writer->startElement('Patent');
-                        $writer->writeElement('ApplicationNumber', $application_number);
-                        $writer->writeElement('ApplicationFiledOn', $filing_date);
-                        $writer->writeElement('PatentIssuedOn', $issue_date);
-                        $writer->writeElement('PatentNumber', $patent_number);
-                        $writer->writeElement('PatentAuthority', $patent_authority);
-                        $writer->writeElement('AdditionalPatentDescription', $additional_patent_description);
-                        $writer->writeElement('PatentStatus', $patent_status);
-                    $writer->endElement(); // Patent
-                $writer->endElement(); // IncludedPatent/RelatedPatent
-            }
+        if(!$is_related) {
+            $writer->startElement('IncludedPatent');
         }
+        else {
+            $writer->startElement('RelatedPatent');
+        }
+            $writer->startElement('Patent');
+                $writer->writeElement('ApplicationNumber', $application_number);
+                $writer->writeElement('ApplicationFiledOn', $filing_date);
+                $writer->writeElement('PatentIssuedOn', $issue_date);
+                $writer->writeElement('PatentNumber', $patent_number);
+                $writer->writeElement('PatentAuthority', $patent_authority);
+                $writer->writeElement('AdditionalPatentDescription', $additional_patent_description);
+                $writer->writeElement('PatentStatus', $patent_status);
+            $writer->endElement(); // Patent
+        $writer->endElement(); // IncludedPatent/RelatedPatent
     }
 
     $output = $writer->outputMemory(true);
