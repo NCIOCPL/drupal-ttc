@@ -29,7 +29,7 @@ function nci_wysiwyg_config_filter_default_formats() {
         'weight' => 0,
         'status' => 1,
         'settings' => array(
-          'valid_elements' => '@[style],a[href|target<_blank|title|id|name],div[align<center?justify?left?right],p[align<center?justify?left?right],br,span,em,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,img[!src|alt],aside,h2,h3,h4,h5,h6,pre,figure,figcaption,s,q,sub,sup,u,table,caption,tbody,thead,tfoot,tr,td,th',
+          'valid_elements' => '@[style],a[href|target<_blank|title|id|name],div[align<center?justify?left?right],p[align<center?justify?left?right],br,span,em,strong,cite,code,blockquote,ul,ol,li,dl,dt,dd,img[!src|alt],aside,h2,h3,h4,h5,h6,pre,figure,figcaption,s,q,sub,sup,u,table,caption,tbody,thead,tfoot,tr,td,th,hr',
           'allow_comments' => 0,
           'nofollow_policy' => 'whitelist',
           'nofollow_domains' => array(

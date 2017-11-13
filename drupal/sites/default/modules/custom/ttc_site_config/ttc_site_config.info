@@ -7,7 +7,6 @@ dependencies[] = captcha
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = extlink
-dependencies[] = fe_date
 dependencies[] = features
 dependencies[] = image
 dependencies[] = metatag
