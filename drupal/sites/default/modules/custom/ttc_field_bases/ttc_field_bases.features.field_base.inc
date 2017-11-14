@@ -413,27 +413,6 @@ function ttc_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_formatted_email_list'.
-  $field_bases['field_formatted_email_list'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_formatted_email_list',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 1024,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_image'.
   $field_bases['field_image'] = array(
     'active' => 1,
@@ -527,25 +506,6 @@ function ttc_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_list_intro_text'.
-  $field_bases['field_list_intro_text'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_list_intro_text',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_meta_keywords'.
   $field_bases['field_meta_keywords'] = array(
     'active' => 1,
@@ -605,21 +565,6 @@ function ttc_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_notif_manual'.
-  $field_bases['field_notif_manual'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_notif_manual',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'email',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'email',
   );
 
   // Exported field_base: 'field_opp_30day_warned'.
