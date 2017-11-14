@@ -318,9 +318,6 @@ class TTCMigrateSiteAbstractMigration extends Migration {
       $this->addFieldMapping('field_pat_for_text_issued', 'pat_for_text_issued');
      */
 
-    // notification field collection
-    //$this->addFieldMapping('field_notif_auto', 'notif_auto');
-    //$this->addFieldMapping('field_notif_manual', 'notif_manual');
     // contact taxonomy
     $this->addFieldMapping('field_contact_auto', 'contact_auto')
         ->callbacks(array($this, 'mapContactAuto'));

@@ -21,6 +21,12 @@ function ttc_content_type_abstract_menu() {
     'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
   );
 
+  $items['abstracts.xml'] = array(
+    'page callback' => 'ttc_content_type_abstract_generate_xml',
+    'access callback' => TRUE,
+    'type'=> MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -125,40 +131,46 @@ function _ttc_content_type_abstract_attributes_access($filename) {
 }
 
 /**
- * Get all emails from the checked listserv(s) and manual entries and combine them 
- * into a single string
+ * Generate the xml feed of all valid abstract data.
  *
- * @param node $node
- *   Node object for the current content item.
- * @return string
- *   Comma-delimited string of email addresses.
+ * @return bool
+ *   TRUE if XML is successfully generated and FALSE if it isn't.
+ *   (Some form of XML content will be generated in almost every case, even if empty.)
  */
-function _abstract_get_formatted_email_list($node) {
+function ttc_content_type_abstract_generate_xml() {
+  // query for abstracts newer than 2008 and with the flag set (when flag exists)
 
-  $all_emails = array();
-  $formatted_emails = '';
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'abstract')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_opp_year', 'value', '2008', '>')
+    ->fieldCondition('field_xml', 'value', 'NULL', '!=')
+    ->propertyOrderBy('nid', 'ASC');
+  
+  $result = $query->execute();
+  if (isset($result['node'])) {
+    field_attach_load_revision('node', $result['node'], array('field_id' => 'field_xml'));
+  } 
 
-  // Get the 'email' field collection value from checked listserv fields
-  if(isset($node->field_notif['und']['0']['field_send_to']['und'])) {
-    $tids = $node->field_notif['und']['0']['field_send_to']['und'];
-    foreach($tids as $tid) {
-      if($tid['tid'] != null && !empty($tid['tid'])) {
-        $listserv_email = taxonomy_term_load($tid['tid']);
-        array_push($all_emails, $listserv_email->field_email['und']['0']['email']);
-      }
-    }
+  $output = array();
+
+  $output[] = '<?xml version="1.0" encoding="UTF-8" ?>';
+  $output[] = '<Technologies>';
+
+  foreach($result['node'] as $node) {
+    $output[] = '<Technology>';
+
+    $output[] = $node->field_xml[LANGUAGE_NONE]['0']['value'];
+    
+    $output[] = '</Technology>';
   }
 
-  // Get any manually entered email addresses
-  if(isset($node->field_notif['und']['0']['field_notif_manual']['und'])) {
-    $manual_emails = $node->field_notif['und']['0']['field_notif_manual']['und'];
-    foreach($manual_emails as $manual_email) {
-      if(isset($manual_email['email']) && !empty($manual_email['email'])) {
-        array_push($all_emails, $manual_email['email']);
-      }
-    }
-  }
+  $output[] = '</Technologies>';
 
-  $formatted_emails = implode(",", $all_emails);
-  return $formatted_emails;  
+  drupal_add_http_header('Content-Type', 'text/xml; charset=utf-8');
+
+  print implode(' ', $output);
+
+  drupal_exit();
 }

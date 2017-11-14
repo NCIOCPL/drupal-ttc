@@ -11,7 +11,6 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
   $form['field_opp_year']['#access'] = false;
   $form['field_opp_list_lastsent']['#access'] = false;
   $form['field_opp_30day_warned']['#access'] = false;
-  $form['field_formatted_email_list']['#access'] = false;
 
   // disable old display fields
   _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
@@ -92,10 +91,6 @@ function ttc_content_type_abstract_node_presave($node) {
         $node->field_opp_year['und']['0']['value'] = -1;
       }
     }
-	
-    // Set the list of emails (listserv & manual entries, comma-separated) for the 
-    // email blast rule.
-    $node->field_formatted_email_list['und']['0']['value'] = _abstract_get_formatted_email_list($node);
 
     // update display fields
     $inventors_values = _ttc_content_type_abstract_retrieve_values($node, 'field_inventors', $inventor_fields);
@@ -116,6 +111,9 @@ function ttc_content_type_abstract_node_presave($node) {
       _ttc_content_type_abstract_set_text($node, 'field_pat_status', $status_formatted, 'field_text');
     }
   }
+
+  // fill the node's xml field
+  _ttc_content_type_abstract_populate_xml($node);
 }
 
 function _ttc_content_type_abstract_retrieve_values($node, $collection, $subfields) {
@@ -312,7 +310,7 @@ function _ttc_content_type_abstract_format_status($values){
     }
 
     if(isset($status['field_patent_filing_date'][0]['#markup'])) {
-      $app_date = drupal_html_to_text($status['field_patent_filing_date'][0]['#markup']);
+      $app_date = trim(drupal_html_to_text($status['field_patent_filing_date'][0]['#markup']));
       $application = $application ? "Provisional Application No. $application filed $app_date" : "Filed $app_date";
     }
 
@@ -322,7 +320,7 @@ function _ttc_content_type_abstract_format_status($values){
     }
 
     if(isset($status['field_patent_issue_date'][0]['#markup'])) {
-      $issue_date = drupal_html_to_text($status['field_patent_issue_date'][0]['#markup']);
+      $issue_date = trim(drupal_html_to_text($status['field_patent_issue_date'][0]['#markup']));
       $patent = $patent ? "$patent issued $issue_date" : "Issued $issue_date";
     }
 
@@ -369,4 +367,15 @@ function _ttc_content_type_abstract_format_status($values){
   }
 
   return $statii;
+}
+
+function _ttc_content_type_abstract_populate_xml($node) {
+  $xml = views_embed_view('abstracts_rss','abstract_xml', $node->nid);
+
+  preg_match('@\<Technology\>(.*)\</Technology\>@s', $xml, $matches);
+
+  if(isset($matches[1])) {
+    $node->field_xml[LANGUAGE_NONE]['0']['value'] = $matches[1];
+  }
+
 }
