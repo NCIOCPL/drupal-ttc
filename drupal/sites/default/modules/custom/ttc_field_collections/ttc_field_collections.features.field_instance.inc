@@ -262,83 +262,6 @@ function ttc_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_notif-field_notif_manual'.
-  $field_instances['field_collection_item-field_notif-field_notif_manual'] = array(
-    'bundle' => 'field_notif',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'email',
-        'settings' => array(),
-        'type' => 'email_default',
-        'weight' => 1,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_notif_manual',
-    'label' => 'Other Email Addresses',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'email',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'email_textfield',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_notif-field_send_to'.
-  $field_instances['field_collection_item-field_notif-field_send_to'] = array(
-    'bundle' => 'field_notif',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 2,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_send_to',
-    'label' => 'Send To',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 0,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-field_pat_status-field_add_pat_desc'.
   $field_instances['field_collection_item-field_pat_status-field_add_pat_desc'] = array(
     'bundle' => 'field_pat_status',
@@ -673,7 +596,7 @@ function ttc_field_collections_field_default_field_instances() {
     'label' => 'Text',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -810,12 +733,10 @@ function ttc_field_collections_field_default_field_instances() {
   t('Is Related Patent');
   t('Last Name');
   t('Middle Initial');
-  t('Other Email Addresses');
   t('Patent Authority');
   t('Patent Filing Date');
   t('Patent Issue Date');
   t('Patent Number');
-  t('Send To');
   t('Status');
   t('Suffix');
   t('Text');
