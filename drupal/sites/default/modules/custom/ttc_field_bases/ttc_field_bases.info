@@ -70,4 +70,5 @@ features[field_base][] = field_text
 features[field_base][] = field_title
 features[field_base][] = field_updated_date
 features[field_base][] = field_url
+features[field_base][] = field_xml
 project path = sites/default/modules/custom2
