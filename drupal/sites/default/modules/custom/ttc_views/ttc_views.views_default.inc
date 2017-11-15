@@ -25,6 +25,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['title'] = 'TTC Available Technologies';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit own abstract content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -107,7 +108,7 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -139,8 +140,8 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['path'] = 'rss/%/abstracts.xml';
   $handler->display->display_options['sitename_title'] = 0;
 
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'abstract_xml');
+  /* Display: Abstract XML Single */
+  $handler = $view->new_display('views_data_export', 'Abstract XML Single', 'abstract_xml');
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_xml';
@@ -306,6 +307,20 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_contact_auto']['alter']['text'] = '[field_contact_auto-tid]';
   $handler->display->display_options['fields']['field_contact_auto']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'abstract' => 'abstract',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Type */
@@ -327,77 +342,9 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['field_opp_year_value']['field'] = 'field_opp_year_value';
   $handler->display->display_options['filters']['field_opp_year_value']['operator'] = '>';
   $handler->display->display_options['filters']['field_opp_year_value']['value']['value'] = '2008';
-  $handler->display->display_options['path'] = 'abstracts.xml';
+  $handler->display->display_options['path'] = 'xml/abstract';
   $handler->display->display_options['segment_size'] = '50';
   $export['abstracts_rss'] = $view;
-
-  $view = new view();
-  $view->name = 'abstracts_xml';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node_revision';
-  $view->human_name = 'Abstracts XML';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Abstracts List';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'view revisions';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Content revision: Content */
-  $handler->display->display_options['relationships']['vid']['id'] = 'vid';
-  $handler->display->display_options['relationships']['vid']['table'] = 'node_revision';
-  $handler->display->display_options['relationships']['vid']['field'] = 'vid';
-  /* Field: Content revision: Updated date */
-  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
-  $handler->display->display_options['fields']['timestamp']['table'] = 'node_revision';
-  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
-  $handler->display->display_options['fields']['timestamp']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['timestamp']['alter']['ellipsis'] = FALSE;
-  /* Field: Content revision: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node_revision';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node_revision'] = TRUE;
-  /* Sort criterion: Content: Nid */
-  $handler->display->display_options['sorts']['nid']['id'] = 'nid';
-  $handler->display->display_options['sorts']['nid']['table'] = 'node';
-  $handler->display->display_options['sorts']['nid']['field'] = 'nid';
-  $handler->display->display_options['sorts']['nid']['relationship'] = 'vid';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['relationship'] = 'vid';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'vid';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'abstract' => 'abstract',
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'abstracts-list';
-  $export['abstracts_xml'] = $view;
 
   $view = new view();
   $view->name = 'available_technologies';
@@ -795,7 +742,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news_announcement' => 'news_announcement',
   );
-  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -1060,7 +1007,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Meta Description */
+  /* Field: Indexed Content: Summary */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
@@ -1174,7 +1121,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Meta Description */
+  /* Field: Indexed Content: Summary */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
