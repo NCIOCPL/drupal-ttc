@@ -28,7 +28,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_division_name',
-    'label' => 'Division Name',
+    'label' => 'IC Name',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -727,8 +727,8 @@ function ttc_field_collections_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Additional Patent Description');
   t('Application Number');
-  t('Division Name');
   t('First Name');
+  t('IC Name');
   t('Is Lead');
   t('Is Related Patent');
   t('Last Name');
