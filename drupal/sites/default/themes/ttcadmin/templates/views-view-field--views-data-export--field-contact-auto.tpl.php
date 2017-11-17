@@ -28,24 +28,22 @@ try {
 
     $contact = taxonomy_term_load($output);
     if($contact !== FALSE) {
-        $wrapper = entity_metadata_wrapper('taxonomy_term', $contact);
+        
+        $first_name = isset($contact->field_first_name['und'][0]['value']) ? $contact->field_first_name['und'][0]['value'] : '';
+        $last_name = isset($contact->field_last_name['und'][0]['value']) ? $contact->field_last_name['und'][0]['value'] : '';
+        $suffix = isset($contact->field_suffix['und'][0]['value']) ? $contact->field_suffix['und'][0]['value'] : '';
+        $address = isset($contact->field_address['und'][0]['value']) ? $contact->field_address['und'][0]['value'] : '';
+        $city = isset($contact->field_city['und'][0]['value']) ? $contact->field_city['und'][0]['value'] : '';
+        $state = isset($contact->field_state['und'][0]['value']) ? $contact->field_state['und'][0]['value'] : '';
+        $postal_code = isset($contact->field_postal_code['und'][0]['value']) ? $contact->field_postal_code['und'][0]['value'] : '';
+        $phone_number = isset($contact->field_contact_phone['und'][0]['value']) ? $contact->field_contact_phone['und'][0]['value'] : '';
+        $fax_number = isset($contact->field_fax_number['und'][0]['value']) ? $contact->field_fax_number['und'][0]['value'] : '';
+        $org = isset($contact->field_organization_name['und'][0]['value']) ? $contact->field_organization_name['und'][0]['value'] : '';
+        $fax_number = isset($contact->field_fax_number['und'][0]['value']) ? $contact->field_fax_number['und'][0]['value'] : '';
+        $email = isset($contact->field_contact_email['und'][0]['email']) ? $contact->field_contact_email['und'][0]['email'] : '';       
 
-        $first_name = $wrapper->field_first_name->value();
-        $last_name = $wrapper->field_last_name->value();
-        $suffix = $wrapper->field_suffix->value();
-        $address = $wrapper->field_address->value();
-        $city = $wrapper->field_city->value();
-        $state = $wrapper->field_state->value();
-        $postal_code = $wrapper->field_postal_code->value();
-        $phone_number = $wrapper->field_contact_phone->value();
-        $fax_number = $wrapper->field_fax_number->value();
-        $org = $wrapper->field_organization_name->value();
-        $fax_number = $wrapper->field_fax_number->value();
-        $email = $wrapper->field_contact_email->value();
-
-        unset($wrapper);
         unset($contact);
-
+        
         $writer->startElement('Contact');
             $writer->startElement('Person');
                 $writer->writeElement('FirstName', $first_name);
