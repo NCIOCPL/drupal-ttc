@@ -389,6 +389,12 @@ function _ttc_content_type_abstract_format_status($values){
  * Callback to generate the xml for an abstract node and populate the related field.
  */
 function _ttc_content_type_abstract_populate_xml($node) {
+  // if the 'node' is instead the xml cache request, do that instead
+  if($node == 'cache_xml') {
+    ttc_content_type_abstract_cache_xml();
+    return;
+  }
+
   $nid = isset($node->nid) ? $node->nid : null;
   $vid = isset($node->vid) ? $node->vid : null;
   if(empty($nid) || empty($vid)) {
@@ -450,6 +456,7 @@ function ttc_content_type_abstract_cron_queue_info() {
   );
   return $queues;
 }
+
 /**
 * Creates a queue item to generate the node's xml later
 */
