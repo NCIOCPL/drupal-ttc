@@ -108,7 +108,7 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -321,6 +321,15 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
     'abstract' => 'abstract',
   );
+  /* Contextual filter: Content revision: Vid */
+  $handler->display->display_options['arguments']['vid']['id'] = 'vid';
+  $handler->display->display_options['arguments']['vid']['table'] = 'node_revision';
+  $handler->display->display_options['arguments']['vid']['field'] = 'vid';
+  $handler->display->display_options['arguments']['vid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['vid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['vid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['vid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['vid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Type */
@@ -331,11 +340,6 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Workbench Moderation: Current */
-  $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
-  $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
-  $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
-  $handler->display->display_options['filters']['is_current']['value'] = '1';
   /* Filter criterion: Content: Opportunity Year (field_opp_year) */
   $handler->display->display_options['filters']['field_opp_year_value']['id'] = 'field_opp_year_value';
   $handler->display->display_options['filters']['field_opp_year_value']['table'] = 'field_data_field_opp_year';
@@ -742,7 +746,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news_announcement' => 'news_announcement',
   );
-  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -1007,7 +1011,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Summary */
+  /* Field: Indexed Content: Meta Description */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
@@ -1121,7 +1125,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Summary */
+  /* Field: Indexed Content: Meta Description */
   $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_default_node_index';
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
