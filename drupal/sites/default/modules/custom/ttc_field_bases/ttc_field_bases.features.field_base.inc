@@ -1127,6 +1127,31 @@ function ttc_field_bases_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
+  // Exported field_base: 'field_send_to_ott'.
+  $field_bases['field_send_to_ott'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_send_to_ott',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'No',
+        1 => 'Yes',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_short_title'.
   $field_bases['field_short_title'] = array(
     'active' => 1,

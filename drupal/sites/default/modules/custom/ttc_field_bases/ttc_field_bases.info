@@ -63,6 +63,7 @@ features[field_base][] = field_phone_number
 features[field_base][] = field_postal_code
 features[field_base][] = field_posted_date
 features[field_base][] = field_reviewed_date
+features[field_base][] = field_send_to_ott
 features[field_base][] = field_short_title
 features[field_base][] = field_state
 features[field_base][] = field_suffix
