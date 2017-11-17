@@ -629,10 +629,7 @@ function nci_user_config_user_default_permissions() {
   // Exported permission: 'bypass workbench moderation'.
   $permissions['bypass workbench moderation'] = array(
     'name' => 'bypass workbench moderation',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'site manager' => 'site manager',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
