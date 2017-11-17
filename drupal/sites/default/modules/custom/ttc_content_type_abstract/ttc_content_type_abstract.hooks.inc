@@ -484,5 +484,9 @@ function _ttc_content_type_abstract_build_current_query() {
   $history->join('field_revision_field_opp_year', 'y', 'y.entity_id = h.nid AND y.revision_id = h.vid');
   $history->condition('y.field_opp_year_value', '2008' , '>');
 
+  // add 'send to ott' filter
+  $history->join('field_revision_field_send_to_ott', 'ott', 'ott.entity_id = h.nid AND ott.revision_id = h.vid');
+  $history->condition('ott.field_send_to_ott_value', '1');
+
   return $history;
 }
