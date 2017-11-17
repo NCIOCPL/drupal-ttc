@@ -58,6 +58,7 @@ features[field_instance][] = node-abstract-field_posted_date
 features[field_instance][] = node-abstract-field_product_type
 features[field_instance][] = node-abstract-field_publications
 features[field_instance][] = node-abstract-field_reviewed_date
+features[field_instance][] = node-abstract-field_send_to_ott
 features[field_instance][] = node-abstract-field_therapeutic_area
 features[field_instance][] = node-abstract-field_updated_date
 features[field_instance][] = node-abstract-field_xml

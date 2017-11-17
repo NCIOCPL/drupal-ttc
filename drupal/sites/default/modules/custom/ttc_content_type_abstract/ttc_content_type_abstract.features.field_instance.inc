@@ -189,7 +189,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 38,
+      'weight' => 36,
     ),
   );
 
@@ -238,7 +238,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 39,
+      'weight' => 37,
     ),
   );
 
@@ -287,7 +287,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 40,
+      'weight' => 38,
     ),
   );
 
@@ -390,7 +390,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 33,
+      'weight' => 31,
     ),
   );
 
@@ -573,7 +573,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 28,
+      'weight' => 27,
     ),
   );
 
@@ -831,7 +831,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 25,
+      'weight' => 23,
     ),
   );
 
@@ -931,7 +931,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 27,
+      'weight' => 26,
     ),
   );
 
@@ -977,7 +977,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 26,
+      'weight' => 24,
     ),
   );
 
@@ -1021,7 +1021,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 23,
+      'weight' => 21,
     ),
   );
 
@@ -1184,7 +1184,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 24,
+      'weight' => 22,
     ),
   );
 
@@ -1329,7 +1329,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
@@ -1390,7 +1390,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 35,
+      'weight' => 33,
     ),
   );
 
@@ -1545,7 +1545,53 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 36,
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_send_to_ott'.
+  $field_instances['node-abstract-field_send_to_ott'] = array(
+    'bundle' => 'abstract',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If \'Yes\', this opportunity\'s published or archived data will be made available in the XML export provided to OTT.',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_send_to_ott',
+    'label' => 'Send to NIH OTT Website?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 25,
     ),
   );
 
@@ -1653,7 +1699,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 37,
+      'weight' => 35,
     ),
   );
 
@@ -1698,7 +1744,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 41,
+      'weight' => 39,
     ),
   );
 
@@ -1720,6 +1766,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Display Updated Date');
   t('End Date');
   t('If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.');
+  t('If \'Yes\', this opportunity\'s published or archived data will be made available in the XML export provided to OTT.');
   t('Image shown in available technologies search results.');
   t('Inventor Data');
   t('Inventor(s)');
@@ -1738,6 +1785,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Related Technologies');
   t('Reviewed');
   t('Search Image');
+  t('Send to NIH OTT Website?');
   t('Start Date');
   t('Summary');
   t('Therapeutic Area');
