@@ -685,6 +685,12 @@ function _import_node_data($data) {
                                 $value = array('value' => $value, 'format' => 'filtered_html');
                             }
 
+                            // append the rest of the date stamp format for date fields
+                            if($field == 'field_patent_filing_date' ||
+                                    $field == 'field_patent_issue_date') {
+                                $value.='T00:00:00';
+                            }
+
                             // limit field lengths
                             if(is_array($value)) {
                                 foreach($value as $key => $sub_value) {

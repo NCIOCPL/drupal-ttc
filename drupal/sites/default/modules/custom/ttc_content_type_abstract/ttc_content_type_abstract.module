@@ -139,31 +139,24 @@ function _ttc_content_type_abstract_attributes_access($filename) {
  */
 function ttc_content_type_abstract_generate_xml() {
   // query for abstracts newer than 2008 and with the flag set (when flag exists)
-
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'abstract')
-    ->propertyCondition('status', NODE_PUBLISHED)
-    ->fieldCondition('field_opp_year', 'value', '2008', '>')
-    ->fieldCondition('field_xml', 'value', 'NULL', '!=')
-    ->propertyOrderBy('nid', 'ASC');
+  $query = _ttc_content_type_abstract_build_current_query();
   
-  $result = $query->execute();
-  if (isset($result['node'])) {
-    field_attach_load_revision('node', $result['node'], array('field_id' => 'field_xml'));
-  } 
+  $results = $query->execute();
+  $nodes = $results->fetchAllAssoc('nid');
+  
+  field_attach_load_revision('node', $nodes, array('field_id' => 'field_xml'));
 
   $output = array();
 
   $output[] = '<?xml version="1.0" encoding="UTF-8" ?>';
   $output[] = '<Technologies>';
 
-  foreach($result['node'] as $node) {
-    $output[] = '<Technology>';
-
-    $output[] = $node->field_xml[LANGUAGE_NONE]['0']['value'];
-    
-    $output[] = '</Technology>';
+  foreach($nodes as $node) {
+    if(isset($node->field_xml[LANGUAGE_NONE]['0']['value'])) {
+      $output[] = '<Technology>';
+      $output[] = $node->field_xml[LANGUAGE_NONE]['0']['value'];
+      $output[] = '</Technology>';
+    }
   }
 
   $output[] = '</Technologies>';
@@ -173,4 +166,33 @@ function ttc_content_type_abstract_generate_xml() {
   print implode(' ', $output);
 
   drupal_exit();
+}
+
+/**
+ * cron hook - add all abstract nodes without populated XML to the queue
+ */
+function ttc_content_type_abstract_cron() {
+  try {
+    // create node and history queries      
+    $query = _ttc_content_type_abstract_build_current_query();
+
+    // add check for null xml fields
+    $xml = db_select('field_revision_field_xml', 'x');
+    $xml->rightJoin($query, 'a', 'x.entity_id = a.nid AND x.revision_id = a.vid');
+    $xml->isNull('x.field_xml_value');
+
+    $xml->fields('a', array('nid', 'vid', 'type'));
+
+    $results = $xml->execute();
+
+    watchdog('ttc_content_type_abstract', "Cron task found %count empty abstract xml fields.",
+      array('%count' => $results->rowCount()));
+
+    foreach($results as $result) {
+      _ttc_content_type_abstract_queue_xml($result);
+    }
+  }
+  catch(Exception $e){
+    watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
+  }
 }

@@ -11,6 +11,7 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
   $form['field_opp_year']['#access'] = false;
   $form['field_opp_list_lastsent']['#access'] = false;
   $form['field_opp_30day_warned']['#access'] = false;
+  $form['field_xml']['#access'] = false;
 
   // disable old display fields
   _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
@@ -112,8 +113,23 @@ function ttc_content_type_abstract_node_presave($node) {
     }
   }
 
-  // fill the node's xml field
-  _ttc_content_type_abstract_populate_xml($node);
+  // skip queueing items in draft or needs_review states
+  $state = '';
+  if(isset($node->workbench_moderation_state_new)) {
+    $state = $node->workbench_moderation_state_new;
+    if($state == 'draft' || $state == 'needs_review') {
+      // clear the xml field and return.
+      unset($node->field_xml[LANGUAGE_NONE]);
+    }
+    else {
+      watchdog('ttc_content_type_abstract', "Adding %nid (%vid) in state '%state' to xml queue .",
+      array('%nid' => $node->nid, '%vid' => $node->vid, '%state' => $state));
+  
+      // add this node to the cron queue to have its xml field filled
+      _ttc_content_type_abstract_queue_xml($node);
+    }
+  }
+  
 }
 
 function _ttc_content_type_abstract_retrieve_values($node, $collection, $subfields) {
@@ -308,7 +324,7 @@ function _ttc_content_type_abstract_format_status($values){
     if(isset($status['field_application_number'][0]['#markup'])) {
       $application = $status['field_application_number'][0]['#markup'];
     }
-
+    
     if(isset($status['field_patent_filing_date'][0]['#markup'])) {
       $app_date = trim(drupal_html_to_text($status['field_patent_filing_date'][0]['#markup']));
       $application = $application ? "Provisional Application No. $application filed $app_date" : "Filed $app_date";
@@ -369,13 +385,104 @@ function _ttc_content_type_abstract_format_status($values){
   return $statii;
 }
 
+/**
+ * Callback to generate the xml for an abstract node and populate the related field.
+ */
 function _ttc_content_type_abstract_populate_xml($node) {
-  $xml = views_embed_view('abstracts_rss','abstract_xml', $node->nid);
+  $nid = isset($node->nid) ? $node->nid : null;
+  $vid = isset($node->vid) ? $node->vid : null;
+  if(empty($nid) || empty($vid)) {
+    watchdog('ttc_content_type_abstract', "Cannot generate xml: nid='%nid' vid='%vid'.",
+      array('%nid' => $nid, '%vid' => $vid), WATCHDOG_ERROR);
+
+      return;
+  }
+
+  // switch to the admin user
+  global $user;
+  $account = $user;
+  $user = user_load(1);
+
+  // clear the node's cache so that the view gets the latest version
+  $xml = views_embed_view('abstracts_rss','abstract_xml', $nid, $vid);
+
+  watchdog('ttc_content_type_abstract', "Generated xml for %nid (%vid):\n'%xml'",
+    array('%nid' => $nid, '%vid' => $vid, '%xml' => $xml));
 
   preg_match('@\<Technology\>(.*)\</Technology\>@s', $xml, $matches);
 
   if(isset($matches[1])) {
-    $node->field_xml[LANGUAGE_NONE]['0']['value'] = $matches[1];
+    $transaction = db_transaction();
+    try {
+      //$node = node_load($nid);
+      $update_node = new stdClass();
+      $update_node->nid = $nid;
+      $update_node->vid = $vid;
+      $update_node->type = 'abstract';
+      $update_node->field_xml[LANGUAGE_NONE]['0']['value'] = $matches[1];
+      field_attach_presave('node', $update_node);
+      field_attach_update('node', $update_node);
+      entity_get_controller('node')->resetCache(array($nid));
+
+    } catch (Exception $e) {
+      $transaction->rollback();
+
+      // switch back to the original user
+      $user = $account;
+
+      throw $e;
+    }
+
   }
 
+  // switch back to the original user
+  $user = $account;
+
+}
+
+/**
+* Specify a cron queue for filling xml info on abstract nodes after saving
+*/
+function ttc_content_type_abstract_cron_queue_info() {
+  $queues['xml_generation'] = array(
+    'worker callback' => '_ttc_content_type_abstract_populate_xml',
+    'time' => 60,
+  );
+  return $queues;
+}
+/**
+* Creates a queue item to generate the node's xml later
+*/
+function _ttc_content_type_abstract_queue_xml($node) {
+  // create a queue item
+  $queue = DrupalQueue::get('xml_generation');
+  $queue->createItem($node);
+}
+
+/**
+ * Builds a query object that finds each abstract's publiched or archived nid and vid, and also filters
+ * for opportunity year > 2008.  Can be extended to check for additional fields.
+ */
+function _ttc_content_type_abstract_build_current_query() {
+  // create node and history queries      
+  $history = db_select('workbench_moderation_node_history', 'h');
+  
+  // join on node id
+  $history->join('node', 'n', 'n.nid = h.nid');
+  
+  //add conditions
+  $history->condition('n.type', 'abstract')
+    ->condition(db_or()
+      ->condition(db_and()->condition('n.status', 1)->condition('h.state', 'published'))
+      ->condition(db_and()->condition('n.status', 0)->condition('h.state', 'archived')))
+    ->groupBy('h.nid');
+  $history->addField('h', 'nid');
+  $history->addField('n', 'type');
+  $history->addExpression('max(n.vid)', 'vid');
+
+  // add year filter
+  $history->join('field_revision_field_opp_year', 'y', 'y.entity_id = h.nid AND y.revision_id = h.vid');
+  $history->condition('y.field_opp_year_value', '2008' , '>');
+
+  return $history;
 }
