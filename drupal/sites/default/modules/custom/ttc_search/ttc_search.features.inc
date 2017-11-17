@@ -192,8 +192,7 @@ function ttc_search_default_search_api_index() {
           "entity_type" : "field_collection_item"
         },
         "field_pat_status:field_patent_status:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_pat_status:field_send_to:name" : { "type" : "list\\u003Clist\\u003Ctext\\u003E\\u003E" },
-        "field_pat_status:field_text" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_pat_status:field_text:value" : { "type" : "list\\u003Ctext\\u003E" },
         "field_product_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_therapeutic_area" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "nid" : { "type" : "integer" },
@@ -349,7 +348,7 @@ function ttc_search_default_search_api_index() {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
         },
-        "field_pat_status:field_text" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_pat_status:field_text:value" : { "type" : "list\\u003Ctext\\u003E" },
         "search_api_language" : { "type" : "string" },
         "search_api_url" : { "type" : "uri" },
         "title" : { "type" : "text", "boost" : "5.0" }
@@ -437,11 +436,6 @@ function ttc_search_default_search_api_server() {
             "type" : "text",
             "boost" : "1.0"
           },
-          "field_pat_status:field_text" : {
-            "table" : "search_api_db_default_node_index_text",
-            "type" : "list\\u003Ctext\\u003E",
-            "boost" : "1.0"
-          },
           "search_api_url" : {
             "table" : "search_api_db_default_node_index",
             "column" : "search_api_url",
@@ -459,6 +453,11 @@ function ttc_search_default_search_api_server() {
             "boost" : "2.0"
           },
           "field_opp_pubs_text:value" : {
+            "table" : "search_api_db_default_node_index_text",
+            "type" : "list\\u003Ctext\\u003E",
+            "boost" : "1.0"
+          },
+          "field_pat_status:field_text:value" : {
             "table" : "search_api_db_default_node_index_text",
             "type" : "list\\u003Ctext\\u003E",
             "boost" : "1.0"
@@ -588,11 +587,6 @@ function ttc_search_default_search_api_server() {
             "type" : "list\\u003Ctext\\u003E",
             "boost" : "1.0"
           },
-          "field_pat_status:field_send_to:name" : {
-            "table" : "search_api_db_abstract_faceted_index_text",
-            "type" : "list\\u003Clist\\u003Ctext\\u003E\\u003E",
-            "boost" : "1.0"
-          },
           "field_pat_status:field_patent_status:name" : {
             "table" : "search_api_db_abstract_faceted_index_text",
             "type" : "list\\u003Ctext\\u003E",
@@ -606,11 +600,6 @@ function ttc_search_default_search_api_server() {
           "body:summary" : {
             "table" : "search_api_db_abstract_faceted_index_text",
             "type" : "text",
-            "boost" : "1.0"
-          },
-          "field_pat_status:field_text" : {
-            "table" : "search_api_db_abstract_faceted_index_text",
-            "type" : "list\\u003Ctext\\u003E",
             "boost" : "1.0"
           },
           "status" : {
@@ -629,6 +618,11 @@ function ttc_search_default_search_api_server() {
             "table" : "search_api_db_abstract_faceted_index_search_api_access_node",
             "column" : "value",
             "type" : "list\\u003Cstring\\u003E",
+            "boost" : "1.0"
+          },
+          "field_pat_status:field_text:value" : {
+            "table" : "search_api_db_abstract_faceted_index_text",
+            "type" : "list\\u003Ctext\\u003E",
             "boost" : "1.0"
           }
         }
