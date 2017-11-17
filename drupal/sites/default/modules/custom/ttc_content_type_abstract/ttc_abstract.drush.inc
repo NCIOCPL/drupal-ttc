@@ -21,29 +21,12 @@ function ttc_abstract_drush_command() {
     $items = array();
 
     // The 'abstract-set-sendto' command.
-    $items['ttc-abstract-notif-sendto'] = array(
-        'description' => "Sets all existing abstract nodes to use the given sendto term id.",
-        'arguments' => array(
-            'tid' => 'The id of the term to set into field_notif on all abstracts.',
-        ),
-        'options' => array(
-            'start' => array(
-                'description' => 'Comma delimited list of spreads.',
-                'example-value' => '0',
-            ),
-            'span' => array(
-                'description' => 'Comma delimited list of spreads.',
-                'example-value' => '50',
-            ),
-            'limit' => array(
-                'description' => 'Comma delimited list of spreads.',
-                'example-value' => '1000',
-            ),
-        ),
+    $items['ttc-abstract-sendto-ott'] = array(
+        'description' => "Sets send to OTT flag on all existing abstract nodes.",
         'examples' => array(
-            'drush tans 79 --limit=10' => 'Update just the first 10 records.',
+            'drush taso' => 'Set the flag for all abstract nodes.',
         ),
-        'aliases' => array('tans'),
+        'aliases' => array('taso'),
         // require full site
         'bootstrap' => 'DRUSH_BOOTSTRAP_FULL',
     );
@@ -121,8 +104,8 @@ function ttc_abstract_drush_command() {
  */
 function ttc_abstract_drush_help($section) {
     switch ($section) {
-        case 'drush:ttc-abstract-notif-sendto':
-            return dt("This command will update or overwrite field_notif on all existing abstracts with the given term id.");
+        case 'drush:ttc-abstract-sendto-ott':
+            return dt("This command will set field_send_to_ott on all existing abstracts.");
         case 'drush:ttc-abstract-export-excel':
             return dt("This command will export existing Abstract nodes to an Excel file.");
         case 'drush:ttc-abstract-import-excel':
@@ -146,40 +129,6 @@ function ttc_abstract_drush_help($section) {
         case 'meta:ttc_abstract:summary':
             return dt("Drush commands for working with TTC Abstract items.");
     }
-}
-
-/**
- * Implements drush_hook_COMMAND_validate().
- *
- * The validate command should exit with
- * `return drush_set_error(...)` to stop execution of
- * the command.  In practice, calling drush_set_error
- * OR returning FALSE is sufficient.  See drush.api.php
- * for more details.
- */
-function drush_ttc_abstract_notif_sendto_validate($tid) {
-    if (!is_numeric($tid)) {
-        return drush_set_error('NON_NUMERIC_TID', dt('Please provide a numeric TID.'));
-    }
-
-    // load the term from the id
-    $term = taxonomy_term_load($tid);
-
-    if (!isset($term->vocabulary_machine_name) ||
-            $term->vocabulary_machine_name != 'send_to_email_addresses') {
-        return drush_set_error('WRONG_PARENT_VOCAB', dt("Term $tid does not belong to vocabulary 'send_to_email_addresses'."));
-    }
-
-    $start = drush_get_option('start', 0);
-    $limit = drush_get_option('limit', 1000);
-    $span = drush_get_option('span', 50);
-
-    if (!is_numeric($start))
-        return drush_set_error('NON_NUMERIC_START', dt('Please provide a numeric start option.'));
-    if (!is_numeric($span))
-        return drush_set_error('NON_NUMERIC_SPAN', dt('Please provide a numeric span option.'));
-    if (!is_numeric($limit))
-        return drush_set_error('NON_NUMERIC_LIMIT', dt('Please provide a numeric limit option.'));
 }
 
 /**
@@ -263,98 +212,58 @@ function drush_ttc_abstract_import_excel_validate() {
  * @see drush_invoke()
  * @see drush.api.php
  */
-function drush_ttc_abstract_notif_sendto($tid) {
-    $start = drush_get_option('start', 0);
-    $limit = drush_get_option('limit', 1000);
-    $span = drush_get_option('span', 50);
+function drush_ttc_abstract_sendto_ott() {
+    $found = _ttc_abstract_set_sendto_ott();
 
-    $pos = $start;
-    $found = 0;
-    do {
-        if (($pos + $span) > $limit) {
-            $span = $limit - $pos;
-        }
-
-        $found = _ttc_abstract_reset_notify_term($tid, $pos, $span);
-        $pos += $found;
-    } while (($limit > $pos) && ($found >= $span));
-
-    drush_log("Parsed $pos abstract nodes.", 'ok');
+    drush_log("Set field_send_to_ott on $found abstract nodes.", 'ok');
 
     return;
 }
 
-function _ttc_abstract_reset_notify_term($tid, $start = 0, $length = 10) {
-    drush_log("Finding $length nodes, beginning from $start", 'notice');
+function _ttc_abstract_set_sendto_ott() {
+    // create node and history queries      
+    $history = db_select('workbench_moderation_node_history', 'h');
+    
+    // join on node id
+    $history->join('node', 'n', 'n.nid = h.nid');
+    
+    //add conditions
+    $history->condition('n.type', 'abstract')
+        ->condition(db_or()
+        ->condition(db_and()->condition('n.status', 1)->condition('h.state', 'published'))
+        ->condition(db_and()->condition('n.status', 0)->condition('h.state', 'archived')))
+        ->groupBy('h.nid');
+    $history->addField('h', 'nid');
+    $history->addField('n', 'type');
+    $history->addExpression('max(n.vid)', 'vid');
 
-    $query = new EntityFieldQuery();
+    // add year filter
+    $history->join('field_revision_field_opp_year', 'y', 'y.entity_id = h.nid AND y.revision_id = h.vid');
+    $history->condition('y.field_opp_year_value', '2008' , '>');
 
-    $query->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', 'abstract')
-            ->range($start, $length);
+    $results = $history->execute();
+    $nodes = $results->fetchAllAssoc('nid');
+    
+    // attach the field to the short node object
+    field_attach_load_revision('node', $nodes, array('field_id' => 'field_send_to_ott'));
 
-    $result = $query->execute();
-
-    if (isset($result['node'])) {
-        $nids = array_keys($result['node']);
-
-        drush_log("Found " . sizeof($nids) . ' abstract nodes');
-
-        $updated_count = 0;
-        $empty_count = 0;
-        $skipped_count = 0;
-        $existing_count = 0;
-
-        foreach ($nids as $nid) {
-            $wrapper = entity_metadata_wrapper('node', $nid, array('bundle' => 'abstract'));
-
-            $notif_raw = $wrapper->field_notif->value();
-
-            if (empty($notif_raw)) {
-                $empty_count++;
-
-                // Create a new field collection and set it to the node
-                $notif_item = entity_create('field_collection_item', array('field_name' => 'field_notif'));
-                $notif_item->setHostEntity('node', $wrapper->value());
-
-                // create wrapper for item
-                $notif_wrapper = entity_metadata_wrapper('field_collection_item', $notif_item, array('bundle' => 'field_notif'));
-            } else {
-                $notif_wrapper = entity_metadata_wrapper('field_collection_item', $notif_raw, array('bundle' => 'field_notif'));
-
-                if ($notif_wrapper->field_send_to[0]->value()->tid == $tid) {
-                    $skipped_count++;
-                    continue;
-                }
-
-                $existing_count++;
-            }
-
-            try {
-                // set field_send_to
-                $notif_wrapper->field_send_to[0] = $tid;
-
-                // save field and node wrappers
-                $notif_wrapper->save();
-                $wrapper->save();
-
-                $updated_count++;
-            } catch (Exception $e) {
-                drush_log('Exception: ' . $e->getMessage() . '\n' . $e->getTraceAsString(), 'error');
-            }
+    // update the field on each node
+    foreach($nodes as $node) {
+        $transaction = db_transaction();
+        try {
+            $node->field_send_to_ott[LANGUAGE_NONE]['0']['value'] = 1;
+            field_attach_presave('node', $node);
+            field_attach_update('node', $node);
+        } catch (Exception $e) {
+            $transaction->rollback();
+            throw $e;
         }
-
-        if ($empty_count)
-            drush_log("Found " . $empty_count . ' empty abstract nodes');
-        if ($existing_count)
-            drush_log("Found " . $existing_count . ' abstract nodes with different term already set');
-        if ($updated_count)
-            drush_log("Updated " . $updated_count . ' abstract nodes');
-        if ($skipped_count)
-            drush_log("Skipped " . $skipped_count . ' abstract nodes with term already set');
-
-        return sizeof($nids);
     }
+
+    // reset the cache for the given nodes
+    entity_get_controller('node')->resetCache(array_keys($nodes));
+
+    return sizeof($nodes);
 }
 
 /**
