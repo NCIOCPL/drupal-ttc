@@ -47,6 +47,10 @@ function ttc_abstract_drush_command() {
                 'description' => 'Comma delimited list of spreads.',
                 'example-value' => '1000',
             ),
+            'since' => array(
+                'description' => 'Date value - items changed before this date will be omitted.',
+                'example-value' => '2017-10-05',
+            ),
             'filename' => array(
                 'description' => 'Path and filename of Excel export.',
                 'example-value' => 'c:\tmp\abstracts.xls',
@@ -154,6 +158,15 @@ function drush_ttc_abstract_export_excel_validate() {
 
     if (!is_numeric($limit))
         return drush_set_error('NON_NUMERIC_LIMIT', dt('Please provide a numeric limit option.'));
+
+    $since = drush_get_option('since', false);
+    if ($since) {
+        $date = new DateTime($since);
+        if(!$date) {
+            return drush_set_error('NON_DATE_SINCE', dt('Please provide a valid date value for the since option (%since provided).',
+            array('%since' => $since)));
+        }
+    }
 }
 
 /**
@@ -294,8 +307,20 @@ function _ttc_abstract_set_sendto_ott() {
  */
 function drush_ttc_abstract_export_excel() {
     $limit = drush_get_option('limit', 50);
+    $since = drush_get_option('since', false);
+    $since_date = false;
+    if($since) {
+        $since_date = new DateTime($since);
+    }
 
     drush_log("Export Excel called with a limit of $limit", 'ok');
+    if($since_date) {
+        $date = $since_date->format(DateTime::ATOM);
+        drush_log("Export Excel will only include items after $date", 'ok');
+    }
+    else {
+        drush_log("Export Excel is not restricting results based on date.", 'ok');
+    }
 
     // Store the file in sites/default/files
     $dir = file_stream_wrapper_get_instance_by_uri('public://')->realpath();
@@ -310,9 +335,16 @@ function drush_ttc_abstract_export_excel() {
     // Get the nodes
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', 'abstract');
+            ->entityCondition('bundle', 'abstract')
+            ->fieldCondition('field_opp_year', 'value', '2008', '>')
+            ->propertyCondition('status', '1');
     if ($limit > 0) {
         $query->range(0, $limit);
+    }
+    if($since_date) {
+        $timestamp = $since_date->getTimestamp();
+        drush_log("Comparing node timestamp to $timestamp", 'ok');
+        $query->propertyCondition('changed', $timestamp, '>');
     }
 
     $result = $query->execute();
@@ -371,7 +403,7 @@ function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label
                     $entity = field_collection_item_load($value);
                     if($entity) {
                         $wrapper = entity_metadata_wrapper('field_collection_item', $entity);
-                        $value = trim($wrapper->field_text->value());
+                        $value = trim($wrapper->field_text->value()['value']);
                         if(empty($value)) {
                             // empty text field; skip this row.
                             continue;
