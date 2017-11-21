@@ -7,16 +7,18 @@
  * Contains all hooks for abstract nodes.
  */
 function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
-  // hide machine-generated fields
-  $form['field_opp_year']['#access'] = false;
-  $form['field_opp_list_lastsent']['#access'] = false;
-  $form['field_opp_30day_warned']['#access'] = false;
-  $form['field_xml']['#access'] = false;
-
-  // disable old display fields
-  _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
-  _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
-  _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
+  if($form['#id']=='abstract-node-form'){
+    // hide machine-generated fields
+    $form['field_opp_year']['#access'] = false;
+    $form['field_opp_list_lastsent']['#access'] = false;
+    $form['field_opp_30day_warned']['#access'] = false;
+    $form['field_xml']['#access'] = false;
+    
+    // disable old display fields
+    _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
+    _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
+    _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
+  }
 }
 
 function _ttc_content_type_abstract_convert_display_field(&$form, $field, $subfield = false) {
