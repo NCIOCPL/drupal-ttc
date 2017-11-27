@@ -9,7 +9,7 @@ include_once 'ttc_views.features.inc';
 
 function ttc_views_views_pre_render(&$view) {
     // if the view is abstract_rss
-    if ($view->name == 'abstracts_rss') {
+    if ($view->name == 'abstracts_rss' && isset($view->args[0])) {
         // retrieve the first argument, which should be a dash-delimited product 
         // type name
         $term_name = str_replace('-', ' ', $view->args[0]);
@@ -25,6 +25,100 @@ function ttc_views_views_pre_render(&$view) {
             $view->build_info['title'] = "TTC $title";
         }
     }
+
+    if($view->current_display == 'abstract_xml') {
+        // declare static field sets
+        static $fields_to_retrieve = array(
+            'field_field_inventors' => array(
+                'field_is_lead',
+                'field_first_name',
+                'field_middle_initial',
+                'field_last_name',
+                'field_suffix',
+                'field_url',
+                'field_division_name',
+            ),
+            'field_field_publications' => array(
+                'field_title',
+                'field_url'
+            ),
+            'field_field_pat_status' => array(
+                'field_is_related_patent',
+                'field_patent_status',
+                'field_application_number',
+                'field_patent_authority',
+                'field_patent_number',
+                'field_add_pat_desc',
+                'field_patent_filing_date',
+                'field_patent_issue_date',
+            )
+        );
+
+        $view->extracted_values = array();
+
+        foreach($view->result as $r => $result) {
+            // retrieve the unpublished date for each nid
+            $nid = $view->result[$r]->nid;
+            $date = _get_unpublished_date($nid);
+            $view->result[$r]->nid = _get_unpublished_date($view->result[$r]->nid);
+
+            foreach($fields_to_retrieve as $field_collection => $fields) {
+                $values = _get_field_values($result, $field_collection, $fields);
+
+                $view->result[$r]->extracted_values[$field_collection] = $values;
+            }
+        }
+    }
+}
+
+function _get_unpublished_date($nid) {
+    $published = db_select('workbench_moderation_node_history', 'p_top')
+        ->fields('p_top')
+        ->condition('p_top.nid', $nid)
+        ->condition('p_top.state', 'published')
+        ->orderBy('p_top.hid', 'DESC')
+        ->range(0,1);
+
+    $archived = db_select('workbench_moderation_node_history', 'a')
+        ->condition('a.nid', $nid)
+        ->condition('a.state', 'archived')
+        ->orderBy('a.hid', 'ASC')
+        ->range(0,1);
+
+    $archived->addField('a', 'stamp', 'archive_stamp');
+
+    $publishedAlias = $archived->join($published, 'p', 'a.hid >= p.hid');
+
+    $result = $archived->execute();
+
+    $date = false;
+
+    foreach ($result as $r => $record) {
+        // Do something with each $record
+        $stamp = $record->archive_stamp;
+        $date = date('Y-m-d', $stamp);
+        break;
+    }
+
+    return $date;
+}
+
+function _get_field_values($result, $field_collection, $fields) {
+    $values = array();
+
+    foreach($result->$field_collection as $delta => $collection) {
+        if(isset($collection['rendered']['entity']['field_collection_item'])) {
+            $entity = reset($collection['rendered']['entity']['field_collection_item']);
+
+            foreach($fields as $field) {
+                if(isset($entity[$field]['#items'])) {
+                    $values[$delta][$field] = reset($entity[$field]['#items']);
+                }
+            }
+        }
+    }
+
+    return $values;
 }
 
 /***

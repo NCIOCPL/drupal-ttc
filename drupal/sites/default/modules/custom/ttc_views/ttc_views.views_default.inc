@@ -25,6 +25,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['title'] = 'TTC Available Technologies';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'edit own abstract content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -78,11 +79,10 @@ function ttc_views_views_default_views() {
     'image_style' => '',
     'image_link' => '',
   );
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Nid */
+  $handler->display->display_options['sorts']['nid']['id'] = 'nid';
+  $handler->display->display_options['sorts']['nid']['table'] = 'node';
+  $handler->display->display_options['sorts']['nid']['field'] = 'nid';
   /* Contextual filter: Content: Product Type (field_product_type) */
   $handler->display->display_options['arguments']['field_product_type_tid']['id'] = 'field_product_type_tid';
   $handler->display->display_options['arguments']['field_product_type_tid']['table'] = 'field_data_field_product_type';
@@ -100,13 +100,6 @@ function ttc_views_views_default_views() {
   );
   $handler->display->display_options['arguments']['field_product_type_tid']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['field_product_type_tid']['validate_options']['transform'] = TRUE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -123,6 +116,11 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['field_opp_list_send_value']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
 
   /* Display: Feed */
   $handler = $view->new_display('feed', 'Feed', 'abstract_feed');
@@ -141,6 +139,215 @@ function ttc_views_views_default_views() {
   );
   $handler->display->display_options['path'] = 'rss/%/abstracts.xml';
   $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Abstract XML Single */
+  $handler = $view->new_display('views_data_export', 'Abstract XML Single', 'abstract_xml');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xml';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['transform'] = 1;
+  $handler->display->display_options['style_options']['transform_type'] = 'pascal';
+  $handler->display->display_options['style_options']['root_node'] = 'Technologies';
+  $handler->display->display_options['style_options']['item_node'] = 'Technology';
+  $handler->display->display_options['style_options']['no_entity_encode'] = array(
+    'field_inventors' => 'field_inventors',
+    'field_enumber' => 'field_enumber',
+    'field_opp_rel_enum' => 'field_opp_rel_enum',
+    'field_pat_status' => 'field_pat_status',
+    'field_publications' => 'field_publications',
+    'field_product_type' => 'field_product_type',
+    'field_contact_auto' => 'field_contact_auto',
+  );
+  $handler->display->display_options['style_options']['cdata_wrapper'] = array(
+    'field_opp_compadv_text' => 'field_opp_compadv_text',
+    'field_opp_commapp_text' => 'field_opp_commapp_text',
+    'field_development_stage' => 'field_development_stage',
+    'field_additional_patent_document' => 'field_additional_patent_document',
+  );
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Competitive Advantages */
+  $handler->display->display_options['fields']['field_opp_compadv_text']['id'] = 'field_opp_compadv_text';
+  $handler->display->display_options['fields']['field_opp_compadv_text']['table'] = 'field_data_field_opp_compadv_text';
+  $handler->display->display_options['fields']['field_opp_compadv_text']['field'] = 'field_opp_compadv_text';
+  $handler->display->display_options['fields']['field_opp_compadv_text']['label'] = 'Advantages';
+  /* Field: Content: Potential Commercial Applications */
+  $handler->display->display_options['fields']['field_opp_commapp_text']['id'] = 'field_opp_commapp_text';
+  $handler->display->display_options['fields']['field_opp_commapp_text']['table'] = 'field_data_field_opp_commapp_text';
+  $handler->display->display_options['fields']['field_opp_commapp_text']['field'] = 'field_opp_commapp_text';
+  $handler->display->display_options['fields']['field_opp_commapp_text']['label'] = 'Applications';
+  /* Field: Content: Development Stage */
+  $handler->display->display_options['fields']['field_development_stage']['id'] = 'field_development_stage';
+  $handler->display->display_options['fields']['field_development_stage']['table'] = 'field_data_field_development_stage';
+  $handler->display->display_options['fields']['field_development_stage']['field'] = 'field_development_stage';
+  $handler->display->display_options['fields']['field_development_stage']['label'] = 'Development Status';
+  $handler->display->display_options['fields']['field_development_stage']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Meta Description */
+  $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'field_data_field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['label'] = 'Abstract';
+  /* Field: Content: Collaboration Opportunity */
+  $handler->display->display_options['fields']['field_opp_co_dev']['id'] = 'field_opp_co_dev';
+  $handler->display->display_options['fields']['field_opp_co_dev']['table'] = 'field_data_field_opp_co_dev';
+  $handler->display->display_options['fields']['field_opp_co_dev']['field'] = 'field_opp_co_dev';
+  $handler->display->display_options['fields']['field_opp_co_dev']['label'] = 'Collaborative Research Opportunity';
+  /* Field: Content: Updated */
+  $handler->display->display_options['fields']['field_updated_date']['id'] = 'field_updated_date';
+  $handler->display->display_options['fields']['field_updated_date']['table'] = 'field_data_field_updated_date';
+  $handler->display->display_options['fields']['field_updated_date']['field'] = 'field_updated_date';
+  $handler->display->display_options['fields']['field_updated_date']['label'] = 'Updated On';
+  $handler->display->display_options['fields']['field_updated_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_updated_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_updated_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Posted */
+  $handler->display->display_options['fields']['field_posted_date']['id'] = 'field_posted_date';
+  $handler->display->display_options['fields']['field_posted_date']['table'] = 'field_data_field_posted_date';
+  $handler->display->display_options['fields']['field_posted_date']['field'] = 'field_posted_date';
+  $handler->display->display_options['fields']['field_posted_date']['label'] = 'Date Published';
+  $handler->display->display_options['fields']['field_posted_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_posted_date']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Date Unpublished */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['ui_name'] = 'Date Unpublished';
+  $handler->display->display_options['fields']['nid']['label'] = 'Date Unpublished';
+  /* Field: Content: Inventor Data */
+  $handler->display->display_options['fields']['field_inventors']['id'] = 'field_inventors';
+  $handler->display->display_options['fields']['field_inventors']['table'] = 'field_data_field_inventors';
+  $handler->display->display_options['fields']['field_inventors']['field'] = 'field_inventors';
+  $handler->display->display_options['fields']['field_inventors']['label'] = 'Inventors';
+  $handler->display->display_options['fields']['field_inventors']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_inventors']['settings'] = array(
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 0,
+    'view_mode' => 'token',
+  );
+  $handler->display->display_options['fields']['field_inventors']['delta_offset'] = '0';
+  /* Field: Content: Reference Number */
+  $handler->display->display_options['fields']['field_enumber']['id'] = 'field_enumber';
+  $handler->display->display_options['fields']['field_enumber']['table'] = 'field_data_field_enumber';
+  $handler->display->display_options['fields']['field_enumber']['field'] = 'field_enumber';
+  $handler->display->display_options['fields']['field_enumber']['label'] = 'Included Invention';
+  /* Field: Content: Related Technologies */
+  $handler->display->display_options['fields']['field_opp_rel_enum']['id'] = 'field_opp_rel_enum';
+  $handler->display->display_options['fields']['field_opp_rel_enum']['table'] = 'field_data_field_opp_rel_enum';
+  $handler->display->display_options['fields']['field_opp_rel_enum']['field'] = 'field_opp_rel_enum';
+  $handler->display->display_options['fields']['field_opp_rel_enum']['label'] = 'Related Invention';
+  $handler->display->display_options['fields']['field_opp_rel_enum']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_opp_rel_enum']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_opp_rel_enum']['separator'] = '|';
+  /* Field: Content: Patent Status */
+  $handler->display->display_options['fields']['field_pat_status']['id'] = 'field_pat_status';
+  $handler->display->display_options['fields']['field_pat_status']['table'] = 'field_data_field_pat_status';
+  $handler->display->display_options['fields']['field_pat_status']['field'] = 'field_pat_status';
+  $handler->display->display_options['fields']['field_pat_status']['settings'] = array(
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 1,
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_pat_status']['delta_offset'] = '0';
+  /* Field: Content: Additional Patent Documentation */
+  $handler->display->display_options['fields']['field_additional_patent_document']['id'] = 'field_additional_patent_document';
+  $handler->display->display_options['fields']['field_additional_patent_document']['table'] = 'field_data_field_additional_patent_document';
+  $handler->display->display_options['fields']['field_additional_patent_document']['field'] = 'field_additional_patent_document';
+  $handler->display->display_options['fields']['field_additional_patent_document']['label'] = 'Additonal Patent Documentation';
+  /* Field: Content: Publication Data */
+  $handler->display->display_options['fields']['field_publications']['id'] = 'field_publications';
+  $handler->display->display_options['fields']['field_publications']['table'] = 'field_data_field_publications';
+  $handler->display->display_options['fields']['field_publications']['field'] = 'field_publications';
+  $handler->display->display_options['fields']['field_publications']['label'] = 'Publications';
+  $handler->display->display_options['fields']['field_publications']['settings'] = array(
+    'edit' => '',
+    'delete' => '',
+    'add' => '',
+    'description' => 1,
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_publications']['delta_offset'] = '0';
+  /* Field: Content: Product Type */
+  $handler->display->display_options['fields']['field_product_type']['id'] = 'field_product_type';
+  $handler->display->display_options['fields']['field_product_type']['table'] = 'field_data_field_product_type';
+  $handler->display->display_options['fields']['field_product_type']['field'] = 'field_product_type';
+  $handler->display->display_options['fields']['field_product_type']['label'] = 'Provider Classifications';
+  $handler->display->display_options['fields']['field_product_type']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_product_type']['delta_offset'] = '0';
+  /* Field: Content: Contact */
+  $handler->display->display_options['fields']['field_contact_auto']['id'] = 'field_contact_auto';
+  $handler->display->display_options['fields']['field_contact_auto']['table'] = 'field_data_field_contact_auto';
+  $handler->display->display_options['fields']['field_contact_auto']['field'] = 'field_contact_auto';
+  $handler->display->display_options['fields']['field_contact_auto']['label'] = 'Licensing Contacts';
+  $handler->display->display_options['fields']['field_contact_auto']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_contact_auto']['alter']['text'] = '[field_contact_auto-tid]';
+  $handler->display->display_options['fields']['field_contact_auto']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'abstract' => 'abstract',
+  );
+  /* Contextual filter: Content revision: Vid */
+  $handler->display->display_options['arguments']['vid']['id'] = 'vid';
+  $handler->display->display_options['arguments']['vid']['table'] = 'node_revision';
+  $handler->display->display_options['arguments']['vid']['field'] = 'vid';
+  $handler->display->display_options['arguments']['vid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['vid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['vid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['vid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['vid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'abstract' => 'abstract',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Opportunity Year (field_opp_year) */
+  $handler->display->display_options['filters']['field_opp_year_value']['id'] = 'field_opp_year_value';
+  $handler->display->display_options['filters']['field_opp_year_value']['table'] = 'field_data_field_opp_year';
+  $handler->display->display_options['filters']['field_opp_year_value']['field'] = 'field_opp_year_value';
+  $handler->display->display_options['filters']['field_opp_year_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_opp_year_value']['value']['value'] = '2008';
+  $handler->display->display_options['path'] = 'xml/abstract';
+  $handler->display->display_options['segment_size'] = '50';
   $export['abstracts_rss'] = $view;
 
   $view = new view();

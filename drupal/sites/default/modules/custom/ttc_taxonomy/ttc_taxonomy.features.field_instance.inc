@@ -10,6 +10,72 @@
 function ttc_taxonomy_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'taxonomy_term-contacts-field_address'.
+  $field_instances['taxonomy_term-contacts-field_address'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_address',
+    'label' => 'Address',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 2,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_city'.
+  $field_instances['taxonomy_term-contacts-field_city'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_city',
+    'label' => 'City',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-contacts-field_contact_email'.
   $field_instances['taxonomy_term-contacts-field_contact_email'] = array(
     'bundle' => 'contacts',
@@ -39,7 +105,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 2,
+      'weight' => 7,
     ),
   );
 
@@ -73,7 +139,238 @@ function ttc_taxonomy_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_fax_number'.
+  $field_instances['taxonomy_term-contacts-field_fax_number'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_fax_number',
+    'label' => 'Fax Number',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 30,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_first_name'.
+  $field_instances['taxonomy_term-contacts-field_first_name'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_first_name',
+    'label' => 'First Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_last_name'.
+  $field_instances['taxonomy_term-contacts-field_last_name'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_last_name',
+    'label' => 'Last Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_organization_name'.
+  $field_instances['taxonomy_term-contacts-field_organization_name'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_organization_name',
+    'label' => 'Organization Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_postal_code'.
+  $field_instances['taxonomy_term-contacts-field_postal_code'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_postal_code',
+    'label' => 'Postal Code',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 12,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_state'.
+  $field_instances['taxonomy_term-contacts-field_state'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_state',
+    'label' => 'State',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 40,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_suffix'.
+  $field_instances['taxonomy_term-contacts-field_suffix'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_suffix',
+    'label' => 'Suffix',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 20,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
     ),
   );
 
@@ -157,9 +454,18 @@ function ttc_taxonomy_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Address');
+  t('City');
   t('Email');
+  t('Fax Number');
+  t('First Name');
   t('Image');
+  t('Last Name');
+  t('Organization Name');
   t('Phone');
+  t('Postal Code');
+  t('State');
+  t('Suffix');
   t('The address to use for email notifications.');
 
   return $field_instances;

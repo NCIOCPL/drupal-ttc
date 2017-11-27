@@ -10,30 +10,36 @@
 function ttc_content_type_abstract_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance:
-  // 'field_collection_item-field_notif-field_formatted_email_list'.
-  $field_instances['field_collection_item-field_notif-field_formatted_email_list'] = array(
-    'bundle' => 'field_notif',
+  // Exported field_instance: 'node-abstract-field_additional_patent_document'.
+  $field_instances['node-abstract-field_additional_patent_document'] = array(
+    'bundle' => 'abstract',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'default' => array(
-        'label' => 'hidden',
+      'PDF' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 0,
       ),
-      'full' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 14,
+      ),
+      'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
     ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_formatted_email_list',
-    'label' => 'Formatted Email List',
+    'entity_type' => 'node',
+    'field_name' => 'field_additional_patent_document',
+    'label' => 'Additional Patent Documentation',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -43,10 +49,10 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'rows' => 3,
       ),
-      'type' => 'text_textfield',
-      'weight' => 2,
+      'type' => 'text_textarea',
+      'weight' => 17,
     ),
   );
 
@@ -90,7 +96,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 15,
+      'weight' => 18,
     ),
   );
 
@@ -134,7 +140,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -160,7 +166,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 30,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -183,7 +189,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 48,
+      'weight' => 36,
     ),
   );
 
@@ -209,7 +215,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 31,
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -232,7 +238,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 50,
+      'weight' => 37,
     ),
   );
 
@@ -258,7 +264,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 32,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -281,7 +287,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 52,
+      'weight' => 38,
     ),
   );
 
@@ -332,51 +338,6 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-abstract-field_formatted_email_list'.
-  $field_instances['node-abstract-field_formatted_email_list'] = array(
-    'bundle' => 'abstract',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'PDF' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_formatted_email_list',
-    'label' => 'Formatted Email List',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 26,
-    ),
-  );
-
   // Exported field_instance: 'node-abstract-field_image'.
   $field_instances['node-abstract-field_image'] = array(
     'bundle' => 'abstract',
@@ -393,7 +354,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -429,52 +390,49 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 30,
+      'weight' => 31,
     ),
   );
 
-  // Exported field_instance: 'node-abstract-field_list_intro_text'.
-  $field_instances['node-abstract-field_list_intro_text'] = array(
+  // Exported field_instance: 'node-abstract-field_inventors'.
+  $field_instances['node-abstract-field_inventors'] = array(
     'bundle' => 'abstract',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'PDF' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 0,
       ),
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_list_intro_text',
-    'label' => 'Mailing List Intro',
+    'field_name' => 'field_inventors',
+    'label' => 'Inventor Data',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 17,
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 12,
     ),
   );
 
@@ -544,7 +502,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -573,48 +531,6 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-abstract-field_notif'.
-  $field_instances['node-abstract-field_notif'] = array(
-    'bundle' => 'abstract',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'PDF' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_notif',
-    'label' => 'Send To',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
-      'settings' => array(),
-      'type' => 'field_collection_embed',
-      'weight' => 19,
-    ),
-  );
-
   // Exported field_instance: 'node-abstract-field_opp_30day_warned'.
   $field_instances['node-abstract-field_opp_30day_warned'] = array(
     'bundle' => 'abstract',
@@ -636,7 +552,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -657,7 +573,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 25,
+      'weight' => 27,
     ),
   );
 
@@ -684,7 +600,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -705,7 +621,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 19,
     ),
   );
 
@@ -882,7 +798,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -915,7 +831,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -982,7 +898,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1015,7 +931,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 24,
+      'weight' => 26,
     ),
   );
 
@@ -1040,7 +956,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1061,7 +977,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -1105,7 +1021,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -1152,7 +1068,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -1235,7 +1151,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1268,7 +1184,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -1289,7 +1205,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1370,7 +1286,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
@@ -1392,7 +1308,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1413,7 +1329,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 18,
+      'weight' => 20,
     ),
   );
 
@@ -1441,7 +1357,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 27,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1474,7 +1390,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 42,
+      'weight' => 33,
     ),
   );
 
@@ -1523,6 +1439,55 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-abstract-field_publications'.
+  $field_instances['node-abstract-field_publications'] = array(
+    'bundle' => 'abstract',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => TRUE,
+          'edit' => 'Edit',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 35,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_publications',
+    'label' => 'Publication Data',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'node-abstract-field_reviewed_date'.
   $field_instances['node-abstract-field_reviewed_date'] = array(
     'bundle' => 'abstract',
@@ -1547,7 +1512,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 28,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1580,7 +1545,53 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 44,
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_send_to_ott'.
+  $field_instances['node-abstract-field_send_to_ott'] = array(
+    'bundle' => 'abstract',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If \'Yes\', this opportunity\'s published or archived data will be made available in the XML export provided to OTT.',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_send_to_ott',
+    'label' => 'Send to NIH OTT Website?',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 25,
     ),
   );
 
@@ -1655,7 +1666,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 29,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1688,7 +1699,52 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 46,
+      'weight' => 35,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_xml'.
+  $field_instances['node-abstract-field_xml'] = array(
+    'bundle' => 'abstract',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_xml',
+    'label' => 'XML',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 39,
     ),
   );
 
@@ -1697,6 +1753,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('30-Day Warned');
   t('A list of related reference numbers (E-Numbers).');
   t('A short description of the abstract, also provided to search engines..');
+  t('Additional Patent Documentation');
   t('Also called an E-Number.');
   t('Announce opportunity to GovDelivery?');
   t('Collaboration Opportunity');
@@ -1708,13 +1765,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Display Reviewed Date');
   t('Display Updated Date');
   t('End Date');
-  t('Formatted Email List');
   t('If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.');
+  t('If \'Yes\', this opportunity\'s published or archived data will be made available in the XML export provided to OTT.');
   t('Image shown in available technologies search results.');
+  t('Inventor Data');
   t('Inventor(s)');
   t('Keywords');
   t('Last announced to listserv on');
-  t('Mailing List Intro');
   t('Mode');
   t('NIH IC');
   t('Opportunity Year');
@@ -1722,16 +1779,18 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Posted');
   t('Potential Commercial Applications');
   t('Product Type');
+  t('Publication Data');
   t('Publications');
   t('Reference Number');
   t('Related Technologies');
   t('Reviewed');
   t('Search Image');
-  t('Send To');
+  t('Send to NIH OTT Website?');
   t('Start Date');
   t('Summary');
   t('Therapeutic Area');
   t('Updated');
+  t('XML');
 
   return $field_instances;
 }

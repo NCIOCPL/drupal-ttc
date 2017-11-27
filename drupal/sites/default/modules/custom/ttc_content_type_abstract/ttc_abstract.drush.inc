@@ -21,29 +21,12 @@ function ttc_abstract_drush_command() {
     $items = array();
 
     // The 'abstract-set-sendto' command.
-    $items['ttc-abstract-notif-sendto'] = array(
-        'description' => "Sets all existing abstract nodes to use the given sendto term id.",
-        'arguments' => array(
-            'tid' => 'The id of the term to set into field_notif on all abstracts.',
-        ),
-        'options' => array(
-            'start' => array(
-                'description' => 'Comma delimited list of spreads.',
-                'example-value' => '0',
-            ),
-            'span' => array(
-                'description' => 'Comma delimited list of spreads.',
-                'example-value' => '50',
-            ),
-            'limit' => array(
-                'description' => 'Comma delimited list of spreads.',
-                'example-value' => '1000',
-            ),
-        ),
+    $items['ttc-abstract-sendto-ott'] = array(
+        'description' => "Sets send to OTT flag on all existing abstract nodes.",
         'examples' => array(
-            'drush tans 79 --limit=10' => 'Update just the first 10 records.',
+            'drush taso' => 'Set the flag for all abstract nodes.',
         ),
-        'aliases' => array('tans'),
+        'aliases' => array('taso'),
         // require full site
         'bootstrap' => 'DRUSH_BOOTSTRAP_FULL',
     );
@@ -63,6 +46,10 @@ function ttc_abstract_drush_command() {
             'limit' => array(
                 'description' => 'Comma delimited list of spreads.',
                 'example-value' => '1000',
+            ),
+            'since' => array(
+                'description' => 'Date value - items changed before this date will be omitted.',
+                'example-value' => '2017-10-05',
             ),
             'filename' => array(
                 'description' => 'Path and filename of Excel export.',
@@ -121,8 +108,8 @@ function ttc_abstract_drush_command() {
  */
 function ttc_abstract_drush_help($section) {
     switch ($section) {
-        case 'drush:ttc-abstract-notif-sendto':
-            return dt("This command will update or overwrite field_notif on all existing abstracts with the given term id.");
+        case 'drush:ttc-abstract-sendto-ott':
+            return dt("This command will set field_send_to_ott on all existing abstracts.");
         case 'drush:ttc-abstract-export-excel':
             return dt("This command will export existing Abstract nodes to an Excel file.");
         case 'drush:ttc-abstract-import-excel':
@@ -157,40 +144,6 @@ function ttc_abstract_drush_help($section) {
  * OR returning FALSE is sufficient.  See drush.api.php
  * for more details.
  */
-function drush_ttc_abstract_notif_sendto_validate($tid) {
-    if (!is_numeric($tid)) {
-        return drush_set_error('NON_NUMERIC_TID', dt('Please provide a numeric TID.'));
-    }
-
-    // load the term from the id
-    $term = taxonomy_term_load($tid);
-
-    if (!isset($term->vocabulary_machine_name) ||
-            $term->vocabulary_machine_name != 'send_to_email_addresses') {
-        return drush_set_error('WRONG_PARENT_VOCAB', dt("Term $tid does not belong to vocabulary 'send_to_email_addresses'."));
-    }
-
-    $start = drush_get_option('start', 0);
-    $limit = drush_get_option('limit', 1000);
-    $span = drush_get_option('span', 50);
-
-    if (!is_numeric($start))
-        return drush_set_error('NON_NUMERIC_START', dt('Please provide a numeric start option.'));
-    if (!is_numeric($span))
-        return drush_set_error('NON_NUMERIC_SPAN', dt('Please provide a numeric span option.'));
-    if (!is_numeric($limit))
-        return drush_set_error('NON_NUMERIC_LIMIT', dt('Please provide a numeric limit option.'));
-}
-
-/**
- * Implements drush_hook_COMMAND_validate().
- *
- * The validate command should exit with
- * `return drush_set_error(...)` to stop execution of
- * the command.  In practice, calling drush_set_error
- * OR returning FALSE is sufficient.  See drush.api.php
- * for more details.
- */
 function drush_ttc_abstract_export_excel_validate() {
     // test loading of phpexcel
     $module = module_load_include('inc', 'phpexcel');
@@ -205,6 +158,15 @@ function drush_ttc_abstract_export_excel_validate() {
 
     if (!is_numeric($limit))
         return drush_set_error('NON_NUMERIC_LIMIT', dt('Please provide a numeric limit option.'));
+
+    $since = drush_get_option('since', false);
+    if ($since) {
+        $date = new DateTime($since);
+        if(!$date) {
+            return drush_set_error('NON_DATE_SINCE', dt('Please provide a valid date value for the since option (%since provided).',
+            array('%since' => $since)));
+        }
+    }
 }
 
 /**
@@ -263,98 +225,58 @@ function drush_ttc_abstract_import_excel_validate() {
  * @see drush_invoke()
  * @see drush.api.php
  */
-function drush_ttc_abstract_notif_sendto($tid) {
-    $start = drush_get_option('start', 0);
-    $limit = drush_get_option('limit', 1000);
-    $span = drush_get_option('span', 50);
+function drush_ttc_abstract_sendto_ott() {
+    $found = _ttc_abstract_set_sendto_ott();
 
-    $pos = $start;
-    $found = 0;
-    do {
-        if (($pos + $span) > $limit) {
-            $span = $limit - $pos;
-        }
-
-        $found = _ttc_abstract_reset_notify_term($tid, $pos, $span);
-        $pos += $found;
-    } while (($limit > $pos) && ($found >= $span));
-
-    drush_log("Parsed $pos abstract nodes.", 'ok');
+    drush_log("Set field_send_to_ott on $found abstract nodes.", 'ok');
 
     return;
 }
 
-function _ttc_abstract_reset_notify_term($tid, $start = 0, $length = 10) {
-    drush_log("Finding $length nodes, beginning from $start", 'notice');
+function _ttc_abstract_set_sendto_ott() {
+    // create node and history queries      
+    $history = db_select('workbench_moderation_node_history', 'h');
+    
+    // join on node id
+    $history->join('node', 'n', 'n.nid = h.nid');
+    
+    //add conditions
+    $history->condition('n.type', 'abstract')
+        ->condition(db_or()
+        ->condition(db_and()->condition('n.status', 1)->condition('h.state', 'published'))
+        ->condition(db_and()->condition('n.status', 0)->condition('h.state', 'archived')))
+        ->groupBy('h.nid');
+    $history->addField('h', 'nid');
+    $history->addField('n', 'type');
+    $history->addExpression('max(n.vid)', 'vid');
 
-    $query = new EntityFieldQuery();
+    // add year filter
+    $history->join('field_revision_field_opp_year', 'y', 'y.entity_id = h.nid AND y.revision_id = h.vid');
+    $history->condition('y.field_opp_year_value', '2008' , '>');
 
-    $query->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', 'abstract')
-            ->range($start, $length);
+    $results = $history->execute();
+    $nodes = $results->fetchAllAssoc('nid');
+    
+    // attach the field to the short node object
+    field_attach_load_revision('node', $nodes, array('field_id' => 'field_send_to_ott'));
 
-    $result = $query->execute();
-
-    if (isset($result['node'])) {
-        $nids = array_keys($result['node']);
-
-        drush_log("Found " . sizeof($nids) . ' abstract nodes');
-
-        $updated_count = 0;
-        $empty_count = 0;
-        $skipped_count = 0;
-        $existing_count = 0;
-
-        foreach ($nids as $nid) {
-            $wrapper = entity_metadata_wrapper('node', $nid, array('bundle' => 'abstract'));
-
-            $notif_raw = $wrapper->field_notif->value();
-
-            if (empty($notif_raw)) {
-                $empty_count++;
-
-                // Create a new field collection and set it to the node
-                $notif_item = entity_create('field_collection_item', array('field_name' => 'field_notif'));
-                $notif_item->setHostEntity('node', $wrapper->value());
-
-                // create wrapper for item
-                $notif_wrapper = entity_metadata_wrapper('field_collection_item', $notif_item, array('bundle' => 'field_notif'));
-            } else {
-                $notif_wrapper = entity_metadata_wrapper('field_collection_item', $notif_raw, array('bundle' => 'field_notif'));
-
-                if ($notif_wrapper->field_send_to[0]->value()->tid == $tid) {
-                    $skipped_count++;
-                    continue;
-                }
-
-                $existing_count++;
-            }
-
-            try {
-                // set field_send_to
-                $notif_wrapper->field_send_to[0] = $tid;
-
-                // save field and node wrappers
-                $notif_wrapper->save();
-                $wrapper->save();
-
-                $updated_count++;
-            } catch (Exception $e) {
-                drush_log('Exception: ' . $e->getMessage() . '\n' . $e->getTraceAsString(), 'error');
-            }
+    // update the field on each node
+    foreach($nodes as $node) {
+        $transaction = db_transaction();
+        try {
+            $node->field_send_to_ott[LANGUAGE_NONE]['0']['value'] = 1;
+            field_attach_presave('node', $node);
+            field_attach_update('node', $node);
+        } catch (Exception $e) {
+            $transaction->rollback();
+            throw $e;
         }
-
-        if ($empty_count)
-            drush_log("Found " . $empty_count . ' empty abstract nodes');
-        if ($existing_count)
-            drush_log("Found " . $existing_count . ' abstract nodes with different term already set');
-        if ($updated_count)
-            drush_log("Updated " . $updated_count . ' abstract nodes');
-        if ($skipped_count)
-            drush_log("Skipped " . $skipped_count . ' abstract nodes with term already set');
-
-        return sizeof($nids);
     }
+
+    // reset the cache for the given nodes
+    entity_get_controller('node')->resetCache(array_keys($nodes));
+
+    return sizeof($nodes);
 }
 
 /**
@@ -385,8 +307,20 @@ function _ttc_abstract_reset_notify_term($tid, $start = 0, $length = 10) {
  */
 function drush_ttc_abstract_export_excel() {
     $limit = drush_get_option('limit', 50);
+    $since = drush_get_option('since', false);
+    $since_date = false;
+    if($since) {
+        $since_date = new DateTime($since);
+    }
 
     drush_log("Export Excel called with a limit of $limit", 'ok');
+    if($since_date) {
+        $date = $since_date->format(DateTime::ATOM);
+        drush_log("Export Excel will only include items after $date", 'ok');
+    }
+    else {
+        drush_log("Export Excel is not restricting results based on date.", 'ok');
+    }
 
     // Store the file in sites/default/files
     $dir = file_stream_wrapper_get_instance_by_uri('public://')->realpath();
@@ -401,9 +335,16 @@ function drush_ttc_abstract_export_excel() {
     // Get the nodes
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', 'abstract');
+            ->entityCondition('bundle', 'abstract')
+            ->fieldCondition('field_opp_year', 'value', '2008', '>')
+            ->propertyCondition('status', '1');
     if ($limit > 0) {
         $query->range(0, $limit);
+    }
+    if($since_date) {
+        $timestamp = $since_date->getTimestamp();
+        drush_log("Comparing node timestamp to $timestamp", 'ok');
+        $query->propertyCondition('changed', $timestamp, '>');
     }
 
     $result = $query->execute();
@@ -416,20 +357,17 @@ function drush_ttc_abstract_export_excel() {
         $data = array();
 
         _build_field_sheet($headers, $data, $abstract_items, 'field_opp_invs_text', 
-                null, 'Inventors', 
-                'field_inventors', 'field_collection_item',
+                'Inventors', 'field_inventors', 'field_collection_item',
                 array('field_first_name', 'field_last_name', 'field_url|value',
                     'field_is_lead', 'field_division_name'), 10);
         
         _build_field_sheet($headers, $data, $abstract_items, 'field_opp_pubs_text', 
-                null, 'Publications', 
-                'field_publications', 'field_collection_item', 
+                'Publications', 'field_publications', 'field_collection_item', 
                 array('field_title', 'field_url|value', 'field_url|title'),
                  10);
 
         _build_field_sheet($headers, $data, $abstract_items, 'field_pat_status', 
-                array('field_patent_status', 'field_text'), 'Patent Status', 
-                'field_pat_status', 'field_collection_item', 
+                'Patent Status', 'field_pat_status', 'field_collection_item', 
                 array('field_application_number', 'field_patent_authority', 'field_patent_number', 
                 'field_patent_filing_date', 'field_patent_issue_date', 'field_is_related_patent'), 
                 1);
@@ -450,8 +388,7 @@ function drush_ttc_abstract_export_excel() {
     return;
 }
 
-function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $collection_fields, $field_label, 
-        $dest_field, $input_type, $input_fields, $input_copies) {
+function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $field_label, $dest_field, $input_type, $input_fields, $input_copies) {
     // set up column indexes
     $field_sheet = array();
 
@@ -461,33 +398,28 @@ function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $collection_
                 $row = array();
                 $row[] = $node->nid;
                 $row[] = $node->title;
-                if(!is_array($collection_fields)) {
-                    $row[] = trim($entry['value']);
+                $value = $entry['value'];
+                if($field_name == 'field_pat_status') {
+                    $entity = field_collection_item_load($value);
+                    if($entity) {
+                        $wrapper = entity_metadata_wrapper('field_collection_item', $entity);
+                        $value = trim($wrapper->field_text->value()['value']);
+                        if(empty($value)) {
+                            // empty text field; skip this row.
+                            continue;
+                        }
+                        $row[] = $value;
+                        unset($wrapper);
+                        unset($entity);
+                    }
+                    else {
+                        // no status found
+                        drush_log("No patent status found for nid $node->nid and status id $value", 'warning');
+                        continue;
+                    }
                 }
                 else {
-                    // load the field collection represented by this value, and then retrieve the given field
-                    $entity_id = $entry['value'];
-                    $collection = entity_load_single('field_collection_item', $entity_id);
-                    $wrapper = entity_metadata_wrapper('field_collection_item', $collection);
-                    foreach($collection_fields as $field) {
-                        $value = '';
-                        try {
-                            switch ($field) {
-                                case 'field_patent_status':
-                                    $value = $wrapper->field_patent_status->name->value();
-                                    break;
-                                
-                                case 'field_text':
-                                    $value = $wrapper->field_text->value();
-                                    break;
-                            }
-                        }
-                        catch (Exception $e) {
-                            drush_log("Failed to access field $field on node $node->nid", 'error');
-                            drush_log($e->getMessage(), 'error');
-                        }
-                        $row[] = trim($value);
-                    }
+                    $row[] = trim($value);
                 }
 
                 // create empty rows to space out dest_field and input_type columns
@@ -506,13 +438,7 @@ function _build_field_sheet(&$headers, &$data, $nodes, $field_name, $collection_
     }
 
     $data[$field_label] = $field_sheet;
-    $headers[$field_label] = array('nid', 'title');
-    if(is_array($collection_fields)) {
-        $headers[$field_label] = array_merge($headers[$field_label], $collection_fields);
-    }
-    else {
-        $headers[$field_label][] = $field_label;
-    }
+    $headers[$field_label] = array('nid', 'title', $field_label);
     // add the specified number of input field copies
     for ($input_ix = 0; $input_ix < $input_copies; $input_ix++) {
         foreach ($input_fields as $input_field) {
@@ -580,7 +506,7 @@ function _import_parse_row($row, &$data, $nids) {
             case "nid":
                 // skip this row if nids is not empty and this nid is not listed
                 if(!empty($nids) && !in_array($value, $nids)) {
-                    drush_log("Skipping nid $value, not present in nid list.", 'notice');
+                    drush_log("Skipping nid $value, not present in nid list.", 'debug');
                     return;
                 }
 
@@ -627,144 +553,162 @@ function _import_node_data($data) {
     $list_extras = drush_get_option('list-extras', false);
     $trim_extras = drush_get_option('trim-extras', false);
 
+    $failed_nids = array();
+    $failed_items = array();
+    $failed_item_count = 0;
+
     foreach($data as $nid => $fields) {
-        $node = node_load($nid);
-        $node_wrapper = entity_metadata_wrapper('node', $node, array('bundle' => 'abstract'));
-        $node_prop_info = $node_wrapper->getPropertyInfo();
-        
-        foreach($fields as $dest_field => $datum) {
-            $input_type = $datum['input_type'];
-            $values = $datum['values'];
-            $value_count = sizeof($values);
+        try {
+            drush_log("Starting node $nid", 'debug');
+            $node = node_load($nid);
 
-            drush_log("Importing $value_count values into $dest_field of type $input_type on node $nid", 'notice');
+            if($node === false) {
+                drush_log("Could not load node $nid", 'warning');
+                continue;
+            }
+            
+            foreach($fields as $dest_field => $datum) {
+                $input_type = $datum['input_type'];
+                $values = $datum['values'];
+                $value_count = sizeof($values);
 
-            if(isset($node_prop_info[$dest_field])) {
-                // handle any bad entries currently in the field
-                _field_clear_errors($node_wrapper, $dest_field);
-
-                $entity_count = $node_wrapper->$dest_field->count();
-                drush_log("Found $entity_count entities in $dest_field on node $nid", 'notice');
+                drush_log("Importing $value_count values into $dest_field of type $input_type on node $nid", 'debug');
 
                 // create and save entities without regard to existing entities first
+                $fc_items = array();
                 foreach($values as $ix => $value_map) {
-                    foreach($value_map as $field => $value) {
-                        try {
-                            $eid = 'new';
-                            //create the field collection if needed
-                            if(!$node_wrapper->$dest_field->offsetExists($ix)) {
-                                drush_log("Creating new $dest_field item at delta $ix on node $nid.", 'notice');
-                                
-                                $fc_item = entity_create('field_collection_item', 
-                                    array('field_name' => $dest_field));
-                                $fc_item->setHostEntity('node', $node, LANGUAGE_NONE, false);
-
-                                $node_wrapper->$dest_field->offsetSet($ix, $fc_item);
+                    try {
+                        //create the field collection if needed
+                        $eid = false;
+                        $fc_item = false;
+                        
+                        // only preserve patent status items, as there's data there not set by this import
+                        if($dest_field == 'field_pat_status' && isset($node->{$dest_field}[LANGUAGE_NONE][$ix]['value'])) {
+                            $eid = $node->{$dest_field}[LANGUAGE_NONE][$ix]['value'];
+                            $vid = $node->{$dest_field}[LANGUAGE_NONE][$ix]['revision_id'];
+                            if($vid) {
+                                $fc_item = entity_revision_load('field_collection_item', $vid);
                             }
                             else {
-                                $eid = $node_wrapper->{$dest_field}[$ix]->getIdentifier();
-                                drush_log("Loading entity $eid from $dest_field $ix on node $nid", 'notice');
-                                $collection_items = entity_load('field_collection_item', array($eid), array(), true);
-                                $fc_item = reset($collection_items);
+                                $fc_item = entity_load_single('field_collection_item', $eid);
                             }
 
+                            if(!$fc_item) {
+                                drush_log("FAILED to load $dest_field collection! (EID $eid, VID $vid).", 'warning');
+                            }
+                            else {
+                                drush_log("USING EXISTING $dest_field item at delta $ix with id '$fc_item->item_id', revision '$fc_item->revision_id'.", 'notice');
+                            }
+                        }
+
+                        if(!$fc_item) {
+                            drush_log("CREATING NEW $dest_field item at delta $ix on node $nid.", 'notice');
+                            
+                            $fc_item = entity_create('field_collection_item', 
+                                array('field_name' => $dest_field));
+                            $fc_item->setHostEntity('node', $node, LANGUAGE_NONE, false);
+                        }
+
+                        if(!$eid) $eid = 'new';
+
+                        $hostType = $fc_item->hostEntityType();
+                        $delta = $fc_item->delta();
+                        drush_log("Collection $dest_field (eid '$eid', delta '$delta') has host type '$hostType'", notice);
+
+                        foreach($value_map as $field => $value) {
+                            $field_info = field_info_field($field);
+                            $max_length = false;
+                            if(isset($field_info['settings']['max_length'])) {
+                                $max_length = $field_info['settings']['max_length'];
+                            }
+
+                            if($field == 'field_title') {
+                                $value = array('value' => $value, 'format' => 'filtered_html');
+                            }
+
+                            // append the rest of the date stamp format for date fields
+                            if($field == 'field_patent_filing_date' ||
+                                    $field == 'field_patent_issue_date') {
+                                $value.='T00:00:00';
+                            }
+
+                            // limit field lengths
                             if(is_array($value)) {
                                 foreach($value as $key => $sub_value) {
-                                    drush_log("Set ${field}[$key] in ${dest_field}[$ix] (entity $eid) on node $nid to $sub_value", 'notice');
+                                    if($max_length && strlen($sub_value) > $max_length) {
+                                        drush_log("Truncating ${field}[$key] in ${dest_field}[$ix] on node $nid, value longer than max of $max_length", 'warning');
+                                        $sub_value = substr($sub_value, 0, $max_length);
+                                    }
+
+                                    drush_log("Set ${field}[$key] in ${dest_field}[$ix] (field collection item '$eid') on node $nid to $sub_value", 'debug');
                                     $fc_item->{$field}[LANGUAGE_NONE][0][$key] = $sub_value;
                                 }
                             }
                             else {
-                                drush_log("Set $field in ${dest_field}[$ix] (entity $eid) on node $nid to $value", 'notice');
+                                if($max_length && strlen($value) > $max_length) {
+                                    drush_log("Truncating $field in ${dest_field}[$ix] on node $nid, value longer than max of $max_length", 'warning');
+                                    $value = substr($value, 0, $max_length);
+                                }
+                                
+                                drush_log("Set $field in ${dest_field}[$ix] (entity $eid) on node $nid to $value", 'debug');
                                 $fc_item->{$field}[LANGUAGE_NONE][0]['value'] = $value;
                             }
-                            $fc_item->save(TRUE);
+                        }
 
-                            
-                        }
-                        catch(Exception $e) {
-                            drush_log("Failed setting $field in $dest_field $ix to $value for field collection $input_type.", 'warning');
-                            echo $e;
-                            return;
-                        }
-                    }
-                }
-                
-                if($list_extras != false || $trim_extras != false) {
-                    // find any extra entities and delete them
-                    foreach($node_wrapper->$dest_field as $delta => $field_wrapper) {
-                        $entity_id = $field_wrapper->getIdentifier();
+                        // save this wrapper and keep it for setting to node wrapper later
+                        drush_log("Saving ${dest_field}[$ix] (eid '$eid') on node $nid.", 'debug');
+                        $fc_item->save(true);
+
+                        $hostType = $fc_item->hostEntityType();
+                        $delta = $fc_item->delta();
                         
-                        if(!isset($values[$delta])) {
-                            if($trim_extras == false) {
-                                drush_log("Found extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
-                            }
-                            else {
-                                // delete the current field collection item.
-                                drush_log("Deleting extra entry $delta for $dest_field on node $nid with entity id $entity_id", 'ok');
+                        $fc_items[] = $fc_item;
 
-                                $fc_item = entity_load_single($input_type, $entity_id);
-                                $fc_item->delete();
+                        drush_log("Saved ${dest_field}[$delta] (EID '$fc_item->item_id', VID '$fc_item->revision_id', host type '$hostType') on node $nid", 'notice');
+                    }
+                    catch(Exception $e) {
+                        drush_log("Failed updating $dest_field $ix for field collection $input_type.", 'error');
+                        drush_log("Error message: " . $e->getMessage(), 'warning');
+                        drush_log($e->getTraceAsString(), 'warning');
+                        drush_log("Attempted values: ", 'warning');
+                        var_dump($value_map);
 
-                                $node_wrapper->$dest_field->offsetUnset($delta);
-                            }
-                        }
+                        $failed_items[$nid][$dest_field][] = $delta;
+                        $failed_item_count++;
+                        continue;
+                    }
+                }
+
+                // apply the wrappers to the node wrapper's dest field
+                if(!empty($fc_items)) {
+                    // clear and refill node field values
+                    unset($node->{$dest_field}[LANGUAGE_NONE]);
+
+                    foreach($fc_items as $fc_item) {
+                        $node->{$dest_field}[LANGUAGE_NONE][] = array(
+                            'value' => $fc_item->item_id,
+                            'revision_id' => $fc_item->revision_id
+                        );
                     }
                 }
             }
-            else {
-                drush_log("Could not find target field $dest_field in abstract $nid", 'warning');
-            }
+
+            node_save($node);
+            drush_log("Saved node $nid", 'ok');
         }
-
-        $node_wrapper->save();
-    }
-}
-
-function _field_clear_errors($node_wrapper, $field_name) {
-    $nid = $node_wrapper->getIdentifier();
-    $changed = false;
-    try {
-        // load existing entity or create new one.
-        foreach ($node_wrapper->$field_name->getIterator() as $delta => $fc_wrapper) {
-            if($fc_wrapper == null) {
-                drush_log("Null field wrapper at delta $delta in field $field_name on node $nid.", "warning");
-                $node_wrapper->$field_name->offsetUnset($delta);
-                drush_log("Unset delta $delta in $field_name on node $nid.", 'ok');
-                $changed = true;
-                continue;
-            }
-            else if($fc_wrapper->value() == null) {
-                drush_log("Null field value at delta $delta in field $field_name on node $nid.", "warning");
-                $node_wrapper->$field_name->offsetUnset($delta);
-                drush_log("Unset delta $delta in $field_name on node $nid.", 'ok');
-                $changed = true;
-                continue;
-            }
-        }
-
-        if($changed) {
-            drush_log("Saving node $nid after clearing null entries in $field_name", 'ok');
-            $node_wrapper->save();
+        catch(Exception $e) {
+            drush_log("Failed loading or saving node $nid", 'error');
+            drush_log("Error message: " . $e->getMessage(), 'error');
+            $failed_nids[] = $nid;
+            continue;
         }
     }
-    catch (Exception $e) {
-        drush_log("_field_clear_errors(): Failed accessing item $delta in $field_name on node $nid", 'warning');
-        echo $e;
-    }
-}
 
-function _wrapper_debug($w, $k) {
-  $values = array();
-  foreach ($w->getPropertyInfo() as $key => $val) {
-      if($k == $key) {
-          $values[$key] = $w->$key->value();
-      }
-      else {
-          $values[$key] = 'found';
-      }
-  }
-  return $values;
+    drush_log("Failed the following nodes:", 'warning');
+    var_dump($failed_nids);
+
+    drush_log("Failed $failed_item_count field collection items:", 'warning');
+    var_dump($failed_items);
 }
 
 function _import_check_row($row) {
