@@ -1,0 +1,18 @@
+# Ignore BFG report folder
+/..bfg-report/**
+
+# Ignore configuration files that may contain sensitive information.
+/sites/*/settings*.php
+
+# Ignore paths that contain user-generated content.
+/sites/*/files/**
+/sites/*/private/**
+
+# Re-include .htaccess in file paths
+!/sites/*/files/.htaccess
+
+# Ignore Dev Desktop mapped folders
+/sites/*.dd/**
+
+# Ignore npm and grunt build files
+**/node_modules/**
