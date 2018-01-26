@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the NCI User Config feature.
+ */
+
+include_once 'nci_user_config.features.inc';

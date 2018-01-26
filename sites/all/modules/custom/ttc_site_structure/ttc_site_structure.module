@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Code for the TTC Site Structure feature.
+ */
+include_once 'ttc_site_structure.features.inc';
+
+/**
+ * Implementation of hook_tokens_alter.
+ * 
+ * Parses any tokens indicated for use by pathauto.
+ * 
+ * Rebuilds any generated tokens to have at most five keywords.  Keywords
+ * will be hyphen-delimited if four or five exist, else simply concatenated
+ * for three or less.
+ * 
+ * @param array $replacements Tokens being replaced.
+ * @param array $context Related information for alias generation.
+ */
+function ttc_site_structure_tokens_alter(array &$replacements, array $context) {
+  if (isset($context['options']['pathauto']) &&
+      $context['options']['pathauto']) {
+    foreach ($replacements as $key => $value) {
+      
+      // avoid converting the enumber field, as it contains dashes usually
+      // (will still be lower-cased by the usual pathauto code)
+      if ($key == '[node:field-enumber]') {
+        continue;
+      }
+
+      $alias = pathauto_cleanstring($value);
+
+      //reduce the alias to five-or-less elements
+      $elements = explode('-', $alias);
+      $subset = array_slice($elements, 0, 5);
+
+      // separate with dashes if 4-5 terms, else concatenate
+      if (sizeof($subset) > 3) {
+        $alias = implode('-', $subset);
+      } else {
+        $alias = implode('', $subset);
+      }
+
+      $replacements[$key] = $alias;
+    }
+  }
+}
+
+/**
+ * Implementation of hook_pathauto_alias_alter
+ * 
+ * MS special charactors treatment for generated URL
+ */
+function ttc_site_structure_pathauto_alias_alter(&$alias, array &$context) {
+  $alias = iconv('UTF-8', 'ASCII//IGNORE', $alias);
+}

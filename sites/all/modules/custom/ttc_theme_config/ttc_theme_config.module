@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TTC Theme Config feature.
+ */
+
+include_once 'ttc_theme_config.features.inc';
