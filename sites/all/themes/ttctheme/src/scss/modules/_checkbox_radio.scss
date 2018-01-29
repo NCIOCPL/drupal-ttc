@@ -1,0 +1,93 @@
+$checkbox-radio-size: (0.75 * $form-label-line-height) * $form-label-font-size;
+
+@each $type in ('checkbox', 'radio') {
+  .#{$type} {
+    position: relative;
+
+    input[type='#{$type}'] {
+      overflow: hidden;
+
+      width: $checkbox-radio-size;
+      height: $checkbox-radio-size;
+      margin-#{$default-float}: $form-spacing * 0.5;
+      margin-bottom: 0;
+
+      html.borderradius.generatedcontent & {
+        position: absolute;
+
+        opacity: 0;
+
+        + label {
+          &:before {
+            display: inline-block;
+
+            width: $checkbox-radio-size;
+            height: $checkbox-radio-size;
+            margin-right: $form-spacing * 0.5;
+
+            content: '';
+
+            background-color: palette(gray, light);
+
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+          }
+          &:after {
+            position: absolute;
+            left: $form-spacing * 0.5;
+
+            display: inline-block;
+
+            width: $checkbox-radio-size;
+            height: $checkbox-radio-size;
+
+            text-align: center;
+
+            font-size: 2/3 * $checkbox-radio-size;
+            font-weight: bold;
+            line-height: $checkbox-radio-size;
+          }
+        }
+
+        &:checked + label {
+          &:before {
+            background-color: palette(blue, dark);
+          }
+          &:after {
+            color: palette(white, base);
+          }
+        }
+
+        &:disabled + label {
+          color: palette(gray, mid-light);
+
+          &:before {
+            background-color: palette(white, base);
+            border-color: palette(gray, mid-light);
+          }
+          &:after {
+            color: palette(gray, mid-light);
+          }
+        }
+
+        @if $type == 'checkbox' {
+          + label:before {
+            border-radius: $global-rounded;
+          }
+          &:checked + label:after {
+            content: '✓';
+          }
+        }
+        @if $type == 'radio' {
+          + label:before {
+            border-radius: 50%;
+          }
+          &:disabled:checked + label:before {
+            background-color: palette(gray, light);
+          }
+        }
+      }
+    }
+  }
+}

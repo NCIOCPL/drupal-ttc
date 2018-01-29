@@ -1,0 +1,103 @@
+/* @file
+ * This file is a custom file that loads all files. Each non-base layer can be disabled.
+ *
+ * Do not name this file "STARTER.scss". This file should be named ttctheme.scss. If you used the drush command to generate this subtheme, it should be named for you.
+ *
+ * This application file (ttctheme.scss) is where all the partials are imported.
+ *
+ * Theme styles are categorized using SMACSS standards. They utilize categorization of styles into various categories. Those categories are the following:
+ *
+ * - Base: CSS reset/normalize plus HTML element styling.
+ * - Layout: Macro arrangement of a web page, including any grid systems.
+ * - Modules: Dictate minor layout modules or reusable elements.
+ * - States: Describe the appearance of a module in various states.
+ * - Theme: Specific customizations for your subtheme.
+ * For more information about this new Drupal css file standard, please review the following:
+ * - https://drupal.org/node/1887922
+ * - http://smacss.com/
+ */
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// Core
+// The following imports bootstrap the theme.
+// You may comment out bourbon if you don't want to use its library of mixins.
+// The theme will have compilation errors if Foundation is not imported.
+
+// Global Zurb Foundation variable overrides.
+@import "base/init";
+
+// Import Normalize.
+@import "normalize";
+
+// Import Foundation grid.
+@import "foundation/components/grid";
+// Import other Foundation components (in alphabetic order).
+@import "foundation/components/block-grid";
+@import "foundation/components/breadcrumbs";
+@import "foundation/components/buttons";
+@import "foundation/components/button-groups";
+@import "foundation/components/forms";
+@import "foundation/components/inline-lists";
+@import "foundation/components/tables";
+@import "foundation/components/tooltips";
+@import "foundation/components/type";
+@import "foundation/components/visibility";
+
+// Comment out this import if you don't want to use Bourbon, a replacement for Compass mixins.
+@import "bourbon";
+
+// Import our mixins early so they can be used by other partials.
+@import "base/mixins";
+
+// Common file is where you place common utility classes to extend or parametrics.
+@import "base/common";
+
+// Fix for some Drupal CSS quirks (Drupalisms).
+@import "base/drupal";
+
+// Styling for elements.
+// Optional.
+@import "base/elements";
+
+// Modules
+@import "modules/abstract_pdf";
+//@import "modules/abstract_summary";
+//@import "modules/available_technologies_block";
+//@import "modules/banner";
+//@import "modules/block";
+//@import "modules/breadcrumbs";
+//@import "modules/button";
+//@import "modules/checkbox_radio";
+//@import "modules/error";
+//@import "modules/faceted_search";
+@import "modules/field";
+//@import "modules/follow_us";
+//@import "modules/footer";
+//@import "modules/icon";
+@import "modules/list";
+//@import "modules/logo";
+//@import "modules/main_menu";
+//@import "modules/menu_block";
+//@import "modules/pagination";
+//@import "modules/pane";
+//@import "modules/patent_status";
+//@import "modules/search_block";
+//@import "modules/search_results";
+
+// Regions
+// Each section of the document has its own partial seperated out to improve developer experience. Additionally, grids can be declared in regions as well.
+//@import "regions/header";
+@import "regions/main";
+//@import "regions/aside";
+//@import "regions/footer";
+
+// States
+// @import "states/collapse";
+
+// Themes
+// @import "theme/button-light";
+
+// Older IE support
+// @import "vendor/ie";

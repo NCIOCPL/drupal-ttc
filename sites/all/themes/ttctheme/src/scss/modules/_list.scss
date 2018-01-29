@@ -1,0 +1,16 @@
+.list {
+  &--inline {
+    margin-left: 0;
+
+    &__item {
+      display: inline;
+
+      &:after {
+        content: ', ';
+      }
+      &:last-child:after {
+        content: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.field-name-pat-status {
+  @at-root .field-pat-status {
+    &__item-label {
+      @include field-label($level: 2);
+    }
+  }
+}

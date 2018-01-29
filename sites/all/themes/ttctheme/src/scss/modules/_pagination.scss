@@ -1,0 +1,39 @@
+.pager {
+  li {
+    $pager-spacing: 0.5rem;
+    $pager-wide-spacing: 2rem;
+
+
+        
+    // specificity override
+    .item-list & {
+      margin-left: $pager-spacing;
+
+      &.arrow {
+        // first arrow ('<')
+        &.first {
+          margin-left: 0;
+        }
+      }
+    }
+
+    a {
+      @include button-base;
+      @include button-size;
+      @include button-style;
+      @include single-transition(background-color);
+
+      color: palette(white);
+      
+         padding:8px 13px;
+    }
+
+    &.current, &.unavailable {
+      a {
+        @include button-style($bg:$secondary-button-bg-color, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
+
+        color: palette(gray, base);
+      }
+    }
+  }
+}
