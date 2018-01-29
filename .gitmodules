@@ -1,0 +1,4 @@
+[submodule "sites/all/modules/custom/nci_SSO"]
+	path = sites/all/modules/custom/nci_SSO
+	url = https://github.com/NCIOCPL/nci_SSO
+	branch = ttc
