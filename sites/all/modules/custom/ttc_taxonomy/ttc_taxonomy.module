@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TTC Taxonomy feature.
- */
-
-include_once 'ttc_taxonomy.features.inc';

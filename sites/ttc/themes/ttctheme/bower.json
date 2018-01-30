@@ -1,7 +1,0 @@
-{
-  "name": "ttctheme",
-  "private": "true",
-  "dependencies": {
-    "foundation": "#~5.5.3"
-  }
-}
