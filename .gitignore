@@ -4,6 +4,9 @@
 # Ignore configuration files that may contain sensitive information.
 /sites/*/settings*.php
 
+# Ignore any files under 'default' - this is a symlink to /sites/ttc
+/sites/default/**
+
 # Ignore paths that contain user-generated content.
 /sites/*/files/**
 /sites/*/private/**
