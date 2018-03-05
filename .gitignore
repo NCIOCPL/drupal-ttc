@@ -11,6 +11,9 @@
 /sites/*/files/**
 /sites/*/private/**
 
+# Ignore modules in Development paths
+/sites/*/modules/Development/**
+
 # Re-include .htaccess in file paths
 !/sites/*/files/.htaccess
 
