@@ -37,7 +37,9 @@ try {
         $patent_number = isset($status['field_patent_number']['value']) ? $status['field_patent_number']['value'] : '' ;
         $additional_patent_description = isset($status['field_add_pat_desc']['value']) ? $status['field_add_pat_desc']['value'] : '';
         $filing_date = isset($status['field_patent_filing_date']['value']) ? $status['field_patent_filing_date']['value'] : false;
+        if($filing_date) $filing_date = (new DateTime($filing_date))->format('Y-m-d');
         $issue_date = isset($status['field_patent_issue_date']['value']) ? $status['field_patent_issue_date']['value'] : false;
+        if($issue_date) $issue_date = (new DateTime($issue_date))->format('Y-m-d');
 
         if(!$is_related) {
             $writer->startElement('IncludedPatent');
