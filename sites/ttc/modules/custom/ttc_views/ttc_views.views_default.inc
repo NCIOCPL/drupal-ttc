@@ -276,6 +276,7 @@ function ttc_views_views_default_views() {
     'field_opp_compadv_text' => 'field_opp_compadv_text',
     'field_opp_commapp_text' => 'field_opp_commapp_text',
     'field_development_stage' => 'field_development_stage',
+    'field_opp_description_text' => 'field_opp_description_text',
     'field_additional_patent_document' => 'field_additional_patent_document',
   );
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -301,11 +302,11 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_development_stage']['field'] = 'field_development_stage';
   $handler->display->display_options['fields']['field_development_stage']['label'] = 'Development Status';
   $handler->display->display_options['fields']['field_development_stage']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Meta Description */
-  $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'field_data_field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['label'] = 'Abstract';
+  /* Field: Content: Description of Technology */
+  $handler->display->display_options['fields']['field_opp_description_text']['id'] = 'field_opp_description_text';
+  $handler->display->display_options['fields']['field_opp_description_text']['table'] = 'field_data_field_opp_description_text';
+  $handler->display->display_options['fields']['field_opp_description_text']['field'] = 'field_opp_description_text';
+  $handler->display->display_options['fields']['field_opp_description_text']['label'] = 'Abstract';
   /* Field: Content: Collaboration Opportunity */
   $handler->display->display_options['fields']['field_opp_co_dev']['id'] = 'field_opp_co_dev';
   $handler->display->display_options['fields']['field_opp_co_dev']['table'] = 'field_data_field_opp_co_dev';
