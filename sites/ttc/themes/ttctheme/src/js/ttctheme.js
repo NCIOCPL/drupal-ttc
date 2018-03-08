@@ -124,6 +124,6 @@
     value = $('.mobile-search .form-item-search-block-form input').attr('id');
     $('.mobile-search .form-item-search-block-form input').attr('id', value + 'm');
     // 508 fix for tabindex
-    $('.left-off-canvas-menu a, .right-off-canvas-menu a, .skip-link a, .mobile-menu a').attr('tabindex', '-1');
+    $('.left-off-canvas-menu a, .right-off-canvas-menu a, .mobile-menu a').attr('tabindex', '-1');
   });
 }(jQuery));
