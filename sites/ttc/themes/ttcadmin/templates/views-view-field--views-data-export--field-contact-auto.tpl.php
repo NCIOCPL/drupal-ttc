@@ -26,7 +26,9 @@ try {
     $writer->openMemory();
     $writer->setIndent(true);
 
-    $contact = taxonomy_term_load($output);
+    // load John Hewes' taxonomy term (or the currently configured term ID) as the contact for all abstracts
+    $tid = variable_get('contacts_default_term', 35);
+    $contact = taxonomy_term_load($tid);
     if($contact !== FALSE) {
         
         $first_name = isset($contact->field_first_name['und'][0]['value']) ? $contact->field_first_name['und'][0]['value'] : '';
