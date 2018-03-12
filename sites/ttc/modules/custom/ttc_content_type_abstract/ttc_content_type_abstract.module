@@ -215,3 +215,30 @@ function ttc_content_type_abstract_cron() {
     watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
   }
 }
+
+function ttc_content_type_abstract_field_attach_view_alter(&$output, $context) {
+  if(isset($output['field_contact_auto'])) {
+    $tid = variable_get('default_contact_term', 35);
+    $term = taxonomy_term_load($tid);
+
+    if($term) {
+      // clear all existing items and render arrays
+      foreach($output['field_contact_auto']['#items'] as $index => $data) {
+        unset($output['field_contact_auto'][$index]);
+      }
+      unset($output['field_contact_auto']['#items']);
+
+      // set the new term in #items
+      $output['field_contact_auto']['#items'][] = array(
+        'tid' => $tid,
+        'taxonomy_term' => $term,
+      );
+
+      // render the term into the field
+      $output['field_contact_auto'][0] = taxonomy_term_view($term, $context['view_mode']);
+    }
+    else {
+      unset($output['field_contact_auto']['#items']);
+    }
+  }
+}
