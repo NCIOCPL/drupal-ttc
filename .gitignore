@@ -14,6 +14,9 @@
 # Ignore modules in Development paths
 /sites/*/modules/Development/**
 
+# Ignore map files
+**.css.map
+
 # Re-include .htaccess in file paths
 !/sites/*/files/.htaccess
 
