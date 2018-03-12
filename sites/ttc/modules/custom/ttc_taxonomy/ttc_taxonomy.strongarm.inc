@@ -44,7 +44,7 @@ function ttc_taxonomy_strongarm() {
       'display' => array(
         'description' => array(
           'default' => array(
-            'weight' => '0',
+            'weight' => '3',
             'visible' => FALSE,
           ),
         ),
