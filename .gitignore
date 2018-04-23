@@ -4,9 +4,18 @@
 # Ignore configuration files that may contain sensitive information.
 /sites/*/settings*.php
 
+# Ignore any files under 'default' - this is a symlink to /sites/ttc
+/sites/default/**
+
 # Ignore paths that contain user-generated content.
 /sites/*/files/**
 /sites/*/private/**
+
+# Ignore modules in Development paths
+/sites/*/modules/Development/**
+
+# Ignore map files
+**.css.map
 
 # Re-include .htaccess in file paths
 !/sites/*/files/.htaccess

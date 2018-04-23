@@ -412,7 +412,7 @@ function _ttc_content_type_abstract_populate_xml($node) {
   $user = user_load(1);
 
   // clear the node's cache so that the view gets the latest version
-  $xml = views_embed_view('abstracts_rss','abstract_xml', $nid, $vid);
+  $xml = views_embed_view('abstracts_xml','abstract_xml', $nid, $vid);
 
   watchdog('ttc_content_type_abstract', "Generated xml for %nid (%vid):\n'%xml'",
     array('%nid' => $nid, '%vid' => $vid, '%xml' => $xml));

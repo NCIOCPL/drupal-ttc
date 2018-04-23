@@ -25,7 +25,6 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['title'] = 'TTC Available Technologies';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access content';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -139,6 +138,119 @@ function ttc_views_views_default_views() {
   );
   $handler->display->display_options['path'] = 'rss/%/abstracts.xml';
   $handler->display->display_options['sitename_title'] = 0;
+  $export['abstracts_rss'] = $view;
+
+  $view = new view();
+  $view->name = 'abstracts_xml';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Abstracts XML';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'TTC Abstract Export';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view own unpublished content';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: Content: Product Type (field_product_type) */
+  $handler->display->display_options['relationships']['field_product_type_tid']['id'] = 'field_product_type_tid';
+  $handler->display->display_options['relationships']['field_product_type_tid']['table'] = 'field_data_field_product_type';
+  $handler->display->display_options['relationships']['field_product_type_tid']['field'] = 'field_product_type_tid';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Meta Description */
+  $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'field_data_field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'r';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Field: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Sort criterion: Content: Nid */
+  $handler->display->display_options['sorts']['nid']['id'] = 'nid';
+  $handler->display->display_options['sorts']['nid']['table'] = 'node';
+  $handler->display->display_options['sorts']['nid']['field'] = 'nid';
+  /* Contextual filter: Content: Product Type (field_product_type) */
+  $handler->display->display_options['arguments']['field_product_type_tid']['id'] = 'field_product_type_tid';
+  $handler->display->display_options['arguments']['field_product_type_tid']['table'] = 'field_data_field_product_type';
+  $handler->display->display_options['arguments']['field_product_type_tid']['field'] = 'field_product_type_tid';
+  $handler->display->display_options['arguments']['field_product_type_tid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_product_type_tid']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_product_type_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_product_type_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_product_type_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_product_type_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_product_type_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_product_type_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_product_type_tid']['validate_options']['vocabularies'] = array(
+    'product_type' => 'product_type',
+  );
+  $handler->display->display_options['arguments']['field_product_type_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_product_type_tid']['validate_options']['transform'] = TRUE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'abstract' => 'abstract',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['operator'] = 'and';
+  $handler->display->display_options['filters']['field_opp_list_send_value']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
 
   /* Display: Abstract XML Single */
   $handler = $view->new_display('views_data_export', 'Abstract XML Single', 'abstract_xml');
@@ -164,6 +276,7 @@ function ttc_views_views_default_views() {
     'field_opp_compadv_text' => 'field_opp_compadv_text',
     'field_opp_commapp_text' => 'field_opp_commapp_text',
     'field_development_stage' => 'field_development_stage',
+    'field_opp_description_text' => 'field_opp_description_text',
     'field_additional_patent_document' => 'field_additional_patent_document',
   );
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -189,11 +302,11 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_development_stage']['field'] = 'field_development_stage';
   $handler->display->display_options['fields']['field_development_stage']['label'] = 'Development Status';
   $handler->display->display_options['fields']['field_development_stage']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Meta Description */
-  $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'field_data_field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['label'] = 'Abstract';
+  /* Field: Content: Description of Technology */
+  $handler->display->display_options['fields']['field_opp_description_text']['id'] = 'field_opp_description_text';
+  $handler->display->display_options['fields']['field_opp_description_text']['table'] = 'field_data_field_opp_description_text';
+  $handler->display->display_options['fields']['field_opp_description_text']['field'] = 'field_opp_description_text';
+  $handler->display->display_options['fields']['field_opp_description_text']['label'] = 'Abstract';
   /* Field: Content: Collaboration Opportunity */
   $handler->display->display_options['fields']['field_opp_co_dev']['id'] = 'field_opp_co_dev';
   $handler->display->display_options['fields']['field_opp_co_dev']['table'] = 'field_data_field_opp_co_dev';
@@ -348,7 +461,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['field_opp_year_value']['value']['value'] = '2008';
   $handler->display->display_options['path'] = 'xml/abstract';
   $handler->display->display_options['segment_size'] = '50';
-  $export['abstracts_rss'] = $view;
+  $export['abstracts_xml'] = $view;
 
   $view = new view();
   $view->name = 'available_technologies';
