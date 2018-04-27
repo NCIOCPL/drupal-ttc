@@ -93,5 +93,6 @@
   <!-- **** NCI Web Analytics  - DO NOT ALTER **** -->
   <script type="text/javascript" src="//static.cancer.gov/webanalytics/WA_TTC_HTTPS_PageLoad.js"></script>
   <!-- **** End NCI Web Analytics Page **** -->
+  <script type="text/javascript">_satellite.pageBottom();</script>
 </body>
 </html>
