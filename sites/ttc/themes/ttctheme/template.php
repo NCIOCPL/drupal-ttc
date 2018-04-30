@@ -15,7 +15,7 @@ function ttctheme_preprocess_html(&$variables) {
 
   // load the DTM js URL from a variable, allowing it to be overridden if needed
   $src = variable_get('adobe_dtm_js', 
-      '//assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-5ad8c106153615d0673f7263de823289c481d7df.js');
+      '//assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-d2f12c9d63b33dcd3a2a118fa98ccce1b6255ee7.js');
   $dtm_script = "<script src='$src'></script>\n";
   // add DTM tag
   $element = array(
