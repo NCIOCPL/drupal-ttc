@@ -154,11 +154,12 @@ function _ttc_content_type_abstract_attributes_access($filename) {
  *   (Some form of XML content will be generated in almost every case, even if empty.)
  */
 function ttc_content_type_abstract_cache_xml() {
-  // query for abstracts newer than 2008 and with the flag set (when flag exists)
+  // query for abstracts with send_to_ott set or in the archived state
   $query = _ttc_content_type_abstract_build_current_query();
   
   $results = $query->execute();
   $nodes = $results->fetchAllAssoc('nid');
+  $count = count($nodes);
   
   field_attach_load_revision('node', $nodes, array('field_id' => 'field_xml'));
 
@@ -167,11 +168,15 @@ function ttc_content_type_abstract_cache_xml() {
   $output[] = '<?xml version="1.0" encoding="UTF-8" ?>';
   $output[] = '<Technologies>';
 
+  $populated = 0;
+
   foreach($nodes as $node) {
     if(isset($node->field_xml[LANGUAGE_NONE]['0']['value'])) {
       $output[] = '<Technology>';
       $output[] = $node->field_xml[LANGUAGE_NONE]['0']['value'];
       $output[] = '</Technology>';
+
+      $populated++;
     }
   }
 
@@ -179,7 +184,7 @@ function ttc_content_type_abstract_cache_xml() {
 
   $xml = implode(' ', $output);
 
-  watchdog('ttc_content_type_abstract', 'Caching abstract xml.');
+  watchdog('ttc_content_type_abstract', "Caching abstract xml ($count nodes found, $populated with populated xml cache fields)");
 
   cache_set('abstract_xml', $xml, 'cache');
 }
@@ -189,7 +194,7 @@ function ttc_content_type_abstract_cache_xml() {
  */
 function ttc_content_type_abstract_cron() {
   try {
-    // create node and history queries      
+    // create node and history queries
     $query = _ttc_content_type_abstract_build_current_query();
 
     // add check for null xml fields
