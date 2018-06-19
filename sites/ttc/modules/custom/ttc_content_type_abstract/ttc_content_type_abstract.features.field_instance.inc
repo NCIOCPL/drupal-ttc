@@ -1558,7 +1558,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'If \'Yes\', this opportunity\'s published or archived data will be made available in the XML export provided to OTT.',
+    'description' => 'If \'Yes\', this opportunity\'s published or archived data will be made available in the XML feed provided for OTT.',
     'display' => array(
       'PDF' => array(
         'label' => 'above',
@@ -1581,7 +1581,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_send_to_ott',
-    'label' => 'Send to NIH OTT Website?',
+    'label' => 'Include in XML Feed?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1785,7 +1785,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Related Technologies');
   t('Reviewed');
   t('Search Image');
-  t('Send to NIH OTT Website?');
+  t('Include in XML Feed?');
   t('Start Date');
   t('Summary');
   t('Therapeutic Area');
