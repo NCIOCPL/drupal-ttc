@@ -469,11 +469,12 @@ function _ttc_content_type_abstract_queue_xml($node) {
 }
 
 /**
- * Builds a query object that finds each abstract's publiched or archived nid and vid, and also filters
- * for opportunity year > 2008.  Can be extended to check for additional fields.
+ * Builds a query object that finds each abstract's publiched or archived nid and vid, and also filters for
+ * published items with send_to_ott set and for unpublished items in the archived state.  Can be extended 
+ * to check for additional fields.
  */
 function _ttc_content_type_abstract_build_current_query() {
-  // create node and history queries      
+  //This is the inner query to get the node, type and latest version.
   $history = db_select('workbench_moderation_node_history', 'h');
   
   // join on node id
@@ -486,16 +487,20 @@ function _ttc_content_type_abstract_build_current_query() {
       ->condition(db_and()->condition('n.status', 0)->condition('h.state', 'archived')))
     ->groupBy('h.nid');
   $history->addField('h', 'nid');
+  $history->addField('h', 'state');
   $history->addField('n', 'type');
   $history->addExpression('max(n.vid)', 'vid');
 
-  // add year filter
-  $history->join('field_revision_field_opp_year', 'y', 'y.entity_id = h.nid AND y.revision_id = h.vid');
-  $history->condition('y.field_opp_year_value', '2008' , '>');
+  //This is used to filter the contents
+  $fullQuery = db_select($history, 'h');
 
-  // add 'send to ott' filter
-  $history->join('field_revision_field_send_to_ott', 'ott', 'ott.entity_id = h.nid AND ott.revision_id = h.vid');
-  $history->condition('ott.field_send_to_ott_value', '1');
+  // add 'send to ott' filter for pub
+  $fullQuery->join('field_revision_field_send_to_ott', 'ott', 'ott.entity_id = h.nid AND ott.revision_id = h.vid');
+  // filter for nodes with send_to_ott set or with in archived state
+  $fullQuery->condition(db_or()->condition('ott.field_send_to_ott_value', '1')->condition('h.state', 'archived'));
+  $fullQuery->addField('h', 'nid');
+  $fullQuery->addField('h', 'type');
+  $fullQuery->addField('h', 'vid');
 
-  return $history;
+  return $fullQuery;
 }
