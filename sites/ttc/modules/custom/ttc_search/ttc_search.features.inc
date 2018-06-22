@@ -93,8 +93,10 @@ function ttc_search_default_search_api_index() {
               "field_opp_compadv_text:value" : true,
               "field_opp_description_text:value" : true,
               "field_development_stage:name" : true,
+              "field_pat_status:field_text" : true,
               "field_opp_invs_text:value" : true,
               "field_opp_pubs_text:value" : true,
+              "field_pat_status:field_send_to:name" : true,
               "field_pat_status:field_patent_status:name" : true
             }
           }
@@ -126,8 +128,10 @@ function ttc_search_default_search_api_index() {
               "field_opp_compadv_text:value" : true,
               "field_opp_description_text:value" : true,
               "field_development_stage:name" : true,
+              "field_pat_status:field_text" : true,
               "field_opp_invs_text:value" : true,
               "field_opp_pubs_text:value" : true,
+              "field_pat_status:field_send_to:name" : true,
               "field_pat_status:field_patent_status:name" : true
             },
             "title" : 0,
@@ -151,8 +155,10 @@ function ttc_search_default_search_api_index() {
               "field_opp_compadv_text:value" : true,
               "field_opp_description_text:value" : true,
               "field_development_stage:name" : true,
+              "field_pat_status:field_text" : true,
               "field_opp_invs_text:value" : true,
               "field_opp_pubs_text:value" : true,
+              "field_pat_status:field_send_to:name" : true,
               "field_pat_status:field_patent_status:name" : true
             },
             "spaces" : "[^[:alnum:]]",
