@@ -45,7 +45,25 @@ function ttc_search_default_search_api_index() {
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "search_api_aggregation_1" : {
+                "name" : "Title2",
+                "type" : "fulltext",
+                "fields" : [ "title" ],
+                "description" : "A Fulltext aggregation of the following fields: Title."
+              },
+              "search_api_aggregation_2" : {
+                "name" : "Reference Number2",
+                "type" : "fulltext",
+                "fields" : [ "field_enumber" ],
+                "description" : "A Fulltext aggregation of the following fields: Reference Number."
+              }
+            }
+          }
+        }
       },
       "processors" : {
         "search_api_case_ignore" : {
@@ -68,16 +86,15 @@ function ttc_search_default_search_api_index() {
               "field_therapeutic_area" : true,
               "field_pat_status" : true,
               "search_api_language" : true,
+              "search_api_aggregation_1" : true,
               "body:value" : true,
               "body:summary" : true,
               "field_opp_commapp_text:value" : true,
               "field_opp_compadv_text:value" : true,
               "field_opp_description_text:value" : true,
               "field_development_stage:name" : true,
-              "field_pat_status:field_text" : true,
               "field_opp_invs_text:value" : true,
               "field_opp_pubs_text:value" : true,
-              "field_pat_status:field_send_to:name" : true,
               "field_pat_status:field_patent_status:name" : true
             }
           }
@@ -109,10 +126,8 @@ function ttc_search_default_search_api_index() {
               "field_opp_compadv_text:value" : true,
               "field_opp_description_text:value" : true,
               "field_development_stage:name" : true,
-              "field_pat_status:field_text" : true,
               "field_opp_invs_text:value" : true,
               "field_opp_pubs_text:value" : true,
-              "field_pat_status:field_send_to:name" : true,
               "field_pat_status:field_patent_status:name" : true
             },
             "title" : 0,
@@ -136,10 +151,8 @@ function ttc_search_default_search_api_index() {
               "field_opp_compadv_text:value" : true,
               "field_opp_description_text:value" : true,
               "field_development_stage:name" : true,
-              "field_pat_status:field_text" : true,
               "field_opp_invs_text:value" : true,
               "field_opp_pubs_text:value" : true,
-              "field_pat_status:field_send_to:name" : true,
               "field_pat_status:field_patent_status:name" : true
             },
             "spaces" : "[^[:alnum:]]",
@@ -197,6 +210,8 @@ function ttc_search_default_search_api_index() {
         "field_therapeutic_area" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "nid" : { "type" : "integer" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
+        "search_api_aggregation_1" : { "type" : "string" },
+        "search_api_aggregation_2" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
         "status" : { "type" : "boolean" },
         "title" : { "type" : "text" },
@@ -623,6 +638,18 @@ function ttc_search_default_search_api_server() {
           "field_pat_status:field_text:value" : {
             "table" : "search_api_db_abstract_faceted_index_text",
             "type" : "list\\u003Ctext\\u003E",
+            "boost" : "1.0"
+          },
+          "search_api_aggregation_1" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "type" : "string",
+            "boost" : "1.0",
+            "column" : "search_api_aggregation_1"
+          },
+          "search_api_aggregation_2" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "search_api_aggregation_2",
+            "type" : "string",
             "boost" : "1.0"
           }
         }

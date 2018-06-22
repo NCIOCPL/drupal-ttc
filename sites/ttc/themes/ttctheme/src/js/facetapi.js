@@ -130,14 +130,14 @@
   'use strict';
   $(document).ready(function () {
     // font awesome 508 fix
-    $('#edit-abstract-sort-field-enumber-desc a').prepend('<i class="fa fa-sort-numeric-desc" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-field-enumber-asc a').prepend('<i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fa fa-sort-numeric-desc" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>');
     $('#edit-abstract-sort-field-opp-start-date-asc a').prepend('<i class="fa fa-calendar-check-o" aria-hidden="true"></i>');
     $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fa fa-calendar" aria-hidden="true"></i>');
     $('#edit-abstract-sort-changed-asc a').prepend('<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>');
     $('#edit-abstract-sort-changed-desc a').prepend('<i class="fa fa-calendar-minus-o" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-title-asc a').prepend('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-title-desc a').prepend('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-1-asc a').prepend('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-1-desc a').prepend('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>');
     // facet selector keyboard support
     $('.pane-facetapi .pane-title').wrapInner("<a href='#' class='facet-type'></a>");
     $('.pane-facetapi .pane-title a').focus(function () {
