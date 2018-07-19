@@ -15,6 +15,12 @@
 
 User-agent: *
 Crawl-delay: 10
+
+# Allow google to crawl js, css files.
+User-Agent: Googlebot
+Allow: .js
+Allow: .css
+
 # CSS, JS, Images
 Allow: /misc/*.css$
 Allow: /misc/*.css?
