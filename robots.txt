@@ -21,6 +21,8 @@ User-Agent: Googlebot
 Allow: .js
 Allow: .css
 
+Sitemap: https://techtransfer.cancer.gov/sitemap.xml
+
 # CSS, JS, Images
 Allow: /misc/*.css$
 Allow: /misc/*.css?
