@@ -1114,7 +1114,7 @@ function ttc_views_views_default_views() {
     'guid_field' => 'path',
     'guid_field_is_permalink' => 1,
   );
-  $handler->display->display_options['path'] = 'technologies.xml';
+  $handler->display->display_options['path'] = 'technologies-sitemap.xml';
   $export['technologies_sitemap'] = $view;
 
   $view = new view();
