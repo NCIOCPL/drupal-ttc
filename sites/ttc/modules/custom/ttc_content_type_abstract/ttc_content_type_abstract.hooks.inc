@@ -10,7 +10,6 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
   if($form['#id']=='abstract-node-form'){
     // hide machine-generated fields
     $form['field_opp_year']['#access'] = false;
-    $form['field_opp_list_lastsent']['#access'] = false;
     $form['field_opp_30day_warned']['#access'] = false;
     $form['field_xml']['#access'] = false;
     
@@ -97,22 +96,22 @@ function ttc_content_type_abstract_node_presave($node) {
 
     // update display fields
     $inventors_values = _ttc_content_type_abstract_retrieve_values($node, 'field_inventors', $inventor_fields);
-    if($inventors_values) {
+   // if($inventors_values) {
       $inventors_formatted = _ttc_content_type_abstract_format_inventors($inventors_values);
       _ttc_content_type_abstract_set_text($node, 'field_opp_invs_text', $inventors_formatted);
-    }
+    //}
 
     $publications_values = _ttc_content_type_abstract_retrieve_values($node, 'field_publications', $publication_fields);
-    if($publications_values) {
+   // if($publications_values) {
       $publications_formatted = _ttc_content_type_abstract_format_publications($publications_values);
       _ttc_content_type_abstract_set_text($node, 'field_opp_pubs_text', $publications_formatted);
-    }
+   // }
 
     $status_values = _ttc_content_type_abstract_retrieve_values($node, 'field_pat_status', $pat_status_fields);
-    if($status_values) {
+   // if($status_values) {
       $status_formatted = _ttc_content_type_abstract_format_status($status_values);
       _ttc_content_type_abstract_set_text($node, 'field_pat_status', $status_formatted, 'field_text');
-    }
+   // }
   }
 
   // skip queueing items in draft or needs_review states
@@ -503,42 +502,4 @@ function _ttc_content_type_abstract_build_current_query() {
   $fullQuery->addField('h', 'vid');
 
   return $fullQuery;
-}
-
-
-function ttc_content_type_abstract_node_validate($node, $form, &$form_state) {
-  if ( $node->type == "abstract") {
-    if(_ttc_content_type_abstract_enumber_exists($node->nid, $node->field_enumber[LANGUAGE_NONE][0]['value'])) {
-      form_set_error('field_enumber', t('An abstract with the reference number already exists.'));
-    }
-
-  }
-}
-
-
-function _ttc_content_type_abstract_enumber_exists($current_nid, $e_number){
-
-
-  $query1 = db_select('field_data_field_enumber', 'e')
-    ->condition('e.entity_id', $current_nid, '!=')
-    ->condition('e.field_enumber_value', $e_number, '=')
-    ->fields('e', array('entity_id'))
-    ->execute();
-  $num_nodes = $query1->rowCount();
-
-
-  $query2 = db_select('field_revision_field_enumber', 'er')
-    ->condition('er.entity_id', $current_nid, '!=')
-    ->condition('er.field_enumber_value', $e_number, '=')
-    ->fields('er', array('entity_id'))
-    ->execute();
-  $num_nodes_revs = $query2->rowCount();
-
-  if($num_nodes >  0 or $num_nodes_revs > 0 ){
-    return true;
-  }else{
-    return false;
-  }
-
-
 }

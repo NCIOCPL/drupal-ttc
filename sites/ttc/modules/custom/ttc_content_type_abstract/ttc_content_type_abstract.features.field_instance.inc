@@ -10,6 +10,83 @@
 function ttc_content_type_abstract_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance:
+  // 'field_collection_item-field_notif-field_formatted_email_list'.
+  $field_instances['field_collection_item-field_notif-field_formatted_email_list'] = array(
+    'bundle' => 'field_notif',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_formatted_email_list',
+    'label' => 'Formatted Email List',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_notif-field_send_to'.
+  $field_instances['field_collection_item-field_notif-field_send_to'] = array(
+    'bundle' => 'field_notif',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_send_to',
+    'label' => 'Send To',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'node-abstract-field_additional_patent_document'.
   $field_instances['node-abstract-field_additional_patent_document'] = array(
     'bundle' => 'abstract',
@@ -338,6 +415,51 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-abstract-field_formatted_email_list'.
+  $field_instances['node-abstract-field_formatted_email_list'] = array(
+    'bundle' => 'abstract',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_formatted_email_list',
+    'label' => 'Formatted Email List',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 26,
+    ),
+  );
+
   // Exported field_instance: 'node-abstract-field_image'.
   $field_instances['node-abstract-field_image'] = array(
     'bundle' => 'abstract',
@@ -436,6 +558,51 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-abstract-field_list_intro_text'.
+  $field_instances['node-abstract-field_list_intro_text'] = array(
+    'bundle' => 'abstract',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_list_intro_text',
+    'label' => 'Mailing List Intro',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 17,
+    ),
+  );
+
   // Exported field_instance: 'node-abstract-field_meta_keywords'.
   $field_instances['node-abstract-field_meta_keywords'] = array(
     'bundle' => 'abstract',
@@ -528,6 +695,48 @@ function ttc_content_type_abstract_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_notif'.
+  $field_instances['node-abstract-field_notif'] = array(
+    'bundle' => 'abstract',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_notif',
+    'label' => 'Send To',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 19,
     ),
   );
 
@@ -879,59 +1088,6 @@ function ttc_content_type_abstract_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance: 'node-abstract-field_opp_list_lastsent'.
-  $field_instances['node-abstract-field_opp_list_lastsent'] = array(
-    'bundle' => 'abstract',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'PDF' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_opp_list_lastsent',
-    'label' => 'Last announced to listserv on',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'no_fieldset' => 0,
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_text',
-      'weight' => 26,
     ),
   );
 
@@ -1765,13 +1921,15 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Display Reviewed Date');
   t('Display Updated Date');
   t('End Date');
+  t('Formatted Email List');
   t('If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.');
-  t('If \'Yes\', this opportunity\'s published or archived data will be made available in the XML export provided to OTT.');
+  t('If \'Yes\', this opportunity\'s published or archived data will be made available in the XML feed provided for OTT.');
   t('Image shown in available technologies search results.');
+  t('Include in XML Feed?');
   t('Inventor Data');
   t('Inventor(s)');
   t('Keywords');
-  t('Last announced to listserv on');
+  t('Mailing List Intro');
   t('Mode');
   t('NIH IC');
   t('Opportunity Year');
@@ -1785,7 +1943,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Related Technologies');
   t('Reviewed');
   t('Search Image');
-  t('Include in XML Feed?');
+  t('Send To');
   t('Start Date');
   t('Summary');
   t('Therapeutic Area');

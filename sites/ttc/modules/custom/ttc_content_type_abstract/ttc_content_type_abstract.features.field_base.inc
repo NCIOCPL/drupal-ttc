@@ -10,39 +10,13 @@
 function ttc_content_type_abstract_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_development_stage'.
-  $field_bases['field_development_stage'] = array(
+  // Exported field_base: 'field_formatted_email_list'.
+  $field_bases['field_formatted_email_list'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_development_stage',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'development_stage',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_enumber'.
-  $field_bases['field_enumber'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_enumber',
+    'field_name' => 'field_formatted_email_list',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -51,45 +25,19 @@ function ttc_content_type_abstract_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
-      'max_length' => 100,
+      'max_length' => 1024,
     ),
     'translatable' => 0,
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_patent_status'.
-  $field_bases['field_patent_status'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_patent_status',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'patent_status',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_product_type'.
-  $field_bases['field_product_type'] = array(
+  // Exported field_base: 'field_send_to'.
+  $field_bases['field_send_to'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_product_type',
+    'field_name' => 'field_send_to',
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -100,33 +48,7 @@ function ttc_content_type_abstract_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'product_type',
-          'parent' => 0,
-        ),
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_therapeutic_area'.
-  $field_bases['field_therapeutic_area'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_therapeutic_area',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'therapeutic_area',
+          'vocabulary' => 'send_to_email_addresses',
           'parent' => 0,
         ),
       ),

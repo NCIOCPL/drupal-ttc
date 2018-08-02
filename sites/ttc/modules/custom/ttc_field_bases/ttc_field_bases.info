@@ -47,7 +47,6 @@ features[field_base][] = field_opp_description_text
 features[field_base][] = field_opp_end_date
 features[field_base][] = field_opp_invs_name
 features[field_base][] = field_opp_invs_text
-features[field_base][] = field_opp_list_lastsent
 features[field_base][] = field_opp_list_send
 features[field_base][] = field_opp_mode
 features[field_base][] = field_opp_pubs_text
