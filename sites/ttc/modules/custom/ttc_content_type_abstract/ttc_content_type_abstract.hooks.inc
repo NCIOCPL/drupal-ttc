@@ -12,11 +12,34 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     $form['field_opp_year']['#access'] = false;
     $form['field_opp_30day_warned']['#access'] = false;
     $form['field_xml']['#access'] = false;
+
+
+    // hide not needed fields. maybe delete them later
     
     // disable old display fields
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
+
+    $form['field_opp_description_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+    $form['field_opp_commapp_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+    $form['field_opp_compadv_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+    $form['field_list_intro_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+
+
+
+    //field_publications
+    $index = 0;
+    while($index < 100){
+      if( isset($form['field_publications'][LANGUAGE_NONE][$index]) ){
+        $form['field_publications'][LANGUAGE_NONE][$index]['field_title']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+      }else{
+        break;
+      }
+      $index++;
+    }
+
+
   }
 }
 
@@ -497,4 +520,11 @@ function _ttc_content_type_abstract_build_current_query() {
   $fullQuery->addField('h', 'vid');
 
   return $fullQuery;
+}
+
+
+
+function _ttc_content_type_abstract_hide_text_format(&$form) {
+  $form[LANGUAGE_NONE][0]['format']['#access'] = false;
+  return $form;
 }
