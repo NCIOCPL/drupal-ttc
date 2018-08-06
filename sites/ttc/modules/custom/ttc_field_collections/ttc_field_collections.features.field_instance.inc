@@ -387,7 +387,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_patent_authority',
-    'label' => 'Patent Authority',
+    'label' => 'Patent Authority (Country)',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -428,7 +428,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_patent_filing_date',
-    'label' => 'Patent Filing Date',
+    'label' => 'Application/Patent Filing Date',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -650,6 +650,181 @@ function ttc_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_publications-field_author_first_initial'.
+  $field_instances['field_collection_item-field_publications-field_author_first_initial'] = array(
+    'bundle' => 'field_publications',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_author_first_initial',
+    'label' => 'Author First Initial',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_author_last_name'.
+  $field_instances['field_collection_item-field_publications-field_author_last_name'] = array(
+    'bundle' => 'field_publications',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_author_last_name',
+    'label' => 'Author Last Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_author_middle_initial'.
+  $field_instances['field_collection_item-field_publications-field_author_middle_initial'] = array(
+    'bundle' => 'field_publications',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_author_middle_initial',
+    'label' => 'Author Middle Initial',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_pmid_number_or_book_title'.
+  $field_instances['field_collection_item-field_publications-field_pmid_number_or_book_title'] = array(
+    'bundle' => 'field_publications',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_pmid_number_or_book_title',
+    'label' => 'PMID number or Book Title',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_publications-field_publication_format'.
+  $field_instances['field_collection_item-field_publications-field_publication_format'] = array(
+    'bundle' => 'field_publications',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_publication_format',
+    'label' => 'Publication Format',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_publications-field_title'.
   $field_instances['field_collection_item-field_publications-field_title'] = array(
     'bundle' => 'field_publications',
@@ -667,7 +842,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_title',
-    'label' => 'Title',
+    'label' => 'Author and publication title',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -727,22 +902,27 @@ function ttc_field_collections_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Additional Patent Description');
   t('Application Number');
+  t('Application/Patent Filing Date');
+  t('Author First Initial');
+  t('Author Last Name');
+  t('Author Middle Initial');
+  t('Author and publication title');
   t('First Name');
   t('IC Name');
   t('Is Lead');
   t('Is Related Patent');
   t('Last Name');
   t('Middle Initial');
-  t('Patent Authority');
-  t('Patent Filing Date');
+  t('PMID number or Book Title');
+  t('Patent Authority (Country)');
   t('Patent Issue Date');
   t('Patent Number');
+  t('Publication Format');
   t('Status');
   t('Suffix');
   t('Text');
   t('The title of the publication, including any author data and links to relevant information.');
   t('This patent is only related to the technology, and not directly applicable.');
-  t('Title');
   t('URL');
 
   return $field_instances;

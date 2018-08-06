@@ -50,6 +50,46 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'field_collection_item-field_notif-field_notif_manual'.
+  $field_instances['field_collection_item-field_notif-field_notif_manual'] = array(
+    'bundle' => 'field_notif',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 1,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_notif_manual',
+    'label' => 'Other Email Addresses',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_notif-field_send_to'.
   $field_instances['field_collection_item-field_notif-field_send_to'] = array(
     'bundle' => 'field_notif',
@@ -398,7 +438,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_enumber',
-    'label' => 'Reference Number',
+    'label' => 'NIH Reference Number',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -682,7 +722,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_meta_long_desc',
     'label' => 'Summary',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -1018,7 +1058,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_opp_end_date',
-    'label' => 'End Date',
+    'label' => 'Renewal Date',
     'required' => 1,
     'settings' => array(
       'default_value' => 'strtotime',
@@ -1168,7 +1208,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_opp_mode',
     'label' => 'Mode',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1318,7 +1358,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_opp_start_date',
-    'label' => 'Start Date',
+    'label' => 'Publication date',
     'required' => 1,
     'settings' => array(
       'default_value' => 'now',
@@ -1737,7 +1777,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_send_to_ott',
-    'label' => 'Include in XML Feed?',
+    'label' => 'Send to OTT?',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1920,31 +1960,32 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Display Posted Date');
   t('Display Reviewed Date');
   t('Display Updated Date');
-  t('End Date');
   t('Formatted Email List');
   t('If \'Yes\', this opportunity will be provided to GovDelivery for potential inclusion in emails.');
   t('If \'Yes\', this opportunity\'s published or archived data will be made available in the XML feed provided for OTT.');
   t('Image shown in available technologies search results.');
-  t('Include in XML Feed?');
   t('Inventor Data');
   t('Inventor(s)');
   t('Keywords');
   t('Mailing List Intro');
   t('Mode');
   t('NIH IC');
+  t('NIH Reference Number');
   t('Opportunity Year');
+  t('Other Email Addresses');
   t('Patent Status');
   t('Posted');
   t('Potential Commercial Applications');
   t('Product Type');
   t('Publication Data');
+  t('Publication date');
   t('Publications');
-  t('Reference Number');
   t('Related Technologies');
+  t('Renewal Date');
   t('Reviewed');
   t('Search Image');
   t('Send To');
-  t('Start Date');
+  t('Send to OTT?');
   t('Summary');
   t('Therapeutic Area');
   t('Updated');
