@@ -1124,12 +1124,18 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
   $handler->display->display_options['fields']['field_meta_long_desc']['label'] = '';
   $handler->display->display_options['fields']['field_meta_long_desc']['element_label_colon'] = FALSE;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_enumber']['id'] = 'field_enumber';
-  $handler->display->display_options['sorts']['field_enumber']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['sorts']['field_enumber']['field'] = 'field_enumber';
-  $handler->display->display_options['sorts']['field_enumber']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_enumber']['expose']['label'] = 'Reference Number';
+  /* Sort criterion: Indexed Content: Title2 */
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['table'] = 'search_api_index_abstract_faceted_index';
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_aggregation_1']['expose']['label'] = 'Title';
+  /* Sort criterion: Indexed Content: Reference Number2 */
+  $handler->display->display_options['sorts']['search_api_aggregation_2']['id'] = 'search_api_aggregation_2';
+  $handler->display->display_options['sorts']['search_api_aggregation_2']['table'] = 'search_api_index_abstract_faceted_index';
+  $handler->display->display_options['sorts']['search_api_aggregation_2']['field'] = 'search_api_aggregation_2';
+  $handler->display->display_options['sorts']['search_api_aggregation_2']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_aggregation_2']['expose']['label'] = 'Reference Number';
   /* Sort criterion: Indexed Content: Start Date */
   $handler->display->display_options['sorts']['field_opp_start_date']['id'] = 'field_opp_start_date';
   $handler->display->display_options['sorts']['field_opp_start_date']['table'] = 'search_api_index_abstract_faceted_index';
@@ -1142,12 +1148,6 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   $handler->display->display_options['sorts']['changed']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['changed']['expose']['label'] = 'Date changed';
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['title']['expose']['label'] = 'Title';
   /* Contextual filter: Search: Fulltext search */
   $handler->display->display_options['arguments']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['arguments']['search_api_views_fulltext']['table'] = 'search_api_index_abstract_faceted_index';
