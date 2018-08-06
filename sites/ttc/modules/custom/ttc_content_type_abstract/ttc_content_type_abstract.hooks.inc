@@ -14,8 +14,34 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     $form['field_xml']['#access'] = false;
 
 
-    // hide not needed fields. maybe delete them later
-    
+    // hide not needed fields. These fields were asked to be deleted. we have hidden these fields so that we can restore them later if needed.
+
+    $form['field_additional_patent_document']['#access'] = false;
+    $form['field_list_intro_text']['#access'] = false;
+    $form['field_notif']['#access'] = false;
+    $form['field_formatted_email_list']['#access'] = false;
+    $form['field_image']['#access'] = false;
+    $form['field_opp_mode']['#access'] = false;
+
+
+
+
+    foreach ($form['field_pat_status'][LANGUAGE_NONE] as $delta => $field) {
+      if (is_numeric($delta)) {
+        $form['field_pat_status']['und'][$delta]['field_add_pat_desc'] = false;
+      }
+    }
+
+
+    $form['#after_build'] = '_ttc_content_type_abstract_after_build';
+
+    foreach ($form['field_publications'][LANGUAGE_NONE] as $delta => $field) {
+      if (is_numeric($delta)) {
+        $form['field_publications'][LANGUAGE_NONE][$delta]['field_title']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+      }
+    }
+
+
     // disable old display fields
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
@@ -28,20 +54,25 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
 
 
 
-    //field_publications
-    $index = 0;
-    while($index < 100){
-      if( isset($form['field_publications'][LANGUAGE_NONE][$index]) ){
-        $form['field_publications'][LANGUAGE_NONE][$index]['field_title']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
-      }else{
-        break;
-      }
-      $index++;
-    }
-
-
   }
 }
+
+
+function ttc_content_type_abstract_field_widget_form_alter(&$element, &$form_state, $context) {
+
+  // Add a css class to widget form elements for all fields of type mytype.
+  if ($context['field']['type'] == 'url' && $element['#bundle'] == 'field_publications') {
+   $element['title']['#title'] = 'Link Text';
+  }
+}
+
+
+
+function _ttc_content_type_abstract_hide_text_format(&$form) {
+  $form[LANGUAGE_NONE][0]['format']['#access'] = false;
+  return $form;
+}
+
 
 function _ttc_content_type_abstract_convert_display_field(&$form, $field, $subfield = false) {
   if(!$subfield) {
@@ -524,7 +555,3 @@ function _ttc_content_type_abstract_build_current_query() {
 
 
 
-function _ttc_content_type_abstract_hide_text_format(&$form) {
-  $form[LANGUAGE_NONE][0]['format']['#access'] = false;
-  return $form;
-}
