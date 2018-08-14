@@ -51,8 +51,8 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     $form['field_opp_commapp_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
     $form['field_opp_compadv_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
     $form['field_list_intro_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
-
-
+    // Limits contact list from contacts vocabulary to only active.
+    _ttc_content_type_abstract_alter_contact_list($form, $form_state);
 
   }
 }
@@ -553,5 +553,26 @@ function _ttc_content_type_abstract_build_current_query() {
   return $fullQuery;
 }
 
+/**
+ * Limits contact list from contacts vocabulary to only active.
+ *
+ */
+
+function _ttc_content_type_abstract_alter_contact_list(&$form, &$form_state){
+  $current_options = $form['field_contact_auto'][LANGUAGE_NONE]['#options'];
+
+  $name = 'contacts';
+  $myvoc = taxonomy_vocabulary_machine_name_load($name);
+  $tree = taxonomy_get_tree($myvoc->vid);
+  foreach ($tree as $term) {
+
+    $term =  taxonomy_term_load($term->tid);
+    if(!isset($term->field_status[LANGUAGE_NONE]) ||$term->field_status[LANGUAGE_NONE][0]['value'] != 1) {
+      unset($current_options[$term->tid]);
+    }
+
+  }
+  $form['field_contact_auto'][LANGUAGE_NONE]['#options'] =  $current_options;
+}
 
 

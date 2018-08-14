@@ -21,7 +21,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -54,7 +54,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -154,7 +154,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -187,7 +187,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -220,7 +220,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -287,7 +287,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -320,7 +320,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -342,6 +342,41 @@ function ttc_taxonomy_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-contacts-field_status'.
+  $field_instances['taxonomy_term-contacts-field_status'] = array(
+    'bundle' => 'contacts',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_status',
+    'label' => 'Status',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-contacts-field_suffix'.
   $field_instances['taxonomy_term-contacts-field_suffix'] = array(
     'bundle' => 'contacts',
@@ -353,7 +388,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -466,6 +501,7 @@ function ttc_taxonomy_field_default_field_instances() {
   t('Phone');
   t('Postal Code');
   t('State');
+  t('Status');
   t('Suffix');
   t('The address to use for email notifications.');
 
