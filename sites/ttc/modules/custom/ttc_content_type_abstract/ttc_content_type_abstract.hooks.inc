@@ -37,7 +37,6 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
 
     foreach ($form['field_publications'][LANGUAGE_NONE] as $delta => $field) {
       if (is_numeric($delta)) {
-        dsm($form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]);
         $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#prefix'] =
           "<div class='publication-citation-helptext'>" . $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#description']   . "</div>";
 
