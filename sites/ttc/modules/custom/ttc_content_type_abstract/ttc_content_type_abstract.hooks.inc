@@ -54,6 +54,10 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     // Limits contact list from contacts vocabulary to only active.
     _ttc_content_type_abstract_alter_contact_list($form, $form_state);
 
+
+
+ //   $form['field_meta_long_desc'][LANGUAGE_NONE][0]['value']['#attributes']['maxlength'] = 10;
+ //   dsm($form['field_meta_long_desc']);
   }
 }
 
@@ -62,7 +66,7 @@ function ttc_content_type_abstract_field_widget_form_alter(&$element, &$form_sta
 
   // Add a css class to widget form elements for all fields of type mytype.
   if ($context['field']['type'] == 'url' && $element['#bundle'] == 'field_publications') {
-   $element['title']['#title'] = 'Link Text';
+   $element['title']['#title'] = 'PMID#';
   }
 }
 

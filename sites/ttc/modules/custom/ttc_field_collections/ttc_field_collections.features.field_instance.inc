@@ -650,187 +650,22 @@ function ttc_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_publications-field_author_first_initial'.
-  $field_instances['field_collection_item-field_publications-field_author_first_initial'] = array(
-    'bundle' => 'field_publications',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_author_first_initial',
-    'label' => 'Author First Initial',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_publications-field_author_last_name'.
-  $field_instances['field_collection_item-field_publications-field_author_last_name'] = array(
-    'bundle' => 'field_publications',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_author_last_name',
-    'label' => 'Author Last Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_publications-field_author_middle_initial'.
-  $field_instances['field_collection_item-field_publications-field_author_middle_initial'] = array(
-    'bundle' => 'field_publications',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_author_middle_initial',
-    'label' => 'Author Middle Initial',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_publications-field_pmid_number_or_book_title'.
-  $field_instances['field_collection_item-field_publications-field_pmid_number_or_book_title'] = array(
-    'bundle' => 'field_publications',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_pmid_number_or_book_title',
-    'label' => 'PMID number or Book Title',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_publications-field_publication_format'.
-  $field_instances['field_collection_item-field_publications-field_publication_format'] = array(
-    'bundle' => 'field_publications',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_publication_format',
-    'label' => 'Publication Format',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-field_publications-field_title'.
   $field_instances['field_collection_item-field_publications-field_title'] = array(
     'bundle' => 'field_publications',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The title of the publication, including any author data and links to relevant information.',
+    'description' => '<ol><b>Format Publications</b></ol>
+       <ul> –Authors </ul>
+                    <li> -If an article has a single author, enter first initial middle initiallast name, e.g., C.M.Micklitsch</li>
+                     <li>-If an article has two authors, enter first initial,middle initial,last namefor first only, e g., D.H.Appellaand C.M.Micklitsch</li>
+                     <li>-If an article has three or more authors, enter firstauthor only, followed by “et al.”, e.g., C.M.Micklitschet al.</li>
+         <ul>  Format –URL field</ul>
+                     <li>-The URL for PubMed abstracts is https://www.ncbi.nlm.nih.gov/pubmed/xxxxxxxx(insert the PubMed ID#), e.g., https://www.ncbi.nlm.nih.gov/pubmed/23214925.</li>
+          <ul> Format –URL Caption field</ul>
+                     <li>-The caption for PubMed abstracts should read [PMID xxxxxxxx] (insert the PubMed ID#), e.g., [PMID 23214925].</li>
+<ol><b>FormatBooks</b></ol>
+                    <ul><li> -Insert author name, title of book or book chapter title, editors, year; meeting name, dates, place.</li></ul>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -842,7 +677,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_title',
-    'label' => 'Author and publication title',
+    'label' => 'Citation',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -900,28 +735,33 @@ function ttc_field_collections_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<ol><b>Format Publications</b></ol>
+       <ul> –Authors </ul>
+                    <li> -If an article has a single author, enter first initial middle initiallast name, e.g., C.M.Micklitsch</li>
+                     <li>-If an article has two authors, enter first initial,middle initial,last namefor first only, e g., D.H.Appellaand C.M.Micklitsch</li>
+                     <li>-If an article has three or more authors, enter firstauthor only, followed by “et al.”, e.g., C.M.Micklitschet al.</li>
+         <ul>  Format –URL field</ul>
+                     <li>-The URL for PubMed abstracts is https://www.ncbi.nlm.nih.gov/pubmed/xxxxxxxx(insert the PubMed ID#), e.g., https://www.ncbi.nlm.nih.gov/pubmed/23214925.</li>
+          <ul> Format –URL Caption field</ul>
+                     <li>-The caption for PubMed abstracts should read [PMID xxxxxxxx] (insert the PubMed ID#), e.g., [PMID 23214925].</li>
+<ol><b>FormatBooks</b></ol>
+                    <ul><li> -Insert author name, title of book or book chapter title, editors, year; meeting name, dates, place.</li></ul>');
   t('Additional Patent Description');
   t('Application Number');
   t('Application/Patent Filing Date');
-  t('Author First Initial');
-  t('Author Last Name');
-  t('Author Middle Initial');
-  t('Author and publication title');
+  t('Citation');
   t('First Name');
   t('IC Name');
   t('Is Lead');
   t('Is Related Patent');
   t('Last Name');
   t('Middle Initial');
-  t('PMID number or Book Title');
   t('Patent Authority (Country)');
   t('Patent Issue Date');
   t('Patent Number');
-  t('Publication Format');
   t('Status');
   t('Suffix');
   t('Text');
-  t('The title of the publication, including any author data and links to relevant information.');
   t('This patent is only related to the technology, and not directly applicable.');
   t('URL');
 

@@ -721,7 +721,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_meta_long_desc',
-    'label' => 'Summary',
+    'label' => 'Summary (1024-character limit)',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -1986,7 +1986,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Search Image');
   t('Send To');
   t('Send to OTT?');
-  t('Summary');
+  t('Summary (1024-character limit)');
   t('Therapeutic Area');
   t('Updated');
   t('XML');
