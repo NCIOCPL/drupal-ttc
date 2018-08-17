@@ -655,17 +655,13 @@ function ttc_field_collections_field_default_field_instances() {
     'bundle' => 'field_publications',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '<ol><b>Format Publications</b></ol>
-       <ul> –Authors </ul>
-                    <li> -If an article has a single author, enter first initial middle initiallast name, e.g., C.M.Micklitsch</li>
-                     <li>-If an article has two authors, enter first initial,middle initial,last namefor first only, e g., D.H.Appellaand C.M.Micklitsch</li>
-                     <li>-If an article has three or more authors, enter firstauthor only, followed by “et al.”, e.g., C.M.Micklitschet al.</li>
-         <ul>  Format –URL field</ul>
-                     <li>-The URL for PubMed abstracts is https://www.ncbi.nlm.nih.gov/pubmed/xxxxxxxx(insert the PubMed ID#), e.g., https://www.ncbi.nlm.nih.gov/pubmed/23214925.</li>
-          <ul> Format –URL Caption field</ul>
-                     <li>-The caption for PubMed abstracts should read [PMID xxxxxxxx] (insert the PubMed ID#), e.g., [PMID 23214925].</li>
-<ol><b>FormatBooks</b></ol>
-                    <ul><li> -Insert author name, title of book or book chapter title, editors, year; meeting name, dates, place.</li></ul>',
+    'description' => '<b>Format Publications</b><br>
+       <b> –Authors </b><br>
+       <ul>
+         <li> -If an article has a single author, enter first initial middle initiallast name, e.g., C.M.Micklitsch</li>
+         <li>-If an article has two authors, enter first initial,middle initial,last namefor first only, e g., D.H.Appellaand C.M.Micklitsch</li>
+         <li>-If an article has three or more authors, enter firstauthor only, followed by “et al.”, e.g., C.M.Micklitschet al.</li>
+       </ul>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -700,7 +696,15 @@ function ttc_field_collections_field_default_field_instances() {
     'bundle' => 'field_publications',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '
+    <b>  Format –URL field</b><br>
+         <ul>
+                     <li>-The URL for PubMed abstracts is https://www.ncbi.nlm.nih.gov/pubmed/xxxxxxxx(insert the PubMed ID#), e.g., https://www.ncbi.nlm.nih.gov/pubmed/23214925.</li>
+          </ul>    
+          <b> Format –URL PMID# field</b><br>
+            <ul>
+           <li>-The caption for PubMed abstracts should read [PMID xxxxxxxx] (insert the PubMed ID#), e.g., [PMID 23214925].</li>
+           </ul>',
     'display' => array(
       'default' => array(
         'label' => 'above',

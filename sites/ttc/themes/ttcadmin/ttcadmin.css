@@ -17,3 +17,8 @@
 
     display: none;
 }
+
+.publication-citation-helptext{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
