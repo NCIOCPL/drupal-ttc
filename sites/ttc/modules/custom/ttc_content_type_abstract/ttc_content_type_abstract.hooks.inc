@@ -66,6 +66,9 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
 }
 
 
+
+
+
 function ttc_content_type_abstract_field_widget_form_alter(&$element, &$form_state, $context) {
 
   // Add a css class to widget form elements for all fields of type mytype.
@@ -588,6 +591,10 @@ function ttc_content_type_abstract_node_validate($node, $form, &$form_state) {
   if ( $node->type == "abstract") {
     if(_ttc_content_type_abstract_enumber_exists($node->nid, $node->field_enumber[LANGUAGE_NONE][0]['value'])) {
       form_set_error('field_enumber', t('An abstract with the reference number already exists.'));
+    }
+
+    if(strlen($node->field_meta_long_desc[LANGUAGE_NONE][0]['value']) > 1024){
+      form_set_error('field_meta_long_desc', t('Field Summary length exceeds character limit 1024'));
     }
 
   }
