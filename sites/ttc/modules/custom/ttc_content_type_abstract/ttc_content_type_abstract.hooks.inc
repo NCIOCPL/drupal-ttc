@@ -623,3 +623,17 @@ function _ttc_content_type_abstract_enumber_exists($current_nid, $e_number){
 
 
 }
+
+
+
+/**
+ * Implements hook_mail for module_name.
+ */
+function ttc_content_type_abstract_mail($key, &$message, $params) {
+  switch ($key) {
+    case '30day_notify':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      break;
+  }
+}

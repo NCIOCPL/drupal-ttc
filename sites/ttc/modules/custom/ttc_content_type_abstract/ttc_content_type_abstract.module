@@ -195,30 +195,91 @@ function ttc_content_type_abstract_cache_xml() {
 function ttc_content_type_abstract_cron() {
   try {
     // create node and history queries
-    $query = _ttc_content_type_abstract_build_current_query();
 
-    // add check for null xml fields
-    $xml = db_select('field_revision_field_xml', 'x');
-    $xml->rightJoin($query, 'a', 'x.entity_id = a.nid AND x.revision_id = a.vid');
-    $xml->isNull('x.field_xml_value');
+   // _ttc_content_type_abstract_cron_abstarcts_xml();
+    //if( date('G') == 5){ // At 19'o clock
+      _ttc_content_type_abstract_cron_notifications();
+    //}
 
-    $xml->fields('a', array('nid', 'vid', 'type'));
-
-    $results = $xml->execute();
-
-    watchdog('ttc_content_type_abstract', "Cron task found %count empty abstract xml fields.",
-      array('%count' => $results->rowCount()));
-
-    foreach($results as $result) {
-      _ttc_content_type_abstract_queue_xml($result);
-    }
-
-    // add the xml generation request on the end
-    _ttc_content_type_abstract_queue_xml('cache_xml');
   }
   catch(Exception $e){
     watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
   }
+}
+
+function _ttc_content_type_abstract_cron_notifications(){
+
+  $query = db_select('node', 'n');
+  $query->join('field_data_field_opp_end_date', 'b', 'n.nid = b.entity_id');
+  $query->leftJoin('field_data_field_opp_30day_warned', 'c', 'n.nid = c.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+    ;
+
+  $query->where('b.field_opp_end_date_value < DATE_ADD(NOW(), INTERVAL +30 DAY)');
+  $query->where('(
+	  c.field_opp_30day_warned_value <> 1 or c.field_opp_30day_warned_value is null
+  )');
+  $results = $query->execute();
+  $index = 0;
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_30day($result->nid);
+    $index++;
+  }
+
+}
+
+
+function _ttc_content_type_abstract_cron_notify_30day($nid){
+  $node = node_load($nid);
+  $email = "ramaraju.kalidindi@nih.gov";
+  // Send email notification
+
+  $message = 'Something went wrong. Please contact site administrator.';
+  // Send the email.
+  $params = array(
+    'subject' => t('[Status] - Server is Down'),
+    'body' => check_markup(
+      t($message),
+      'plain_text'
+    ),
+  );
+  drupal_mail('ttc_content_type_abstract', '30day_notify', $email, language_default(), $params);
+
+
+  $num_updated = db_update('field_data_field_opp_30day_warned')
+  ->fields(array(
+    'field_opp_30day_warned_value' => 1,
+  ))
+    ->condition('entity_id', $nid,  '=')
+    ->execute();
+
+}
+
+
+function _ttc_content_type_abstract_cron_abstarcts_xml(){
+  $query = _ttc_content_type_abstract_build_current_query();
+
+  // add check for null xml fields
+  $xml = db_select('field_revision_field_xml', 'x');
+  $xml->rightJoin($query, 'a', 'x.entity_id = a.nid AND x.revision_id = a.vid');
+  $xml->isNull('x.field_xml_value');
+
+  $xml->fields('a', array('nid', 'vid', 'type'));
+
+  $results = $xml->execute();
+
+  watchdog('ttc_content_type_abstract', "Cron task found %count empty abstract xml fields.",
+    array('%count' => $results->rowCount()));
+
+  foreach($results as $result) {
+    _ttc_content_type_abstract_queue_xml($result);
+  }
+
+  // add the xml generation request on the end
+  _ttc_content_type_abstract_queue_xml('cache_xml');
+
 }
 
 function ttc_content_type_abstract_field_attach_view_alter(&$output, $context) {
