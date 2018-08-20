@@ -33,7 +33,6 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     }
 
 
-    $form['#after_build'] = '_ttc_content_type_abstract_after_build';
 
     foreach ($form['field_publications'][LANGUAGE_NONE] as $delta => $field) {
       if (is_numeric($delta)) {
@@ -59,9 +58,6 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     _ttc_content_type_abstract_alter_contact_list($form, $form_state);
 
 
-
- //   $form['field_meta_long_desc'][LANGUAGE_NONE][0]['value']['#attributes']['maxlength'] = 10;
- //   dsm($form['field_meta_long_desc']);
   }
 }
 
