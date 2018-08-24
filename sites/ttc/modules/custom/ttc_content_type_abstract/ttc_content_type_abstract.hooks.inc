@@ -637,3 +637,5 @@ function ttc_content_type_abstract_mail($key, &$message, $params) {
       break;
   }
 }
+
+

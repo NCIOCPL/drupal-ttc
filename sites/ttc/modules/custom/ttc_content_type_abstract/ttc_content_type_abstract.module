@@ -216,19 +216,14 @@ function _ttc_content_type_abstract_cron_notifications(){
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
     ;
-
-  $query->where('b.field_opp_end_date_value < DATE_ADD(NOW(), INTERVAL +30 DAY)');
+  $query->where(' datediff(from_unixtime(b.field_opp_end_date_value),now()) <= 30 ' );
+  $query->where(' datediff(from_unixtime(b.field_opp_end_date_value),now()) >= 0 ' );
   $query->where('(
 	  c.field_opp_30day_warned_value <> 1 or c.field_opp_30day_warned_value is null
   )');
   $results = $query->execute();
-  $index = 0;
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_30day($result->nid);
-
-    var_dump($result->nid);
-    $index++;
-    break;
   }
 
 }
