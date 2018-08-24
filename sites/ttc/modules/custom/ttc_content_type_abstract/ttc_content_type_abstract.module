@@ -225,7 +225,10 @@ function _ttc_content_type_abstract_cron_notifications(){
   $index = 0;
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_30day($result->nid);
+
+    var_dump($result->nid);
     $index++;
+    break;
   }
 
 }
@@ -233,19 +236,34 @@ function _ttc_content_type_abstract_cron_notifications(){
 
 function _ttc_content_type_abstract_cron_notify_30day($nid){
   $node = node_load($nid);
-  $email = "ramaraju.kalidindi@nih.gov";
+
+  global $conf;
+  $email_to = $conf['notifications_email'];
+  $title = $node->title;
+  $nih_reference_no  = $node->field_enumber['und']['0']['value'];
   // Send email notification
 
-  $message = 'Something went wrong. Please contact site administrator.';
+  $message = "The abstract associated with $title $nih_reference_no is due to expire in 30 days. Please work with the inventor(s) to update any parts that have changed and send back a revised copy. Especially important:
+
+1. Summary
+2. Collaboration Opportunity (Co-development and/or License)
+3. Experimental results in the Description of Technology
+4. Development Stage
+5. Patent Status
+6. Publications
+
+Best regards,
+
+TTC Website Admin";
   // Send the email.
   $params = array(
-    'subject' => t('[Status] - Server is Down'),
+    'subject' => 'Notice of Abstract Expiration ' . $nih_reference_no,
     'body' => check_markup(
       t($message),
       'plain_text'
     ),
   );
-  drupal_mail('ttc_content_type_abstract', '30day_notify', $email, language_default(), $params);
+  drupal_mail('ttc_content_type_abstract', '30day_notify', $email_to, language_default(), $params);
 
 
   $num_updated = db_update('field_data_field_opp_30day_warned')
