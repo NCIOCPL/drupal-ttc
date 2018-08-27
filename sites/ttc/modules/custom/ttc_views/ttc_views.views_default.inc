@@ -361,7 +361,7 @@ function ttc_views_views_default_views() {
     'view_mode' => 'token',
   );
   $handler->display->display_options['fields']['field_inventors']['delta_offset'] = '0';
-  /* Field: Content: Reference Number */
+  /* Field: Content: NIH Reference Number */
   $handler->display->display_options['fields']['field_enumber']['id'] = 'field_enumber';
   $handler->display->display_options['fields']['field_enumber']['table'] = 'field_data_field_enumber';
   $handler->display->display_options['fields']['field_enumber']['field'] = 'field_enumber';
@@ -1085,8 +1085,6 @@ function ttc_views_views_default_views() {
     'combine_rewrite' => NULL,
     'reset_label' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -1136,7 +1134,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['sorts']['search_api_aggregation_2']['field'] = 'search_api_aggregation_2';
   $handler->display->display_options['sorts']['search_api_aggregation_2']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_aggregation_2']['expose']['label'] = 'Reference Number';
-  /* Sort criterion: Indexed Content: Start Date */
+  /* Sort criterion: Indexed Content: Publication date */
   $handler->display->display_options['sorts']['field_opp_start_date']['id'] = 'field_opp_start_date';
   $handler->display->display_options['sorts']['field_opp_start_date']['table'] = 'search_api_index_abstract_faceted_index';
   $handler->display->display_options['sorts']['field_opp_start_date']['field'] = 'field_opp_start_date';
@@ -1407,7 +1405,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['is_current']['field'] = 'is_current';
   $handler->display->display_options['fields']['is_current']['exclude'] = TRUE;
   $handler->display->display_options['fields']['is_current']['not'] = 0;
-  /* Field: Content: Reference Number */
+  /* Field: Content: NIH Reference Number */
   $handler->display->display_options['fields']['field_enumber']['id'] = 'field_enumber';
   $handler->display->display_options['fields']['field_enumber']['table'] = 'field_data_field_enumber';
   $handler->display->display_options['fields']['field_enumber']['field'] = 'field_enumber';
@@ -1484,12 +1482,12 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['sorts']['field_opp_year_value']['field'] = 'field_opp_year_value';
   $handler->display->display_options['sorts']['field_opp_year_value']['order'] = 'DESC';
   $handler->display->display_options['sorts']['field_opp_year_value']['expose']['label'] = 'Opportunity Year';
-  /* Sort criterion: Content: Reference Number (field_enumber) */
+  /* Sort criterion: Content: NIH Reference Number (field_enumber) */
   $handler->display->display_options['sorts']['field_enumber_value']['id'] = 'field_enumber_value';
   $handler->display->display_options['sorts']['field_enumber_value']['table'] = 'field_data_field_enumber';
   $handler->display->display_options['sorts']['field_enumber_value']['field'] = 'field_enumber_value';
   $handler->display->display_options['sorts']['field_enumber_value']['expose']['label'] = 'Reference Number';
-  /* Filter criterion: Content: Reference Number (field_enumber) */
+  /* Filter criterion: Content: NIH Reference Number (field_enumber) */
   $handler->display->display_options['filters']['field_enumber_value']['id'] = 'field_enumber_value';
   $handler->display->display_options['filters']['field_enumber_value']['table'] = 'field_data_field_enumber';
   $handler->display->display_options['filters']['field_enumber_value']['field'] = 'field_enumber_value';
