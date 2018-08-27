@@ -274,7 +274,7 @@ TTC Website Admin";
       'field_opp_30day_warned_value' => 1,
     ))
     ->condition('entity_id', $nid,  '=')
-    ->execute()
+    ->execute();
 
 }
 
