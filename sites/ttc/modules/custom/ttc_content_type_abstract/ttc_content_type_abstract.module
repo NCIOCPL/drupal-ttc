@@ -196,10 +196,8 @@ function ttc_content_type_abstract_cron() {
   try {
     // create node and history queries
 
-   // _ttc_content_type_abstract_cron_abstarcts_xml();
-    //if( date('G') == 5){ // At 19'o clock
-      _ttc_content_type_abstract_cron_notifications();
-    //}
+    _ttc_content_type_abstract_cron_abstarcts_xml();
+    _ttc_content_type_abstract_cron_notifications();
 
   }
   catch(Exception $e){
