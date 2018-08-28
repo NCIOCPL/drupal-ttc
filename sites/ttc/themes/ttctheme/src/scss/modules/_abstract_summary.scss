@@ -75,3 +75,9 @@
   @include product-type-background('dark');
 }
 
+
+body.node-type-abstract{
+  h1#page-title{
+    text-transform: none;
+  }
+}
