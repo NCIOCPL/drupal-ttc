@@ -36,11 +36,20 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
 
     foreach ($form['field_publications'][LANGUAGE_NONE] as $delta => $field) {
       if (is_numeric($delta)) {
-        $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#prefix'] =
+     /*   $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#prefix'] =
           "<div class='publication-citation-helptext'>" . $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#description']   . "</div>";
 
         $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#description'] = "";
         $form['field_publications'][LANGUAGE_NONE][$delta]['field_title']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+
+*/
+
+    /*    $form['field_publications'][LANGUAGE_NONE][$delta]['field_url'][LANGUAGE_NONE][0]['#suffix'] =
+          "<div class='publication-citation-helptext'>" . $form['field_publications'][LANGUAGE_NONE][$delta]['field_url'][LANGUAGE_NONE][0]['#description']   . "</div>";
+
+        $form['field_publications'][LANGUAGE_NONE][$delta]['field_url'][LANGUAGE_NONE][0]['#description'] = "";
+*/
+
       }
     }
 
@@ -49,11 +58,13 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
-
+/*
     $form['field_opp_description_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
     $form['field_opp_commapp_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
     $form['field_opp_compadv_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
     $form['field_list_intro_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+
+*/
     // Limits contact list from contacts vocabulary to only active.
     _ttc_content_type_abstract_alter_contact_list($form, $form_state);
 
@@ -70,6 +81,10 @@ function ttc_content_type_abstract_field_widget_form_alter(&$element, &$form_sta
   // Add a css class to widget form elements for all fields of type mytype.
   if ($context['field']['type'] == 'url' && $element['#bundle'] == 'field_publications') {
    $element['title']['#title'] = 'PMID#';
+
+   $description = $element['#description'];
+    $element['#description'] = '';
+    $element['#suffix'] = '<div class="description">' . $description . '</div>';
   }
 }
 
@@ -589,7 +604,8 @@ function ttc_content_type_abstract_node_validate($node, $form, &$form_state) {
       form_set_error('field_enumber', t('An abstract with the reference number already exists.'));
     }
 
-    if(strlen($node->field_meta_long_desc[LANGUAGE_NONE][0]['value']) > 1024){
+
+    if(strlen(str_replace(array("\n", "\r\n", "\r"), '', $node->field_meta_long_desc[LANGUAGE_NONE][0]['value'])) > 1024){
       form_set_error('field_meta_long_desc', t('Field Summary length exceeds character limit 1024'));
     }
 

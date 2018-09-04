@@ -18,7 +18,12 @@
     display: none;
 }
 
-.publication-citation-helptext{
+.text-format-wrapper .description, .field-type-url  .description{
     border: 1px solid #ccc;
     padding: 10px;
+}
+
+
+.node-abstract-form  .text-format-wrapper .filter-wrapper {
+    display: none;
 }
