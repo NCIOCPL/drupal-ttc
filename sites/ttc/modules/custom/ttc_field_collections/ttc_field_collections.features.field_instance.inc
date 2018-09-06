@@ -753,9 +753,9 @@ function ttc_field_collections_field_default_field_instances() {
            </ul>');
   t('<b> Format for Authors </b><br>
                 <ul>
-                <li> If an article has a single author, enter first initial, middle initial, last name, e.g., C.M.Micklitsch</li>
-                 <li>If an article has two authors, enter first initial, middle initial, last name for first only, e g., D.H.Appella and C.M.Micklitsch</li>
-                 <li>If an article has three or more authors, enter first author only, followed by “et al.”, e.g., C.M.Micklitschet al.</li>
+                <li> If an article has a single author, enter first initial, middle initial, last name, e.g., C.M. Micklitsch</li>
+                 <li>If an article has two authors, enter first initial, middle initial, last name for first only, e g., D.H. Appella and C.M. Micklitsch</li>
+                 <li>If an article has three or more authors, enter first author only, followed by “et al.”, e.g., C.M. Micklitsch et al.</li>
                  </ul>
          <b> Format for Book Citations</b><br>
          <ul>
