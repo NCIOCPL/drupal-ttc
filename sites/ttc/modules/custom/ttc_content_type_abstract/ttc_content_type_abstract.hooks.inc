@@ -350,7 +350,9 @@ function _ttc_content_type_abstract_format_inventors($values){
 
 function _ttc_content_type_abstract_format_publications($values){
   $publications = array();
-
+  if(!is_array($values)) {
+    return $publications;
+  }
   foreach($values as $delta => $publication) {
     $title = false;
 
