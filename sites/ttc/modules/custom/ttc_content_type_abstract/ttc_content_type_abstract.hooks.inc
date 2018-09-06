@@ -287,6 +287,9 @@ function _ttc_content_type_abstract_set_text($node, $field, $values, $subfield =
 function _ttc_content_type_abstract_format_inventors($values){
   $inventors = array();
 
+  if(!is_array($values)) {
+    return $inventors;
+  }
   foreach($values as $delta => $inventor) {
     $parts = array();
     $org = false;
