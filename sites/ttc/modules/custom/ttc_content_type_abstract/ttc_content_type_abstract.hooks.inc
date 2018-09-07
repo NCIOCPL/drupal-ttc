@@ -609,8 +609,7 @@ function ttc_content_type_abstract_node_validate($node, $form, &$form_state) {
       form_set_error('field_enumber', t('An abstract with the reference number already exists.'));
     }
 
-
-    if(strlen(str_replace(array("\n", "\r\n", "\r"), '', $node->field_meta_long_desc[LANGUAGE_NONE][0]['value'])) > 1024){
+    if(strlen(utf8_decode(str_replace(array("\n", "\r\n", "\r"), '', $node->field_meta_long_desc[LANGUAGE_NONE][0]['value']))) > 1024){
       form_set_error('field_meta_long_desc', t('Field Summary length exceeds character limit 1024'));
     }
 
