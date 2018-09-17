@@ -97,7 +97,7 @@
     <?php if (!$page): ?>
       <?php if (!$page): ?>
         <h2<?php print $title_attributes; ?>>
-          <a href="<?php print $node_url; ?>"><?php print ucfirst(strtolower($title)); ?></a></h2>
+          <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
       <?php endif; ?>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
@@ -152,11 +152,6 @@
       </span>
     <?php endif; ?>
 
-    <?php if ($show_rev_date): ?>
-      <span>
-        <?php print render($content['field_reviewed_date']); ?>
-      </span>
-    <?php endif; ?>
 
     <?php if ($show_up_date): ?>
       <span>

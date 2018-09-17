@@ -22,49 +22,29 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     $form['field_formatted_email_list']['#access'] = false;
     $form['field_image']['#access'] = false;
     $form['field_opp_mode']['#access'] = false;
+    $form['field_reviewed_date']['#access'] = false;
+    $form['field_display_reviewed_date']['#access'] = false;
+    $form['field_opp_list_send']['#access'] = false;
 
 
 
 
     foreach ($form['field_pat_status'][LANGUAGE_NONE] as $delta => $field) {
       if (is_numeric($delta)) {
-        $form['field_pat_status']['und'][$delta]['field_add_pat_desc'] = false;
+        $form['field_pat_status']['und'][$delta]['field_add_pat_desc']['#access'] = false;
+        $form['field_pat_status']['und'][$delta]['field_is_related_patent']['#access'] = false;
+        $form['field_pat_status']['und'][$delta]['field_url']['#access'] = false;
       }
     }
 
 
 
-    foreach ($form['field_publications'][LANGUAGE_NONE] as $delta => $field) {
-      if (is_numeric($delta)) {
-     /*   $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#prefix'] =
-          "<div class='publication-citation-helptext'>" . $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#description']   . "</div>";
-
-        $form['field_publications'][LANGUAGE_NONE][$delta]['field_title'][LANGUAGE_NONE][0]['#description'] = "";
-        $form['field_publications'][LANGUAGE_NONE][$delta]['field_title']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
-
-*/
-
-    /*    $form['field_publications'][LANGUAGE_NONE][$delta]['field_url'][LANGUAGE_NONE][0]['#suffix'] =
-          "<div class='publication-citation-helptext'>" . $form['field_publications'][LANGUAGE_NONE][$delta]['field_url'][LANGUAGE_NONE][0]['#description']   . "</div>";
-
-        $form['field_publications'][LANGUAGE_NONE][$delta]['field_url'][LANGUAGE_NONE][0]['#description'] = "";
-*/
-
-      }
-    }
-
-
-    // disable old display fields
+        // disable old display fields
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
-/*
-    $form['field_opp_description_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
-    $form['field_opp_commapp_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
-    $form['field_opp_compadv_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
-    $form['field_list_intro_text']['#after_build'][] = '_ttc_content_type_abstract_hide_text_format';
+    //_ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_is_related_patent');
 
-*/
     // Limits contact list from contacts vocabulary to only active.
     _ttc_content_type_abstract_alter_contact_list($form, $form_state);
 
