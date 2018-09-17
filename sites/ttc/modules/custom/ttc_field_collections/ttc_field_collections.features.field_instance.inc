@@ -428,7 +428,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_patent_filing_date',
-    'label' => 'Application/Patent Filing Date',
+    'label' => 'Filing Date',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -765,8 +765,8 @@ function ttc_field_collections_field_default_field_instances() {
           </ul>   ');
   t('Additional Patent Description');
   t('Application Number');
-  t('Application/Patent Filing Date');
   t('Citation');
+  t('Filing Date');
   t('First Name');
   t('IC Name');
   t('Is Lead');
