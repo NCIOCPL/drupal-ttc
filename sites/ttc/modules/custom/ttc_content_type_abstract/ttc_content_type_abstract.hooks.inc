@@ -24,7 +24,6 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     $form['field_opp_mode']['#access'] = false;
     $form['field_reviewed_date']['#access'] = false;
     $form['field_display_reviewed_date']['#access'] = false;
-    $form['field_opp_list_send']['#access'] = false;
 
 
 
