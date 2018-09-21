@@ -71,6 +71,10 @@
 
     </script>
   <!-- **** End Google Analytics **** -->
+
+
+    <meta name="google-site-verification" content="aq74WBGDgXriyHEKfGK8Gpe39U7wZz_85BQu6e_ArtU" />
+
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div class="skip-link">

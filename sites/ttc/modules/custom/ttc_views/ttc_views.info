@@ -16,6 +16,7 @@ features[views_view][] = abstracts_xml
 features[views_view][] = available_technologies
 features[views_view][] = news
 features[views_view][] = success_stories
+features[views_view][] = technologies_sitemap
 features[views_view][] = ttc_abstract_faceted_results
 features[views_view][] = ttc_content_search_results
 features[views_view][] = workbench_abstracts
