@@ -10,6 +10,31 @@
 function ttc_content_type_abstract_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_display_date_select'.
+  $field_bases['field_display_date_select'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_display_date_select',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'Updated Date',
+        1 => 'Posted Date',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_formatted_email_list'.
   $field_bases['field_formatted_email_list'] = array(
     'active' => 1,

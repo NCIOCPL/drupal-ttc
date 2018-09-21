@@ -169,7 +169,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -213,7 +213,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -258,6 +258,53 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_display_date_select'.
+  $field_instances['node-abstract-field_display_date_select'] = array(
+    'bundle' => 'abstract',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 38,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_display_date_select',
+    'label' => 'Display Date',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 36,
     ),
   );
 
@@ -306,7 +353,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 36,
+      'weight' => 40,
     ),
   );
 
@@ -355,7 +402,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 37,
+      'weight' => 41,
     ),
   );
 
@@ -404,7 +451,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 38,
+      'weight' => 42,
     ),
   );
 
@@ -496,7 +543,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 26,
+      'weight' => 28,
     ),
   );
 
@@ -552,7 +599,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 31,
+      'weight' => 34,
     ),
   );
 
@@ -776,7 +823,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -822,7 +869,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 27,
+      'weight' => 30,
     ),
   );
 
@@ -870,7 +917,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 19,
+      'weight' => 21,
     ),
   );
 
@@ -1080,7 +1127,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 23,
+      'weight' => 25,
     ),
   );
 
@@ -1173,7 +1220,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 24,
+      'weight' => 26,
     ),
   );
 
@@ -1217,7 +1264,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 23,
     ),
   );
 
@@ -1380,7 +1427,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_text',
-      'weight' => 22,
+      'weight' => 24,
     ),
   );
 
@@ -1525,7 +1572,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 22,
     ),
   );
 
@@ -1586,7 +1633,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 33,
+      'weight' => 37,
     ),
   );
 
@@ -1741,7 +1788,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 34,
+      'weight' => 38,
     ),
   );
 
@@ -1787,7 +1834,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 25,
+      'weight' => 27,
     ),
   );
 
@@ -1895,7 +1942,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 35,
+      'weight' => 39,
     ),
   );
 
@@ -1940,7 +1987,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 39,
+      'weight' => 43,
     ),
   );
 
@@ -1957,6 +2004,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Contact');
   t('Description of Technology');
   t('Development Stage');
+  t('Display Date');
   t('Display Posted Date');
   t('Display Reviewed Date');
   t('Display Updated Date');

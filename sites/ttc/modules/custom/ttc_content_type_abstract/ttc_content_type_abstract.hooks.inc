@@ -48,6 +48,22 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     _ttc_content_type_abstract_alter_contact_list($form, $form_state);
 
 
+
+    $form['field_posted_date']['#states'] =
+        array(
+        'visible' => array(
+          ':input[name="field_display_date_select[und]"]' => array('value' => 1),
+        )
+    );
+
+    $form['field_updated_date']['#states'] =
+      array(
+        'visible' => array(
+          ':input[name="field_display_date_select[und]"]' => array('value' => 0),
+        )
+      );
+
+
   }
 }
 
@@ -187,7 +203,7 @@ function ttc_content_type_abstract_node_presave($node) {
 function ttc_content_type_abstract_html_head_alter(&$head_elements) {
 
   $node = menu_get_object();
-  if(is_object($node) &&$node->type == 'abstract'){
+  if(is_object($node) &&$node->type == 'abstract' and isset($head_elements['metatag_keywords_0']) ){
     foreach($node->field_inventors[LANGUAGE_NONE] as $inventor){
       $inventor_entity = entity_load('field_collection_item', array($inventor['value']));
       $is_lead_field = $inventor_entity[$inventor['value']]->field_is_lead;
