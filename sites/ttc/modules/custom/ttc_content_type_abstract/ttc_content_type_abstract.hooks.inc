@@ -183,6 +183,27 @@ function ttc_content_type_abstract_node_presave($node) {
   
 }
 
+
+function ttc_content_type_abstract_html_head_alter(&$head_elements) {
+
+  $node = menu_get_object();
+  if(is_object($node) &&$node->type == 'abstract'){
+    foreach($node->field_inventors[LANGUAGE_NONE] as $inventor){
+      $inventor_entity = entity_load('field_collection_item', array($inventor['value']));
+      $is_lead_field = $inventor_entity[$inventor['value']]->field_is_lead;
+      if($is_lead_field[LANGUAGE_NONE][0]['value']){
+        $first_name_field = $inventor_entity[$inventor['value']]->field_first_name;
+        $last_name_field = $inventor_entity[$inventor['value']]->field_last_name;
+        $head_elements['metatag_keywords_0']['#value'] .=   " , " . $first_name_field[LANGUAGE_NONE][0]['value'] . ", " . $last_name_field[LANGUAGE_NONE][0]['value'];
+      }
+    }
+    $ic_tid = $node->field_pdf_img[LANGUAGE_NONE][0]['tid'];
+    $ic_term = taxonomy_term_load($ic_tid);
+    $head_elements['metatag_keywords_0']['#value'] .=  ", " . $ic_term->name;
+  }
+
+}
+
 function _ttc_content_type_abstract_retrieve_values($node, $collection, $subfields) {
   $collection_items = field_get_items('node', $node, $collection);
 
