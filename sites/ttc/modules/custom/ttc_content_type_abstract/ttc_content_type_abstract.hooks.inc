@@ -24,6 +24,12 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     $form['field_opp_mode']['#access'] = false;
     $form['field_reviewed_date']['#access'] = false;
     $form['field_display_reviewed_date']['#access'] = false;
+    $form['field_display_posted_date']['#access'] = false;
+    $form['field_display_updated_date']['#access'] = false;
+
+
+
+    unset($form['field_display_date_select'][LANGUAGE_NONE]['#options']['_none']);
 
 
 
@@ -49,7 +55,7 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
 
 
 
-    $form['field_posted_date']['#states'] =
+  /*  $form['field_posted_date']['#states'] =
         array(
         'visible' => array(
           ':input[name="field_display_date_select[und]"]' => array('value' => 1),
@@ -62,7 +68,7 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
           ':input[name="field_display_date_select[und]"]' => array('value' => 0),
         )
       );
-
+*/
 
   }
 }
@@ -208,14 +214,10 @@ function ttc_content_type_abstract_html_head_alter(&$head_elements) {
       $inventor_entity = entity_load('field_collection_item', array($inventor['value']));
       $is_lead_field = $inventor_entity[$inventor['value']]->field_is_lead;
       if($is_lead_field[LANGUAGE_NONE][0]['value']){
-        $first_name_field = $inventor_entity[$inventor['value']]->field_first_name;
         $last_name_field = $inventor_entity[$inventor['value']]->field_last_name;
-        $head_elements['metatag_keywords_0']['#value'] .=   " , " . $first_name_field[LANGUAGE_NONE][0]['value'] . ", " . $last_name_field[LANGUAGE_NONE][0]['value'];
+        $head_elements['metatag_keywords_0']['#value'] .=    ", " . $last_name_field[LANGUAGE_NONE][0]['value'];
       }
     }
-    $ic_tid = $node->field_pdf_img[LANGUAGE_NONE][0]['tid'];
-    $ic_term = taxonomy_term_load($ic_tid);
-    $head_elements['metatag_keywords_0']['#value'] .=  ", " . $ic_term->name;
   }
 
 }

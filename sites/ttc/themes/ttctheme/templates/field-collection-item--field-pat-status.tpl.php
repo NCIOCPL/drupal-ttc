@@ -30,30 +30,33 @@
 ?>
 
 <?php
-  $hasDesc = isset($content['field_text']);
-  $hasLink = isset($content['field_url']);
-  $hasLabel = isset($content['field_patent_status'][0]['#title']);
 
-  $fieldLabel = $hasLabel ? $content['field_patent_status'][0]['#title'] : '';
-  $fieldLink = $hasLink ? $content['field_url'][0]['#href'] : null;
-  $fieldDesc = $hasDesc ? drupal_html_to_text($content['field_text'][0]['#markup'], array('p')) : null;
+    $hasLink = isset($content['field_url']);
+    $hasLabel = isset($content['field_patent_status'][0]['#title']);
+
+    $fieldLabel = $hasLabel ? $content['field_patent_status'][0]['#title'] : '';
+    $fieldLink = $hasLink ? $content['field_url'][0]['#href'] : null;
+    $application_number = isset($content['field_application_number'][0]) ? $content['field_application_number']['#items'][0]['value']: '';
+    $patent_number = isset($content['field_patent_number'][0]) ? $content['field_patent_number']['#items'][0]['value']: '';
+    $country =  isset($content['field_patent_authority'][0]) ?$content['field_patent_authority']['#items'][0]['value']: '';
+    $filing_date =  isset($content['field_patent_filing_date'][0]) ?$content['field_patent_filing_date']['#items'][0]['value']: '';
+    $issue_date =  isset($content['field_patent_issue_date'][0]) ?$content['field_patent_issue_date']['#items'][0]['value']: '';
+
+    $filing_date = date('d M Y',strtotime($filing_date));
+    $issue_date = date('d M Y',strtotime($issue_date));
+
+
+    $search_string = array('[application_no]','[patent_no]','[filed_date]','[country]' , '[issued_date]');
+    $replace_string = array($application_number,$patent_number,$filing_date,$country , $issue_date);
+
+    $term = $content['field_patent_status']['#items'][0]['taxonomy_term'];
+    $fieldDesc = str_replace($search_string, $replace_string, $term->field_display_text[LANGUAGE_NONE][0]['value'] );
+    $hasDesc = true;
+
 ?>
 
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="field-collection__item"<?php print $content_attributes; ?>>
-    <span class="field-collection__item-label">
-      <?php if (!$hasDesc && $hasLink): ?>
-        <a href="<?php print $fieldLink; ?>">
-      <?php endif; ?>
-
-      <?php print $fieldLabel; ?><?php if ($hasLabel && $hasDesc): ?>:&nbsp;<?php endif; ?>
-
-      <?php if (!$hasDesc && $hasLink): ?>
-        </a>
-      <?php endif; ?>
-    </span>
-
-    <?php if ($hasDesc): ?>
       <span class="field-collection__item-content">
         <?php if ($hasLink): ?>
           <a href="<?php print $fieldLink; ?>">
@@ -65,7 +68,5 @@
           </a>
         <?php endif; ?>
       </span>
-    <?php endif; ?>
-    </span>
   </div>
 </div>

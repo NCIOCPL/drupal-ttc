@@ -76,14 +76,41 @@
  */
 ?>
 
-<?php $show_post_date = isset($content['field_display_posted_date']['#items']['0']['value']) &&
-  ($content['field_display_posted_date']['#items']['0']['value'] == 1) && !empty($content['field_posted_date']); ?>
-<?php $show_rev_date = isset($content['field_display_reviewed_date']['#items']['0']['value']) &&
-  ($content['field_display_reviewed_date']['#items']['0']['value'] == 1) && !empty($content['field_reviewed_date']); ?>
-<?php $show_up_date = isset($content['field_display_updated_date']['#items']['0']['value']) &&
-  ($content['field_display_updated_date']['#items']['0']['value'] == 1) && !empty($content['field_updated_date']); ?>
-<?php $show_default_date = empty($content['field_updated_date']) && empty($content['field_reviewed_date']) && empty($content['field_posted_date'])
-  && empty($content['field_display_updated_date']) && empty($content['field_display_reviewed_date']) && empty($content['field_display_posted_date']); ?>
+
+
+<?php
+/*
+$show_post_date = isset($content['field_display_posted_date']['#items']['0']['value']) &&
+  ($content['field_display_posted_date']['#items']['0']['value'] == 1) && !empty($content['field_posted_date']);
+$show_rev_date = isset($content['field_display_reviewed_date']['#items']['0']['value']) &&
+  ($content['field_display_reviewed_date']['#items']['0']['value'] == 1) && !empty($content['field_reviewed_date']);
+
+
+$show_up_date = isset($content['field_display_updated_date']['#items']['0']['value']) &&
+  ($content['field_display_updated_date']['#items']['0']['value'] == 1) && !empty($content['field_updated_date']);
+$show_default_date = empty($content['field_updated_date']) && empty($content['field_reviewed_date']) && empty($content['field_posted_date'])
+  && empty($content['field_display_updated_date']) && empty($content['field_display_reviewed_date']) && empty($content['field_display_posted_date']);
+*/
+
+
+
+
+
+if ($view_mode!='teaser') {
+
+  $show_up_date = false;
+  $show_post_date = false;
+  $show_default_date = false;
+  if ($content['field_display_date_select']['#items']['0']['value'] == 0) {
+    $show_up_date = true;
+  } elseif ($content['field_display_date_select']['#items']['0']['value'] == 1) {
+    $show_post_date = true;
+  } else {
+    $show_default_date = true;
+  }
+}
+
+?>
 
 
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
