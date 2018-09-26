@@ -57,9 +57,13 @@
 
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <div class="field-collection__item"<?php print $content_attributes; ?>>
+
+      <span class="field-collection__item-label">
+          <?php print $fieldLabel; ?>: 
+      </span>
       <span class="field-collection__item-content">
         <?php if ($hasLink): ?>
-          <a href="<?php print $fieldLink; ?>">
+          $fieldLabel: <a href="<?php print $fieldLink; ?>">
         <?php endif; ?>
 
         <?php print $fieldDesc; ?>
