@@ -54,16 +54,16 @@ function ttc_content_type_abstract_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '31',
+          'weight' => '30',
         ),
         'xmlsitemap' => array(
-          'weight' => '32',
+          'weight' => '31',
         ),
         'metatags' => array(
-          'weight' => '35',
+          'weight' => '34',
         ),
         'redirect' => array(
-          'weight' => '33',
+          'weight' => '32',
         ),
       ),
       'display' => array(),

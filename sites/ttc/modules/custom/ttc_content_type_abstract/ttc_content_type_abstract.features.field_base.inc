@@ -26,8 +26,8 @@ function ttc_content_type_abstract_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Updated Date',
-        1 => 'Posted Date',
+        0 => 'Display Updated Date',
+        1 => 'Display Posted Date',
       ),
       'allowed_values_function' => '',
     ),

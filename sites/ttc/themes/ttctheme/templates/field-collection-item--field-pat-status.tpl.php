@@ -59,7 +59,7 @@
   <div class="field-collection__item"<?php print $content_attributes; ?>>
 
       <span class="field-collection__item-label">
-          <?php print $fieldLabel; ?>: 
+          <?php print $fieldLabel; ?>:
       </span>
       <span class="field-collection__item-content">
         <?php if ($hasLink): ?>

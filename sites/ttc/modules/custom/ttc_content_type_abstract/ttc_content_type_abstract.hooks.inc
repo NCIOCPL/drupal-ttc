@@ -27,6 +27,8 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
     $form['field_display_posted_date']['#access'] = false;
     $form['field_display_updated_date']['#access'] = false;
 
+    $form['#after_build'][] = "_ttc_content_type_abstract_after_build";
+
 
 
     unset($form['field_display_date_select'][LANGUAGE_NONE]['#options']['_none']);
@@ -74,6 +76,19 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
 }
 
 
+
+
+
+function _ttc_content_type_abstract_after_build($form, &$form_state) {
+
+
+  $form['options']['workbench_moderation_state_new']['#description'] = "
+          <ol><li>Needs Review: Allows moderator to review the draft content as it will display to users</li>
+         <li>Draft: Content is pending submission for review</li>
+          <li>Archived: Content is no longer visible to website visitors</li>
+            </ol>";
+  return $form;
+}
 
 
 
