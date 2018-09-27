@@ -1576,7 +1576,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   $field_instances['node-abstract-field_posted_date'] = array(
     'bundle' => 'abstract',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Check this box when first publishing an abstract',
     'display' => array(
       'PDF' => array(
         'label' => 'above',
@@ -1885,7 +1885,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   $field_instances['node-abstract-field_updated_date'] = array(
     'bundle' => 'abstract',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Check this box when updating an abstract entry',
     'display' => array(
       'PDF' => array(
         'label' => 'above',
@@ -1995,6 +1995,8 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Additional Patent Documentation');
   t('Also called an E-Number.');
   t('Announce opportunity to GovDelivery?');
+  t('Check this box when first publishing an abstract');
+  t('Check this box when updating an abstract entry');
   t('Collaboration Opportunity');
   t('Competitive Advantages');
   t('Contact');
