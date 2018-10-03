@@ -42,8 +42,8 @@
     $filing_date =  isset($content['field_patent_filing_date'][0]) ?$content['field_patent_filing_date']['#items'][0]['value']: '';
     $issue_date =  isset($content['field_patent_issue_date'][0]) ?$content['field_patent_issue_date']['#items'][0]['value']: '';
 
-    $filing_date = date('d M Y',strtotime($filing_date));
-    $issue_date = date('d M Y',strtotime($issue_date));
+    $filing_date = $filing_date ? date('d M Y',strtotime($filing_date)) :  "";
+    $issue_date = $issue_date ? date('d M Y',strtotime($issue_date)): "";
 
 
     $search_string = array('[application_no]','[patent_no]','[filed_date]','[country]' , '[issued_date]');
