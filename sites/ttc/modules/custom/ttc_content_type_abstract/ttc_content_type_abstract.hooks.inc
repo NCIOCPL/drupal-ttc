@@ -54,7 +54,14 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
 
     // Limits contact list from contacts vocabulary to only active.
     _ttc_content_type_abstract_alter_contact_list($form, $form_state);
+  /*  dsm($form['nid']);
 
+    dsm($form['field_updated_date']);
+
+    if($form['nid']['#value'] !=  null){
+
+    }
+*/
 
 
   /*  $form['field_posted_date']['#states'] =

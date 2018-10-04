@@ -2,7 +2,7 @@
 /*
  * Update Display date flag
  */
-function ttc_content_type_abstract_update_1(){
+function ttc_content_type_abstract_update_2(){
 
   $result = db_query("select 
     n.nid
@@ -19,21 +19,31 @@ function ttc_content_type_abstract_update_1(){
     //
     $update = false;
 
-    $node = new stdClass();
-    $node->nid = $record->nid;
-    $node->type = 'abstract';
-    if($record->field_display_updated_date_value) {
-      $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 0;
-      $update = true;
-    } elseif($record->field_display_posted_date_value) {
-      $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 1;
-      $update = true;
-    }
+    $node = node_load($record->nid);
+    //$node->nid = $record->nid;
+    if ($node->type == 'abstract') {
 
 
-    if($update){
-      field_attach_presave('node', $node);
-      field_attach_update('node', $node);
+      if ($record->field_display_updated_date_value) {
+        $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 0;
+        $update = true;
+      } elseif ($record->field_display_posted_date_value) {
+        $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 1;
+        $update = true;
+      } else {
+        $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 0;
+        $update = true;
+        if ($node->field_posted_date[LANGUAGE_NONE][0]['value'] == null && $node->field_updated_date[LANGUAGE_NONE][0]['value'] == null) {
+          $node->field_updated_date[LANGUAGE_NONE][0]['value'] = $node->updated;
+        }
+
+      }
+
+
+      if ($update) {
+        field_attach_presave('node', $node);
+        field_attach_update('node', $node);
+      }
     }
   }
 
