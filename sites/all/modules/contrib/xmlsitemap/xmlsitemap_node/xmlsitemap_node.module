@@ -28,8 +28,8 @@ function xmlsitemap_node_cron() {
       if ($node) {
         $link = xmlsitemap_node_create_link($node);
         xmlsitemap_link_save($link, array($link['type'] => $node));
-        $queue->deleteItem($item);
       }
+      $queue->deleteItem($item);
     }
     catch (Exception $e) {
       // In case of exception log it and leave the item in the queue
