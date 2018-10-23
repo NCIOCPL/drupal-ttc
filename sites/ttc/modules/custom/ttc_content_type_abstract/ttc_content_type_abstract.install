@@ -1,0 +1,70 @@
+<?php
+/*
+ * Update Display date flag
+ */
+function ttc_content_type_abstract_update_5(&$sandbox){
+
+  if (!isset($sandbox['progress'])) {
+
+    $result = db_query("select 
+    n.nid
+    ,{d1.field_display_posted_date_value}  
+    ,{d2.field_display_updated_date_value}  
+    from 
+    node n left join field_data_field_display_posted_date d1  on n.nid = d1.entity_id
+    left join field_data_field_display_updated_date d2  on n.nid = d2.entity_id
+    where n.type =  'abstract' 
+    ");
+
+
+    $sandbox['progress'] = 0;
+
+    $sandbox['nodes'] = array();
+
+
+    foreach ($result as $record) {
+      $sandbox['nodes'][] = $record;
+    }
+    $sandbox['max'] = count($sandbox['nodes']);
+
+  }
+
+  $batch_size = 20;
+  $count = 0;
+  while($count < $batch_size){
+    $record = $sandbox['nodes'][$sandbox['progress']];
+    $node = node_load($record->nid);
+    //$node->nid = $record->nid;
+    if ($node && $node->type == 'abstract') {
+
+
+      if ($record->field_display_updated_date_value) {
+        $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 0;
+      } elseif ($record->field_display_posted_date_value) {
+        $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 1;
+      } else {
+        $node->field_display_date_select[LANGUAGE_NONE][0]['value'] = 0;
+        if ( $node->field_updated_date[LANGUAGE_NONE][0]['value'] == null ) {
+          $node->field_updated_date[LANGUAGE_NONE][0]['value'] = $node->changed;
+        }
+
+      }
+
+      field_attach_presave('node', $node);
+      field_attach_update('node', $node);
+    }
+    $count++;
+    $sandbox['progress']++;
+  }
+
+  $sandbox['#finished'] = $sandbox['progress'] >= $sandbox['max'] ? TRUE : $sandbox['progress'] / $sandbox['max'];
+
+  if ($sandbox['#finished']) {
+
+    return t('Update nodes @count', array(
+      '@count' => count($sandbox['nodes']),
+    ));
+  }
+
+
+}

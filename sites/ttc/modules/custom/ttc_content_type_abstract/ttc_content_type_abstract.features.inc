@@ -23,7 +23,7 @@ function ttc_content_type_abstract_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Opportunity Title'),
+      'title_label' => t('Title of Invention'),
       'help' => '',
     ),
   );

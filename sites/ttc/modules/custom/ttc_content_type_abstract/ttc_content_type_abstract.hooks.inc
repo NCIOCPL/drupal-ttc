@@ -10,16 +10,114 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
   if($form['#id']=='abstract-node-form'){
     // hide machine-generated fields
     $form['field_opp_year']['#access'] = false;
-    $form['field_opp_list_lastsent']['#access'] = false;
     $form['field_opp_30day_warned']['#access'] = false;
     $form['field_xml']['#access'] = false;
-    
-    // disable old display fields
+
+
+    // hide not needed fields. These fields were asked to be deleted. we have hidden these fields so that we can restore them later if needed.
+
+    $form['field_additional_patent_document']['#access'] = false;
+    $form['field_list_intro_text']['#access'] = false;
+    $form['field_notif']['#access'] = false;
+    $form['field_formatted_email_list']['#access'] = false;
+    $form['field_image']['#access'] = false;
+    $form['field_opp_mode']['#access'] = false;
+    $form['field_reviewed_date']['#access'] = false;
+    $form['field_display_reviewed_date']['#access'] = false;
+    $form['field_display_posted_date']['#access'] = false;
+    $form['field_display_updated_date']['#access'] = false;
+
+    $form['#after_build'][] = "_ttc_content_type_abstract_after_build";
+
+
+
+    unset($form['field_display_date_select'][LANGUAGE_NONE]['#options']['_none']);
+
+
+
+
+    foreach ($form['field_pat_status'][LANGUAGE_NONE] as $delta => $field) {
+      if (is_numeric($delta)) {
+        $form['field_pat_status']['und'][$delta]['field_add_pat_desc']['#access'] = false;
+        $form['field_pat_status']['und'][$delta]['field_is_related_patent']['#access'] = false;
+        $form['field_pat_status']['und'][$delta]['field_url']['#access'] = false;
+      }
+    }
+
+
+
+        // disable old display fields
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
     _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
+    //_ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_is_related_patent');
+
+    // Limits contact list from contacts vocabulary to only active.
+    _ttc_content_type_abstract_alter_contact_list($form, $form_state);
+  /*  dsm($form['nid']);
+
+    dsm($form['field_updated_date']);
+
+    if($form['nid']['#value'] !=  null){
+
+    }
+*/
+
+
+  /*  $form['field_posted_date']['#states'] =
+        array(
+        'visible' => array(
+          ':input[name="field_display_date_select[und]"]' => array('value' => 1),
+        )
+    );
+
+    $form['field_updated_date']['#states'] =
+      array(
+        'visible' => array(
+          ':input[name="field_display_date_select[und]"]' => array('value' => 0),
+        )
+      );
+*/
+
   }
 }
+
+
+
+
+
+function _ttc_content_type_abstract_after_build($form, &$form_state) {
+
+
+  $form['options']['workbench_moderation_state_new']['#description'] = "
+          <ol><li>Needs Review: Allows moderator to review the draft content as it will display to users</li>
+         <li>Draft: Content is pending submission for review</li>
+          <li>Archived: Content is no longer visible to website visitors</li>
+            </ol>";
+  return $form;
+}
+
+
+
+function ttc_content_type_abstract_field_widget_form_alter(&$element, &$form_state, $context) {
+
+  // Add a css class to widget form elements for all fields of type mytype.
+  if ($context['field']['type'] == 'url' && $element['#bundle'] == 'field_publications') {
+   $element['title']['#title'] = 'PMID#';
+
+   $description = $element['#description'];
+    $element['#description'] = '';
+    $element['#suffix'] = '<div class="description">' . $description . '</div>';
+  }
+}
+
+
+
+function _ttc_content_type_abstract_hide_text_format(&$form) {
+  $form[LANGUAGE_NONE][0]['format']['#access'] = false;
+  return $form;
+}
+
 
 function _ttc_content_type_abstract_convert_display_field(&$form, $field, $subfield = false) {
   if(!$subfield) {
@@ -97,22 +195,17 @@ function ttc_content_type_abstract_node_presave($node) {
 
     // update display fields
     $inventors_values = _ttc_content_type_abstract_retrieve_values($node, 'field_inventors', $inventor_fields);
-    if($inventors_values) {
-      $inventors_formatted = _ttc_content_type_abstract_format_inventors($inventors_values);
-      _ttc_content_type_abstract_set_text($node, 'field_opp_invs_text', $inventors_formatted);
-    }
+    $inventors_formatted = _ttc_content_type_abstract_format_inventors($inventors_values);
+    _ttc_content_type_abstract_set_text($node, 'field_opp_invs_text', $inventors_formatted);
 
     $publications_values = _ttc_content_type_abstract_retrieve_values($node, 'field_publications', $publication_fields);
-    if($publications_values) {
-      $publications_formatted = _ttc_content_type_abstract_format_publications($publications_values);
-      _ttc_content_type_abstract_set_text($node, 'field_opp_pubs_text', $publications_formatted);
-    }
+    $publications_formatted = _ttc_content_type_abstract_format_publications($publications_values);
+    _ttc_content_type_abstract_set_text($node, 'field_opp_pubs_text', $publications_formatted);
 
     $status_values = _ttc_content_type_abstract_retrieve_values($node, 'field_pat_status', $pat_status_fields);
-    if($status_values) {
-      $status_formatted = _ttc_content_type_abstract_format_status($status_values);
-      _ttc_content_type_abstract_set_text($node, 'field_pat_status', $status_formatted, 'field_text');
-    }
+    $status_formatted = _ttc_content_type_abstract_format_status($status_values);
+    _ttc_content_type_abstract_set_text($node, 'field_pat_status', $status_formatted, 'field_text');
+
   }
 
   // skip queueing items in draft or needs_review states
@@ -132,6 +225,23 @@ function ttc_content_type_abstract_node_presave($node) {
     }
   }
   
+}
+
+
+function ttc_content_type_abstract_html_head_alter(&$head_elements) {
+
+  $node = menu_get_object();
+  if(is_object($node) &&$node->type == 'abstract' and isset($head_elements['metatag_keywords_0']) ){
+    foreach($node->field_inventors[LANGUAGE_NONE] as $inventor){
+      $inventor_entity = entity_load('field_collection_item', array($inventor['value']));
+      $is_lead_field = $inventor_entity[$inventor['value']]->field_is_lead;
+      if($is_lead_field[LANGUAGE_NONE][0]['value']){
+        $last_name_field = $inventor_entity[$inventor['value']]->field_last_name;
+        $head_elements['metatag_keywords_0']['#value'] .=    ", " . $last_name_field[LANGUAGE_NONE][0]['value'];
+      }
+    }
+  }
+
 }
 
 function _ttc_content_type_abstract_retrieve_values($node, $collection, $subfields) {
@@ -217,6 +327,9 @@ function _ttc_content_type_abstract_set_text($node, $field, $values, $subfield =
 function _ttc_content_type_abstract_format_inventors($values){
   $inventors = array();
 
+  if(!is_array($values)) {
+    return $inventors;
+  }
   foreach($values as $delta => $inventor) {
     $parts = array();
     $org = false;
@@ -277,7 +390,9 @@ function _ttc_content_type_abstract_format_inventors($values){
 
 function _ttc_content_type_abstract_format_publications($values){
   $publications = array();
-
+  if(!is_array($values)) {
+    return $publications;
+  }
   foreach($values as $delta => $publication) {
     $title = false;
 
@@ -504,3 +619,98 @@ function _ttc_content_type_abstract_build_current_query() {
 
   return $fullQuery;
 }
+
+/**
+ * Limits contact list from contacts vocabulary to only active.
+ *
+ */
+
+function _ttc_content_type_abstract_alter_contact_list(&$form, &$form_state){
+  $current_options = $form['field_contact_auto'][LANGUAGE_NONE]['#options'];
+
+  $name = 'contacts';
+  $myvoc = taxonomy_vocabulary_machine_name_load($name);
+  $tree = taxonomy_get_tree($myvoc->vid);
+  foreach ($tree as $term) {
+
+    $term =  taxonomy_term_load($term->tid);
+    if(!isset($term->field_status[LANGUAGE_NONE]) ||$term->field_status[LANGUAGE_NONE][0]['value'] != 1) {
+      unset($current_options[$term->tid]);
+    }
+
+  }
+  $form['field_contact_auto'][LANGUAGE_NONE]['#options'] =  $current_options;
+}
+
+
+function ttc_content_type_abstract_node_validate($node, $form, &$form_state) {
+  if ( $node->type == "abstract") {
+    if(_ttc_content_type_abstract_enumber_exists($node->nid, $node->field_enumber[LANGUAGE_NONE][0]['value'])) {
+      form_set_error('field_enumber', t('An abstract with the reference number already exists.'));
+    }
+
+    if(strlen(utf8_decode(str_replace(array("\n", "\r\n", "\r"), '', $node->field_meta_long_desc[LANGUAGE_NONE][0]['value']))) > 1024){
+      form_set_error('field_meta_long_desc', t('Field Summary length exceeds character limit 1024'));
+    }
+
+  }
+}
+
+
+function _ttc_content_type_abstract_enumber_exists($current_nid, $e_number){
+
+
+  if($current_nid >  0) {
+    $query1 = db_select('field_data_field_enumber', 'e')
+      ->condition('e.entity_id', $current_nid, '!=')
+      ->condition('e.field_enumber_value', $e_number, '=')
+      ->fields('e', array('entity_id'))
+      ->execute();
+    $num_nodes = $query1->rowCount();
+
+
+    $query2 = db_select('field_revision_field_enumber', 'er')
+      ->condition('er.entity_id', $current_nid, '!=')
+      ->condition('er.field_enumber_value', $e_number, '=')
+      ->fields('er', array('entity_id'))
+      ->execute();
+    $num_nodes_revs = $query2->rowCount();
+  }else{
+    $query1 = db_select('field_data_field_enumber', 'e')
+      ->condition('e.field_enumber_value', $e_number, '=')
+      ->fields('e', array('entity_id'))
+      ->execute();
+    $num_nodes = $query1->rowCount();
+
+
+    $query2 = db_select('field_revision_field_enumber', 'er')
+      ->condition('er.field_enumber_value', $e_number, '=')
+      ->fields('er', array('entity_id'))
+      ->execute();
+    $num_nodes_revs = $query2->rowCount();
+  }
+
+  if($num_nodes >  0 or $num_nodes_revs > 0 ){
+    return true;
+  }else{
+    return false;
+  }
+
+
+}
+
+
+
+/**
+ * Implements hook_mail for module_name.
+ */
+function ttc_content_type_abstract_mail($key, &$message, $params) {
+  switch ($key) {
+    case '30day_notify':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      break;
+  }
+}
+
+

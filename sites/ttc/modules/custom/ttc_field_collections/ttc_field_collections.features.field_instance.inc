@@ -387,7 +387,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_patent_authority',
-    'label' => 'Patent Authority',
+    'label' => 'Patent Authority (Country)',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -428,7 +428,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_patent_filing_date',
-    'label' => 'Patent Filing Date',
+    'label' => 'Filing Date',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -655,7 +655,18 @@ function ttc_field_collections_field_default_field_instances() {
     'bundle' => 'field_publications',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'The title of the publication, including any author data and links to relevant information.',
+    'description' => '<b> Format for Authors </b><br>
+                <ul>
+                <li> If an article has a single author, enter last name, first initial, last initial, e.g., Rosenberg SA</li>
+                 <li>If an article has two or more authors, enter first author only, followed by “et al.”, e.g., Rosenberg SA, et al.</li>
+                 </ul>
+                 <p>Example: Rosenberg SA, et al. Adoptive cell transfer as personalized immunotherapy for human cancer.</p>
+         <b> Format for Book Citations</b><br>
+         <ul>
+         <li>
+         Insert author name, title of book or book chapter title, editors, year; meeting name, dates, place
+          </li>
+          </ul>   ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -667,7 +678,7 @@ function ttc_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_title',
-    'label' => 'Title',
+    'label' => 'Citation',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -690,7 +701,14 @@ function ttc_field_collections_field_default_field_instances() {
     'bundle' => 'field_publications',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<b>  URLs</b><br>
+         <ul>
+                     <li>The URL for PubMed abstracts is https://www.ncbi.nlm.nih.gov/pubmed/xxxxxxxx(insert the PubMed ID#), e.g., https://www.ncbi.nlm.nih.gov/pubmed/23214925.</li>
+          </ul>    
+          <b> PMIDs</b><br>
+            <ul>
+           <li>The caption for PubMed abstracts should read [PMID xxxxxxxx] (insert the PubMed ID#), e.g., [PMID 23214925].</li>
+           </ul>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -725,24 +743,43 @@ function ttc_field_collections_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<b>  URLs</b><br>
+         <ul>
+                     <li>The URL for PubMed abstracts is https://www.ncbi.nlm.nih.gov/pubmed/xxxxxxxx(insert the PubMed ID#), e.g., https://www.ncbi.nlm.nih.gov/pubmed/23214925.</li>
+          </ul>    
+          <b> PMIDs</b><br>
+            <ul>
+           <li>The caption for PubMed abstracts should read [PMID xxxxxxxx] (insert the PubMed ID#), e.g., [PMID 23214925].</li>
+           </ul>');
+  t('<b> Format for Authors </b><br>
+                <ul>
+                <li> If an article has a single author, enter first initial, middle initial, last name, e.g., C.M. Micklitsch</li>
+                 <li>If an article has two authors, enter first initial, middle initial, last name for first only, e g., D.H. Appella and C.M. Micklitsch</li>
+                 <li>If an article has three or more authors, enter first author only, followed by “et al.”, e.g., C.M. Micklitsch et al.</li>
+                 </ul>
+         <b> Format for Book Citations</b><br>
+         <ul>
+         <li>
+         Insert author name, title of book or book chapter title, editors, year; meeting name, dates, place
+          </li>
+          </ul>   ');
   t('Additional Patent Description');
   t('Application Number');
+  t('Citation');
+  t('Filing Date');
   t('First Name');
   t('IC Name');
   t('Is Lead');
   t('Is Related Patent');
   t('Last Name');
   t('Middle Initial');
-  t('Patent Authority');
-  t('Patent Filing Date');
+  t('Patent Authority (Country)');
   t('Patent Issue Date');
   t('Patent Number');
   t('Status');
   t('Suffix');
   t('Text');
-  t('The title of the publication, including any author data and links to relevant information.');
   t('This patent is only related to the technology, and not directly applicable.');
-  t('Title');
   t('URL');
 
   return $field_instances;

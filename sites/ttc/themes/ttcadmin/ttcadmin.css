@@ -11,3 +11,19 @@
 .views-field.views-field-moderation-actions ul li {
     width: 13em;
 }
+
+
+.field-name-field-meta-keywords .field-add-more-submit {
+
+    display: none;
+}
+
+.text-format-wrapper .description, .field-type-url  .description{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+
+.node-abstract-form  .text-format-wrapper .filter-wrapper {
+    display: none;
+}
