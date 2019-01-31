@@ -350,6 +350,25 @@ function ttc_pages_default_page_manager_handlers() {
     'contexts' => array(),
     'relationships' => array(),
     'name' => '',
+    'metatag_panels' => array(
+      'enabled' => 1,
+      'metatags' => array(
+        'robots' => array(
+          'value' => array(
+            'noindex' => 'noindex',
+            'nofollow' => 'nofollow',
+            'index' => 0,
+            'follow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+            'noimageindex' => 0,
+            'notranslate' => 0,
+          ),
+        ),
+      ),
+    ),
   );
   $display = new panels_display();
   $display->layout = 'flexible';
