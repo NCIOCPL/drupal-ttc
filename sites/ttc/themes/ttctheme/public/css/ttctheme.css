@@ -7822,6 +7822,15 @@ footer .disclaimer {
   color: white;
 }
 
+.icon.-icon-govdelivery-font {
+  border-color: #307491;
+}
+
+.icon.-icon-govdelivery-font--white {
+  border-color: #ffffff;
+  color: white;
+}
+
 .icon .fa {
   vertical-align: bottom;
 }

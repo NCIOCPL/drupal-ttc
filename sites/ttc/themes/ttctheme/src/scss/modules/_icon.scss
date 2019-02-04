@@ -43,6 +43,14 @@
       color: white;
     }
   }
+  &.-icon-govdelivery-font {
+    border-color: palette(blue);
+
+    &--white {
+      border-color: palette(white);
+      color: white;
+    }
+  }
   .fa{
     vertical-align: bottom;
   }
