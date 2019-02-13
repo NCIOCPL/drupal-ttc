@@ -67,6 +67,18 @@
   }
 }
 
+
+/// Header "Follow Us" block
+.right-off-canvas-menu .follow-us {
+  .icon.-icon-govdelivery {
+    background-image: url('/sites/default/themes/ttctheme/public/images/icons/govdelivery.png');
+    background-position: center center, center center;
+    background-size: 15px;
+    background-repeat: no-repeat;
+
+  }
+}
+
 /// Footer "Follow Us" block
 .block--follow-us-footer {
   @extend %block--follow-us;
