@@ -1,0 +1,19 @@
+diff --git a/date_elements.inc b/date_elements.inc
+index f99f213..39e4ddf 100644
+--- a/date_elements.inc
++++ b/date_elements.inc
+@@ -455,10 +455,13 @@ function date_element_empty($element, &$form_state) {
+  */
+ function date_combo_validate($element, &$form_state) {
+
++  // Limits validation to posted values only.
++  $needs_validation = !empty($element['#needs_validation']);
++
+   // Disabled and hidden elements won't have any input and don't need validation,
+   // we just need to re-save the original values, from before they were processed into
+   // widget arrays and timezone-adjusted.
+-  if (date_hidden_element($element) || !empty($element['#disabled'])) {
++  if (date_hidden_element($element) || !empty($element['#disabled']) || !$needs_validation) {
+     form_set_value($element, $element['#date_items'], $form_state);
+     return;
+   }
