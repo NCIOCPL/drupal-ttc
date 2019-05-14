@@ -3,10 +3,10 @@ $main-menu-margin-bottom: 0.5rem;
 $main-menu-indicator-size: 0.5rem;
 $mobile-off-canvas-width: 100px;
 
-.block-system-main-menu {
+.block-system-main-menu, .block-menu-block-1.header   {
   display: none;
   clear: both;
-
+  margin-top: 0;
 
   @media #{$large-up} {
     position: absolute;
@@ -30,7 +30,7 @@ $mobile-off-canvas-width: 100px;
 
       text-align: center;
 
-      &.active-trail {
+      &.active-trail, &.active {
         &:before {
           position: absolute;
           top: calc(100% + #{$main-menu-margin-bottom});
@@ -48,13 +48,37 @@ $mobile-off-canvas-width: 100px;
     a {
       color: palette(white, base);
     }
+
+    li.expanded .menu{
+      display: none;
+      position: absolute;
+      z-index: 1000;
+      /* text-align: left; */
+      background-color: grey;
+      /* padding: 5px; */
+      box-shadow: 0 0 0 15px rgba(200, 200, 200, 0.5);
+      -webkit-box-shadow: 0 0 0 15px rgba(200, 200, 200, 0.5);
+      -moz-box-shadow: 0 0 0 15px rgba(200, 200, 200, 0.5);
+      /* border-color: white; */
+      /* color: blue; */
+      /* width: 300px; */
+    }
+    li.expanded:hover .menu{
+      display: block;
+    }
+
+
   }
 }
 
 .main {
   padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin-top + $main-menu-margin-bottom + $main-menu-indicator-size);
 }
-body.not-front .block-system-main-menu{border-bottom:none;}
+body.not-front .block-system-main-menu,
+body.not-front .block-menu-block-1.header
+{border-bottom:none;}
+
+
 
 body.front .mobile-menu{margin-top:-55px;}    
 .mobile-menu{
