@@ -91,6 +91,10 @@
         <a role="button" href="#follow" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
 </a>
     </nav>
+  <nav class="desktop-menu">
+     <?php  print render($menu_site_structure_expanded_desktop); ?>
+  </nav>
+
   <div class="main-wrapper">
     <!-- .l-main region -->
     <div class="main__inner row">
@@ -254,7 +258,8 @@
 </div>
 <!--/.page -->
           <nav class="left-off-canvas-menu">
-            <?php print render($menu_site_structure_expanded); ?> 
+
+            <?php  print render($menu_site_structure_expanded); ?>
           </nav> <!-- /#mobile-menu --> 
           
           <nav class="right-off-canvas-menu" id="follow">

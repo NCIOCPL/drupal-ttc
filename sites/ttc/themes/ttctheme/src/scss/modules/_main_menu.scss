@@ -3,25 +3,28 @@ $main-menu-margin-bottom: 0.5rem;
 $main-menu-indicator-size: 0.5rem;
 $mobile-off-canvas-width: 100px;
 
-.block-system-main-menu, .block-menu-block-1.header   {
+.block-system-main-menu,.desktop-menu  {
   display: none;
   clear: both;
   margin-top: 0;
 
   @media #{$large-up} {
     position: absolute;
+   // height: 55px;
     z-index: 1;
-    top: 100%;
+    top: 0;
     left: 0;
     display: block;
 	border-bottom:solid 1px #ccc;
-
+    background-color: #275d70;
     width: 100%;
-
+    .submenu{
+      padding-top: 20px;
+    }
     .menu {
       @include equally-spaced-list;
 
-      margin: $main-menu-margin-top 5% ($main-menu-margin-bottom + $main-menu-indicator-size);
+      margin: $main-menu-margin-top 5% 0;
 
       text-transform: uppercase;
     }
@@ -30,10 +33,10 @@ $mobile-off-canvas-width: 100px;
 
       text-align: center;
 
-      &.active-trail, &.active {
+      &.active-trail {
         &:before {
           position: absolute;
-          top: calc(100% + #{$main-menu-margin-bottom});
+          top: calc(100% - #{$main-menu-margin-bottom});
           left: calc(50% - #{$main-menu-indicator-size});
 
           width: 0;
@@ -49,33 +52,74 @@ $mobile-off-canvas-width: 100px;
       color: palette(white, base);
     }
 
-    li.expanded .menu{
+    li.expanded .menu {
       display: none;
       position: absolute;
+      margin: 0;
       z-index: 1000;
       /* text-align: left; */
-      background-color: grey;
+      background-color: #FFFFFF;
       /* padding: 5px; */
-      box-shadow: 0 0 0 15px rgba(200, 200, 200, 0.5);
-      -webkit-box-shadow: 0 0 0 15px rgba(200, 200, 200, 0.5);
-      -moz-box-shadow: 0 0 0 15px rgba(200, 200, 200, 0.5);
-      /* border-color: white; */
-      /* color: blue; */
-      /* width: 300px; */
+     // border: 11px solid rgba(255, 255, 255, 0.5);
+      width: 257px;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 11px rgba(230,230,230,0.5);
+      -webkit-box-shadow: 0 0 0 11px rgba(230,230,230,0.5);
+      -moz-box-shadow: 0 0 0 11px rgba(230,230,230,0.5);
+      a {
+        color: #317490;
+      }
+      li{
+        width: 205px;
+        font-family: Lato;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 19px;
+        text-align: left;
+        padding: 10px 0 10px 10px;
+      }
     }
     li.expanded:hover .menu{
       display: block;
     }
 
+    li.expanded:hover .submenu:before{
+      position: absolute;
+      top: calc(100% - #{$main-menu-margin-bottom});
+      left: calc(50% - #{$main-menu-indicator-size});
+
+      width: 0;
+      height: 0;
+      content: '';
+      border-width: 0 $main-menu-indicator-size $main-menu-indicator-size $main-menu-indicator-size;
+      border-style: solid;
+      border-color: transparent transparent #ffffff transparent;
+    }
+
+
+    li.expanded:hover .menu::before{
+  //    content: "<span class='mplus'></span>";
+    }
+
+
+    li.last .submenu .menu{
+      right: 10px;
+    }
+
+
+
 
   }
 }
-
+// Needs to be over ridden for drop down menu to work.
+#ttc-at-search-form .postfix.form-submit{
+  z-index: 0;
+}
 .main {
   padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin-top + $main-menu-margin-bottom + $main-menu-indicator-size);
 }
 body.not-front .block-system-main-menu,
-body.not-front .block-menu-block-1.header
+body.not-front .desktop-menu
 {border-bottom:none;}
 
 

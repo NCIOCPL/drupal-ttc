@@ -98,6 +98,10 @@ foreach($theme_hook_suggestions as $suggestion) {
         <a role="button" href="#follow" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
 </a>
     </nav>
+
+      <nav class="desktop-menu">
+        <?php  print render($menu_site_structure_expanded_desktop); ?>
+      </nav>
   <div class="main-wrapper">
     <!-- .l-main region -->
     <div class="main__inner row">
