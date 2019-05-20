@@ -201,17 +201,25 @@ body.not-front .pane-success-stories ul.success-stories__list {
         
         .menu li.expanded .active{cursor: default; }
         .menu li.expanded .active:hover{text-decoration:none;}
-        
+
+
         ul ul li {list-style:outside;
-            a{ color:#333; display:block; line-height:1.7rem;}
+            a{ color:#307491; display:block; line-height:1.7rem;}
         }
         ul ul{margin-top:.5rem;}
           .li-wrapper{
-            background-color:#f0f0f0; 
+            background-color:#f0f0f0;
             padding:20px 25px 25px 25px; 
             border-radius: 0px;
             box-shadow: 0px 0px 0px 12px rgba(255,255,255, .20);
             }
+          .li-wrapper >a{
+            color: #000000;
+            font-family: Lato;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 24px;
+          }
         
     }
 }
