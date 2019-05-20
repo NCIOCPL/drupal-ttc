@@ -156,29 +156,6 @@ function ttc_pages_default_panels_mini() {
   $display->content['new-65041783-edb0-4fce-89b6-b7c14a137378'] = $pane;
   $display->panels['center'][3] = 'new-65041783-edb0-4fce-89b6-b7c14a137378';
   $pane = new stdClass();
-  $pane->pid = 'new-9b3d4239-c814-4571-b025-5af665997eb0';
-  $pane->panel = 'center';
-  $pane->type = 'block';
-  $pane->subtype = 'facetapi-lBZ1VAzTznOE5gQyP8OHERh0Zq44hFsG';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 1,
-    'override_title_text' => 'Patent Status',
-    'override_title_heading' => 'div',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 4;
-  $pane->locks = array();
-  $pane->uuid = '9b3d4239-c814-4571-b025-5af665997eb0';
-  $display->content['new-9b3d4239-c814-4571-b025-5af665997eb0'] = $pane;
-  $display->panels['center'][4] = 'new-9b3d4239-c814-4571-b025-5af665997eb0';
-  $pane = new stdClass();
   $pane->pid = 'new-026866fb-65f9-4934-8128-9e7f07fa2dd3';
   $pane->panel = 'center';
   $pane->type = 'views_feed';
@@ -197,11 +174,37 @@ function ttc_pages_default_panels_mini() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 4;
   $pane->locks = array();
   $pane->uuid = '026866fb-65f9-4934-8128-9e7f07fa2dd3';
   $display->content['new-026866fb-65f9-4934-8128-9e7f07fa2dd3'] = $pane;
-  $display->panels['center'][5] = 'new-026866fb-65f9-4934-8128-9e7f07fa2dd3';
+  $display->panels['center'][4] = 'new-026866fb-65f9-4934-8128-9e7f07fa2dd3';
+  $pane = new stdClass();
+  $pane->pid = 'new-b93873de-ed43-47f0-a20a-9cb8a6e860be';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'facetapi-ya9EzkEbDs5kWs4SG4O6F42ZtiD4tdUj';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 1,
+    'override_title_text' => 'Institutes and Centers',
+    'override_title_heading' => 'div',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => '',
+  );
+  $pane->extras = array();
+  $pane->position = 5;
+  $pane->locks = array();
+  $pane->uuid = 'b93873de-ed43-47f0-a20a-9cb8a6e860be';
+  $display->content['new-b93873de-ed43-47f0-a20a-9cb8a6e860be'] = $pane;
+  $display->panels['center'][5] = 'new-b93873de-ed43-47f0-a20a-9cb8a6e860be';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = 'new-6a7be82a-efdc-4b4b-8a98-f1b66525ae6e';
   $mini->display = $display;

@@ -290,8 +290,8 @@ function ttc_theme_config_default_fe_block_settings() {
         'weight' => -9,
       ),
       'ttctheme' => array(
-        'region' => 'header',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ttctheme',
         'weight' => -9,
       ),

@@ -1003,15 +1003,15 @@ function ttc_pages_default_page_manager_pages() {
   $display->content['new-cecef8cf-637f-435e-bb18-03b3ebba61f7'] = $pane;
   $display->panels['facets'][3] = 'new-cecef8cf-637f-435e-bb18-03b3ebba61f7';
   $pane = new stdClass();
-  $pane->pid = 'new-6cb1a064-2aff-487d-af15-258fb4be714b';
+  $pane->pid = 'new-80b4e2f8-b96e-4fd3-a08d-6446b0e67e03';
   $pane->panel = 'facets';
   $pane->type = 'block';
-  $pane->subtype = 'facetapi-lBZ1VAzTznOE5gQyP8OHERh0Zq44hFsG';
+  $pane->subtype = 'facetapi-ya9EzkEbDs5kWs4SG4O6F42ZtiD4tdUj';
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => 'Patent Status',
+    'override_title_text' => 'Institutes and Centers',
     'override_title_heading' => 'h3',
   );
   $pane->cache = array();
@@ -1025,9 +1025,9 @@ function ttc_pages_default_page_manager_pages() {
   $pane->extras = array();
   $pane->position = 4;
   $pane->locks = array();
-  $pane->uuid = '6cb1a064-2aff-487d-af15-258fb4be714b';
-  $display->content['new-6cb1a064-2aff-487d-af15-258fb4be714b'] = $pane;
-  $display->panels['facets'][4] = 'new-6cb1a064-2aff-487d-af15-258fb4be714b';
+  $pane->uuid = '80b4e2f8-b96e-4fd3-a08d-6446b0e67e03';
+  $display->content['new-80b4e2f8-b96e-4fd3-a08d-6446b0e67e03'] = $pane;
+  $display->panels['facets'][4] = 'new-80b4e2f8-b96e-4fd3-a08d-6446b0e67e03';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1082,6 +1082,34 @@ function ttc_pages_default_page_manager_pages() {
     'contexts' => array(),
     'relationships' => array(),
     'name' => '',
+    'metatag_panels' => array(
+      'enabled' => 1,
+      'metatags' => array(
+        'description' => array(
+          'value' => 'Our team of technology transfer specialists has specialized training in invention reporting, patenting, patent strategy, executing technology transfer agreements, licensing, product development, and marketing. TTC is comprised of professionals with diverse legal, scientific, and business/marketing expertise. Most of our staff hold doctorate-level technical and/or legal training. ',
+        ),
+        'abstract' => array(
+          'value' => ' The TTC supports technology development activities for the National Cancer Institute and nine other NIH Institutes and Centers. TTC staff negotiate co-development agreements and licenses with universities, non-profit organizations, and pharmaceutical and biotechnology companies to ensure compliance with Federal statutes and regulations and the policies of the National Institutes of Health. ',
+        ),
+        'keywords' => array(
+          'value' => 'CRADA, MTA, CTA, CDA, technology transfer, tech transfer, license, patent',
+        ),
+        'robots' => array(
+          'value' => array(
+            'index' => 'index',
+            'follow' => 'follow',
+            'noindex' => 0,
+            'nofollow' => 0,
+            'noarchive' => 0,
+            'nosnippet' => 0,
+            'noodp' => 0,
+            'noydir' => 0,
+            'noimageindex' => 0,
+            'notranslate' => 0,
+          ),
+        ),
+      ),
+    ),
   );
   $display = new panels_display();
   $display->layout = 'flexible';
