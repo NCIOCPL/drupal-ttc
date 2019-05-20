@@ -1197,12 +1197,10 @@ function ttc_pages_default_page_manager_pages() {
   $pane->configuration = array(
     'admin_title' => 'Homepage Banner',
     'title' => '',
-    'body' => '<div class="banner">
-  <h2 class="banner__headline">Innovation Through Collaboration</h2>
-  <p class="banner__tagline">Serving NCI and Client Institutes and Centers</p>
-</div>',
+    'body' => '<div class="banner"><h2 class="banner__headline">Innovation Through Collaboration</h2><p class="banner__tagline"><a href="/aboutttc/missionrole/institutes-served-ttc ">Serving NCI and Client Institutes and Centers</a></p></div>',
     'format' => 'full_html',
     'substitute' => TRUE,
+    'title_heading' => 'h2',
   );
   $pane->cache = array();
   $pane->style = array(
