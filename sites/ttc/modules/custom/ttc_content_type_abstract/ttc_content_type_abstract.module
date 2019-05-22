@@ -208,6 +208,7 @@ function ttc_content_type_abstract_cron() {
 function _ttc_content_type_abstract_cron_notifications(){
 
   $query = db_select('node', 'n');
+  $query->distinct();
   $query->join('field_data_field_opp_end_date', 'b', 'n.nid = b.entity_id');
   $query->leftJoin('field_data_field_opp_30day_warned', 'c', 'n.nid = c.entity_id');
   $query->condition('n.status', 1, '=')
@@ -219,7 +220,7 @@ function _ttc_content_type_abstract_cron_notifications(){
   $query->where('(
 	  c.field_opp_30day_warned_value <> 1 or c.field_opp_30day_warned_value is null
   )');
-  $results = $query->execute();
+  $results = $query->execute();;
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_30day($result->nid);
   }
