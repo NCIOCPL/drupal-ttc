@@ -36,9 +36,13 @@
       text-align: center;
       vertical-align: middle;
       font-family: Lato;
-      font-size: 20px;
       font-weight: bold;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 17px;
+      @media #{$large-up} {
+        font-size: 20px;
+        line-height: 24px;
+      }
     }
   }
 }

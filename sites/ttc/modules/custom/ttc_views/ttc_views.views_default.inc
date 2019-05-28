@@ -107,7 +107,7 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -239,7 +239,7 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -530,6 +530,8 @@ function ttc_views_views_default_views() {
 
   /* Display: Block-home */
   $handler = $view->new_display('block', 'Block-home', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Explore the Technologies Available for Licensing and co-development';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -884,7 +886,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news_announcement' => 'news_announcement',
   );
-  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
+  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
