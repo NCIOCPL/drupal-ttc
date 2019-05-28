@@ -551,14 +551,19 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'product_type' => 'product_type',
   );
-  /* Filter criterion: Taxonomy term: Hide Home Page (field_hide_home_page) */
-  $handler->display->display_options['filters']['field_hide_home_page_value']['id'] = 'field_hide_home_page_value';
-  $handler->display->display_options['filters']['field_hide_home_page_value']['table'] = 'field_data_field_hide_home_page';
-  $handler->display->display_options['filters']['field_hide_home_page_value']['field'] = 'field_hide_home_page_value';
-  $handler->display->display_options['filters']['field_hide_home_page_value']['operator'] = 'not';
-  $handler->display->display_options['filters']['field_hide_home_page_value']['value'] = array(
+  /* Filter criterion: Taxonomy term: Term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    4 => '4',
+    3 => '3',
+    6 => '6',
     1 => '1',
+    2 => '2',
   );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'product_type';
   $export['available_technologies'] = $view;
 
   $view = new view();
