@@ -255,9 +255,7 @@ body.not-front .pane-news{padding:0px;}
 
 .pane-available-technologies, .pane-menu-menu-information,
 .listserv-subscribe-block-wrapper{position:relative;}
-.available-technologies:after,
-body.front .listserv-subscribe-block:before, 
-body.front .listserv-subscribe-block.ls:before{
+.available-technologies:after{
 	font-family: 'FontAwesome';
 	content: '\f0d7';
 	color:#FFFFFF;

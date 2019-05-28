@@ -88,7 +88,7 @@
     <nav class="mobile-menu hidden-for-large-up">
         <a role="button" href="#idOfLeftMenu" class="left-off-canvas-toggle small-3">Menu <i class="fa fa-bars" aria-hidden="true"></i></a>
         <a role="button" href="#search" class="search-toggle small-3">Search <i class="fa fa-search" aria-hidden="true"></i></a>
-        <a role="button" href="#follow" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
+        <a role="button" href="#subscribe-off-canvas" class="right-off-canvas-toggle small-3">Subscribe <i class="fa fa-email" aria-hidden="true"></i>
 </a>
     </nav>
   <nav class="desktop-menu">
@@ -262,9 +262,15 @@
             <?php  print render($menu_site_structure_expanded); ?>
           </nav> <!-- /#mobile-menu --> 
           
-          <nav class="right-off-canvas-menu" id="follow">
+          <nav class="right-off-canvas-menu" id="subscribe-off-canvas">
             <?php
-            $block = module_invoke('block', 'block_view', '2');
+           /* $block = module_invoke('block', 'block_view', '6');
+            dsm($block);
             print render($block['content']);
+*/
+            $block = block_load('block', '6');
+            $output = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+            print $output;
+
             ?>
           </nav> <!-- /#mobile-follow-menu -->     

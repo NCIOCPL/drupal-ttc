@@ -101,15 +101,15 @@ function ttctheme_form_alter(&$form, &$form_state, $form_id) {
         'search-form__input'
       )
     );
-    $form['search_block_form']['#prefix'] = '<div class="row -no-margin"><div class="small-10 columns search-form__input-container">';
+    $form['search_block_form']['#prefix'] = '<div class="row -no-margin"><div class="small-9 columns search-form__input-container">';
 
-    $form['actions']['submit']['#value'] = 'Go';
+    $form['actions']['submit']['#value'] = 'Search';
     $form['actions']['submit']['#attributes']['class'] = array_diff(
       $form['actions']['submit']['#attributes']['class'], array('secondary')
     );
     $form['actions']['submit']['#attributes']['class'][] = 'primary';
     $form['actions']['submit']['#attributes']['class'][] = 'search-form__submit';
-    $form['actions']['submit']['#prefix'] = '<div class="small-2 columns search-form__submit-container">';
+    $form['actions']['submit']['#prefix'] = '<div class="small-3 columns search-form__submit-container">';
   }
 }
 

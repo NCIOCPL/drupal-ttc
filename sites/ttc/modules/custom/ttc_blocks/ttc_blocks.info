@@ -6,5 +6,6 @@ version = 7.x-1.2
 dependencies[] = block
 dependencies[] = fe_block
 features[fe_block_boxes][] = listserv_block
+features[fe_block_boxes][] = subscribe_button
 features[fe_block_settings][] = block-listserv_block
 features[features_api][] = api:2
