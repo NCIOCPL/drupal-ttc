@@ -263,13 +263,10 @@
           
           <nav class="right-off-canvas-menu" id="subscribe-off-canvas">
             <?php
-           /* $block = module_invoke('block', 'block_view', '6');
-            dsm($block);
-            print render($block['content']);
-*/
+
             $block = block_load('block', '6');
             $output = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
             print $output;
 
             ?>
-          </nav> <!-- /#mobile-follow-menu -->     
+          </nav> <!-- /#mobile-govdelivery-menu -->
