@@ -186,7 +186,7 @@ body.not-front .pane-success-stories ul.success-stories__list {
 
     }
     
-    .pane-content:after{
+  /*  .pane-content:after{
         color:#877131 !important;
         font-family: 'FontAwesome';
         content: '\f0d7';
@@ -203,7 +203,8 @@ body.not-front .pane-success-stories ul.success-stories__list {
          @media #{$medium-only} {
             color:#7F7736 !important;
          }
-    }    
+    }
+    */
    
    .pane-title{font-size:rem(22px); color:#fff; text-align:center; margin:1rem auto 3rem;}
 
@@ -253,6 +254,7 @@ body.not-front .pane-success-stories ul.success-stories__list {
 }
 body.not-front .pane-news{padding:0px;}
 
+/*
 .pane-available-technologies, .pane-menu-menu-information,
 .listserv-subscribe-block-wrapper{position:relative;}
 .available-technologies:after{
@@ -265,5 +267,5 @@ body.not-front .pane-news{padding:0px;}
 	font-weight: 300;
 	font-size:3em;
 	z-index:100;
-}
+}*/
 body.not-front .listserv-subscribe-block-wrapper{margin-bottom:-30px;}
