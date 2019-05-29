@@ -66,7 +66,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'weight' => -11,
       ),
       'ttctheme' => array(
-        'region' => 'header',
+        'region' => 'footer',
         'status' => 1,
         'theme' => 'ttctheme',
         'weight' => -11,
@@ -133,10 +133,42 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -12,
+        'weight' => -25,
       ),
     ),
     'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['block-subscribe_button'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'subscribe_button',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+      'ttcadmin' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ttcadmin',
+        'weight' => 0,
+      ),
+      'ttctheme' => array(
+        'region' => 'header',
+        'status' => 1,
+        'theme' => 'ttctheme',
+        'weight' => -24,
+      ),
+    ),
+    'title' => 'Subscribe Button',
     'visibility' => 0,
   );
 
@@ -261,7 +293,7 @@ function ttc_theme_config_default_fe_block_settings() {
         'region' => 'header',
         'status' => 1,
         'theme' => 'ttctheme',
-        'weight' => -10,
+        'weight' => -23,
       ),
     ),
     'title' => '',

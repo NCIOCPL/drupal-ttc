@@ -67,17 +67,17 @@
       <input type="hidden" name="category_id" id="category_id" value="USNIHNCI_C25" />
       <input type="hidden" name="subscription_type" id="subscription_type" value="email" />
       <div class="container-inline">
-        <h4 class="field-content">SUBSCRIBE</h4>
-        <div class="listserv-subscribe-message">Subscribe to TTC topics to receive the latest updates.</div>
-
-        <div class="row">
-          <div class="small-8 columns listserv-input-container">
+        <div><a class="exit-off-canvas right-bar-cross"></a></div>
+        <div class="listserv-subscribe-message">Subscribed to our Available Technology Emails:</div>
+        
+        <div class="row1">
+          <div class="small-12 columns listserv-input-container">
             <div class="form-item form-type-textfield">
-              <label class="element-invisible" for="email">Enter Your Email Address</label>
+              <label class="element-invisible" for="email">Enter Your Email Address</label>  
               <input type="text" name="email" id="email" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" />
             </div>
           </div>
-          <div class="small-4 columns listserv-submit-container">
+          <div class="small-12 columns listserv-submit-container">
             <button class="button radius postfix expand primary form-submit" id="edit-submit" name="commit" value="Subscribe" type="submit">Subscribe</button>
           </div>
         </div>

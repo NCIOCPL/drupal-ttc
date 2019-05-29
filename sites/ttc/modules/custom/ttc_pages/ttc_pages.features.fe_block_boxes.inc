@@ -34,5 +34,18 @@ function ttc_pages_default_fe_block_boxes() {
 
   $export['listserv_block'] = $fe_block_boxes;
 
+
+
+  $fe_subscribe_button = new stdClass();
+  $fe_subscribe_button->info = 'Subscribe Button';
+  $fe_subscribe_button->format = 'full_html';
+  $fe_subscribe_button->machine_name = 'subscribe_button';
+  $fe_subscribe_button->body = '
+
+';
+
+  $export['subscribe_button'] = $fe_subscribe_button;
+
+
   return $export;
 }

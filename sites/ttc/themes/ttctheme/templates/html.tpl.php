@@ -91,7 +91,7 @@
       <?php print $page_bottom; ?>
       <?php print _zurb_foundation_add_reveals(); ?>
         <!-- close the off-canvas menu -->
-        <a class="exit-off-canvas"> X </a>
+        <a class="exit-off-canvas left-slide-main"> X </a>
       </div>
   </div>
   <!-- **** NCI Web Analytics  - DO NOT ALTER **** -->
