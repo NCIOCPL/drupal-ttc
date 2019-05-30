@@ -215,9 +215,17 @@ body.not-front .pane-success-stories ul.success-stories__list {
         .menu li.expanded .active:hover{text-decoration:none;}
 
 
-        ul ul li {list-style:outside;
-            a{ color:#307491; display:block; line-height:1.7rem;}
+        ul ul li {
+            list-style:none;
+            a{ color:#307491; display:inline-block; line-height:1.7rem;}
         }
+     ul ul li:before {
+       content: "\2022";
+       color:#307491;
+       display:inline-block;
+       width: 1em;
+       margin-left: -1em;
+     }
         ul ul{margin-top:.5rem;}
           .li-wrapper{
             background-color:#f0f0f0;
