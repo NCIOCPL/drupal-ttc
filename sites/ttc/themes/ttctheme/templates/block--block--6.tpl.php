@@ -68,7 +68,7 @@
       <input type="hidden" name="subscription_type" id="subscription_type" value="email" />
       <div class="container-inline">
         <div><a class="exit-off-canvas right-bar-cross"></a></div>
-        <div class="listserv-subscribe-message">Subscribed to our Available Technology Emails:</div>
+        <div class="listserv-subscribe-message">Subscribe to our Available Technology Emails:</div>
         
         <div class="row1">
           <div class="small-12 columns listserv-input-container">
