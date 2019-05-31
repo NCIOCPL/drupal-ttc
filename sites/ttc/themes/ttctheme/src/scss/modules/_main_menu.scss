@@ -295,7 +295,7 @@ body.front .home{
 }
 
 .move-left .exit-off-canvas.left-slide-main{
-  right: 65px;
+  right: 60px;
   @media #{$small-only, $medium-only} {
     right: 0px;
   }
@@ -304,7 +304,7 @@ body.front .home{
 
 
 .move-left .right-off-canvas-menu  {
-  right: 65px;
+  right: 60px;
   @media #{$small-only, $medium-only} {
     right: 0px;
   }
