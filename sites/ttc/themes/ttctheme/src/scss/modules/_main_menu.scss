@@ -302,6 +302,13 @@ body.front .home{
 
 }
 
+.move-left .inner-wrap{
+  @media #{$large-up} {
+    padding-right: 60px;
+  }
+
+}
+
 
 .move-left .right-off-canvas-menu  {
   right: 60px;
