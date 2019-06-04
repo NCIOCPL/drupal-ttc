@@ -95,7 +95,7 @@
       $('.mobile-search').toggleClass('show');
     });
     // Add home link to mobile menu
-    $('<li class="home"><a href="/">Home</a></li>').prependTo('.left-off-canvas-menu > ul.menu');
+    //$('<li class="home"><a href="/">Home</a></li>').prependTo('.left-off-canvas-menu > ul.menu');
     $('<span class="mplus"/>').insertAfter('ul.menu li.expanded > a');
     $('.mplus').on('click', function () {
       $(this).toggleClass('open').next('ul.menu').slideToggle();
