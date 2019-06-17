@@ -1,27 +1,31 @@
 $main-menu-margin-top: 1rem;
 $main-menu-margin-bottom: 0.5rem;
 $main-menu-indicator-size: 0.5rem;
-$mobile-off-canvas-width: 100px;
+$desktop-off-canvas-width: 310px;
+$mobile-off-canvas-width: 70%;
 
-.block-system-main-menu {
+.block-system-main-menu,.desktop-menu  {
   display: none;
   clear: both;
-
+  margin-top: 0;
 
   @media #{$large-up} {
     position: absolute;
+   // height: 55px;
     z-index: 1;
-    top: 100%;
+    top: 0;
     left: 0;
     display: block;
 	border-bottom:solid 1px #ccc;
-
+    background-color: #275d70;
     width: 100%;
-
+    .submenu{
+      padding-top: 20px;
+    }
     .menu {
       @include equally-spaced-list;
 
-      margin: $main-menu-margin-top 5% ($main-menu-margin-bottom + $main-menu-indicator-size);
+      margin: $main-menu-margin-top 5% 0;
 
       text-transform: uppercase;
     }
@@ -33,7 +37,7 @@ $mobile-off-canvas-width: 100px;
       &.active-trail {
         &:before {
           position: absolute;
-          top: calc(100% + #{$main-menu-margin-bottom});
+          top: calc(100% - #{$main-menu-margin-bottom});
           left: calc(50% - #{$main-menu-indicator-size});
 
           width: 0;
@@ -48,13 +52,78 @@ $mobile-off-canvas-width: 100px;
     a {
       color: palette(white, base);
     }
+
+    li.expanded .menu {
+      display: none;
+      position: absolute;
+      margin: 0;
+      z-index: 1000;
+      /* text-align: left; */
+      background-color: #FFFFFF;
+      /* padding: 5px; */
+     // border: 11px solid rgba(255, 255, 255, 0.5);
+      width: 257px;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 11px rgba(230,230,230,0.5);
+      -webkit-box-shadow: 0 0 0 11px rgba(230,230,230,0.5);
+      -moz-box-shadow: 0 0 0 11px rgba(230,230,230,0.5);
+      a {
+        color: #317490;
+      }
+      li{
+        width: 205px;
+        font-family: Lato;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 19px;
+        text-align: left;
+        padding: 10px 0 10px 10px;
+      }
+    }
+    li.expanded:hover .menu{
+      display: block;
+    }
+
+    li.expanded:hover .submenu:before{
+      position: absolute;
+      top: calc(100% - #{$main-menu-margin-bottom});
+      left: calc(50% - #{$main-menu-indicator-size});
+
+      width: 0;
+      height: 0;
+      content: '';
+      border-width: 0 $main-menu-indicator-size $main-menu-indicator-size $main-menu-indicator-size;
+      border-style: solid;
+      border-color: transparent transparent #ffffff transparent;
+    }
+
+
+    li.expanded:hover .menu::before{
+  //    content: "<span class='mplus'></span>";
+    }
+
+
+    li.last .submenu .menu{
+      right: 10px;
+    }
+
+
+
+
   }
 }
-
+// Needs to be over ridden for drop down menu to work.
+#ttc-at-search-form .postfix.form-submit{
+  z-index: 0;
+}
 .main {
   padding-top: ($list-line-height * $list-font-size) + ($main-menu-margin-top + $main-menu-margin-bottom + $main-menu-indicator-size);
 }
-body.not-front .block-system-main-menu{border-bottom:none;}
+body.not-front .block-system-main-menu,
+body.not-front .desktop-menu
+{border-bottom:none;}
+
+
 
 body.front .mobile-menu{margin-top:-55px;}    
 .mobile-menu{
@@ -76,7 +145,7 @@ body.front .mobile-menu{margin-top:-55px;}
 
 .off-canvas-wrap .left-off-canvas-menu{
     background-color:#272E3F;
-width: 290px; 
+    width: 290px;
         ul.menu{color:#fff;
             margin:0px; padding:0px;
                 li{
@@ -165,8 +234,14 @@ body.front .home{
 .right-off-canvas-menu  {
    background-color:#272E3F;
    text-align:center;
+   width: ($desktop-off-canvas-width);
 
-    li.follow-us__list-item{
+  @media #{$small-only} {
+    width: ($mobile-off-canvas-width);
+  }
+
+
+   /* li.follow-us__list-item{
         margin:20px auto; 
         clear:both; 
         display:block;
@@ -174,46 +249,110 @@ body.front .home{
         a, a:before{color:#ccc;}
         a:hover{color:#fff;}
     }
+    */
 }
+
+
 
 @media #{$small-only, $medium-only} {
   .right-off-canvas-menu {
-    width: ($mobile-off-canvas-width); 
+    //width: ($desktop-off-canvas-width);
   }
   .move-left > .inner-wrap {
-    transform: translate3d(-$mobile-off-canvas-width, 0, 0);
+    transform: translate3d(-$desktop-off-canvas-width, 0, 0);
+    @media #{$small-only} {
+      transform: translate3d(-$mobile-off-canvas-width, 0, 0);
+    }
+
   }
     .move-right > .inner-wrap {
     transform: translate3d(290px, 0, 0);
   }
 
   .no-csstransforms .left-off-canvas-menu {
-    left: -$mobile-off-canvas-width;
+    left: -$desktop-off-canvas-width;
+    @media #{$small-only} {
+      left: -$mobile-off-canvas-width;
+    }
   }
   .no-csstransforms .move-left > .inner-wrap {
-    right: $mobile-off-canvas-width;
+    right: $desktop-off-canvas-width;
+    @media #{$small-only} {
+      right: $mobile-off-canvas-width;
+    }
   }
 }
 
-.exit-off-canvas{ 
-    color:#fff; 
+.exit-off-canvas{
+  color:#fff;
     font-weight:600; 
     font-size:18px; 
     text-decoration:none; 
     padding:13px 20px; 
     display:none;
     background:rgba(0, 0, 0, 0.5) repeat !important;
+
+}
+
+.move-left .exit-off-canvas.left-slide-main{
+  right: 60px;
+  @media #{$small-only, $medium-only} {
+    right: 0px;
+  }
+
+}
+
+.move-left .inner-wrap{
+  @media #{$large-up} {
+    padding-right: 60px;
+  }
+
+}
+
+
+.move-left .right-off-canvas-menu  {
+  right: 60px;
+  @media #{$small-only, $medium-only} {
+    right: 0px;
+  }
+}
+
+.exit-off-canvas.right-bar-cross{
+  display: block;
+ // background: none !important;
+  position: inherit;
+  height: 30px;
+  padding: 0;
+  margin: 0 0 10px 260px;
+  @media #{$small-only} {
+    margin: 0 0 10px 95%;
+  }
+  text-align: right;
+  box-shadow: unset;
+  background-color: #272E3F !important;
+  background-image: url(/sites/default/themes/ttctheme/public/images/icons/ttc-exit-icon.svg) !important;
+  background-size: 15px;
+  background-repeat: no-repeat !important;
+  width: 15px;
+  height: 15px;
 }
 
 
 
+.mobile-menu .right-off-canvas-toggle  .icon-govdelivery{
+  background-image: url(/sites/default/themes/ttctheme/public/images/icons/gov-delivery-icon-white.svg);
+  background-size: 15px;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+  display: inline-block;
+}
 
 
-
-
-
-
-
+.submenu .menu a{
+  text-transform: none;
+}
 
 
 

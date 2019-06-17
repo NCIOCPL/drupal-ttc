@@ -35,8 +35,14 @@
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-
-      font-size: $list-font-size;
+      font-family: Lato;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+      @media #{$large-up} {
+        font-size: 20px;
+        line-height: 24px;
+      }
     }
   }
 }

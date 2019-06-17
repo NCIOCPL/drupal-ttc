@@ -126,7 +126,7 @@ function ttc_site_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'extlink_class';
-  $strongarm->value = 'ext';
+  $strongarm->value = 0;
   $export['extlink_class'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -184,13 +184,6 @@ function ttc_site_config_strongarm() {
   $strongarm->name = 'extlink_target';
   $strongarm->value = 0;
   $export['extlink_target'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'metatag_cache_output';
-  $strongarm->value = 1;
-  $export['metatag_cache_output'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -609,14 +602,14 @@ function ttc_site_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_403';
-  $strongarm->value = 'node/1555';
+  $strongarm->value = 'm4032404';
   $export['site_403'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_404';
-  $strongarm->value = 'node/356';
+  $strongarm->value = 'node/1765';
   $export['site_404'] = $strongarm;
 
   $strongarm = new stdClass();

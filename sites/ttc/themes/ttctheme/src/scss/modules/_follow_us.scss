@@ -50,7 +50,7 @@
 
 /// Header "Follow Us" block
 .block--follow-us-header {
-  display: none;
+  display: block;
 
   @extend %block--follow-us;
 

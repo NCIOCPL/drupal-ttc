@@ -20,7 +20,7 @@
 
   /// @TODO: remove and replace with dynamic images
   &.-icon-email {
-    border-color: palette(blue);
+    border-color: palette(white);
 
     &--white {
       border-color: palette(white);
@@ -28,7 +28,7 @@
     }
   }
   &.-icon-linkedin {
-    border-color: palette(blue);
+    border-color: palette(white);
 
     &--white {
       border-color: palette(white);
@@ -36,7 +36,7 @@
     }
   }
   &.-icon-twitter {
-    border-color: palette(blue);
+    border-color: palette(white);
 
     &--white {
       border-color: palette(white);
@@ -44,7 +44,7 @@
     }
   }
   &.-icon-govdelivery-font {
-    border-color: palette(blue);
+    border-color: palette(white);
 
     &--white {
       border-color: palette(white);
@@ -64,10 +64,11 @@
 }
 .follow-us__list li a {
 	text-align: center;
+    color: white;
 }
 .follow-us__list li a:before {
 	font-family: 'FontAwesome';
-	color: #007297;
+	color: white;
 	position: absolute;
 	vertical-align: middle;
 	text-align: center;

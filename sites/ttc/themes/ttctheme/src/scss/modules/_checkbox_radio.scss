@@ -22,6 +22,7 @@ $checkbox-radio-size: (0.75 * $form-label-line-height) * $form-label-font-size;
             display: inline-block;
 
             width: $checkbox-radio-size;
+            min-width: $checkbox-radio-size;
             height: $checkbox-radio-size;
             margin-right: $form-spacing * 0.5;
 

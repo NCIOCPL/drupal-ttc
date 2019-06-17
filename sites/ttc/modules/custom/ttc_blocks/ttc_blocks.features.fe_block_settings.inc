@@ -18,13 +18,12 @@ function ttc_blocks_default_fe_block_settings() {
     'machine_name' => 'listserv_block',
     'module' => 'block',
     'node_types' => array(),
-    'pages' => 'home
-availabletechnologies',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'seven' => array(
-        'region' => 'dashboard_sidebar',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'seven',
         'weight' => 0,
       ),
@@ -35,14 +34,14 @@ availabletechnologies',
         'weight' => 10,
       ),
       'ttctheme' => array(
-        'region' => 'content',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ttctheme',
-        'weight' => 10,
+        'weight' => -22,
       ),
     ),
     'title' => '',
-    'visibility' => 1,
+    'visibility' => 0,
   );
 
   return $export;

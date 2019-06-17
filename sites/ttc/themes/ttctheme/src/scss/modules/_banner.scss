@@ -49,5 +49,9 @@
     @media #{$large-up} {
       font-size: rem-calc(24px);
     }
+    a{
+      color: white;
+      text-decoration: underline;
+    }
   }
 }

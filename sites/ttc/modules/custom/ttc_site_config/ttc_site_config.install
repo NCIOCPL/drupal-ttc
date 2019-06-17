@@ -1,0 +1,10 @@
+<?php
+
+/**
+ *
+ * Enable module menu block
+ *
+ */
+function ttc_site_config_update_7001(&$sandbox){
+  module_enable(array("menu_block"));
+}

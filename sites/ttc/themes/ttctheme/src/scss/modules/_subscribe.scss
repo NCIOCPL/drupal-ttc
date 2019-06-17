@@ -2,10 +2,11 @@
 /** Begin styles for subscription section */
 
 .listserv-subscribe-block-wrapper {
+	//display: none;
 	margin: 0px 0;
-	background: #F4F6F3;
 	padding: 2rem 0;
 	position:relative;
+	color: white;
 }
 .listserv-subscribe-block.ls {
 	background: #F4F6F3;
@@ -15,24 +16,21 @@
 	width: 90%;
 	margin: 0 auto;
 }
-.listserv-subscribe-block .row {
+.listserv-subscribe-block .listserv-input-container,.listserv-subscribe-block .listserv-submit-container {
 	display: block;
 	max-width: 420px;
-	margin: 30px auto 0px;
-	border: solid 5px #CFCCC3;
+	margin: 10px auto 0px;
+	border: solid 7px #CFCCC3;
 	padding: 0px;
 }
-.listserv-subscribe-block .row > div, .listserv-subscribe-block .row input, .listserv-subscribe-block .row button {
+.listserv-subscribe-block > div, .listserv-subscribe-block input, .listserv-subscribe-block \button {
 	margin: 0px;
 	padding: 0px;
 	border-radius:0px !important;
 }
-.listserv-subscribe-block .row > div, .listserv-subscribe-block .row button {
-	text-transform: capitalize;
-}
-.listserv-subscribe-block .row input {
+
+.listserv-subscribe-block  input {
 	padding: 6px 10px;
-	border-right: solid 5px #CFCCC3;
 }
 
 
@@ -43,8 +41,45 @@
   color: #215d73;
 }
 
-.row.highlighted-error {
+.highlighted-error {
   border-width: 2px;
   border-color: red;
 }
 /** End styles for subscription section*/
+
+
+.block--subscribe-button{
+	float: right;
+	position:relative;
+	padding: .4375rem;
+	padding-right: .25rem;
+	background-color: #4b5529;
+	border: .4375rem solid #d9d9d9;
+	top: 51px;
+	margin-left: 5px;
+	width: 109px;
+	a{
+		color: white;
+		padding-left: 5px;
+	}
+}
+
+
+.listserv-submit-container{
+	button{
+		background-color: #4b5528;
+		margin: 0;
+	}
+	button:hover{
+		background-color: #4b5528;
+	}
+}
+
+.container-inline  div.listserv-subscribe-message {
+	font-size: 13px;
+	font-family: Lato;
+	line-height: 16px;
+	text-align: left;
+	display: block;
+	padding-left: 7px;
+}

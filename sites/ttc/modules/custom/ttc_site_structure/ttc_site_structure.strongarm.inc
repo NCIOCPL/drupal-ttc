@@ -113,6 +113,12 @@ function ttc_site_structure_strongarm() {
       'title' => 'User menu',
       'name' => 'user-menu',
     ),
+    'devel' => array(
+      'enabled' => FALSE,
+      'weight' => 10,
+      'type' => 'menu',
+      'name' => 'devel',
+    ),
   );
   $export['menu_breadcrumb_menus'] = $strongarm;
 

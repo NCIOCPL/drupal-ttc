@@ -1,7 +1,7 @@
 // Non-modular or client styles for the .main region.
 .main {
   @include linear-gradient(palette(blue, dark), palette(grass-green, dark), palette(orange, dark));
-
+  position: relative;
   padding-right: $column-gutter;
   padding-left: $column-gutter;
   background-size:100% 50%;

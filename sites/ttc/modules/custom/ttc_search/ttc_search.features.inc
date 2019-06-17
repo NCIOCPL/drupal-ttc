@@ -212,6 +212,7 @@ function ttc_search_default_search_api_index() {
         },
         "field_pat_status:field_patent_status:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_pat_status:field_text:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_pdf_img" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_product_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_therapeutic_area" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "nid" : { "type" : "integer" },
@@ -656,6 +657,12 @@ function ttc_search_default_search_api_server() {
             "table" : "search_api_db_abstract_faceted_index",
             "column" : "search_api_aggregation_2",
             "type" : "string",
+            "boost" : "1.0"
+          },
+          "field_pdf_img" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "field_pdf_img",
+            "type" : "integer",
             "boost" : "1.0"
           }
         }

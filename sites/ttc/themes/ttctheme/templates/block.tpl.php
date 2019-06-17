@@ -69,11 +69,11 @@
       <div class="container-inline">
         <h4 class="field-content">SUBSCRIBE</h4>
         <div class="listserv-subscribe-message">Subscribe to TTC topics to receive the latest updates.</div>
-        
+
         <div class="row">
           <div class="small-8 columns listserv-input-container">
             <div class="form-item form-type-textfield">
-              <label class="element-invisible" for="email">Enter Your Email Address</label>  
+              <label class="element-invisible" for="email">Enter Your Email Address</label>
               <input type="text" name="email" id="email" title="Enter an email address to subscribe." placeholder="Your Email Address..." class="subscribe-form-input-text" />
             </div>
           </div>

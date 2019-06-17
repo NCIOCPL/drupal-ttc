@@ -455,10 +455,12 @@ function date_element_empty($element, &$form_state) {
  */
 function date_combo_validate($element, &$form_state) {
 
+
+  $needs_validation = !empty($element['#needs_validation']);
   // Disabled and hidden elements won't have any input and don't need validation,
   // we just need to re-save the original values, from before they were processed into
   // widget arrays and timezone-adjusted.
-  if (date_hidden_element($element) || !empty($element['#disabled'])) {
+  if (date_hidden_element($element) || !empty($element['#disabled']) || !$needs_validation) {
     form_set_value($element, $element['#date_items'], $form_state);
     return;
   }
@@ -550,7 +552,6 @@ function date_combo_validate($element, &$form_state) {
   // because otherwise we'll show errors on the nested elements
   // more than once.
   elseif (!form_get_errors()) {
-
     $timezone = !empty($item[$tz_field]) ? $item[$tz_field] : $element['#date_timezone'];
     $timezone_db = date_get_timezone_db($field['settings']['tz_handling']);
     $element[$from_field]['#date_timezone'] = $timezone;

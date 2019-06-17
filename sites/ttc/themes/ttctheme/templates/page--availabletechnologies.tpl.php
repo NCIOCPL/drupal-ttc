@@ -95,9 +95,13 @@ foreach($theme_hook_suggestions as $suggestion) {
     <nav class="mobile-menu hidden-for-large-up">
         <a role="button" href="#idOfLeftMenu" class="left-off-canvas-toggle small-3">Menu <i class="fa fa-bars" aria-hidden="true"></i></a>
         <a role="button" href="#search" class="search-toggle small-3">Search <i class="fa fa-search" aria-hidden="true"></i></a>
-        <a role="button" href="#follow" class="right-off-canvas-toggle small-3">Follow <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
+        <a role="button" href="#subscribe-off-canvas" class="right-off-canvas-toggle small-3">Subscribe<span class="icon-govdelivery"></span></i></a>
 </a>
     </nav>
+
+      <nav class="desktop-menu">
+        <?php  print render($menu_site_structure_expanded_desktop); ?>
+      </nav>
   <div class="main-wrapper">
     <!-- .l-main region -->
     <div class="main__inner row">
@@ -262,11 +266,14 @@ foreach($theme_hook_suggestions as $suggestion) {
 <!--/.page -->
           <nav class="left-off-canvas-menu">
             <?php print render($menu_site_structure_expanded); ?> 
-          </nav> <!-- /#mobile-menu --> 
-          
-          <nav class="right-off-canvas-menu" id="follow">
-            <?php
-            $block = module_invoke('block', 'block_view', '2');
-            print render($block['content']);
-            ?>
-          </nav> <!-- /#mobile-follow-menu -->     
+          </nav> <!-- /#mobile-menu -->
+
+        <nav class="right-off-canvas-menu" id="subscribe-off-canvas">
+          <?php
+
+          $block = block_load('block', '6');
+          $output = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+          print $output;
+
+          ?>
+        </nav> <!-- /#mobile-govdelivery-menu -->
