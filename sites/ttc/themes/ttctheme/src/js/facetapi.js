@@ -1,6 +1,7 @@
 (function () {
   'use strict';
-
+// USed for expanding facets when option selected
+  var facets_expanded = [];
   jQuery(document).ready(function () {
     // Create a link to remove the keyword filter.
     (function () {
@@ -66,6 +67,12 @@
   Drupal.facetapi.makeCheckbox = function () {
     var $link = jQuery(this);
     var isActive = $link.hasClass('facetapi-active');
+    if(isActive){
+        $link.closest(".pane-content").prev().addClass("open");
+        $link.closest(".pane-content").show();
+    }
+    
+
     var isInactive = $link.hasClass('facetapi-inactive');
 
     if (!isActive && !isInactive) {
