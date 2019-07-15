@@ -9,7 +9,7 @@
   font-weight: bold;
 
   @if $level == 1 {
-    text-transform: uppercase;
+    text-transform: none;
   }
 }
 
