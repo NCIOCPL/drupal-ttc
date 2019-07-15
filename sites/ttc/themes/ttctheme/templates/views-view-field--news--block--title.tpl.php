@@ -21,6 +21,13 @@
  * regardless of any changes in the aliasing that might happen if
  * the view is modified.
  */
+
+module_load_include('inc', 'pathauto', 'pathauto');
+$clean_string = pathauto_cleanstring($output,array());
+
 ?>
-<a name="technology-transfer-nci-and-industry-partnerships-featured-in-mednous"></a>
-<?php print $output; ?>
+<a class="anchor" name="<?php print $clean_string ?>">
+    <h3></h3>
+</a>
+<a href="/news#<?php print $clean_string ?>"><?php print $output; ?></a>
+
