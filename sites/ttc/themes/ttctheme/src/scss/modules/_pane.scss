@@ -35,7 +35,7 @@ body.front .pane-available-technologies {
         @include block-grid(3, rem-calc(12));
 
         @media #{$medium-up} {
-          @include block-grid(5, rem-calc(12));
+          @include block-grid(6, rem-calc(12));
         }
         /*@media #{$large-up} {
           @include block-grid(6);

@@ -40,10 +40,10 @@
 }
 
 // Mixin for Product Type (Technologies) background colors
-@mixin product-type-background($style: 'base') {
+@mixin product-type-background($style: 'dark') {
 
   &.-devices {
-    background-color: palette(plum, $style);
+    background-color: palette(sea-green, $style);
   }
   &.-diagnostics {
     background-color: palette(red, $style);
@@ -52,18 +52,18 @@
     background-color: palette(lavender, $style);
   }
   &.-software {
-    background-color: palette(grass-green, $style);
+    background-color: palette(orange, $style);
   }
   &.-therapeutics {
-    background-color: palette(sea-green, $style);
+    background-color: palette(plum, $style);
   }
   &.-vaccines {
-    background-color: palette(orange, $style);
+    background-color: palette(grass-green, $style);
   }
 }
 
 // Mixin for Product Type (Technologies) background colors
-@mixin product-type-card($style: 'base', $height: 80%) {
+@mixin product-type-card($style: 'dark', $height: 80%) {
 
   @include product-type-background($style);
 

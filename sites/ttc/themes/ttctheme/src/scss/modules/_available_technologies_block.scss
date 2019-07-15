@@ -56,7 +56,7 @@ body.page-availabletechnologies .at-icons {
   }
 
   .available-technologies__block{
-    @include product-type-card('base', 70%);
+    @include product-type-card('dark', 70%);
     border:solid 1rem #D9D9D9;
 
     .field-content {
