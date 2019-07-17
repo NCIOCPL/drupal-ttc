@@ -8670,6 +8670,131 @@ ul.available-technologies__list.home-page li .available-technologies__block {
   }
 }
 
+.pane-available-institutes {
+  background-color: #ffffff;
+}
+
+.pane-available-institutes .pane-title {
+  color: #317490;
+  text-align: center;
+  margin: 25px auto;
+  font-size: 1.375rem;
+  font-size: 23px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 5px;
+}
+
+@media only screen and (max-width: 40em) {
+  .pane-available-institutes .pane-title {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 40em), only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  .pane-available-institutes .pane-title:before,
+  .pane-available-institutes .pane-title:after {
+    content: " ";
+    background-image: url(/sites/default/themes/ttctheme/public/images/icons/section-menu-up-arrow.svg) !important;
+    background-size: 15px;
+    background-repeat: no-repeat !important;
+    width: 25px;
+    height: 15px;
+    margin-top: 10px;
+  }
+  .pane-available-institutes .pane-title.expanded:before,
+  .pane-available-institutes .pane-title.expanded:after {
+    background-image: url(/sites/default/themes/ttctheme/public/images/icons/section-menu-arrow.svg) !important;
+  }
+  .pane-available-institutes .pane-title:before {
+    background-position: right;
+    margin-left: 5px;
+  }
+  .pane-available-institutes .pane-title:after {
+    background-position: right;
+    margin-right: 5px;
+  }
+  .pane-available-institutes .pane-title span {
+    padding: 0 5px;
+  }
+}
+
+@media only screen and (max-width: 40em), only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  .pane-available-institutes .pane-content {
+    display: none;
+  }
+  .pane-available-institutes .pane-content.visible {
+    display: block;
+  }
+}
+
+.pane-available-institutes .view-available-institutes .view-content {
+  margin: 20px auto;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media only screen and (max-width: 40em), only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  .pane-available-institutes .view-available-institutes .view-content {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 40em) {
+  .pane-available-institutes .view-available-institutes .view-content {
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  .pane-available-institutes .view-available-institutes .view-content {
+    width: 80%;
+  }
+}
+
+.pane-available-institutes .view-available-institutes .views-row {
+  border-radius: 8px;
+  background-color: #317490;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+}
+
+.pane-available-institutes .view-available-institutes .views-row a {
+  color: #FFFFFF;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 22px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 40em) {
+  .pane-available-institutes .view-available-institutes .views-row a {
+    font-size: 14px;
+  }
+}
+
+.pane-available-institutes .view-available-institutes .flex-break {
+  display: none;
+}
+
+@media only screen and (max-width: 40em), only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  .pane-available-institutes .view-available-institutes .flex-break {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    display: block;
+  }
+}
+
 body.front .pane-success-stories {
   background: #235c72 url(/sites/default/themes/ttctheme/public/images/bg/bg_banner.png) no-repeat center center;
   background-size: cover 100%;
@@ -8924,7 +9049,7 @@ body.not-front .pane-success-stories ul.success-stories__list P {
         font-weight: 300;
         font-size:3em;
         z-index:100;
-        
+
          @media only screen and (max-width: 40em) {
             color:#877132 !important;
          }

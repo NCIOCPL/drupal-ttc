@@ -144,5 +144,17 @@
     }
 
 
+    // Expand collapse mobile only
+    $('.pane-available-institutes .pane-title').click(function (event) {
+        event.preventDefault();
+        var windowWidth = $(window).width();
+        if(windowWidth <= 1024) {
+            $('.pane-available-institutes .pane-content').toggleClass("visible");
+            $('.pane-available-institutes .pane-title').toggleClass("expanded");
+        }
+
+    });
+
+
   });
 }(jQuery));

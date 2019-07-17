@@ -531,7 +531,7 @@ function ttc_views_views_default_views() {
   /* Display: Block-home */
   $handler = $view->new_display('block', 'Block-home', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Explore Our Technologies Available for Licensing and Co-development';
+  $handler->display->display_options['title'] = 'This website uses cookies to ensure you get the best experience on our website. See details Don\'t show this again  Convert Case ';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -729,10 +729,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['path'] = 'news#[title]';
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['unwanted_characters'] = ',';
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'news';
   $handler->display->display_options['fields']['title']['alter']['path_case'] = 'lower';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
