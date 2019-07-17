@@ -531,7 +531,7 @@ function ttc_views_views_default_views() {
   /* Display: Block-home */
   $handler = $view->new_display('block', 'Block-home', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'This website uses cookies to ensure you get the best experience on our website. See details Don\'t show this again  Convert Case ';
+  $handler->display->display_options['title'] = 'EXPLORE THE TECHNOLOGIES AVAILABLE FOR LICENSING AND CO-DEVELOPMENT';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
