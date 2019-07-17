@@ -453,6 +453,40 @@ function ttc_taxonomy_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-letterheads-field_short_name'.
+  $field_instances['taxonomy_term-letterheads-field_short_name'] = array(
+    'bundle' => 'letterheads',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_short_name',
+    'label' => 'Short Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-patent_status-field_display_text'.
   $field_instances['taxonomy_term-patent_status-field_display_text'] = array(
     'bundle' => 'patent_status',
@@ -534,6 +568,7 @@ function ttc_taxonomy_field_default_field_instances() {
   t('Organization Name');
   t('Phone');
   t('Postal Code');
+  t('Short Name');
   t('State');
   t('Status');
   t('Suffix');
