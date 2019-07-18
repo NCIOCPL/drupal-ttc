@@ -26,7 +26,4 @@ module_load_include('inc', 'pathauto', 'pathauto');
 $clean_string = pathauto_cleanstring($output,array());
 
 ?>
-<a class="anchor" name="<?php print $clean_string ?>">
-    <h3></h3>
-</a>
-<h2><?php print $output; ?></h2>
+<a href="/news#<?php print $clean_string ?>"><?php print $output; ?></a>
