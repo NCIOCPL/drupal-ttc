@@ -470,7 +470,7 @@ function ttc_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Explore Our Technologies Available for Licensing and Co-development';
+  $handler->display->display_options['title'] = 'Explore Technologies from Institutes and Centers we serve';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -580,7 +580,7 @@ function ttc_views_views_default_views() {
   /* Display: Block-home */
   $handler = $view->new_display('block', 'Block-home', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Explore the Technologies Available for Licensing and Co-development';
+  $handler->display->display_options['title'] = 'Explore Our Technologies Available for Licensing and Co-development';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
