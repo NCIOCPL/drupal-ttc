@@ -6552,7 +6552,7 @@ li {
   background-color: #c93930;
 }
 
-.taxonomy-term.-research-materials {
+.taxonomy-term.-research-tools {
   background-color: #6a6491;
 }
 
@@ -6585,7 +6585,7 @@ body.node-type-abstract h1#page-title {
   background-color: #c93930;
 }
 
-.available-technologies__block.-research-materials {
+.available-technologies__block.-research-tools {
   background-color: #6a6491;
 }
 
@@ -6643,11 +6643,11 @@ body.node-type-abstract h1#page-title {
   background-repeat: no-repeat;
 }
 
-.available-technologies__block.-research-materials {
+.available-technologies__block.-research-tools {
   position: relative;
 }
 
-.available-technologies__block.-research-materials::before {
+.available-technologies__block.-research-tools::before {
   content: '';
   display: block;
   position: absolute;
@@ -6777,7 +6777,7 @@ body.page-availabletechnologies .at-icons .available-technologies__block.-diagno
   background-color: #c93930;
 }
 
-body.page-availabletechnologies .at-icons .available-technologies__block.-research-materials {
+body.page-availabletechnologies .at-icons .available-technologies__block.-research-tools {
   background-color: #6a6491;
 }
 
@@ -6835,11 +6835,11 @@ body.page-availabletechnologies .at-icons .available-technologies__block.-diagno
   background-repeat: no-repeat;
 }
 
-body.page-availabletechnologies .at-icons .available-technologies__block.-research-materials {
+body.page-availabletechnologies .at-icons .available-technologies__block.-research-tools {
   position: relative;
 }
 
-body.page-availabletechnologies .at-icons .available-technologies__block.-research-materials::before {
+body.page-availabletechnologies .at-icons .available-technologies__block.-research-tools::before {
   content: '';
   display: block;
   position: absolute;

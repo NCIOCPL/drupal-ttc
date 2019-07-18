@@ -48,7 +48,7 @@
   &.-diagnostics {
     background-color: palette(red, $style);
   }
-  &.-research-materials {
+  &.-research-tools {
     background-color: palette(lavender, $style);
   }
   &.-software {
@@ -73,7 +73,7 @@
   &.-diagnostics {
     @include product-type-icon('/sites/default/themes/ttctheme/public/images/icons/diagnostics.png', $height);
   }
-  &.-research-materials {
+  &.-research-tools {
     @include product-type-icon('/sites/default/themes/ttctheme/public/images/icons/research-materials.png', $height);
   }
   &.-software {
