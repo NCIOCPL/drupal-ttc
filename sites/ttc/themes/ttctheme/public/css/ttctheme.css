@@ -9301,6 +9301,10 @@ body.not-front .listserv-subscribe-block-wrapper {
   margin-top: -20px;
 }
 
+.page-node.section-news #page-title {
+  margin-bottom: 18px;
+}
+
 .field-pat-status__item-label {
   font-weight: bold;
 }
