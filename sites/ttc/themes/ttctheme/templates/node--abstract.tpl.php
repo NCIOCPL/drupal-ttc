@@ -95,7 +95,6 @@ $show_default_date = empty($content['field_updated_date']) && empty($content['fi
 
 
 
-
 if ($view_mode!='teaser') {
 
   $show_up_date = false;
@@ -122,15 +121,21 @@ if ($view_mode!='teaser') {
   ?>
   
   <div class='abstract__contents'>
-    <?php print render($title_prefix); ?>
-    <?php if (!$page): ?>
-      <?php if (!$page): ?>
-        <h2<?php print $title_attributes; ?>>
-          <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-      <?php endif; ?>
-    <?php endif; ?>
-    <?php print render($title_suffix); ?>
 
+    <?php
+    if ($view_mode !='full') {
+    ?>
+
+        <?php print render($title_prefix); ?>
+        <?php if (!$page): ?>
+          <?php if (!$page): ?>
+            <h2<?php print $title_attributes; ?>>
+              <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+          <?php endif; ?>
+        <?php endif; ?>
+        <?php print render($title_suffix); ?>
+
+    <?php  } ?>
     <?php
       $has_summary_block = !empty($content['field_meta_long_desc']) ||
         !empty($content['field_enumber']) ||
