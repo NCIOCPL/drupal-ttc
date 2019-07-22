@@ -395,6 +395,13 @@ body.not-front .pane-news{padding:0px;}
   }
 }
 
+.pane-available-technologies h2.pane-title  {
+  @media #{$small-only} {
+    line-height: 22.4px;
+  }
+}
+
+
   /*
   .pane-available-technologies, .pane-menu-menu-information,
   .listserv-subscribe-block-wrapper{position:relative;}
