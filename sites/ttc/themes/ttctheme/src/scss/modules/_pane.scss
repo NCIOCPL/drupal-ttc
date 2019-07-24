@@ -93,16 +93,16 @@ body.front .pane-available-technologies {
     .pane-title:before,
     .pane-title:after {
       content: " ";
-      background-image: url(/sites/default/themes/ttctheme/public/images/icons/section-menu-up-arrow.svg) !important;
+      background-image: url(/sites/default/themes/ttctheme/public/images/icons/section-menu-arrow.svg) !important;
       background-size: 15px;
       background-repeat: no-repeat !important;
       width: 25px;
       height: 15px;
-      margin-top: 10px;
+      margin-top: 5px;
     }
     .pane-title.expanded:before,
     .pane-title.expanded:after {
-      background-image: url(/sites/default/themes/ttctheme/public/images/icons/section-menu-arrow.svg) !important;
+      background-image: url(/sites/default/themes/ttctheme/public/images/icons/section-menu-up-arrow.svg) !important;
     }
 
     .pane-title:before{
