@@ -9,7 +9,7 @@
   font-weight: bold;
 
   @if $level == 1 {
-    text-transform: uppercase;
+    text-transform: none;
   }
 }
 
@@ -40,30 +40,30 @@
 }
 
 // Mixin for Product Type (Technologies) background colors
-@mixin product-type-background($style: 'base') {
+@mixin product-type-background($style: 'dark') {
 
   &.-devices {
-    background-color: palette(plum, $style);
+    background-color: palette(sea-green, $style);
   }
   &.-diagnostics {
     background-color: palette(red, $style);
   }
-  &.-research-materials {
+  &.-research-tools {
     background-color: palette(lavender, $style);
   }
   &.-software {
-    background-color: palette(grass-green, $style);
+    background-color: palette(orange, $style);
   }
   &.-therapeutics {
-    background-color: palette(sea-green, $style);
+    background-color: palette(plum, $style);
   }
   &.-vaccines {
-    background-color: palette(orange, $style);
+    background-color: palette(grass-green, $style);
   }
 }
 
 // Mixin for Product Type (Technologies) background colors
-@mixin product-type-card($style: 'base', $height: 80%) {
+@mixin product-type-card($style: 'dark', $height: 80%) {
 
   @include product-type-background($style);
 
@@ -73,7 +73,7 @@
   &.-diagnostics {
     @include product-type-icon('/sites/default/themes/ttctheme/public/images/icons/diagnostics.png', $height);
   }
-  &.-research-materials {
+  &.-research-tools {
     @include product-type-icon('/sites/default/themes/ttctheme/public/images/icons/research-materials.png', $height);
   }
   &.-software {

@@ -107,7 +107,7 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -239,7 +239,7 @@ function ttc_views_views_default_views() {
     'abstract' => 'abstract',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
@@ -459,6 +459,55 @@ function ttc_views_views_default_views() {
   $export['abstracts_xml'] = $view;
 
   $view = new view();
+  $view->name = 'available_institutes';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Available Institutes';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Explore Technologies from Institutes and Centers we serve';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  /* Field: Taxonomy term: Short Name */
+  $handler->display->display_options['fields']['field_short_name']['id'] = 'field_short_name';
+  $handler->display->display_options['fields']['field_short_name']['table'] = 'field_data_field_short_name';
+  $handler->display->display_options['fields']['field_short_name']['field'] = 'field_short_name';
+  $handler->display->display_options['fields']['field_short_name']['label'] = '';
+  $handler->display->display_options['fields']['field_short_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_short_name']['alter']['path'] = '/availabletechnologies/all?f[0]=field_pdf_img:[tid]';
+  $handler->display->display_options['fields']['field_short_name']['element_label_colon'] = FALSE;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'letterheads' => 'letterheads',
+  );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $export['available_institutes'] = $view;
+
+  $view = new view();
   $view->name = 'available_technologies';
   $view->description = '';
   $view->tag = 'default';
@@ -531,7 +580,7 @@ function ttc_views_views_default_views() {
   /* Display: Block-home */
   $handler = $view->new_display('block', 'Block-home', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Explore the Technologies Available for Licensing and co-development';
+  $handler->display->display_options['title'] = 'Explore Our Technologies Available for Licensing and Co-development';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -551,19 +600,6 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'product_type' => 'product_type',
   );
-  /* Filter criterion: Taxonomy term: Term */
-  $handler->display->display_options['filters']['tid']['id'] = 'tid';
-  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['value'] = array(
-    4 => '4',
-    3 => '3',
-    6 => '6',
-    1 => '1',
-    2 => '2',
-  );
-  $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'product_type';
   $export['available_technologies'] = $view;
 
   $view = new view();
@@ -742,8 +778,8 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'news';
+  $handler->display->display_options['fields']['title']['alter']['path_case'] = 'lower';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'h4';
@@ -891,7 +927,7 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news_announcement' => 'news_announcement',
   );
-  /* Filter criterion: Content: Include in RSS for GovDelivery (field_opp_list_send) */
+  /* Filter criterion: Content: Announce opportunity to GovDelivery? (field_opp_list_send) */
   $handler->display->display_options['filters']['field_opp_list_send_value']['id'] = 'field_opp_list_send_value';
   $handler->display->display_options['filters']['field_opp_list_send_value']['table'] = 'field_data_field_opp_list_send';
   $handler->display->display_options['filters']['field_opp_list_send_value']['field'] = 'field_opp_list_send_value';
