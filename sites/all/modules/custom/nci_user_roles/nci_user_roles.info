@@ -1,0 +1,8 @@
+name = NCI User Roles
+description = Provides User Role definitions & Permissions for each
+package = NCI
+core = 7.x
+version = 7.x-1.0
+
+dependencies[] = role_delegation
+dependencies[] = config_perms

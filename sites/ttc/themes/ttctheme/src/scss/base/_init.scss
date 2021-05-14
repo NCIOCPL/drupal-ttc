@@ -1,8 +1,8 @@
-@import "foundation/functions";
+@import "../foundation/functions";
 
 // Import our functions early so they can be used by mixins and other partials.
 // We can also override Foundation functions this way.
-@import "base/functions";
+@import "functions";
 
 /// Map of fonts.
 /// @type Map
@@ -79,6 +79,7 @@ $column-gutter: rem-calc(30);
 
 $font-weight-normal: normal;
 $font-weight-bold: bold;
+
 $font-family-sans-serif: font(lato);
 $body-bg: palette(white);
 $body-font-color: palette(gray, dark);

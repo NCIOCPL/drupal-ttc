@@ -1,7 +1,7 @@
 (function () {
   'use strict';
-// USed for expanding facets when option selected
-  var facets_expanded = [];
+  // USed for expanding facets when option selected
+  // var facets_expanded = [];
   jQuery(document).ready(function () {
     // Create a link to remove the keyword filter.
     (function () {
@@ -11,11 +11,11 @@
         return;
       }
 
-      // Get the path without the keyword (but with 'all') and add any facets.
+    // Get the path without the keyword (but with 'all') and add any facets.
       var baseWithFacets = path.slice(0, -1).join('/') + '/all' + location.search;
 
       jQuery('.facet-selection > li').not(':has(a)')
-        .wrapInner('<a href="' + baseWithFacets + '">');
+      .wrapInner('<a href="' + baseWithFacets + '">');
     }());
 
     // Wrap sorting filters in a span.
@@ -56,8 +56,8 @@
       jQuery('.form-item-' + sortClass + ' .form-type-bef-link')
         .each(addClassList)
         .children('a')
-          .addClass('edit-sort__link')
-          .wrapInner('<span class="element-invisible">');
+        .addClass('edit-sort__link')
+        .wrapInner('<span class="faceted-sort-button-text">');
 
       // Re-run Foundation initialization, since we've added tooltips
       jQuery(document).foundation();
@@ -65,74 +65,74 @@
   });
 
 
-  if(typeof Drupal.facetapi  != 'undefined') {
-      Drupal.facetapi.makeCheckbox = function () {
-          var $link = jQuery(this);
-          var isActive = $link.hasClass('facetapi-active');
-          if (isActive) {
-              $link.closest(".pane-content").prev().addClass("open");
-              $link.closest(".pane-content").show();
-          }
+  if (typeof Drupal.facetapi != 'undefined') {
+    Drupal.facetapi.makeCheckbox = function () {
+      var $link = jQuery(this);
+      var isActive = $link.hasClass('facetapi-active');
+      if (isActive) {
+        $link.closest('.pane-content').prev().addClass('open');
+        $link.closest('.pane-content').show();
+      }
 
 
-          var isInactive = $link.hasClass('facetapi-inactive');
+      var isInactive = $link.hasClass('facetapi-inactive');
 
-          if (!isActive && !isInactive) {
-              // Not a facet link.
-              return;
-          }
+      if (!isActive && !isInactive) {
+        // Not a facet link.
+        return;
+      }
 
-          // Derive an ID and label for the checkbox based on the associated link.
-          // The label is required for accessibility, but it duplicates information
-          // in the link itself, so it should only be shown to screen reader users.
-          var id = this.id + '--checkbox';
-          var isDisabled = $link.hasClass('facetapi-zero-results');
+      // Derive an ID and label for the checkbox based on the associated link.
+      // The label is required for accessibility, but it duplicates information
+      // in the link itself, so it should only be shown to screen reader users.
+      var id = this.id + '--checkbox';
+      var isDisabled = $link.hasClass('facetapi-zero-results');
 
-          // Get just the link label, without text inside an invisible element.
-          var description = $link.contents().filter(function () {
-              return this.nodeType === 3;
-          })[0].nodeValue;
+      // Get just the link label, without text inside an invisible element.
+      var description = $link.contents().filter(function () {
+        return this.nodeType === 3;
+      })[0].nodeValue;
 
-          // Create the elements for insertion.
-          var $container = jQuery('<div class="checkbox">');
-          var $label = jQuery('<label for="' + id + '">' + description + '</label>');
-          var $checkbox = jQuery('<input type="checkbox" class="facetapi-checkbox" id="' + id + '">');
+      // Create the elements for insertion.
+      var $container = jQuery('<div class="checkbox">');
+      var $label = jQuery('<label for="' + id + '">' + description + '</label>');
+      var $checkbox = jQuery('<input type="checkbox" class="facetapi-checkbox" id="' + id + '">');
 
-          var href = $link.attr('href');
-          var redirect = new Drupal.facetapi.Redirect(href);
-          var filterAction;
+      var href = $link.attr('href');
+      var redirect = new Drupal.facetapi.Redirect(href);
+      var filterAction;
 
-          $checkbox.click(function (e) {
-              Drupal.facetapi.disableFacet($link.parents('ul.facetapi-facetapi-checkbox-links'));
-              redirect.gotoHref();
-          });
+      $checkbox.click(function (e) {
+        Drupal.facetapi.disableFacet($link.parents('ul.facetapi-facetapi-checkbox-links'));
+        redirect.gotoHref();
+      });
 
-          if (isActive) {
-              $checkbox.prop('checked', true);
-              filterAction = Drupal.t('Remove filter for: ');
-          }
-          else {
-              filterAction = Drupal.t('Apply filter for: ');
-          }
+      if (isActive) {
+        $checkbox.prop('checked', true);
+        filterAction = Drupal.t('Remove filter for: ');
+      }
+      else {
+        filterAction = Drupal.t('Apply filter for: ');
+      }
 
-          if (isDisabled) {
-              $checkbox.prop('disabled', true);
-          }
+      if (isDisabled) {
+        $checkbox.prop('disabled', true);
+      }
 
-          // Add accessible text to the label
-          $label.prepend('<span class="element-invisible">' + filterAction + '</span>');
+      // Add accessible text to the label
+      $label.prepend('<span class="element-invisible">' + filterAction + '</span>');
 
-          // Set up the container
-          // Example markup:
-          // <div class="checkbox">
-          //   <input id="ID" type="checkbox">
-          //   <label for="ID">LABEL</label>
-          // </div>
-          $container.append($checkbox).append($label);
-          // Add the checkbox and label, remove the link
-          $link.after($container)
-              .remove();
-      };
+      // Set up the container
+      // Example markup:
+      // <div class="checkbox">
+      //   <input id="ID" type="checkbox">
+      //   <label for="ID">LABEL</label>
+      // </div>
+      $container.append($checkbox).append($label);
+      // Add the checkbox and label, remove the link
+      $link.after($container)
+        .remove();
+    };
   }
 }());
 
@@ -140,14 +140,21 @@
   'use strict';
   $(document).ready(function () {
     // font awesome 508 fix
-    $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fa fa-sort-numeric-desc" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-field-opp-start-date-asc a').prepend('<i class="fa fa-calendar-check-o" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fa fa-calendar" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-changed-asc a').prepend('<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-changed-desc a').prepend('<i class="fa fa-calendar-minus-o" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-1-asc a').prepend('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-1-desc a').prepend('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>');
+    //
+    $('#edit-abstract-sort-search-api-aggregation-1-asc a').prepend('<i class="fas fa-sort-alpha-up" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-1-desc a').prepend('<i class="fas fa-sort-alpha-down" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fas fa-sort-numeric-up" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fas fa-sort-numeric-down" aria-hidden="true"></i>');
+
+    $('#edit-abstract-sort-field-opp-start-date-asc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
+      '<span class="calendar-number-icon" aria-hidden="true"></span>');
+    $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fas fa-long-arrow-alt-down"" aria-hidden="true"></i>' +
+      '<span class="calendar-number-icon" aria-hidden="true"></span>');
+    $('#edit-abstract-sort-changed-asc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
+      '<span class="calendar-edit-icon" aria-hidden="true"></span>');
+    $('#edit-abstract-sort-changed-desc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
+      '<span class="calendar-edit-icon" aria-hidden="true"></span>');
+
     // facet selector keyboard support
     $('.pane-facetapi .pane-title').wrapInner("<a href='#' class='facet-type'></a>");
     $('.pane-facetapi .pane-title a').focus(function () {

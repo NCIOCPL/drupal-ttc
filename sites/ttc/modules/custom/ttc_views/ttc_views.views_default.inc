@@ -1191,144 +1191,141 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['path'] = 'technologies-sitemap.xml';
   $export['technologies_sitemap'] = $view;
 
-  $view = new view();
-  $view->name = 'ttc_abstract_faceted_results';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'search_api_index_abstract_faceted_index';
-  $view->human_name = 'TTC Abstract Faceted Results';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+    $view = new view();
+    $view->name = 'ttc_abstract_faceted_results';
+    $view->description = '';
+    $view->tag = 'default';
+    $view->base_table = 'search_api_index_abstract_faceted_index';
+    $view->human_name = 'TTC Abstract Faceted Results';
+    $view->core = 7;
+    $view->api_version = '3.0';
+    $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = '(ascending)';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = '(descending)';
-  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['bef'] = array(
-    'general' => array(
-      'allow_secondary' => 0,
-      'secondary_label' => 'Advanced options',
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-    ),
-    'sort' => array(
-      'bef_format' => 'bef_toggle_links',
-      'advanced' => array(
-        'collapsible' => 0,
-        'collapsible_label' => 'Sort options',
-        'combine' => 1,
-        'combine_param' => 'abstract_sort',
-        'combine_rewrite' => '',
-        'reset' => 0,
-        'reset_label' => '',
-        'is_secondary' => 0,
-        'secondary_label' => NULL,
-      ),
-      'secondary_label' => NULL,
-      'collapsible_label' => NULL,
-      'combine_rewrite' => NULL,
-      'reset_label' => NULL,
-    ),
-    'secondary_label' => NULL,
-    'collapsible_label' => NULL,
-    'combine_rewrite' => NULL,
-    'reset_label' => NULL,
-  );
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '5';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '«';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹';
-  $handler->display->display_options['pager']['options']['tags']['next'] = '›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = '»';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Result summary */
-  $handler->display->display_options['header']['result']['id'] = 'result';
-  $handler->display->display_options['header']['result']['table'] = 'views';
-  $handler->display->display_options['header']['result']['field'] = 'result';
-  $handler->display->display_options['header']['result']['content'] = 'Showing @start-@end of @total results found';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'No Results';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No results are available that match the selected search filters.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Field: Indexed Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Meta Description */
-  $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
-  $handler->display->display_options['fields']['field_meta_long_desc']['label'] = '';
-  $handler->display->display_options['fields']['field_meta_long_desc']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Content: Title2 */
-  $handler->display->display_options['sorts']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
-  $handler->display->display_options['sorts']['search_api_aggregation_1']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['sorts']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
-  $handler->display->display_options['sorts']['search_api_aggregation_1']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['search_api_aggregation_1']['expose']['label'] = 'Title';
-  /* Sort criterion: Indexed Content: Reference Number2 */
-  $handler->display->display_options['sorts']['search_api_aggregation_2']['id'] = 'search_api_aggregation_2';
-  $handler->display->display_options['sorts']['search_api_aggregation_2']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['sorts']['search_api_aggregation_2']['field'] = 'search_api_aggregation_2';
-  $handler->display->display_options['sorts']['search_api_aggregation_2']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['search_api_aggregation_2']['expose']['label'] = 'Reference Number';
-  /* Sort criterion: Indexed Content: Publication date */
-  $handler->display->display_options['sorts']['field_opp_start_date']['id'] = 'field_opp_start_date';
-  $handler->display->display_options['sorts']['field_opp_start_date']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['sorts']['field_opp_start_date']['field'] = 'field_opp_start_date';
-  $handler->display->display_options['sorts']['field_opp_start_date']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_opp_start_date']['expose']['label'] = 'Start Date';
-  /* Sort criterion: Indexed Content: Date changed */
-  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
-  $handler->display->display_options['sorts']['changed']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
-  $handler->display->display_options['sorts']['changed']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['changed']['expose']['label'] = 'Date changed';
-  /* Contextual filter: Search: Fulltext search */
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['table'] = 'search_api_index_abstract_faceted_index';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['search_api_views_fulltext']['not'] = 0;
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'OR',
-  );
+    /* Display: Master */
+    $handler = $view->new_display('default', 'Master', 'default');
+    $handler->display->display_options['use_more_always'] = FALSE;
+    $handler->display->display_options['access']['type'] = 'none';
+    $handler->display->display_options['cache']['type'] = 'none';
+    $handler->display->display_options['query']['type'] = 'views_query';
+    $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+    $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = '(ascending)';
+    $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = '(descending)';
+    $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+    $handler->display->display_options['exposed_form']['options']['bef'] = array(
+        'general' => array(
+            'input_required' => 0,
+            'text_input_required' => array(
+                'text_input_required' => array(
+                    'value' => 'Select any filter and click on Apply to see results',
+                    'format' => 'filtered_html',
+                ),
+            ),
+            'allow_secondary' => 0,
+            'secondary_label' => 'Advanced options',
+            'secondary_collapse_override' => '0',
+        ),
+        'sort' => array(
+            'bef_format' => 'bef_toggle_links',
+            'advanced' => array(
+                'collapsible' => 0,
+                'collapsible_label' => 'Sort options',
+                'combine' => 1,
+                'combine_param' => 'abstract_sort',
+                'combine_rewrite' => '',
+                'reset' => 0,
+                'reset_label' => '',
+                'is_secondary' => 0,
+                'autosubmit' => 0,
+            ),
+        ),
+    );
+    $handler->display->display_options['pager']['type'] = 'full';
+    $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+    $handler->display->display_options['pager']['options']['offset'] = '0';
+    $handler->display->display_options['pager']['options']['id'] = '0';
+    $handler->display->display_options['pager']['options']['quantity'] = '5';
+    $handler->display->display_options['pager']['options']['tags']['first'] = '«';
+    $handler->display->display_options['pager']['options']['tags']['previous'] = '‹';
+    $handler->display->display_options['pager']['options']['tags']['next'] = '›';
+    $handler->display->display_options['pager']['options']['tags']['last'] = '»';
+    $handler->display->display_options['style_plugin'] = 'default';
+    $handler->display->display_options['row_plugin'] = 'fields';
+    /* Header: Global: Result summary */
+    $handler->display->display_options['header']['result']['id'] = 'result';
+    $handler->display->display_options['header']['result']['table'] = 'views';
+    $handler->display->display_options['header']['result']['field'] = 'result';
+    $handler->display->display_options['header']['result']['content'] = 'Showing @start-@end of @total results found';
+    /* No results behavior: Global: Text area */
+    $handler->display->display_options['empty']['area']['id'] = 'area';
+    $handler->display->display_options['empty']['area']['table'] = 'views';
+    $handler->display->display_options['empty']['area']['field'] = 'area';
+    $handler->display->display_options['empty']['area']['label'] = 'No Results';
+    $handler->display->display_options['empty']['area']['empty'] = TRUE;
+    $handler->display->display_options['empty']['area']['content'] = 'No results are available that match the selected search filters.';
+    $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+    /* Field: Indexed Content: Title */
+    $handler->display->display_options['fields']['title']['id'] = 'title';
+    $handler->display->display_options['fields']['title']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['fields']['title']['field'] = 'title';
+    $handler->display->display_options['fields']['title']['label'] = '';
+    $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+    $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+    /* Field: Indexed Content: Meta Description */
+    $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
+    $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
+    $handler->display->display_options['fields']['field_meta_long_desc']['label'] = '';
+    $handler->display->display_options['fields']['field_meta_long_desc']['element_label_colon'] = FALSE;
+    /* Sort criterion: Indexed Content: Title2 */
+    $handler->display->display_options['sorts']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
+    $handler->display->display_options['sorts']['search_api_aggregation_1']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['sorts']['search_api_aggregation_1']['field'] = 'search_api_aggregation_1';
+    $handler->display->display_options['sorts']['search_api_aggregation_1']['exposed'] = TRUE;
+    $handler->display->display_options['sorts']['search_api_aggregation_1']['expose']['label'] = 'Title';
+    /* Sort criterion: Indexed Content: Reference Number2 */
+    $handler->display->display_options['sorts']['search_api_aggregation_2']['id'] = 'search_api_aggregation_2';
+    $handler->display->display_options['sorts']['search_api_aggregation_2']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['sorts']['search_api_aggregation_2']['field'] = 'search_api_aggregation_2';
+    $handler->display->display_options['sorts']['search_api_aggregation_2']['exposed'] = TRUE;
+    $handler->display->display_options['sorts']['search_api_aggregation_2']['expose']['label'] = 'Reference #';
+    /* Sort criterion: Indexed Content: Publication date */
+    $handler->display->display_options['sorts']['field_opp_start_date']['id'] = 'field_opp_start_date';
+    $handler->display->display_options['sorts']['field_opp_start_date']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['sorts']['field_opp_start_date']['field'] = 'field_opp_start_date';
+    $handler->display->display_options['sorts']['field_opp_start_date']['exposed'] = TRUE;
+    $handler->display->display_options['sorts']['field_opp_start_date']['expose']['label'] = 'Posted Date';
+    /* Sort criterion: Indexed Content: Date changed */
+    $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+    $handler->display->display_options['sorts']['changed']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+    $handler->display->display_options['sorts']['changed']['exposed'] = TRUE;
+    $handler->display->display_options['sorts']['changed']['expose']['label'] = 'Updated Date';
+    /* Contextual filter: Search: Fulltext search */
+    $handler->display->display_options['arguments']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+    $handler->display->display_options['arguments']['search_api_views_fulltext']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['arguments']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+    $handler->display->display_options['arguments']['search_api_views_fulltext']['default_argument_type'] = 'node';
+    $handler->display->display_options['arguments']['search_api_views_fulltext']['summary']['format'] = 'default_summary';
+    $handler->display->display_options['arguments']['search_api_views_fulltext']['break_phrase'] = 0;
+    $handler->display->display_options['arguments']['search_api_views_fulltext']['not'] = 0;
+    $handler->display->display_options['filter_groups']['groups'] = array(
+        1 => 'OR',
+    );
 
-  /* Display: Abstract Faceted Context */
-  $handler = $view->new_display('ctools_context', 'Abstract Faceted Context', 'ctools_context_1');
-  $handler->display->display_options['style_plugin'] = 'ctools_context';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
-  $handler->display->display_options['inherit_panels_path'] = '1';
-  $handler->display->display_options['argument_input'] = array(
-    'search_api_views_fulltext' => array(
-      'type' => 'context',
-      'context' => 'string.html_safe',
-      'context_optional' => 1,
-    ),
-  );
-  $export['ttc_abstract_faceted_results'] = $view;
+    /* Display: Abstract Faceted Context */
+    $handler = $view->new_display('ctools_context', 'Abstract Faceted Context', 'ctools_context_1');
+    $handler->display->display_options['style_plugin'] = 'ctools_context';
+    $handler->display->display_options['row_plugin'] = 'entity';
+    $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+    $handler->display->display_options['inherit_panels_path'] = '1';
+    $handler->display->display_options['argument_input'] = array(
+        'search_api_views_fulltext' => array(
+            'type' => 'context',
+            'context' => 'string.html_safe',
+            'context_optional' => 1,
+        ),
+    );
+    $export['ttc_abstract_faceted_results'] = $view;
 
   $view = new view();
   $view->name = 'ttc_content_search_results';

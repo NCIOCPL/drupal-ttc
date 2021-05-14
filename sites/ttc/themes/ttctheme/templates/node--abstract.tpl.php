@@ -115,29 +115,29 @@ if ($view_mode!='teaser') {
 
 
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php 
+  <?php
 
-      print "<div class='image'></div>";
+  print "<div class='image'></div>";
   ?>
-  
+
   <div class='abstract__contents'>
 
     <?php
     if ($view_mode !='full') {
-    ?>
+      ?>
 
-        <?php print render($title_prefix); ?>
+      <?php print render($title_prefix); ?>
+      <?php if (!$page): ?>
         <?php if (!$page): ?>
-          <?php if (!$page): ?>
-            <h2<?php print $title_attributes; ?>>
-              <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-          <?php endif; ?>
+          <h2<?php print $title_attributes; ?>>
+            <a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
         <?php endif; ?>
-        <?php print render($title_suffix); ?>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
 
     <?php  } ?>
     <?php
-      $has_summary_block = !empty($content['field_meta_long_desc']) ||
+    $has_summary_block = !empty($content['field_meta_long_desc']) ||
         !empty($content['field_enumber']) ||
         !empty($content['field_product_type']) ||
         !empty($content['field_meta_keywords']) ||
@@ -147,65 +147,42 @@ if ($view_mode!='teaser') {
 
     <?php if ($has_summary_block): ?>
       <div class="abstract__summary">
-            <?php if ($view_mode == 'full'): ?>
-              <div class='abstract__link -view-pdf'>
-                  <a href='/pdf/<?php print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>
-              </div>
-            <?php endif; ?>
+        <?php if ($view_mode == 'full'): ?>
+          <div class='abstract__link -view-pdf'>
+            <a href='/pdf/<?php print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>
+          </div>
+        <?php endif; ?>
 
-            <?php
+        <?php
 
-            $content['field_meta_long_desc']['#title'] = 'Summary';
-            print render($content['field_meta_long_desc']);
-            print render($content['field_enumber']);
-            print render($content['field_product_type']);
-            print render($content['field_meta_keywords']);
-            print render($content['field_opp_co_dev']);
-            print render($content['field_contact_auto']);
-            ?>
-           </div> 
+        $content['field_meta_long_desc']['#title'] = 'Summary';
+        print render($content['field_meta_long_desc']);
+        print render($content['field_enumber']);
+        print render($content['field_product_type']);
+        print render($content['field_meta_keywords']);
+        print render($content['field_opp_co_dev']);
+        print render($content['field_contact_auto']);
+        ?>
+      </div>
 
     <?php endif; ?>
     <?php
-      print render($content['field_opp_description_text']);
-      print render($content['field_opp_commapp_text']);
-      print render($content['field_opp_compadv_text']);
-      print render($content['field_opp_invs_text']);
-      print render($content['field_development_stage']);
-      print render($content['field_opp_pubs_text']);
-      print render($content['field_pat_status']);
-      print render($content['field_opp_rel_enum']);
-      print render($content['field_therapeutic_area']);
+    print render($content['field_opp_description_text']);
+    print render($content['field_opp_commapp_text']);
+    print render($content['field_opp_compadv_text']);
+    print render($content['field_opp_invs_text']);
+    print render($content['field_development_stage']);
+    print render($content['field_opp_pubs_text']);
+    print render($content['field_pat_status']);
+    print render($content['field_opp_rel_enum']);
+    print render($content['field_therapeutic_area']);
     ?>
 
     <?php if ($view_mode!='teaser'):?>
-    <div>
-    <?php if ($show_post_date): ?>
-      <span>
+      <div>
         <?php print render($content['field_posted_date']); ?>
-      </span>
-    <?php endif; ?>
-
-
-    <?php if ($show_up_date): ?>
-      <span>
         <?php print render($content['field_updated_date']); ?>
-      </span>
+      </div>
     <?php endif; ?>
 
-    <?php if ($show_default_date): ?>
-      <span>
-        <div class="field field-name-field-updated-date field-type-datestamp field-label-above field-wrapper">
-          <div class="field-label">Updated</div>
-          <div class="field-items"><div class="field-item even"><span class="date-display-single"><?php print date("l, F j, Y", $node->changed) ;?></span></div></div>
-        </div>      
-      </span>
-    <?php endif; ?>
-
-    </div>
-    <?php endif; ?>
-
-  </div>
-
-  
 </article>

@@ -1,3 +1,4 @@
+@import "../foundation/components/_buttons";
 .pager {
   li {
     $pager-spacing: 0.5rem;
@@ -30,7 +31,7 @@
 
     &.current, &.unavailable {
       a {
-        @include button-style($bg:$secondary-button-bg-color, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
+        @include button-style($bg:$secondary-button-bg-hover, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
 
         color: palette(gray, base);
       }
