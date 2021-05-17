@@ -6957,12 +6957,6 @@ body.section-pagenotfound .addthis, body.section-pagenotfound .sidebar, body.sec
   margin-top: 18px;
 }
 
-@media only screen and (max-width: 40em) {
-  #edit-abstract-sort {
-    width: 65%;
-  }
-}
-
 .faceted-sort-button-text {
   display: inline-block;
   font-size: 11px;
