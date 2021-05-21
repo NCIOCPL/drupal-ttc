@@ -150,9 +150,9 @@
       '<span class="calendar-number-icon" aria-hidden="true"></span>');
     $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
       '<span class="calendar-number-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-changed-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-field-updated-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
       '<span class="calendar-edit-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-changed-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-field-updated-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
       '<span class="calendar-edit-icon" aria-hidden="true"></span>');
 
     // facet selector keyboard support

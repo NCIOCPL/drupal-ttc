@@ -49,8 +49,8 @@
     #edit-abstract-sort-search-api-aggregation-2-desc{
       @include flex-order(2);
     }
-    #edit-abstract-sort-changed-asc,
-    #edit-abstract-sort-changed-desc
+    #edit-abstract-sort-field-updated-date-asc,
+    #edit-abstract-sort-field-updated-date-desc
     {
       @include flex-order(3);
     }
@@ -75,8 +75,8 @@
   margin-right: 6px;
   &#edit-abstract-sort-field-opp-start-date-asc,
   &#edit-abstract-sort-field-opp-start-date-desc,
-  &#edit-abstract-sort-changed-asc,
-  &#edit-abstract-sort-changed-desc {
+  &#edit-abstract-sort-field-updated-date-asc,
+  &#edit-abstract-sort-field-updated-date-desc {
     .edit-sort__link {
       padding: 0 5px 0 8px;
     }

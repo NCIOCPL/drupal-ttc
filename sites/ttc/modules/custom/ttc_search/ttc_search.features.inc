@@ -215,6 +215,7 @@ function ttc_search_default_search_api_index() {
         "field_pdf_img" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_product_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_therapeutic_area" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_updated_date" : { "type" : "date" },
         "nid" : { "type" : "integer" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_aggregation_1" : { "type" : "string" },
@@ -663,6 +664,12 @@ function ttc_search_default_search_api_server() {
             "table" : "search_api_db_abstract_faceted_index",
             "column" : "field_pdf_img",
             "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_updated_date" : {
+            "table" : "search_api_db_abstract_faceted_index",
+            "column" : "field_updated_date",
+            "type" : "date",
             "boost" : "1.0"
           }
         }
