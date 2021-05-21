@@ -141,18 +141,18 @@
   $(document).ready(function () {
     // font awesome 508 fix
     //
-    $('#edit-abstract-sort-search-api-aggregation-1-asc a').prepend('<i class="fas fa-sort-alpha-up" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-1-desc a').prepend('<i class="fas fa-sort-alpha-down" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fas fa-sort-numeric-up" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fas fa-sort-numeric-down" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-1-asc a').prepend('<i class="fas fa-sort-alpha-down" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-1-desc a').prepend('<i class="fas fa-sort-alpha-up" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fas fa-sort-numeric-down" aria-hidden="true"></i>');
+    $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fas fa-sort-numeric-up" aria-hidden="true"></i>');
 
-    $('#edit-abstract-sort-field-opp-start-date-asc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-field-opp-start-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
       '<span class="calendar-number-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fas fa-long-arrow-alt-down"" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
       '<span class="calendar-number-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-changed-asc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-changed-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
       '<span class="calendar-edit-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-changed-desc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-changed-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
       '<span class="calendar-edit-icon" aria-hidden="true"></span>');
 
     // facet selector keyboard support

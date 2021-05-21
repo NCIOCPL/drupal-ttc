@@ -38,7 +38,28 @@
   @media #{$small-only} {
   //  width:65%;
   }
-
+  .form-item {
+    @include flexbox();
+    #edit-abstract-sort-search-api-aggregation-1-asc,
+    #edit-abstract-sort-search-api-aggregation-1-desc
+    {
+      @include flex-order(1);
+    }
+    #edit-abstract-sort-search-api-aggregation-2-asc,
+    #edit-abstract-sort-search-api-aggregation-2-desc{
+      @include flex-order(2);
+    }
+    #edit-abstract-sort-changed-asc,
+    #edit-abstract-sort-changed-desc
+    {
+      @include flex-order(3);
+    }
+    #edit-abstract-sort-field-opp-start-date-asc,
+    #edit-abstract-sort-field-opp-start-date-desc
+    {
+      @include flex-order(4);
+    }
+  }
 }
 .faceted-sort-button-text {
   display: inline-block;
