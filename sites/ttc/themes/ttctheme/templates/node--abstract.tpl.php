@@ -180,7 +180,7 @@ if ($view_mode!='teaser') {
 
     <?php if ($view_mode!='teaser'):?>
       <div>
-        <?php print render($content['field_opp_start_date']); ?>
+        <?php print render($content['field_posted_date']); ?>
         <?php print render($content['field_updated_date']); ?>
       </div>
     <?php endif; ?>

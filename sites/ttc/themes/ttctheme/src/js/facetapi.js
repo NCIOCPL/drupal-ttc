@@ -146,9 +146,9 @@
     $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fas fa-sort-numeric-down" aria-hidden="true"></i>');
     $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fas fa-sort-numeric-up" aria-hidden="true"></i>');
 
-    $('#edit-abstract-sort-field-opp-start-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-field-posted-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
       '<span class="calendar-number-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-field-opp-start-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
+    $('#edit-abstract-sort-field-posted-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
       '<span class="calendar-number-icon" aria-hidden="true"></span>');
     $('#edit-abstract-sort-field-updated-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
       '<span class="calendar-edit-icon" aria-hidden="true"></span>');

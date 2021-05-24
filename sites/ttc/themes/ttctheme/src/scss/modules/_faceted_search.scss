@@ -54,8 +54,8 @@
     {
       @include flex-order(3);
     }
-    #edit-abstract-sort-field-opp-start-date-asc,
-    #edit-abstract-sort-field-opp-start-date-desc
+    #edit-abstract-sort-field-posted-date-asc,
+    #edit-abstract-sort-field-posted-date-desc
     {
       @include flex-order(4);
     }
@@ -73,8 +73,8 @@
 .form-type-bef-link {
   display: inline-block;
   margin-right: 6px;
-  &#edit-abstract-sort-field-opp-start-date-asc,
-  &#edit-abstract-sort-field-opp-start-date-desc,
+  &#edit-abstract-sort-field-posted-date-asc,
+  &#edit-abstract-sort-field-posted-date-desc,
   &#edit-abstract-sort-field-updated-date-asc,
   &#edit-abstract-sort-field-updated-date-desc {
     .edit-sort__link {
@@ -190,7 +190,7 @@
   &.-field-enumber {
     // Styling for field 'field_enumber'
   }
-  &.-field-opp-start-date {
+  &.-field-posted-date {
     // Styling for field 'field_opp_start_date'
   }
   &.-changed {

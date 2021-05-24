@@ -6984,8 +6984,8 @@ body.section-pagenotfound .addthis, body.section-pagenotfound .sidebar, body.sec
   order: 3;
 }
 
-#edit-abstract-sort .form-item #edit-abstract-sort-field-opp-start-date-asc,
-#edit-abstract-sort .form-item #edit-abstract-sort-field-opp-start-date-desc {
+#edit-abstract-sort .form-item #edit-abstract-sort-field-posted-date-asc,
+#edit-abstract-sort .form-item #edit-abstract-sort-field-posted-date-desc {
   -webkit-box-ordinal-group: 4;
   -ms-flex-order: 4;
   order: 4;
@@ -7005,7 +7005,7 @@ body.section-pagenotfound .addthis, body.section-pagenotfound .sidebar, body.sec
   margin-right: 6px;
 }
 
-.form-type-bef-link#edit-abstract-sort-field-opp-start-date-asc .edit-sort__link, .form-type-bef-link#edit-abstract-sort-field-opp-start-date-desc .edit-sort__link, .form-type-bef-link#edit-abstract-sort-field-updated-date-asc .edit-sort__link, .form-type-bef-link#edit-abstract-sort-field-updated-date-desc .edit-sort__link {
+.form-type-bef-link#edit-abstract-sort-field-posted-date-asc .edit-sort__link, .form-type-bef-link#edit-abstract-sort-field-posted-date-desc .edit-sort__link, .form-type-bef-link#edit-abstract-sort-field-updated-date-asc .edit-sort__link, .form-type-bef-link#edit-abstract-sort-field-updated-date-desc .edit-sort__link {
   padding: 0 5px 0 8px;
 }
 
