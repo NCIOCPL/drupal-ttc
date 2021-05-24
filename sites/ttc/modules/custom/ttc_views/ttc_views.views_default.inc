@@ -1283,13 +1283,12 @@ function ttc_views_views_default_views() {
     $handler->display->display_options['sorts']['field_updated_date']['order'] = 'DESC';
     $handler->display->display_options['sorts']['field_updated_date']['exposed'] = TRUE;
     $handler->display->display_options['sorts']['field_updated_date']['expose']['label'] = 'Updated Date';
-    /* Sort criterion: Indexed Content: Publication date */
-    $handler->display->display_options['sorts']['field_opp_start_date']['id'] = 'field_opp_start_date';
-    $handler->display->display_options['sorts']['field_opp_start_date']['table'] = 'search_api_index_abstract_faceted_index';
-    $handler->display->display_options['sorts']['field_opp_start_date']['field'] = 'field_opp_start_date';
-    $handler->display->display_options['sorts']['field_opp_start_date']['order'] = 'DESC';
-    $handler->display->display_options['sorts']['field_opp_start_date']['exposed'] = TRUE;
-    $handler->display->display_options['sorts']['field_opp_start_date']['expose']['label'] = 'Posted Date';
+    /* Sort criterion: Indexed Content: Posted */
+    $handler->display->display_options['sorts']['field_posted_date']['id'] = 'field_posted_date';
+    $handler->display->display_options['sorts']['field_posted_date']['table'] = 'search_api_index_abstract_faceted_index';
+    $handler->display->display_options['sorts']['field_posted_date']['field'] = 'field_posted_date';
+    $handler->display->display_options['sorts']['field_posted_date']['exposed'] = TRUE;
+    $handler->display->display_options['sorts']['field_posted_date']['expose']['label'] = 'Posted date';
     /* Sort criterion: Indexed Content: Title2 */
     $handler->display->display_options['sorts']['search_api_aggregation_1']['id'] = 'search_api_aggregation_1';
     $handler->display->display_options['sorts']['search_api_aggregation_1']['table'] = 'search_api_index_abstract_faceted_index';
