@@ -49,16 +49,17 @@
     #edit-abstract-sort-search-api-aggregation-2-desc{
       @include flex-order(2);
     }
-    #edit-abstract-sort-field-updated-date-asc,
-    #edit-abstract-sort-field-updated-date-desc
-    {
-      @include flex-order(3);
-    }
     #edit-abstract-sort-field-posted-date-asc,
     #edit-abstract-sort-field-posted-date-desc
     {
+      @include flex-order(3);
+    }
+    #edit-abstract-sort-field-updated-date-asc,
+    #edit-abstract-sort-field-updated-date-desc
+    {
       @include flex-order(4);
     }
+
   }
 }
 .faceted-sort-button-text {

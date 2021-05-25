@@ -6977,15 +6977,15 @@ body.section-pagenotfound .addthis, body.section-pagenotfound .sidebar, body.sec
   order: 2;
 }
 
-#edit-abstract-sort .form-item #edit-abstract-sort-field-updated-date-asc,
-#edit-abstract-sort .form-item #edit-abstract-sort-field-updated-date-desc {
+#edit-abstract-sort .form-item #edit-abstract-sort-field-posted-date-asc,
+#edit-abstract-sort .form-item #edit-abstract-sort-field-posted-date-desc {
   -webkit-box-ordinal-group: 3;
   -ms-flex-order: 3;
   order: 3;
 }
 
-#edit-abstract-sort .form-item #edit-abstract-sort-field-posted-date-asc,
-#edit-abstract-sort .form-item #edit-abstract-sort-field-posted-date-desc {
+#edit-abstract-sort .form-item #edit-abstract-sort-field-updated-date-asc,
+#edit-abstract-sort .form-item #edit-abstract-sort-field-updated-date-desc {
   -webkit-box-ordinal-group: 4;
   -ms-flex-order: 4;
   order: 4;
