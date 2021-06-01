@@ -1208,8 +1208,8 @@ function ttc_views_views_default_views() {
     $handler->display->display_options['cache']['type'] = 'none';
     $handler->display->display_options['query']['type'] = 'views_query';
     $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
-    $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = '(descending)';
-    $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = '(ascending)';
+    $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = '(ascending)';
+    $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = '(descending)';
     $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
     $handler->display->display_options['exposed_form']['options']['bef'] = array(
         'general' => array(

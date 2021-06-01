@@ -141,19 +141,28 @@
   $(document).ready(function () {
     // font awesome 508 fix
     //
-    $('#edit-abstract-sort-search-api-aggregation-1-asc a').prepend('<i class="fas fa-sort-alpha-down" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-1-desc a').prepend('<i class="fas fa-sort-alpha-up" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fas fa-sort-numeric-down" aria-hidden="true"></i>');
-    $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fas fa-sort-numeric-up" aria-hidden="true"></i>');
+    $('#views-exposed-form-ttc-abstract-faceted-results-ctools-context-1').find('.faceted-sort-button-text').addClass('hidden-selected');
+    $('#edit-abstract-sort-search-api-aggregation-1-asc a').prepend('<i class="fas fa-sort-alpha-down shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-sort-alpha-up hidden-selected" aria-hidden="true"></i><span class="faceted-sort-button-text shown-selected">Title (descending)</span>');
+    $('#edit-abstract-sort-search-api-aggregation-1-desc a').prepend('<i class="fas fa-sort-alpha-up shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-sort-alpha-down hidden-selected" aria-hidden="true"></i><span class="faceted-sort-button-text shown-selected">Title (ascending)</span>');
+    $('#edit-abstract-sort-search-api-aggregation-2-asc a').prepend('<i class="fas fa-sort-numeric-down shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-sort-numeric-up hidden-selected" aria-hidden="true"></i><span class="faceted-sort-button-text shown-selected">Reference # (descending)</span>');
+    $('#edit-abstract-sort-search-api-aggregation-2-desc a').prepend('<i class="fas fa-sort-numeric-up shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-sort-numeric-down hidden-selected" aria-hidden="true"></i><span class="faceted-sort-button-text shown-selected">Reference # (ascending)</span>');
 
-    $('#edit-abstract-sort-field-posted-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
-      '<span class="calendar-number-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-field-posted-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
-      '<span class="calendar-number-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-field-updated-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i>' +
-      '<span class="calendar-edit-icon" aria-hidden="true"></span>');
-    $('#edit-abstract-sort-field-updated-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i>' +
-      '<span class="calendar-edit-icon" aria-hidden="true"></span>');
+    $('#edit-abstract-sort-field-posted-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-long-arrow-alt-up hidden-selected" aria-hidden="true"></i>' +
+      '<span class="calendar-number-icon" aria-hidden="true"></span><span class="faceted-sort-button-text shown-selected">Posted date (descending)</span>');
+    $('#edit-abstract-sort-field-posted-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-long-arrow-alt-down hidden-selected" aria-hidden="true"></i>' +
+      '<span class="calendar-number-icon" aria-hidden="true"></span><span class="faceted-sort-button-text shown-selected">Posted date (ascending)</span>');
+    $('#edit-abstract-sort-field-updated-date-asc a').prepend('<i class="fas fa-long-arrow-alt-down shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-long-arrow-alt-up hidden-selected" aria-hidden="true"></i>' +
+      '<span class="calendar-edit-icon" aria-hidden="true"></span><span class="faceted-sort-button-text shown-selected">Updated Date (descending)</span>');
+    $('#edit-abstract-sort-field-updated-date-desc a').prepend('<i class="fas fa-long-arrow-alt-up shown-selected" aria-hidden="true"></i>' +
+      '<i class="fas fa-long-arrow-alt-down hidden-selected" aria-hidden="true"></i>' +
+      '<span class="calendar-edit-icon" aria-hidden="true"></span><span class="faceted-sort-button-text shown-selected">Updated Date (ascending)</span>');
 
     // facet selector keyboard support
     $('.pane-facetapi .pane-title').wrapInner("<a href='#' class='facet-type'></a>");

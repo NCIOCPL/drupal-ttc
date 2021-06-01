@@ -6957,6 +6957,29 @@ body.section-pagenotfound .addthis, body.section-pagenotfound .sidebar, body.sec
   margin-top: 18px;
 }
 
+#edit-abstract-sort .form-item > div i.shown-selected,
+#edit-abstract-sort .form-item > div span.shown-selected,
+#edit-abstract-sort .form-item > div .shown-selected {
+  display: none;
+}
+
+#edit-abstract-sort .form-item > div i.hidden-selected,
+#edit-abstract-sort .form-item > div span.hidden-selected .hidden-selected {
+  display: inline-block;
+}
+
+#edit-abstract-sort .form-item > div.selected i.shown-selected,
+#edit-abstract-sort .form-item > div.selected span.shown-selected,
+#edit-abstract-sort .form-item > div.selected .shown-selected {
+  display: inline-block;
+}
+
+#edit-abstract-sort .form-item > div.selected i.hidden-selected,
+#edit-abstract-sort .form-item > div.selected span.hidden-selected,
+#edit-abstract-sort .form-item > div.selected .hidden-selected {
+  display: none;
+}
+
 #edit-abstract-sort .form-item {
   display: -webkit-box;
   display: -ms-flexbox;
