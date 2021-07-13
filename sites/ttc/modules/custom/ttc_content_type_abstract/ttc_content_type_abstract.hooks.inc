@@ -40,7 +40,7 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
             if (is_numeric($delta)) {
                 $form['field_pat_status']['und'][$delta]['field_add_pat_desc']['#access'] = false;
                 $form['field_pat_status']['und'][$delta]['field_is_related_patent']['#access'] = false;
-                $form['field_pat_status']['und'][$delta]['field_url']['#access'] = false;
+              //  $form['field_pat_status']['und'][$delta]['field_url']['#access'] = false;
             }
         }
 
@@ -49,7 +49,7 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
         // disable old display fields
         _ttc_content_type_abstract_convert_display_field($form, 'field_opp_invs_text');
         _ttc_content_type_abstract_convert_display_field($form, 'field_opp_pubs_text');
-        _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
+       // _ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_text');
         //_ttc_content_type_abstract_convert_display_field($form, 'field_pat_status', 'field_is_related_patent');
 
         // Limits contact list from contacts vocabulary to only active.
