@@ -3,9 +3,6 @@
 module.exports = function (grunt) {
   'use strict';
 
-  require('load-grunt-tasks')(grunt);
-
-  grunt.loadNpmTasks('grunt-postcss');
 
   var theme_name = 'ttctheme';
   var base_theme_path = 'bower_components/foundation';
@@ -59,6 +56,9 @@ module.exports = function (grunt) {
 
   ];
 
+  require('load-grunt-tasks')(grunt);
+  const sass = require('node-sass');
+  grunt.loadNpmTasks('grunt-postcss');
   grunt.initConfig({
     global_vars: global_vars,
     pkg: grunt.file.readJSON('package.json'),
@@ -71,6 +71,8 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
+        implementation: sass,
+        sourceMap: true,
         includePaths: require('node-bourbon').with('<%= global_vars.theme.src.scss %>', '<%= global_vars.theme.base %>/scss/')
       },
       dev: {

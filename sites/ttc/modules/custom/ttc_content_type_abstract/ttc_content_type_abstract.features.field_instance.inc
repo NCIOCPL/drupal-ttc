@@ -1608,7 +1608,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_posted_date',
     'label' => 'Posted',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
