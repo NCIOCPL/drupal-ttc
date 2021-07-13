@@ -40,7 +40,7 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
             if (is_numeric($delta)) {
                 $form['field_pat_status']['und'][$delta]['field_add_pat_desc']['#access'] = false;
                 $form['field_pat_status']['und'][$delta]['field_is_related_patent']['#access'] = false;
-              //  $form['field_pat_status']['und'][$delta]['field_url']['#access'] = false;
+                $form['field_pat_status']['und'][$delta]['field_url']['#access'] = true;
             }
         }
 
