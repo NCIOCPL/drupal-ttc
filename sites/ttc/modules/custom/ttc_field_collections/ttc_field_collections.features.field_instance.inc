@@ -576,41 +576,6 @@ function ttc_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_pat_status-field_text'.
-  $field_instances['field_collection_item-field_pat_status-field_text'] = array(
-    'bundle' => 'field_pat_status',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_text',
-    'label' => 'Text',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-field_pat_status-field_url'.
   $field_instances['field_collection_item-field_pat_status-field_url'] = array(
     'bundle' => 'field_pat_status',
@@ -626,7 +591,7 @@ function ttc_field_collections_field_default_field_instances() {
           'trim_length' => 80,
         ),
         'type' => 'url_default',
-        'weight' => 2,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'field_collection_item',

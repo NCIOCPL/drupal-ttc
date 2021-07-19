@@ -63,7 +63,7 @@
       </span>
       <span class="field-collection__item-content">
         <?php if ($hasLink): ?>
-          $fieldLabel: <a href="<?php print $fieldLink; ?>">
+         <a href="<?php print $fieldLink; ?>">
         <?php endif; ?>
 
         <?php print $fieldDesc; ?>
