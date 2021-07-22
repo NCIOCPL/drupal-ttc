@@ -40,6 +40,9 @@ function wysiwyg_yui_editor() {
         ),
       ),
     ),
+    'install note callback' => 'wysiwyg_yui_install_note',
+    'deprecation message' => t('YUI is no longer available and support will be dropped in the next release. Editor profiles using YUI will be removed. See this <a href="!url" target="_blank">announcement</a>', array('!url' => 'http://yahooeng.tumblr.com/post/96098168666/important-announcement-regarding-yui/')),
+    'verified version range' => array('2.7.0', '2.9.0'),
     'version callback' => 'wysiwyg_yui_version',
     'themes callback' => 'wysiwyg_yui_themes',
     'settings form callback' => 'wysiwyg_yui_settings_form',
@@ -61,6 +64,15 @@ function wysiwyg_yui_editor() {
     ),
   );
   return $editor;
+}
+
+/**
+ * Return an install note.
+ */
+function wysiwyg_yui_install_note($editor) {
+  $output = '<p class="warning">' . $editor['deprecation message'] . '</p>';
+  $output .= '<p class="warning">' . t('YUI 3 is not supported because it does not contain a complete editor.') . '</p>';
+  return $output;
 }
 
 /**
@@ -238,10 +250,14 @@ function wysiwyg_yui_settings($editor, $config, $theme) {
 
   if (isset($config['css_setting'])) {
     if ($config['css_setting'] == 'theme') {
-      $settings['extracss'] = wysiwyg_get_css();
+      $settings['extracss'] = wysiwyg_get_css(isset($config['css_theme']) ? $config['css_theme'] : '');
     }
     elseif ($config['css_setting'] == 'self' && isset($config['css_path'])) {
-      $settings['extracss'] = strtr($config['css_path'], array('%b' => base_path(), '%t' => drupal_get_path('theme', variable_get('theme_default', NULL))));
+      $settings['extracss'] = strtr($config['css_path'], array(
+        '%b' => base_path(),
+        '%t' => drupal_get_path('theme', variable_get('theme_default', NULL)),
+        '%q' => variable_get('css_js_query_string', ''),
+      ));
       $settings['extracss'] = explode(',', $settings['extracss']);
     }
     // YUI only supports inline CSS, so we need to use @import directives.
