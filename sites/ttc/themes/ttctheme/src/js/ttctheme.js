@@ -137,7 +137,7 @@
           && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+cancer\.gov/.test(this.href)
           && this.href != "" && this.href.indexOf(location.protocol +"//" +location.hostname) != 0
           && $(this).parents('.follow-us').length == 0  }).
-      after(' <a class="exitNotification" href=' + path + '><img title='+ '"' + altText +'"' +'  alt='+ '"' + altText +'"' + ' src="/sites/all/modules/contrib/extlink/extlink.png" /></a>');
+      after(' <a class="exitNotification" href=' + path + '><img title='+ '"' + altText +'"' +'  alt='+ '"' + altText +'"' + ' src="/sites/all/modules/contrib/extlink/images/extlink.png" /></a>');
     if($('.with-image').length == 0){
         $('.list-spacer-image').addClass('image-collapsed');
         $('.list-item-with-image').addClass('text-collapsed');
