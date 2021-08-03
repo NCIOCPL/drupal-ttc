@@ -1,0 +1,584 @@
+<?php
+
+
+function nci_user_roles_install() {
+    
+}
+
+function nci_user_roles_uninstall() {
+    
+}
+
+function nci_user_roles_enable() {
+    
+}
+
+function nci_user_roles_disable() {
+    
+}
+
+function nci_user_roles_set_permissions($verbose = FALSE){
+    $role_map = nci_user_roles_get_defaults();
+    $role_permissions = nci_user_roles_prepare_permissions($role_map);
+
+    nci_user_roles_update_roles($role_permissions, $verbose);
+}
+
+function nci_user_roles_get_defaults() {
+    return array(
+        'anonymous user' => 'get_anonymous_user_permissions',
+        'authenticated user' => 'get_authenticated_user_permissions',
+        'content author' => 'get_content_author_permissions',
+        'content editor' => 'get_content_editor_permissions',
+        'site moderator' => 'get_site_moderator_permissions',
+        'advanced content editor' => 'get_advanced_content_editor_permissions',
+        'site manager' => 'get_site_manager_permissions',
+    );
+}
+
+/**
+ * Generates the permissions allowed for the anonymous user
+ * 
+ * @return array a keyed array of module name => permission => value
+ */
+function get_anonymous_user_permissions() {
+    return array(
+        'access comments' => true,
+        'access content' => true,
+        'search content' => true,
+        'use advanced search' => true,
+    );
+}
+
+function get_authenticated_user_permissions() {
+    $perms = array(
+        'post comments' => true,
+        'edit own comments' => true,
+        'use text format filtered_html' => true,
+    );
+    
+    return $perms;
+}
+
+function get_content_author_permissions() {
+    $perms = array(
+        //'create url aliases' => FALSE, // Changed 6/3/13 -> Authors can't control a URL
+        'administer redirects' => TRUE,
+        'view the administration theme' => TRUE,
+        'access toolbar' => TRUE,
+        'access workbench' => TRUE,
+        'access workbench access by role' => TRUE,
+        'view workbench access information' => TRUE,
+        'view all unpublished content' => TRUE,
+        'view moderation history' => TRUE,
+        'view moderation messages' => TRUE,
+        /*'use workbench moderation my drafts tab' => TRUE,
+        'use workbench moderation needs review tab' => TRUE,
+        'moderate content from draft to needs_review' => TRUE,
+        'moderate content from needs_review to draft' => TRUE,
+        'moderate content from published to draft' => TRUE,
+        'moderate content from private archive to draft' => TRUE,*/
+        'view own unpublished content' => TRUE,
+        'view revisions' => TRUE,
+        'revert revisions' => TRUE,
+        /*'create general content' => TRUE, // Grant permission
+        'edit any general content' => TRUE, // Grant permission
+        'create site home content' => TRUE,
+        'edit any site home content' => TRUE,
+        'create portal content' => TRUE,
+        'edit any portal content' => TRUE,
+        'create event content' => TRUE,
+        'edit any event content' => TRUE,
+        'create news article content' => TRUE,
+        'edit any news article content' => TRUE,
+        'create aggregator content' => TRUE,
+        'edit any aggregator content' => TRUE,
+        'create citation content' => TRUE,
+        'edit any citation content' => TRUE,
+        'create list content' => TRUE,
+        'edit any list content' => TRUE,
+        'create content block content' => TRUE,
+        'edit any content block content' => TRUE,
+        'create content carousel content' => TRUE,
+        'edit any content carousel content' => TRUE,
+        'create content carousel item content' => TRUE,
+        'edit any content carousel item content' => TRUE,
+        'create image content' => TRUE,
+        'edit any image content' => TRUE,
+        'create audio content' => TRUE,
+        'edit any audio content' => TRUE,
+        'create external link content' => TRUE,
+        'edit any external link content' => TRUE,
+        'create file content' => TRUE,
+        'edit any file content' => TRUE,
+        'create highlighted content content' => TRUE,
+        'edit any highlighted content content' => TRUE,
+        'create audio content' => TRUE,
+        'edit any audio content' => TRUE,*/
+    );
+    return $perms;
+}
+
+function get_content_editor_permissions() {
+    $perms = array(
+        /*'moderate all content from draft to archive' => TRUE,
+        'moderate all content from review to published' => TRUE,
+        'moderate all content from published to private archive' => TRUE,*/
+    );
+
+    return $perms;
+}
+
+function get_site_moderator_permissions() {
+    $perms = array(
+        'access content overview' => TRUE,
+        'access administration pages' => TRUE,
+        'access all webform results' => TRUE,
+        'administer comments' => TRUE,
+        'administer users' => TRUE,
+        'administer search_api' => TRUE,
+    );
+
+    return $perms;
+}
+
+function get_advanced_content_editor_permissions() {
+    $perms = array(
+      'use text format full_html' => TRUE,
+      'administer blocks' => true,
+      'administer menu' => true,
+      'administer taxonomy' => true,
+      'administer views' => true,
+      'administer nodes' => true,
+      'administer url aliases' => true,
+      'create url aliases' => TRUE, // Changed 6/3/13 -> Adv users CAN control a URL
+      'display site building menu' => true,
+      'display site configuration menu' => true,
+      'manipulate queues' => TRUE,
+      'manipulate all queues' => TRUE,
+      'access contextual links' => TRUE,
+      'administer custom content' => TRUE,
+      'administer facets' => TRUE,
+      'administer feeds' => TRUE,
+      'administer fieldgroups' => TRUE,
+      'administer flags' => TRUE,
+      'administer linkit' => TRUE,
+      'administer mini panels' => TRUE,
+      'administer nodequeue' => TRUE,
+      'use page manager' => TRUE,
+      'administer page manager' => TRUE,
+      'use panels dashboard' => TRUE,
+      'view pane admin links' => TRUE,
+      'administer pane access' => TRUE,
+      'use panels in place editing' => TRUE,
+      'change layouts in place editing' => TRUE,
+      'administer advanced pane settings' => TRUE,
+      'administer panels layouts' => TRUE,
+      'administer panels styles' => TRUE,
+      'use panels caching features' => TRUE,
+      'use panels locks' => TRUE,
+      'administer pathauto' => TRUE,
+      'administer relation types' => TRUE,
+      'export relation types' => TRUE,
+      'access relations' => TRUE,
+      'create relations' => TRUE,
+      'edit relations' => TRUE,
+      'delete relations' => TRUE,
+      'administer relations' => TRUE,
+      'administer rules' => TRUE,
+      'bypass rules access' => TRUE,
+      'access rules debug' => TRUE,
+      'administer image styles' => TRUE,
+      'create mini panels' => true,
+    );
+
+    return $perms;
+}
+
+function get_site_manager_permissions() {
+    $perms = array(
+      'administer performance' => TRUE,
+      'administer nodequeue' => true,
+      'assign content author role' => true,
+      'assign content editor role' => true,
+      'assign advanced content editor role' => true,
+      'assign site moderator role' => true,
+      'assign calendar coordinator role' => true,
+      'assign calendar moderator role' => true,
+      'assign directory admin role' => true,
+      'assign site manager role' => true,
+      'administer elysia_cron' => TRUE,
+      'access site reports' => TRUE,
+      'administer workbench' => TRUE,
+      'administer workbench moderation' => TRUE,
+      'administer imce' => TRUE,
+      'administer mailsystem' => true,
+      'administer menu positions' => true,
+    );
+
+    return $perms;
+}
+
+/**
+ * Utility function for creating a role and defining its permissions safely.
+ * 
+ * @param array $role_map         Array in the form of role_name => 
+ *                                permission_name => permission_value or
+ *                                role_name => function_name, where the function
+ *                                return a list of permission / value pairs.
+ */
+function nci_user_roles_update_roles(array $role_map, $verbose = FALSE) {
+    $known_permissions = nci_user_roles_get_permissions();
+    
+    foreach ($role_map as $role_name => $permissions) {
+        // load the role if it exists
+        $role = user_role_load_by_name($role_name);
+        if (!$role) {
+            // else, create the role
+            $role = new stdClass();
+            $role->name = $role_name;
+            user_role_save($role);
+
+            // Role to grant the permissions to
+            $role = user_role_load_by_name($role_name);
+            
+            if(!$role) {
+                watchdog('nci_user_roles',
+                        "Failed to create role @role_name!", 
+                        array('@role_name' => $role_name),
+                        WATCHDOG_WARNING);
+            }
+            else {
+                watchdog('nci_user_roles', 
+                        "Created role @role_name.",
+                        array('@role_name' => $role_name),
+                        WATCHDOG_NOTICE);
+                drupal_set_message("Created role $role_name.");
+            }
+        }
+        // retrieve the role id
+        $rid = $role->rid;
+
+        // intersect the desired permissions with actual permissions
+        $good_perms = array_intersect_key($permissions, $known_permissions);
+        
+        // get the permissions already set for the role
+        $set_perms = user_role_permissions(array($rid => $role_name));
+        
+        // pull specific role permissions
+        if(isset($set_perms[$rid])) {
+            $set_perms = $set_perms[$rid];
+        }
+        else
+            $set_perms = array();
+        
+        // break out the unset permissions
+        $unset_perms = array_diff_key($good_perms, $set_perms);
+
+        // find the permissions to clear (e. g. the ones that are set that are
+        // not in the desired list)
+        $bad_perms = array_diff_key($set_perms, $good_perms);
+        
+        $action_taken = false;
+        
+        if (!empty($bad_perms)) {
+            // pass the valid permissions along to clear the outlying permissions
+            nci_user_roles_clear_permissions(array($role_name), $bad_perms);
+            
+            $action_taken = true;
+        }
+
+        // Grant permissions to the role
+        if(!empty($unset_perms)) {
+            user_role_change_permissions($rid, $unset_perms);
+            $set_list = implode(", \n", array_keys($unset_perms));
+            $perm_count = sizeof($unset_perms);
+            watchdog('nci_user_roles', 
+                    "Setting permissions for @role_name:\n@set_list\n",
+                    array('@role_name' => $role_name, '@set_list' => $set_list),
+                    WATCHDOG_NOTICE);
+            drupal_set_message(
+                    "Setting $perm_count permissions for $role_name.");
+            
+            $action_taken = true;
+        }
+        
+        if($verbose && !$action_taken) {
+            drupal_set_message("No permission updates for $role_name");
+        }
+    }
+}
+
+/**
+ * Utility function for checking the given permissions (whether arrays or
+ * functions) and handling the hook calls.
+ * 
+ * @param array $role_map         Array in the form of role_name => 
+ *                                permission_name => permission_value or
+ *                                role_name => function_name, where the function
+ *                                return a list of permission / value pairs.
+ */
+function nci_user_roles_prepare_permissions(array $role_map) {
+    $retrieved_perms = array();
+    foreach ($role_map as $role_name => $permission_src) {
+        // check inputs
+        // ensure role name is a string
+        if (!is_string($role_name)) {
+            watchdog('nci_user_roles',
+                    "Cannot use @role_name as a user role.", 
+                    array('@role_name' => $role_name),
+                    WATCHDOG_ERROR);
+            drupal_set_message("Cannot use $role_name as a user role.", 'error');
+            continue;
+        }
+        // call the source if it is a defined function
+        $role_permissions = $permission_src;
+        if (is_string($permission_src) && function_exists($permission_src)) {
+            $role_permissions = $permission_src();
+        }
+        // if the source or returned values are not an array, fail
+        if (!(is_array($role_permissions))) {
+            watchdog(
+                    'nci_user_roles',
+                    "Cannot use @role_permissions as permissions for role @role_name.",
+                    array('@role_permissions' => $role_permissions,
+                        '@role_name' =>$role_name),
+                    WATCHDOG_ERROR);
+            drupal_set_message(
+                    "Cannot use $role_permissions as permissions for role $role_name.", 'error');
+            continue;
+        }
+        
+        $retrieved_perms[$role_name] = $role_permissions;
+    }
+    
+    // next, pass this array around to hooked-on modules
+    $returned_perms = module_invoke_all('role_permissions');
+    $current_perms = array_merge_recursive($retrieved_perms, $returned_perms);
+    
+    // retrieve updated inheritances
+    $base_inherits = nci_user_roles_get_base_inherits();
+    $module_inherits = module_invoke_all('role_inheritance');
+    $new_inherits = array_merge_recursive($base_inherits, $module_inherits);
+    
+    // determine inherit order and merge permissions according to it
+    $sorted_inherits = nci_user_roles_sort_inherits($new_inherits);
+    $merged_perms = nci_user_roles_merge_inherits($sorted_inherits, 
+            $current_perms);
+    
+    // finally, rename any roles specificied by the related hook
+    $renamed_perms = nci_user_roles_rename_roles($merged_perms);
+    
+    return $renamed_perms;//$renamed_perms;
+}
+
+function nci_user_roles_sort_inherits(array $inherits){
+    $inherit_order = array();
+    
+    $remnant = $inherits;
+
+    while (!empty($remnant)) {
+        // find role with no dependencies
+        $role = array_search(array(), $remnant);
+        if(!$role) {
+            var_dump($remnant);
+            return $inherit_order;
+        }        
+        
+        // remove the role from the remnant
+        unset($remnant[$role]);
+
+        // push role onto array
+        $inherit_order[$role] = $inherits[$role];
+
+        // snip role from all other role dependencies (i.e. it's now properly in
+        // the list before them, it doesn't need to be considered anymore)
+        foreach ($remnant as $inherit_role => $dependencies) {
+            $remnant[$inherit_role] = array_diff($dependencies, array($role));
+        }
+    }
+
+    return $inherit_order;
+}
+
+/**
+ * 
+ * @param array $inherits
+ * @param type $perms
+ * @return type
+ */
+function nci_user_roles_merge_inherits(array $inherits, $perms){
+    // for each role, copy in permissions from all inherited roles
+    foreach($inherits as $role => $parents) {
+        foreach($parents as $parent_role) {
+            $perms[$role] += $perms[$parent_role];
+        }
+    }
+    
+    return $perms;
+}
+
+function nci_user_roles_rename_roles(array $perms) {
+    // first, retrieve role renaming from hook
+    $renamed_roles = module_invoke_all('role_rename');
+    
+    // retrieve previously saved renames of the role objects
+    $prev_renames = variable_get('nci_user_roles_renames', array());
+    
+    // save any role renames that occurred this time around
+    $curr_renames = array();
+    
+    while(!empty($renamed_roles)) {
+        // search through the renames for a pair with extant source and
+        // available target
+        $rename_performed = false;
+        foreach($renamed_roles as $src => $tgt) {
+            if(isset($perms[$src]) &&
+                    !isset($perms[$tgt])) {
+                
+                // copy the permissions, then clear the source permissions
+                // and declaration
+                $perms[$tgt] = $perms[$src];
+                unset($perms[$src]);
+                unset($renamed_roles[$src]);
+                
+                // save that this rename happened
+                $curr_renames[$src] = $tgt;
+                
+                // check if role exists and rename
+                $src_role = user_role_load_by_name($src);
+                $tgt_role = user_role_load_by_name($tgt);
+                if($src_role && !$tgt_role) {
+                    $src_role->name = $tgt;
+                    user_role_save($src_role);
+                    watchdog('nci_user_roles',
+                            "Renamed user role @src to @tgt.",
+                            array('@src' => $src, '@tgt' => $tgt),
+                            WATCHDOG_NOTICE);
+                    drupal_set_message("Renamed user role $src to $tgt.");
+                }
+                
+                $rename_performed = true;
+                break;
+            }
+        }
+        
+        // infinite loop protection
+        if(!$rename_performed) {
+            $loop_roles = print_r($renamed_roles, true);
+            watchdog('nci_user_roles',
+                'Loop discovered in role renaming - ' . 
+                    'some permissions may not be set correctly.  '
+                    . 'Remaining roles: @loop_roles',
+                array('@loop_roles' => $loop_roles),
+                WATCHDOG_ERROR);
+            drupal_set_message('Loop discovered in role renaming.  ' . 
+                    'Some permissions may not be set correctly.', 'error');
+            break;
+        }
+    }
+    
+    // deduct the performed renames from the known existing renames, and move
+    // any leftover role objects back to their original name
+    $old_renames = array_diff($prev_renames, $curr_renames);
+    while (!empty($old_renames)) {
+        $role_reverted = false;
+        foreach ($old_renames as $orig_name => $curr_name) {
+            // check if role exists and rename
+            $orig_role = user_role_load_by_name($orig_name);
+            $curr_role = user_role_load_by_name($curr_name);
+            if ($curr_role && !$orig_role) {
+                $curr_role->name = $orig_name;
+                user_role_save($curr_role);
+                watchdog('nci_user_roles',
+                            "Reverted renamed user role from @src to @tgt.",
+                            array('@src' => $curr_name, '@tgt' => $orig_name),
+                            WATCHDOG_NOTICE);
+                drupal_set_message("Reverted renamed user role from $curr_name to $orig_name");
+                unset($old_renames[$orig_name]);
+                $role_reverted = true;
+                break;
+            }
+        }
+        
+        if(!role_reverted) {
+            $loop_roles = print_r($old_renames, true);
+            watchdog('nci_user_roles',
+                'Loop discovered in role renaming - ' . 
+                    'some permissions may not be set correctly.  '
+                    . 'Remaining roles: @loop_roles',
+                array('@loop_roles' => $loop_roles),
+                WATCHDOG_ERROR);
+            drupal_set_message('Loop discovered in role renaming.  ' . 
+                    'Some permissions may not be set correctly.', 'error');
+            break;
+        }
+    }
+
+    // save the renames that were performed
+    variable_set('nci_user_roles_renames', $curr_renames);
+
+    return $perms;
+}
+
+function nci_user_roles_get_base_inherits(){
+    return array(
+        'anonymous user' => array(),
+        'authenticated user' => array('anonymous user'),
+        'content author' => array('authenticated user'),
+        'content editor' => array('content author'),
+        'site moderator' => array('content editor'),
+        'advanced content editor' => array('site moderator'),
+        'site manager' => array('advanced content editor'),
+    );
+}
+
+/**
+ * Clears permissions for the provided user roles.  Rejects the admin role 
+ * if provided.
+ * 
+ * @param array $roles      Clears the permissions of the role names contained 
+ *                          in this array, or leave empty for all
+ * @param array $whitelist  Array of permissions to clear, or leave empty for all.
+ */
+function nci_user_roles_clear_permissions(array $roles = array(), 
+        array $blacklist = array()) {
+    
+    if(empty($roles)) $roles = user_roles();
+    
+    foreach ($roles as $role_name) {
+        if ($role_name == 'administrator')
+            continue;
+
+        $role = user_role_load_by_name($role_name);
+        if ($role) {
+            $rid = $role->rid;
+
+            if (empty($blacklist)) {
+                $permissions = user_role_permissions(array($rid => $rid));
+                $blacklist = $permissions[$rid];
+            }
+            
+            $permission_names = array_keys($blacklist);
+            
+            if(empty($permission_names)) {
+                //drupal_set_message("$role_name: no permissions to clear.");
+                continue;
+            }
+
+            $reject_list = implode(", \n", $permission_names);
+            $perm_count = sizeof($permission_names);
+            watchdog('nci_user_roles', 
+                "Clearing non-authorized permissions for @role_name:\n@reject_list\n",
+                array('@role_name' => $role_name, '@reject_list' => $reject_list),
+                WATCHDOG_NOTICE);
+            drupal_set_message(
+                "Clearing $perm_count non-authorized permissions for $role_name.");
+            
+            // clear blacklisted permissions
+            user_role_revoke_permissions($rid, $permission_names);
+        }
+    }
+}
+
+?>

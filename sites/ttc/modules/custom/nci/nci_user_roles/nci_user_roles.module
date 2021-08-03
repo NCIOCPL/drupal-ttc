@@ -1,0 +1,111 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+function nci_user_roles_get_permissions() {
+    $module_permissions = array();
+    foreach (module_list(FALSE, FALSE, TRUE) as $module) {
+        if ($permissions = module_invoke($module, 'permission')) {
+            foreach ($permissions as $permission => $parameters) {
+                $module_permissions[$permission] = $parameters;
+                $module_permissions[$permission]['module'] = $module;
+            }
+        }
+    }
+
+    return $module_permissions;
+}
+
+/**
+ * Builds an array of content type permissions, given an array of types and
+ * access levels desired
+ * 
+ * @param array $types  An array of content type names
+ * @param array $access An array of desired access, denoted by the terms
+ *                      'edit own', 'edit any', 'delete own', delete any', and
+ *                      'create'
+ * @return array        An array of the desired type permissions
+ */
+function nci_user_roles_build_content_type_permissions(array $types,
+        array $access_levels) {
+    $type_perms = array();
+    foreach($types as $type) {
+        foreach($access_levels as $level) {
+            $perm_string = '';
+            switch ($level) {
+                case 'edit own':
+                case 'edit any':
+                case 'delete own':
+                case 'delete any':
+                case 'create':
+                    $perm_string = "$level $type content";
+
+                    break;
+                default:
+                    continue;
+            }
+            
+            $type_perms[$perm_string] = true;
+        }
+    }
+    
+    return $type_perms;
+}
+
+/**
+ * Builds an array of content type permissions, given an array of types and
+ * access levels desired
+ * 
+ * @param array $types  An array of content type names
+ * @param array $access An array of desired access, denoted by the terms
+ *                      'edit own', 'edit any', 'delete own', delete any', and
+ *                      'create'
+ * @return array        An array of the desired type permissions
+ */
+function nci_user_roles_build_taxonomy_permissions(array $vocabs,
+        array $access_levels) {
+    $type_perms = array();
+    foreach($vocabs as $vocab_name) {
+        // attempt to lookup the given vocabulary
+        $vocab = taxonomy_vocabulary_machine_name_load($vocab_name);
+        
+        if(!$vocab) {
+            drupal_set_message("Cannot load vocabulary $vocab_name.", 'warning');
+            continue;
+        }
+        
+        $vid = $vocab->vid;
+        
+        foreach($access_levels as $level) {
+            $perm_string = '';
+            switch ($level) {
+                case 'edit':
+                case 'delete':
+                    $perm_string = "$level terms in $vid";
+
+                    break;
+                default:
+                    continue;
+            }
+            
+            $type_perms[$perm_string] = true;
+        }
+    }
+    
+    return $type_perms;
+}
+
+function nci_user_roles_modules_enabled($modules) {
+    require_once 'nci_user_roles.install';
+    nci_user_roles_set_permissions();
+}
+
+function nci_user_roles_modules_disabled($modules) {
+    require_once 'nci_user_roles.install';
+    nci_user_roles_set_permissions();
+}
+
+?>

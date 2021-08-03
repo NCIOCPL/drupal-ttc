@@ -95,7 +95,7 @@
       $('.mobile-search').toggleClass('show');
     });
     // Add home link to mobile menu
-    //$('<li class="home"><a href="/">Home</a></li>').prependTo('.left-off-canvas-menu > ul.menu');
+    // $('<li class="home"><a href="/">Home</a></li>').prependTo('.left-off-canvas-menu > ul.menu');
     $('<span class="mplus"/>').insertAfter('ul.menu li.expanded > a');
     $('.mplus').on('click', function () {
       $(this).toggleClass('open').next('ul.menu').slideToggle();
@@ -127,34 +127,31 @@
     $('.left-off-canvas-menu a, .right-off-canvas-menu a, .mobile-menu a').attr('tabindex', '-1');
 
     // External Link Change.
-    var path = "https://www.cancer.gov/policies/linking";
-    var altText = "Exit Disclaimer";
-    $("a").filter(function () {
+    var path = 'https://www.cancer.gov/policies/linking';
+    var altText = 'Exit Disclaimer';
+    $('a').filter(function () {
       return /^https?\:\/\/([a-zA-Z0-9\-]+\.)+/.test(this.href)
           && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+hhs\.gov/.test(this.href)
           && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+nih\.gov/.test(this.href)
           && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+usa\.gov/.test(this.href)
           && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+cancer\.gov/.test(this.href)
-          && this.href != "" && this.href.indexOf(location.protocol +"//" +location.hostname) != 0
-          && $(this).parents('.follow-us').length == 0  }).
-      after(' <a class="exitNotification" href=' + path + '><img title='+ '"' + altText +'"' +'  alt='+ '"' + altText +'"' + ' src="/sites/all/modules/contrib/extlink/extlink.png" /></a>');
-    if($('.with-image').length == 0){
-        $('.list-spacer-image').addClass('image-collapsed');
-        $('.list-item-with-image').addClass('text-collapsed');
+          && this.href !== '' && this.href.indexOf(location.protocol + '//' + location.hostname) !== 0
+          && $(this).parents('.follow-us').length === 0; }).after(' <a class="exitNotification" href=' + path + '><img title=' + '"' + altText + '"' + '  alt=' + '"' + altText + '"' + ' src="/sites/all/modules/contrib/extlink/images/extlink.png" /></a>');
+    if ($('.with-image').length === 0) {
+      $('.list-spacer-image').addClass('image-collapsed');
+      $('.list-item-with-image').addClass('text-collapsed');
     }
 
 
     // Expand collapse mobile only
     $('.pane-available-institutes .pane-title').click(function (event) {
-        event.preventDefault();
-        var windowWidth = $(window).width();
-        if(windowWidth <= 1024) {
-            $('.pane-available-institutes .pane-content').toggleClass("visible");
-            $('.pane-available-institutes .pane-title').toggleClass("expanded");
-        }
+      event.preventDefault();
+      var windowWidth = $(window).width();
+      if (windowWidth <= 1024) {
+        $('.pane-available-institutes .pane-content').toggleClass('visible');
+        $('.pane-available-institutes .pane-title').toggleClass('expanded');
+      }
 
     });
-
-
   });
 }(jQuery));
