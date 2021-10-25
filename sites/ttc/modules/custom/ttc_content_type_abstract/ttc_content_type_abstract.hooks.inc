@@ -11,6 +11,9 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
         // hide machine-generated fields
         $form['field_opp_year']['#access'] = false;
         $form['field_opp_30day_warned']['#access'] = false;
+        $form['field_3_year_warned']['#access'] = false;
+        $form['field_6_year_warned']['#access'] = false;
+        $form['field_10_year_warned']['#access'] = false;
         $form['field_xml']['#access'] = false;
 
 

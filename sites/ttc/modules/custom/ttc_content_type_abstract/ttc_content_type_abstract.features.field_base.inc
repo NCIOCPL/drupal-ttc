@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ttc_content_type_abstract.features.field_base.inc

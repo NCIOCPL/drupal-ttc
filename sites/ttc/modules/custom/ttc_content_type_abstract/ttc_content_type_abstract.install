@@ -68,3 +68,29 @@ function ttc_content_type_abstract_update_5(&$sandbox){
 
 
 }
+
+/**
+ * Update hook to populate 3_year_warned, 6_year_warned and 10_year_warned fields on content type abstract with default 0.
+ */
+function ttc_content_type_abstract_update_7010()
+{
+    $lang = LANGUAGE_NONE; // Replace with ISO639-2 code if localizing
+    $node_type = 'abstract';
+
+    $query = new EntityFieldQuery;
+    $result = $query
+        ->entityCondition('entity_type', 'node')
+        ->propertyCondition('type', $node_type)
+        ->execute();
+
+    if (!empty($result['node'])) {
+        $nodes = entity_load('node', array_keys($result['node']));
+
+        foreach($nodes as $node) {
+            $node->field_3_year_warned[$lang][0]['value'] = '0';
+            $node->field_6_year_warned[$lang][0]['value'] = '0';
+            $node->field_10_year_warned[$lang][0]['value'] = '0';
+            node_save($node);
+        }
+    }
+}

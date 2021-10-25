@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ttc_content_type_abstract.features.field_instance.inc
@@ -124,6 +125,146 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_10_year_warned'.
+  $field_instances['node-abstract-field_10_year_warned'] = array(
+    'bundle' => 'abstract',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_10_year_warned',
+    'label' => '10 year warned',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_buttons',
+      'weight' => 45,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_3_year_warned'.
+  $field_instances['node-abstract-field_3_year_warned'] = array(
+    'bundle' => 'abstract',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_3_year_warned',
+    'label' => '3 year warned',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_6_year_warned'.
+  $field_instances['node-abstract-field_6_year_warned'] = array(
+    'bundle' => 'abstract',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'PDF' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_6_year_warned',
+    'label' => '6 year warned',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 44,
     ),
   );
 
@@ -279,7 +420,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 38,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -515,7 +656,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -559,7 +700,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -616,7 +757,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -658,7 +799,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -798,7 +939,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -844,7 +985,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1068,6 +1209,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1082,6 +1224,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1195,7 +1338,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1368,6 +1511,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1382,6 +1526,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1444,7 +1589,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1488,6 +1633,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'delete' => '',
           'description' => 0,
           'edit' => '',
+          'translate' => 'Translate',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -1501,6 +1647,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'delete' => 'Delete',
           'description' => TRUE,
           'edit' => 'Edit',
+          'translate' => 'Translate',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -1547,7 +1694,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1588,6 +1735,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1699,10 +1847,11 @@ function ttc_content_type_abstract_field_default_field_instances() {
           'delete' => 'Delete',
           'description' => TRUE,
           'edit' => 'Edit',
+          'translate' => 'Translate',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 35,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1743,6 +1892,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1809,7 +1959,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1897,6 +2047,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1959,7 +2110,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1989,7 +2140,10 @@ function ttc_content_type_abstract_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('10 year warned');
+  t('3 year warned');
   t('30-Day Warned');
+  t('6 year warned');
   t('A list of related reference numbers (E-Numbers).');
   t('A short description of the abstract, also provided to search engines..');
   t('Additional Patent Documentation');
