@@ -714,6 +714,9 @@ function _ttc_content_type_abstract_enumber_exists($current_nid, $e_number){
 function ttc_content_type_abstract_mail($key, &$message, $params) {
     switch ($key) {
         case '30day_notify':
+        case '3_year_notify':
+        case '6_year_notify':
+        case '10_year_notify':
             $message['subject'] = $params['subject'];
             $message['body'][] = $params['body'];
             break;

@@ -244,7 +244,7 @@ function _ttc_content_type_abstract_cron_time_notifications(){
     watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 6 years old.",
         array('%count' => $results->rowCount()));
     foreach($results as $result) {
-             _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
+        _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
     }
 //10 year query
     $query = db_select('node', 'n');
@@ -311,6 +311,8 @@ Best regards,
 
 TTC Website Admin';
     // Send the email.
+
+
     $params = array(
         'subject' => 'Notice Abstract Posted ' . $time_period . ' years ago: ' . $nih_reference_no,
         'body' => check_markup(
@@ -318,9 +320,11 @@ TTC Website Admin';
             'plain_text'
         ),
     );
-    $notification = str_replace(' ', '_', $time_period) . 'years_notify';
-    drupal_mail('ttc_content_type_abstract', $notification, $email_to, language_default(), $params);
 
+    $notification = str_replace(' ', '_', $time_period) . '_year_notify';
+    drupal_mail('ttc_content_type_abstract', $notification, $email_to, language_default(), $params);
+    watchdog('ttc_content_type_abstract', "Abstract mail notification: %notification",
+        array('%notification' => $notification));
     watchdog('ttc_content_type_abstract', "Abstract mail sent for %time years with %subject and %body",
         array('%subject' => $params['subject'], '%body' => $params['body'],'%time' => $time_period));
 
