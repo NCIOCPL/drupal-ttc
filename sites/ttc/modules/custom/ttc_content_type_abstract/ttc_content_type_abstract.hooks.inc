@@ -196,7 +196,7 @@ function ttc_content_type_abstract_node_presave($node) {
             }
         }
         //Checks to see if posted date is empty, and if empty sets it to publication date
-        $publication_date = $node->field_publication_date['und'][0]['value'];
+        $publication_date = $node->field_opp_start_date['und'][0]['value'];
         if(!isset($node->field_posted_date['und'][0]['value'])) {
             $node->field_posted_date['und'][0]['value'] = $publication_date;
         }

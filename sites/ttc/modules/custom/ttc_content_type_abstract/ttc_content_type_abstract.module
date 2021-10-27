@@ -323,46 +323,9 @@ TTC Website Admin';
 
     $notification = str_replace(' ', '_', $time_period) . '_year_notify';
     drupal_mail('ttc_content_type_abstract', $notification, $email_to, language_default(), $params);
-    watchdog('ttc_content_type_abstract', "Abstract mail notification: %notification",
-        array('%notification' => $notification));
-    watchdog('ttc_content_type_abstract', "Abstract mail sent for %time years with %subject and %body",
-        array('%subject' => $params['subject'], '%body' => $params['body'],'%time' => $time_period));
-
     $warning_field = 'field_' . $time_period . '_year_warned';
-
     $node->$warning_field['und'][0]['value'] = '1';
-    /*
-    switch($time_period){
-        case '3':
-            $node->fieldname['und'][0]['value'] = 'field value';
-            break;
-        case '6':
-            break;
-        case '10':
-            break;
-    }
-    node_save($node); */
-/*
-    $data_table = 'field_data_field_' . $time_period . '_year_warned';
-    $revision_table = 'field_revision_field_' . $time_period . '_year_warned';
-    $field_value = 'field_' . $time_period . '_year_warned_value';
-
-    $num_updated = db_update($data_table)
-        ->fields(array(
-            $field_value => 1,
-        ))
-        ->condition('entity_id', $nid,  '=')
-        ->execute();
-    $num_updated = db_update($revision_table)
-        ->fields(array(
-            $field_value => 1,
-        ))
-        ->condition('entity_id', $nid,  '=')
-        ->execute();
-    watchdog('ttc_content_type_abstract', "Abstract database update data_table %data_table, revision_table %revision_table, field_value %field_value",
-        array('%data_table' => $data_table, '%revision_table' => $revision_table,'%field_value' => $field_value));
-*/
-
+    node_save($node);
 }
 
 function _ttc_content_type_abstract_cron_notify_30day($nid){
