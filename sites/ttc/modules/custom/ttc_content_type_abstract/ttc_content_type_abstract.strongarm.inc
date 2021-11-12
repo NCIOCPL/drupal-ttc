@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ttc_content_type_abstract.strongarm.inc
@@ -22,9 +23,32 @@ function ttc_content_type_abstract_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__abstract';
   $strongarm->value = array(
+    'extra_fields' => array(
+      'display' => array(),
+      'form' => array(
+        'metatags' => array(
+          'weight' => '34',
+        ),
+        'path' => array(
+          'weight' => '30',
+        ),
+        'redirect' => array(
+          'weight' => '32',
+        ),
+        'title' => array(
+          'weight' => '0',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '31',
+        ),
+      ),
+    ),
     'view_modes' => array(
-      'teaser' => array(
+      'PDF' => array(
         'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
       ),
       'full' => array(
         'custom_settings' => FALSE,
@@ -38,35 +62,12 @@ function ttc_content_type_abstract_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
-      'PDF' => array(
+      'teaser' => array(
         'custom_settings' => TRUE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
       ),
       'token' => array(
         'custom_settings' => FALSE,
       ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
-          'weight' => '30',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '31',
-        ),
-        'metatags' => array(
-          'weight' => '34',
-        ),
-        'redirect' => array(
-          'weight' => '32',
-        ),
-      ),
-      'display' => array(),
     ),
   );
   $export['field_bundle_settings_node__abstract'] = $strongarm;

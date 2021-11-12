@@ -11,6 +11,9 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
         // hide machine-generated fields
         $form['field_opp_year']['#access'] = false;
         $form['field_opp_30day_warned']['#access'] = false;
+        $form['field_3_year_warned']['#access'] = false;
+        $form['field_6_year_warned']['#access'] = false;
+        $form['field_10_year_warned']['#access'] = false;
         $form['field_xml']['#access'] = false;
 
 
@@ -193,7 +196,7 @@ function ttc_content_type_abstract_node_presave($node) {
             }
         }
         //Checks to see if posted date is empty, and if empty sets it to publication date
-        $publication_date = $node->field_publication_date['und'][0]['value'];
+        $publication_date = $node->field_opp_start_date['und'][0]['value'];
         if(!isset($node->field_posted_date['und'][0]['value'])) {
             $node->field_posted_date['und'][0]['value'] = $publication_date;
         }
@@ -711,6 +714,9 @@ function _ttc_content_type_abstract_enumber_exists($current_nid, $e_number){
 function ttc_content_type_abstract_mail($key, &$message, $params) {
     switch ($key) {
         case '30day_notify':
+        case '3_year_notify':
+        case '6_year_notify':
+        case '10_year_notify':
             $message['subject'] = $params['subject'];
             $message['body'][] = $params['body'];
             break;
