@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ttc_taxonomy.features.field_instance.inc
@@ -39,7 +40,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -72,7 +73,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -87,7 +88,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'email',
         'settings' => array(),
-        'type' => 'email_default',
+        'type' => 'email_plain',
         'weight' => 2,
       ),
     ),
@@ -106,6 +107,39 @@ function ttc_taxonomy_field_default_field_instances() {
       ),
       'type' => 'email_textfield',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-contacts-field_contact_email_cc'.
+  $field_instances['taxonomy_term-contacts-field_contact_email_cc'] = array(
+    'bundle' => 'contacts',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_plain',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_contact_email_cc',
+    'label' => 'CC Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 8,
     ),
   );
 
@@ -272,7 +306,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -305,7 +339,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'size' => 12,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -338,7 +372,7 @@ function ttc_taxonomy_field_default_field_instances() {
         'size' => 40,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -372,7 +406,7 @@ function ttc_taxonomy_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -558,6 +592,7 @@ function ttc_taxonomy_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
+  t('CC Email');
   t('City');
   t('Display Text');
   t('Email');

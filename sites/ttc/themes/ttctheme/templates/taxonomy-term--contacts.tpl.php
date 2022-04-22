@@ -48,7 +48,29 @@
   <?php endif; ?>
 
   <div class="content">
-    <?php print render($content); ?>
+    <?php print render($content['field_organization_name']);?>
+    <?php print render($content['field_contact_phone']);?>
+    <?php /**  dpm($content); */?>
+    <?php $contact_email = $content['field_contact_email']['#items']['0']['email'];?>
+    <?php $contact_email_cc = $content['field_contact_email_cc']['#items']['0']['email'];?>
+    <?php
+    if (!empty($contact_email_cc)) {
+      $email_list = $contact_email . '?cc=' . $contact_email_cc;
+      }
+    else {
+        $email_list = $contact_email;
+      }
+    ?>
+
+    <div class="field field-name-field-contact-email field-type-email field-label-hidden field-wrapper">
+      <div class="field-items">
+        <div class="field-item even">
+          <a href="mailto:<?php print $email_list;?>" data-extlink=""><?php print $contact_email;?>
+            <span class="mailto"><span class="element-invisible">(link sends e-mail)</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
