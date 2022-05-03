@@ -33,10 +33,10 @@ function ttc_taxonomy_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
       ),
     ),

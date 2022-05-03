@@ -27,10 +27,12 @@ try {
     $writer->setIndent(true);
 
     // load John Hewes' taxonomy term (or the currently configured term ID) as the contact for all abstracts
-    $tid = variable_get('contacts_default_term', 35);
+    //$tid = variable_get('contacts_default_term', 35);
+    //$tid = $row->extracted_values['field_contact_auto'];
+  $tid = $output;
     $contact = taxonomy_term_load($tid);
     if($contact !== FALSE) {
-        
+
         $first_name = isset($contact->field_first_name['und'][0]['value']) ? $contact->field_first_name['und'][0]['value'] : '';
         $last_name = isset($contact->field_last_name['und'][0]['value']) ? $contact->field_last_name['und'][0]['value'] : '';
         $suffix = isset($contact->field_suffix['und'][0]['value']) ? $contact->field_suffix['und'][0]['value'] : '';
@@ -42,10 +44,10 @@ try {
         $fax_number = isset($contact->field_fax_number['und'][0]['value']) ? $contact->field_fax_number['und'][0]['value'] : '';
         $org = isset($contact->field_organization_name['und'][0]['value']) ? $contact->field_organization_name['und'][0]['value'] : '';
         $fax_number = isset($contact->field_fax_number['und'][0]['value']) ? $contact->field_fax_number['und'][0]['value'] : '';
-        $email = isset($contact->field_contact_email['und'][0]['email']) ? $contact->field_contact_email['und'][0]['email'] : '';       
+        $email = isset($contact->field_contact_email['und'][0]['email']) ? $contact->field_contact_email['und'][0]['email'] : '';
 
         unset($contact);
-        
+
         $writer->startElement('Contact');
             $writer->startElement('Person');
                 $writer->writeElement('FirstName', $first_name);
