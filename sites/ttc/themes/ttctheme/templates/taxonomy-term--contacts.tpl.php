@@ -62,6 +62,7 @@
     if (!empty($contact_email_bcc)) {
       $email_list = $email_list . '?bcc=' . $contact_email_bcc;
     }
+    $email_list = $email_list . '?subject=NCI TTC Website Inquiry';
     ?>
 
     <div class="field field-name-field-contact-email field-type-email field-label-hidden field-wrapper">
