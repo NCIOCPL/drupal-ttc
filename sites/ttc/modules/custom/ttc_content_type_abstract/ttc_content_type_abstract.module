@@ -292,8 +292,11 @@ function _ttc_content_type_abstract_cron_notify_message($nid,$time_period){
     $node = node_load($nid);
 
     global $conf;
-    $email_to = $conf['notifications_email'];
+    $email_cc = $conf['notifications_email'];
     $title = $node->title;
+    $contact_tid = $node->field_contact_auto['und']['0']['tid'];
+    $term = taxonomy_term_load($contact_tid);
+    $email_to = $term->field_contact_email['und']['0']['email'];
     $nih_reference_no  = $node->field_enumber['und']['0']['value'];
     // Send email notification
 
@@ -319,6 +322,9 @@ TTC Website Admin';
             t($message),
             'plain_text'
         ),
+        'headers' => array(
+          'Cc' => $email_cc
+        )
     );
 
     $notification = str_replace(' ', '_', $time_period) . '_year_notify';

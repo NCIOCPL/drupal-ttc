@@ -115,11 +115,11 @@ if ($view_mode!='teaser') {
 
 
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php 
+  <?php
 
       print "<div class='image'></div>";
   ?>
-  
+
   <div class='abstract__contents'>
 
     <?php
@@ -163,7 +163,7 @@ if ($view_mode!='teaser') {
             print render($content['field_opp_co_dev']);
             print render($content['field_contact_auto']);
             ?>
-           </div> 
+           </div>
 
     <?php endif; ?>
     <?php
@@ -198,7 +198,7 @@ if ($view_mode!='teaser') {
         <div class="field field-name-field-updated-date field-type-datestamp field-label-above field-wrapper">
           <div class="field-label">Updated</div>
           <div class="field-items"><div class="field-item even"><span class="date-display-single"><?php print date("l, F j, Y", $node->changed) ;?></span></div></div>
-        </div>      
+        </div>
       </span>
     <?php endif; ?>
 
@@ -207,5 +207,5 @@ if ($view_mode!='teaser') {
 
   </div>
 
-  
+
 </article>
