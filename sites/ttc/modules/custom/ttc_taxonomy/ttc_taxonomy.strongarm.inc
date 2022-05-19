@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ttc_taxonomy.strongarm.inc
@@ -15,39 +16,39 @@ function ttc_taxonomy_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_taxonomy_term__contacts';
   $strongarm->value = array(
+    'extra_fields' => array(
+      'display' => array(
+        'description' => array(
+          'default' => array(
+            'visible' => FALSE,
+            'weight' => '4',
+          ),
+        ),
+      ),
+      'form' => array(
+        'description' => array(
+          'weight' => '1',
+        ),
+        'name' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '15',
+        ),
+        'redirect' => array(
+          'weight' => '16',
+        ),
+      ),
+    ),
     'view_modes' => array(
-      'full' => array(
+      'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
-      'diff_standard' => array(
+      'full' => array(
         'custom_settings' => FALSE,
       ),
       'token' => array(
         'custom_settings' => FALSE,
-      ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'name' => array(
-          'weight' => '0',
-        ),
-        'description' => array(
-          'weight' => '1',
-        ),
-        'path' => array(
-          'weight' => '13',
-        ),
-        'redirect' => array(
-          'weight' => '14',
-        ),
-      ),
-      'display' => array(
-        'description' => array(
-          'default' => array(
-            'weight' => '4',
-            'visible' => FALSE,
-          ),
-        ),
       ),
     ),
   );

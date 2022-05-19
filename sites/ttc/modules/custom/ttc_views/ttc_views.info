@@ -11,6 +11,7 @@ dependencies[] = views_data_export
 dependencies[] = views_ui
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
+features[views_view][] = abstracts_bulk_update
 features[views_view][] = abstracts_rss
 features[views_view][] = abstracts_xml
 features[views_view][] = available_institutes
