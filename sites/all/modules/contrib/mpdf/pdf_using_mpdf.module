@@ -327,11 +327,11 @@ function _pdf_using_mpdf_generator($html, $filename = NULL) {
     case 0:
     default:
       // Open in same browser.
-      $mpdf->Output($filename . '.pdf', 'I'); 
+      $mpdf->Output($filename . '.pdf', 'I');
       exit;
       break;
   }
-  
+
   return TRUE;
 }
 
@@ -425,7 +425,7 @@ function pdf_using_mpdf_node_view_alter(&$build) {
  * Function to check if a folder/file is writable
  */
 function pdf_using_mpdf_is_writable($path) {
-  if ($path{strlen($path)-1} == '/') {
+  if ($path[strlen($path)-1] == '/') {
     return drupal_is_writable($path . uniqid(mt_rand()) . '.tmp');
   }
   elseif (is_dir($path)) {
