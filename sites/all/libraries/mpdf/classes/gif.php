@@ -9,7 +9,7 @@
 // condition to leave the original address (Yamasoft, http://www.yamasoft.com) and this header.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// 2009-12-22 Adapted INB 
+// 2009-12-22 Adapted INB
 // Functions calling functionname($x, $len = 0) were not working on PHP5.1.5 as pass by reference
 // All edited to $len = 0; then call function.
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -431,7 +431,7 @@ class CGIFIMAGEHEADER
 			return false;
 		}
 
-		$b = ord($lpData{8});
+		$b = ord($lpData[8]);
 		$this->m_bLocalClr  = ($b & 0x80) ? true : false;
 		$this->m_bInterlace = ($b & 0x40) ? true : false;
 		$this->m_bSorted    = ($b & 0x20) ? true : false;
