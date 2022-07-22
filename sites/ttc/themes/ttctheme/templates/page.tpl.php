@@ -121,10 +121,10 @@
         </section>
         <!--/.l-featured -->
       <?php endif; ?>
-      
+
        <?php if ($breadcrumb): ?>
           <?php print $breadcrumb; ?>
-        
+
 		  <!-- Display share buttons -->
 		  <div class='addthis'>
           <span class="label">Share: </span>
@@ -137,7 +137,7 @@
 			<!-- TODO: add styling to the buttons instead of using addthis defaults -->
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5688053d43fd3757" async="async"></script>
 		  </div>
-		<?php endif; ?>      
+		<?php endif; ?>
 
       <?php if (!empty($page['sidebar_first'])): ?>
         <aside role="complementary" class="sidebar-first columns sidebar show-for-large-up large-3">
@@ -147,7 +147,7 @@
 
           <div id="mainid" class="large-12 columns main__content">
 
-    
+
         <?php if (!empty($page['highlighted'])): ?>
           <div class="highlight panel callout">
             <?php print render($page['highlighted']); ?>
@@ -155,7 +155,7 @@
         <?php endif; ?>
 
         <a id="main-content"></a>
-	
+
         <?php if ($title): ?>
           <?php print render($title_prefix); ?>
           <h1 id="page-title" class="title"><?php print $title; ?></h1>
@@ -238,7 +238,7 @@
         <?php print render($page['footer']); ?>
       </div>
     <?php endif; ?>
-    
+
     <?php if ($site_hhs_disclaimer) : ?>
       <div class="disclaimer columns">
         <?php print $site_hhs_disclaimer; ?>
@@ -259,13 +259,14 @@
           <nav class="left-off-canvas-menu">
 
             <?php  print render($menu_site_structure_expanded); ?>
-          </nav> <!-- /#mobile-menu --> 
-          
+          </nav> <!-- /#mobile-menu -->
+
           <nav class="right-off-canvas-menu" id="subscribe-off-canvas">
             <?php
 
             $block = block_load('block', '6');
-            $output = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+            $block_renderable_array = _block_get_renderable_array(_block_render_blocks(array($block)));
+            $output = drupal_render($block_renderable_array);
             print $output;
 
             ?>
