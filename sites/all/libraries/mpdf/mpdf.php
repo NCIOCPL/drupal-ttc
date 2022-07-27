@@ -9662,7 +9662,7 @@ function _putimages()
 {
 	$filter=($this->compress) ? '/Filter /FlateDecode ' : '';
 	reset($this->images);
-	while(list($file,$info)=each($this->images)) {
+	while(list($file,$info)=myEach($this->images)) {
 		$this->_newobj();
 		$this->images[$file]['n']=$this->n;
 		$this->_out('<</Type /XObject');
@@ -11457,7 +11457,7 @@ function _imageTypeFromString(&$data) {
 // Moved outside WMF as also needed for SVG
 function _putformobjects() {
 	reset($this->formobjects);
-	while(list($file,$info)=each($this->formobjects)) {
+	while(list($file,$info)=myEach($this->formobjects)) {
 		$this->_newobj();
 		$this->formobjects[$file]['n']=$this->n;
 		$this->_out('<</Type /XObject');
@@ -22389,14 +22389,14 @@ function PaintDivBB($divider='',$blockstate=0,$blvl=0) {
 			// Set path for INNER shadow
 			$shadow .= ' q 0 w ';
 			$shadow .= $this->SetFColor($col1, true)."\n";
-			if ($col1{0}==5 && ord($col1{4})<100) {	// RGBa
-				$shadow .= $this->SetAlpha(ord($col1{4})/100, 'Normal', true, 'F')."\n";
+			if ($col1[0] ==5 && ord($col1[4])<100) {	// RGBa
+				$shadow .= $this->SetAlpha(ord($col1[4])/100, 'Normal', true, 'F')."\n";
 			}
-			else if ($col1{0}==6 && ord($col1{5})<100) {	// CMYKa
-				$shadow .= $this->SetAlpha(ord($col1{5})/100, 'Normal', true, 'F')."\n";
+			else if ($col1[0] ==6 && ord($col1[5])<100) {	// CMYKa
+				$shadow .= $this->SetAlpha(ord($col1[5])/100, 'Normal', true, 'F')."\n";
 			}
-			else if ($col1{0}==1 && $col1{2}==1 && ord($col1{3})<100) {	// Gray
-				$shadow .= $this->SetAlpha(ord($col1{3})/100, 'Normal', true, 'F')."\n";
+			else if ($col1[0] ==1 && $col1[2] ==1 && ord($col1[3])<100) {	// Gray
+				$shadow .= $this->SetAlpha(ord($col1[3])/100, 'Normal', true, 'F')."\n";
 			}
 
 			// Blur edges
@@ -25816,17 +25816,17 @@ function _tableRect($x, $y, $w, $h, $bord=-1, $details=array(), $buffer=false, $
 /*-- TABLES-ADVANCED-BORDERS --*/
 function _lightenColor($c) {
 	if (is_array($c)) { die('Color error in _lightencolor'); }
-	if ($c{0}==3 || $c{0}==5) { 	// RGB
-		list($h,$s,$l) = $this->rgb2hsl(ord($c{1})/255,ord($c{2})/255,ord($c{3})/255);
+	if ($c[0] ==3 || $c[0] ==5) { 	// RGB
+		list($h,$s,$l) = $this->rgb2hsl(ord($c[1])/255,ord($c[2])/255,ord($c[3])/255);
 		$l += ((1 - $l)*0.8);
 		list($r,$g,$b) = $this->hsl2rgb($h,$s,$l);
 		$ret = array(3,$r,$g,$b);
 	}
-	else if ($c{0}==4 || $c{0}==6) { 	// CMYK
-		$ret = array(4, max(0,(ord($c{1})-20)), max(0,(ord($c{2})-20)), max(0,(ord($c{3})-20)), max(0,(ord($c{4})-20)) );
+	else if ($c[0] ==4 || $c[0] ==6) { 	// CMYK
+		$ret = array(4, max(0,(ord($c[1])-20)), max(0,(ord($c[2])-20)), max(0,(ord($c[3])-20)), max(0,(ord($c[4])-20)) );
 	}
-	else if ($c{0}==1) {	// Grayscale
-		$ret = array(1,min(255,(ord($c{1})+32)));
+	else if ($c[0] ==1) {	// Grayscale
+		$ret = array(1,min(255,(ord($c[1])+32)));
 	}
 	$c = array_pad($ret, 6, 0);
 	$cstr = pack("a1ccccc", $c[0], ($c[1] & 0xFF), ($c[2] & 0xFF), ($c[3] & 0xFF), ($c[4] & 0xFF), ($c[5] & 0xFF) );
@@ -25836,18 +25836,18 @@ function _lightenColor($c) {
 
 function _darkenColor($c) {
 	if (is_array($c)) { die('Color error in _darkenColor'); }
-	if ($c{0}==3 || $c{0}==5) { 	// RGB
-		list($h,$s,$l) = $this->rgb2hsl(ord($c{1})/255,ord($c{2})/255,ord($c{3})/255);
+	if ($c[0] ==3 || $c[0] ==5) { 	// RGB
+		list($h,$s,$l) = $this->rgb2hsl(ord($c[1])/255,ord($c[2])/255,ord($c[3])/255);
 		$s *= 0.25;
 		$l *= 0.75;
 		list($r,$g,$b) = $this->hsl2rgb($h,$s,$l);
 		$ret = array(3,$r,$g,$b);
  	}
-	else if ($c{0}==4 || $c{0}==6) { 	// CMYK
-		$ret = array(4, min(100,(ord($c{1})+20)), min(100,(ord($c{2})+20)), min(100,(ord($c{3})+20)), min(100,(ord($c{4})+20)) );
+	else if ($c[0] ==4 || $c[0] ==6) { 	// CMYK
+		$ret = array(4, min(100,(ord($c[1])+20)), min(100,(ord($c[2])+20)), min(100,(ord($c[3])+20)), min(100,(ord($c[4])+20)) );
  	}
-	else if ($c{0}==1) {	// Grayscale
-		$ret = array(1,max(0,(ord($c{1})-32)));
+	else if ($c[0] ==1) {	// Grayscale
+		$ret = array(1,max(0,(ord($c[1])-32)));
  	}
 	$c = array_pad($ret, 6, 0);
 	$cstr = pack("a1ccccc", $c[0], ($c[1] & 0xFF), ($c[2] & 0xFF), ($c[3] & 0xFF), ($c[4] & 0xFF), ($c[5] & 0xFF) );
@@ -28209,9 +28209,9 @@ function _putresources() {
 				if (isset($tpl['resources'])) {
 					$this->current_parser =& $tpl['parser'];
 					reset ($tpl['resources'][1]);
-					while (list($k, $v) = each($tpl['resources'][1])) {
+					while (list($k, $v) = myEach($tpl['resources'][1])) {
 						if ($k == '/Shading') {
-							while (list($k2, $v2) = each($v[1])) {
+							while (list($k2, $v2) = myEach($v[1])) {
 								$this->_out($k2 . " ",false);
 								$this->pdf_write_value($v2);
 							}
@@ -28456,7 +28456,7 @@ function _Ovalue($user_pass, $owner_pass) {
 		for ($i = 1; $i <= 19; ++$i) {
 			$key = '';
 			for ($j = 0; $j < $len; ++$j) {
-				$key .= chr(ord($owner_RC4_key{$j}) ^ $i);
+				$key .= chr(ord($owner_RC4_key[$j]) ^ $i);
 			}
 			$enc = $this->_RC4($key, $enc);
 		}
@@ -32352,7 +32352,7 @@ function pdf_write_value(&$value) {
 			// A dictionary.
 			$this->_out("<<",false);
 			reset ($value[1]);
-			while (list($k, $v) = each($value[1])) {
+			while (list($k, $v) = myEach($value[1])) {
 				$this->_out($k . " ",false);
 				$this->pdf_write_value($v);
 			}
@@ -32746,7 +32746,12 @@ function SetJS($script) {
 
 }//end of Class
 
-
-
+// Replacement for each()
+function myEach(&$arr) {
+  $key = key($arr);
+  $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
+  next($arr);
+  return $result;
+}
 
 ?>
