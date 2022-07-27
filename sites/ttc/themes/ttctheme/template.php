@@ -224,6 +224,33 @@ function ttctheme_facetapi_link_active($variables) {
   return theme_link($variables);
 }
 
+function ttctheme_current_search_link_active($variables) {
+  // Sanitizes the link text if necessary.
+  $sanitize = empty($variables['options']['html']);
+  $link_text = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
+
+  // Theme function variables fro accessible markup.
+  // @see http://drupal.org/node/1316580
+  $accessible_vars = array(
+    'text' => $variables['text'],
+    'active' => TRUE,
+  );
+
+  // Builds link, passes through t() which gives us the ability to change the
+  // position of the widget on a per-language basis.
+  $replacements = array(
+    '!current_search_deactivate_widget' => theme('current_search_deactivate_widget', $variables),
+    '!current_search_accessible_markup' => theme('current_search_accessible_markup', $accessible_vars),
+  );
+  $variables['text'] = t('!current_search_deactivate_widget !current_search_accessible_markup', $replacements);
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['class'][] = 'active';
+  return l($variables['text'], $variables['path'], $variables['options']);
+}
+
+function ttctheme_current_search_deactivate_widget($variables) {
+  return '(-) ' . $variables['text'];
+}
 
 function ttctheme_menu_link(array $variables) {
   $element = $variables['element'];

@@ -17,7 +17,7 @@ function ttc_search_current_search_default_items() {
   $item->label = 'Current Abstract Faceted Search';
   $item->settings = array(
     'items' => array(
-      'active_facets' => array(
+      'active_items' => array(
         'id' => 'active',
         'label' => 'Active Facets',
         'pattern' => '[facetapi_active:active-value]',
