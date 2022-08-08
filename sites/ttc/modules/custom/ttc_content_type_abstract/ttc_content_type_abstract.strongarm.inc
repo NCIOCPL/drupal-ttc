@@ -15,7 +15,7 @@ function ttc_content_type_abstract_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_abstract';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-print';
   $export['additional_settings__active_tab_abstract'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -52,6 +52,9 @@ function ttc_content_type_abstract_strongarm() {
       ),
       'full' => array(
         'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
