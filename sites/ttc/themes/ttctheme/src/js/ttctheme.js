@@ -1,3 +1,4 @@
+import jQuery from 'jquery';
 (function ($) {
   'use strict';
   $(document).ready(function () {
@@ -84,7 +85,7 @@
       }
     });
     // show all abstract search images if any concrete img elements exist
-    var $images = jQuery('article.node-abstract.node-teaser .image');
+    var $images = $('article.node-abstract.node-teaser .image');
     if ($images.find('img').size() > 0) {
       $images.show();
     }
@@ -130,11 +131,11 @@
     var path = 'https://www.cancer.gov/policies/linking';
     var altText = 'Exit Disclaimer';
     $('a').filter(function () {
-      return /^https?\:\/\/([a-zA-Z0-9\-]+\.)+/.test(this.href)
-          && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+hhs\.gov/.test(this.href)
-          && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+nih\.gov/.test(this.href)
-          && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+usa\.gov/.test(this.href)
-          && !/^https?\:\/\/([a-zA-Z0-9\-]+\.)+cancer\.gov/.test(this.href)
+      return /^https?:\/\/([a-zA-Z0-9-]+\.)+/.test(this.href)
+          && !/^https?:\/\/([a-zA-Z0-9-]+\.)+hhs\.gov/.test(this.href)
+          && !/^https?:\/\/([a-zA-Z0-9-]+\.)+nih\.gov/.test(this.href)
+          && !/^https?:\/\/([a-zA-Z0-9-]+\.)+usa\.gov/.test(this.href)
+          && !/^https?:\/\/([a-zA-Z0-9-]+\.)+cancer\.gov/.test(this.href)
           && this.href !== '' && this.href.indexOf(location.protocol + '//' + location.hostname) !== 0
           && $(this).parents('.follow-us').length === 0; }).after(' <a class="exitNotification" href=' + path + '><img title=' + '"' + altText + '"' + '  alt=' + '"' + altText + '"' + ' src="/sites/all/modules/contrib/extlink/images/extlink.png" /></a>');
     if ($('.with-image').length === 0) {

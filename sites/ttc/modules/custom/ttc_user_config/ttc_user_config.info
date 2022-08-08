@@ -13,7 +13,6 @@ dependencies[] = metatag
 dependencies[] = nci_user_config
 dependencies[] = node
 dependencies[] = nodequeue
-dependencies[] = pdf_using_mpdf
 dependencies[] = php
 dependencies[] = redirect
 dependencies[] = taxonomy

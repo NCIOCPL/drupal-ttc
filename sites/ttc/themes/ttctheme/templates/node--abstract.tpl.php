@@ -149,7 +149,12 @@ if ($view_mode!='teaser') {
       <div class="abstract__summary">
             <?php if ($view_mode == 'full'): ?>
               <div class='abstract__link -view-pdf'>
-                  <a href='/pdf/<?php print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>
+                <?php print_insert_link('/node/444'); ?>
+                <a href='/printpdf/<?php print $node->nid; ?>' target="_blank">View PDF</a>
+
+                <!--<a href='/pdf/
+                <?php //print strtolower($title); ?>-
+                <?php //print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>-->
               </div>
             <?php endif; ?>
 

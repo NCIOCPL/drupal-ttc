@@ -11,7 +11,7 @@ include_once 'ttc_content_type_abstract.hooks.inc';
  * Implements hook_menu().
  */
 function ttc_content_type_abstract_menu() {
-    $items['pdf/%ttc_content_type_abstract_enumber'] = array(
+   /* $items['pdf/%ttc_content_type_abstract_enumber'] = array(
         'title' => 'Generate Abstract PDF',
         'page callback' => 'ttc_content_type_abstract_generate_pdf',
         'page arguments' => array(1),
@@ -19,8 +19,16 @@ function ttc_content_type_abstract_menu() {
         'access arguments' => array(1),
         'type' => MENU_LOCAL_TASK,
         'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
-    );
-
+    );*/
+  $items['node/%node/printpdf'] = array(
+    'title' => 'Generate PDF',
+    'page arguments' => array('node', 1),
+    'href' => "printpdf/" . arg(1),
+    'path' => 'printpdf/' . arg(1),
+    'access arguments' => array('access PDF version'), // permission
+    'type' => MENU_LOCAL_TASK,
+    //'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
     $items['abstracts.xml'] = array(
         'page callback' => 'ttc_content_type_abstract_xml',
         'access callback' => TRUE,
@@ -29,6 +37,9 @@ function ttc_content_type_abstract_menu() {
 
     return $items;
 }
+
+
+
 
 function ttc_content_type_abstract_enumber_load($filename) {
 
@@ -72,7 +83,7 @@ function ttc_content_type_abstract_enumber_load($filename) {
  * @return bool
  *   TRUE if PDF is successfully generated and FALSE if it isn't.
  */
-function ttc_content_type_abstract_generate_pdf($node) {
+/*function ttc_content_type_abstract_generate_pdf($node) {
 
     if (variable_get('pdf_using_mpdf_type_abstract') == 0) {
         drupal_goto(urlencode('node') . '/' . $node->nid);
@@ -107,7 +118,7 @@ function ttc_content_type_abstract_generate_pdf($node) {
         drupal_goto(urlencode('node') . '/' . $node->nid);
         return;
     }
-}
+}*/
 
 /**
  * Check for generate PDF permission.
@@ -118,17 +129,17 @@ function ttc_content_type_abstract_generate_pdf($node) {
  * @return bool
  *   TRUE if permision allow and FALSE if access denied.
  */
-function _ttc_content_type_abstract_attributes_access($filename) {
+/*function _ttc_content_type_abstract_attributes_access($filename) {
 
     if (user_access('generate pdf using mpdf')) {
         if (variable_get('pdf_using_mpdf_type_abstract') == 1) {
             return TRUE;
-        } else {
+       } else {
             return FALSE;
         }
     }
     return FALSE; // TRUE or you can user user_access() permissions as well
-}
+}*/
 
 /**
  * Outputs the cached abstract xml.

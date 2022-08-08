@@ -1,7 +1,9 @@
+import jQuery from 'jquery';
+import Drupal from 'eslint-config-drupal';
 (function () {
   'use strict';
 // USed for expanding facets when option selected
-  var facets_expanded = [];
+  //var facets_expanded = [];
   jQuery(document).ready(function () {
     // Create a link to remove the keyword filter.
     (function () {
@@ -102,7 +104,7 @@
       var redirect = new Drupal.facetapi.Redirect(href);
       var filterAction;
 
-      $checkbox.click(function (e) {
+      $checkbox.click(function () {
         Drupal.facetapi.disableFacet($link.parents('ul.facetapi-facetapi-checkbox-links'));
         redirect.gotoHref();
       });
