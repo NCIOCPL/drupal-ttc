@@ -100,7 +100,7 @@ if ($view_mode!='teaser') {
   $show_up_date = false;
   $show_post_date = false;
   $show_default_date = false;
-  if($content['field_display_date_select']) {
+  if(isset($content['field_display_date_select'])) {
     if ($content['field_display_date_select']['#items']['0']['value'] == 0) {
       $show_up_date = true;
     } elseif ($content['field_display_date_select']['#items']['0']['value'] == 1) {
