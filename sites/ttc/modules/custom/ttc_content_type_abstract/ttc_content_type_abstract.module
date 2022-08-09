@@ -22,9 +22,8 @@ function ttc_content_type_abstract_menu() {
     );*/
   $items['node/%node/printpdf'] = array(
     'title' => 'Generate PDF',
+    'page callback' => 'ttc_content_type_abstract_generate_printpdf',
     'page arguments' => array('node', 1),
-    'href' => "printpdf/" . arg(1),
-    'path' => 'printpdf/' . arg(1),
     'access arguments' => array('access PDF version'), // permission
     'type' => MENU_LOCAL_TASK,
     //'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
@@ -76,7 +75,28 @@ function ttc_content_type_abstract_enumber_load($filename) {
 
     return FALSE;
 }
+/**
+ * Generate HTML of a given node.
+ *
+ * @return bool
+ *   TRUE if PDF is successfully generated and FALSE if it isn't.
+ */
+function ttc_content_type_abstract_generate_printpdf($node) {
 
+    if (!node_access('view', $node)) {
+        drupal_set_message(t('You are not authorized to generate PDF for this page.'), 'warning');
+        drupal_goto(urlencode('node') . '/' . $node->nid);
+        return;
+    }
+    if (empty($node)) {
+        drupal_get_messages('error');
+        drupal_set_message(t('PDF cannot be generated for this path.'), 'error');
+        return;
+    }
+  drupal_goto(urlencode('printpdf') . '/' . $node->nid);
+  return;
+
+}
 /**
  * Generate HTML of a given node.
  *
