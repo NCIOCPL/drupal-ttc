@@ -1,4 +1,3 @@
-import jQuery from 'jquery';
 (function ($) {
   'use strict';
   $(document).ready(function () {
