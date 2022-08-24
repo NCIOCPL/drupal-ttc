@@ -74,8 +74,8 @@ function ttc_content_type_abstract_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'send_to_email_addresses',
           'parent' => 0,
+          'vocabulary' => 'send_to_email_addresses',
         ),
       ),
     ),

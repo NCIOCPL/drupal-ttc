@@ -1,0 +1,29 @@
+From 39ba5f31bee73c9832fb203ef2f72e66217f0561 Mon Sep 17 00:00:00 2001
+From: Erik Meyer <eriksmeyer@gmail.com>
+Date: Wed, 27 Jul 2022 17:01:16 -0400
+Subject: [PATCH] Removed get_magic_quotes from ckeditor file (it was rmeoved
+ from PHP 8)
+
+---
+ .../all/libraries/ckeditor/samples/old/assets/posteddata.php | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/sites/all/libraries/ckeditor/samples/old/assets/posteddata.php b/sites/all/libraries/ckeditor/samples/old/assets/posteddata.php
+index 1e1406f2..5f6ffec5 100644
+--- a/sites/all/libraries/ckeditor/samples/old/assets/posteddata.php
++++ b/sites/all/libraries/ckeditor/samples/old/assets/posteddata.php
+@@ -31,10 +31,7 @@ if (!empty($_POST))
+ 	{
+ 		if ( ( !is_string($value) && !is_numeric($value) ) || !is_string($key) )
+ 			continue;
+-
+-		if ( get_magic_quotes_gpc() )
+-			$value = htmlspecialchars( stripslashes((string)$value) );
+-		else
++    
+ 			$value = htmlspecialchars( (string)$value );
+ ?>
+ 		<tr>
+-- 
+2.37.0
+

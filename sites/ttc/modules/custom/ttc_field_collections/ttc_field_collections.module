@@ -8,9 +8,12 @@
 function ttc_field_collections_entity_presave($entity){
 
   // Work around bug for sql storage issue with url fields. entity.controller.inc loads the attribute as array instead of string.
-  if($entity->field_name =="field_pat_status"  ){
-    if(isset($entity->original->field_url['und'][0]['attributes'])) {
-      $entity->original->field_url['und'][0]['attributes'] = null;
+  if(isset($entity->field_name)){
+    if($entity->field_name =="field_pat_status"  ){
+      if(isset($entity->original->field_url['und'][0]['attributes'])) {
+        $entity->original->field_url['und'][0]['attributes'] = null;
+      }
     }
   }
+
 }

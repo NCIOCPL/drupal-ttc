@@ -151,6 +151,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 36,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -194,6 +200,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
+      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -245,6 +257,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 35,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -287,6 +305,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 14,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -335,6 +359,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 12,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 13,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -379,6 +410,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 8,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 9,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -421,6 +459,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'list_default',
         'weight' => 26,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -468,6 +512,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'list_default',
         'weight' => 22,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -518,6 +568,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 23,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -567,6 +623,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 24,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -613,6 +675,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -658,6 +727,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 29,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -697,6 +772,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
+      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -759,6 +840,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 30,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -800,6 +887,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 27,
+      ),
+      'print' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -848,6 +941,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 10,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -895,6 +995,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 18,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 19,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -941,6 +1048,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 28,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -982,6 +1095,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'weight' => 21,
       ),
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 33,
+      ),
+      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1035,6 +1154,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 17,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1078,6 +1204,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 5,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1126,6 +1259,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1172,6 +1312,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 4,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1235,6 +1382,21 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 16,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'custom_date_format' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 17,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1291,6 +1453,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 7,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1340,6 +1509,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 32,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1384,6 +1559,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 11,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1427,6 +1609,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 9,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1474,6 +1663,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 3,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1537,6 +1733,21 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 15,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'custom_date_format' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 16,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1586,6 +1797,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'weight' => 22,
       ),
       'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
+      'print' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -1653,6 +1870,20 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'field_collection_view',
         'weight' => 13,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => '',
+          'delete' => '',
+          'description' => 0,
+          'edit' => '',
+          'translate' => 'Translate',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 14,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1695,6 +1926,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 31,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1745,6 +1983,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 19,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1802,6 +2046,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 1,
       ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 2,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
@@ -1853,6 +2104,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'field_collection_view',
         'weight' => 25,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1902,6 +2159,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 20,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1961,6 +2224,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 40,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 40,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2004,6 +2273,13 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
         'weight' => 2,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2058,6 +2334,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 21,
       ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2107,6 +2389,12 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 39,
+      ),
+      'print' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

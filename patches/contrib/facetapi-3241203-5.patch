@@ -1,0 +1,13 @@
+diff --git a/plugins/facetapi/adapter.inc b/plugins/facetapi/adapter.inc
+index b65671f7..504e6c06 100644
+--- a/plugins/facetapi/adapter.inc
++++ b/plugins/facetapi/adapter.inc
+@@ -310,7 +310,7 @@ abstract class FacetapiAdapter {
+       $parts = explode(':', $filter, 2);
+       // We need to filter out possible XSS attack function calls.
+       foreach ($parts as $id => $part) {
+-        $parts[$id] = filter_xss($part);
++        $parts[$id] = htmlspecialchars_decode(filter_xss($part));
+       }
+       $field_alias = rawurldecode($parts[0]);
+       if (isset($parts[1]) && isset($enabled_aliases[$field_alias])) {

@@ -100,7 +100,7 @@ if ($view_mode!='teaser') {
   $show_up_date = false;
   $show_post_date = false;
   $show_default_date = false;
-  if($content['field_display_date_select']) {
+  if(isset($content['field_display_date_select'])) {
     if ($content['field_display_date_select']['#items']['0']['value'] == 0) {
       $show_up_date = true;
     } elseif ($content['field_display_date_select']['#items']['0']['value'] == 1) {
@@ -115,11 +115,11 @@ if ($view_mode!='teaser') {
 
 
 <article id="node-<?php print $node->nid; ?>" class="abstract <?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php 
+  <?php
 
       print "<div class='image'></div>";
   ?>
-  
+
   <div class='abstract__contents'>
 
     <?php
@@ -149,7 +149,12 @@ if ($view_mode!='teaser') {
       <div class="abstract__summary">
             <?php if ($view_mode == 'full'): ?>
               <div class='abstract__link -view-pdf'>
-                  <a href='/pdf/<?php print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>
+                <?php print_insert_link('/node/444'); ?>
+                <a href='/printpdf/<?php print $node->nid; ?>' target="_blank">View PDF</a>
+
+                <!--<a href='/pdf/
+                <?php //print strtolower($title); ?>-
+                <?php //print strtolower($content['field_enumber'][0]['#markup']); ?>.pdf'>View PDF</a>-->
               </div>
             <?php endif; ?>
 
@@ -163,7 +168,7 @@ if ($view_mode!='teaser') {
             print render($content['field_opp_co_dev']);
             print render($content['field_contact_auto']);
             ?>
-           </div> 
+           </div>
 
     <?php endif; ?>
     <?php
@@ -198,7 +203,7 @@ if ($view_mode!='teaser') {
         <div class="field field-name-field-updated-date field-type-datestamp field-label-above field-wrapper">
           <div class="field-label">Updated</div>
           <div class="field-items"><div class="field-item even"><span class="date-display-single"><?php print date("l, F j, Y", $node->changed) ;?></span></div></div>
-        </div>      
+        </div>
       </span>
     <?php endif; ?>
 
@@ -207,5 +212,5 @@ if ($view_mode!='teaser') {
 
   </div>
 
-  
+
 </article>

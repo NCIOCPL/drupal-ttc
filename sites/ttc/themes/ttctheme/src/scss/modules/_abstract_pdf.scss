@@ -1,5 +1,5 @@
 .abstract__pdf-header{
-    
+
 
     .abstract__pdf-header_image {
         max-width: 100%;
@@ -28,9 +28,19 @@
         text-align: right;
     }
 }
-
-article.abstract__pdf, .abstract__pdf-footer {
-
+@font-face {
+  font-family: 'DejaVuSerif';
+  src: url('/sites/all/libraries/mpdf/ttfonts/DejaVuSerif.ttf');
+}
+@font-face {
+  font-family: 'DejaVuSans';
+  src: url('/sites/all/libraries/mpdf/ttfonts/DejaVuSans.ttf');
+}
+article.abstract__pdf, .abstract__pdf-footer,
+.print-content.abstract__pdf, .print-content.abstract__pdf-footer
+{
+  font-family: DejaVuSans, sans-serif;
+  font-size: 10px;
     &, & li, & p{
         font-size: 12pt;
     }
@@ -40,6 +50,6 @@ article.abstract__pdf, .abstract__pdf-footer {
     }
 
     .field-type-text-long p {
-        margin-top: $paragraph-margin-bottom / 2; 
+        margin-top: $paragraph-margin-bottom / 2;
     }
 }

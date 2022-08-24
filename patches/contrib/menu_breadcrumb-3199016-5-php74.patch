@@ -1,0 +1,30 @@
+commit e8e1680e97478a19629f847a4490b0e28dd2c22e
+Author: solideogloria <solideogloria@3589277.no-reply.drupal.org>
+Date:   Thu Apr 29 11:45:24 2021 +1200
+
+    Issue #3199016 by solideogloria, xurizaemon: PHP 7.4 error if menu_get_item() returns FALSE
+
+diff --git a/menu_breadcrumb.module b/menu_breadcrumb.module
+index eead770..0f16b58 100644
+--- a/menu_breadcrumb.module
++++ b/menu_breadcrumb.module
+@@ -318,6 +318,10 @@ function menu_breadcrumb_init() {
+   if (variable_get('menu_breadcrumb_determine_menu', 1) && !$is_front) {
+     // Find the set of menus containing a link for the current page.
+     $menu_item = menu_get_item();
++    if ($menu_item === FALSE) {
++      return;
++    }
++
+     $result = db_query("SELECT mlid, menu_name FROM {menu_links} WHERE link_path = :menu_item", array(':menu_item' => $menu_item['href']));
+     $menu_link_menus = array();
+     foreach ($result as $menu_link) {
+@@ -730,7 +734,7 @@ function _menu_breadcrumb_by_path($breadcrumb = array()) {
+ /**
+  * Returns an array of parent candidates.
+  *
+- * e.g. given the argument 'foo/bar/zee', this returns an array of 
++ * e.g. given the argument 'foo/bar/zee', this returns an array of
+  * internal Drupal paths for 'foo', 'foo/bar', 'foo/bar/zee'.
+  *
+  * @param string $path

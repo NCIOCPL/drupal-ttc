@@ -719,6 +719,7 @@ function ttc_content_type_abstract_mail($key, &$message, $params) {
         case '10_year_notify':
             $message['subject'] = $params['subject'];
             $message['body'][] = $params['body'];
+            $message['headers'] = array_merge($message['headers'], $params['headers']);
             break;
     }
 }

@@ -14,7 +14,7 @@ function ttctheme_preprocess_html(&$variables) {
   }
 
   // load the DTM js URL from a variable, allowing it to be overridden if needed
-  $src = variable_get('adobe_dtm_js', 
+  $src = variable_get('adobe_dtm_js',
       '//assets.adobedtm.com/f1bfa9f7170c81b1a9a9ecdcc6c5215ee0b03c84/satelliteLib-d2f12c9d63b33dcd3a2a118fa98ccce1b6255ee7.js');
   $dtm_script = "<script src='$src'></script>\n";
   // add DTM tag
@@ -38,15 +38,15 @@ function ttctheme_preprocess_page(&$variables) {
     $variables['alt_main_menu'] ||
     $variables['alt_secondary_menu']
   );
-  
+
   $disclaimer_default_text = array('value' => 'This site is undergoing remediation for compliance with Section 508. ' .
-      'The remediation will be complete by April 30, 2016. In the interim, ' . 
-      'should you require any accessibility assistance with any content, ' . 
-      'please contact the NCI Technology Transfer team at [use the tech transfer ' . 
+      'The remediation will be complete by April 30, 2016. In the interim, ' .
+      'should you require any accessibility assistance with any content, ' .
+      'please contact the NCI Technology Transfer team at [use the tech transfer ' .
       'email here]. Thank you!');
-  
+
   $variables['site_hhs_disclaimer'] = (variable_get('show_hhs_disclaimer', TRUE) ? filter_xss_admin(variable_get('site_hhs_disclaimer', $disclaimer_default_text)['value']) : '');
-  
+
   $main_menu_tree = menu_tree_all_data('menu-site-structure');
   // Add the rendered output to the $main_menu_expanded variable
   $variables['menu_site_structure_expanded'] = menu_tree_output($main_menu_tree);
@@ -224,16 +224,43 @@ function ttctheme_facetapi_link_active($variables) {
   return theme_link($variables);
 }
 
+function ttctheme_current_search_link_active($variables) {
+  // Sanitizes the link text if necessary.
+  $sanitize = empty($variables['options']['html']);
+  $link_text = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
+
+  // Theme function variables fro accessible markup.
+  // @see http://drupal.org/node/1316580
+  $accessible_vars = array(
+    'text' => $variables['text'],
+    'active' => TRUE,
+  );
+
+  // Builds link, passes through t() which gives us the ability to change the
+  // position of the widget on a per-language basis.
+  $replacements = array(
+    '!current_search_deactivate_widget' => theme('current_search_deactivate_widget', $variables),
+    '!current_search_accessible_markup' => theme('current_search_accessible_markup', $accessible_vars),
+  );
+  $variables['text'] = t('!current_search_deactivate_widget !current_search_accessible_markup', $replacements);
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['class'][] = 'active';
+  return l($variables['text'], $variables['path'], $variables['options']);
+}
+
+function ttctheme_current_search_deactivate_widget($variables) {
+  return '(-) ' . $variables['text'];
+}
 
 function ttctheme_menu_link(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
 
-  if ($element['#below']) {
+  if (isset($element['#below']) && (!empty($element['#below']))) {
     $sub_menu = drupal_render($element['#below']);
   }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  if($element['#submenu_wrapper']) {
+  if(isset($element['#submenu_wrapper']) && (!empty($element['#submenu_wrapper']))) {
     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . '<div class = "submenu">' . $sub_menu . "</div></li>\n";
   }else{
     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output  . $sub_menu . "</li>\n";

@@ -148,13 +148,13 @@ function ttc_user_config_user_default_permissions() {
   );
 
   // Exported permission: 'administer mpdf settings'.
-  $permissions['administer mpdf settings'] = array(
+ /* $permissions['administer mpdf settings'] = array(
     'name' => 'administer mpdf settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),
     'module' => 'pdf_using_mpdf',
-  );
+  );*/
 
   // Exported permission: 'administer navigation menu items'.
   $permissions['administer navigation menu items'] = array(
@@ -603,14 +603,14 @@ function ttc_user_config_user_default_permissions() {
   );
 
   // Exported permission: 'generate pdf using mpdf'.
-  $permissions['generate pdf using mpdf'] = array(
+/*  $permissions['generate pdf using mpdf'] = array(
     'name' => 'generate pdf using mpdf',
     'roles' => array(
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'pdf_using_mpdf',
-  );
+  );*/
 
   // Exported permission: 'manipulate all queues'.
   $permissions['manipulate all queues'] = array(
