@@ -28,6 +28,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_display_date_select
 features[field_base][] = field_formatted_email_list
+features[field_base][] = field_last_warned_date
 features[field_base][] = field_send_to
 features[field_instance][] = field_collection_item-field_notif-field_formatted_email_list
 features[field_instance][] = field_collection_item-field_notif-field_notif_manual
