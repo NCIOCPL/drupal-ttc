@@ -303,7 +303,7 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $tenYearSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >=  '  . $tenYearPlusCutoff  . ' ';
+  $tenYearSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= '  . $tenYearPlusCutoff  . ' ';
   $query->where($tenYearSnippet);
   $results = $query->execute();
   watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 10 years old.",
