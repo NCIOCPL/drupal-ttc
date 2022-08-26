@@ -775,7 +775,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 39,
       ),
       'print' => array(
         'label' => 'above',
@@ -877,18 +877,9 @@ function ttc_content_type_abstract_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'custom_date_format' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => FALSE,
-        ),
-        'type' => 'date_default',
-        'weight' => 41,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
       ),
       'print' => array(
         'label' => 'above',
@@ -1862,7 +1853,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 38,
       ),
       'print' => array(
         'label' => 'hidden',
@@ -2284,7 +2275,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 41,
       ),
       'print' => array(
         'label' => 'above',
@@ -2454,7 +2445,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 40,
       ),
       'print' => array(
         'label' => 'above',
@@ -2517,6 +2508,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Inventor Data');
   t('Inventor(s)');
   t('Keywords');
+  t('Last Warned Date');
   t('Mailing List Intro');
   t('Mode');
   t('NIH IC');

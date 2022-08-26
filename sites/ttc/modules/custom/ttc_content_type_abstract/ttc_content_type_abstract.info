@@ -47,6 +47,7 @@ features[field_instance][] = node-abstract-field_enumber
 features[field_instance][] = node-abstract-field_formatted_email_list
 features[field_instance][] = node-abstract-field_image
 features[field_instance][] = node-abstract-field_inventors
+features[field_instance][] = node-abstract-field_last_warned_date
 features[field_instance][] = node-abstract-field_list_intro_text
 features[field_instance][] = node-abstract-field_meta_keywords
 features[field_instance][] = node-abstract-field_meta_long_desc
