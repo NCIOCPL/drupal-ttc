@@ -244,8 +244,71 @@ function ttc_content_type_abstract_cron() {
     watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
   }
 }
+function _ttc_content_type_abstract_cron_retroactive_time_notifications(){
 
-//3 (1065), 6 (2190), and 10 (3650) year notification
+  $now = new DateTime('now');
+  $cutoff_date = new DateTime('2022-03-01');
+  $time_since_cutoff = date_diff($now, $cutoff_date);
+  $days_since_cutoff = $time_since_cutoff->days;
+  $threeYearPlusCutoff = $days_since_cutoff + 1095;
+  $sixYearPlusCutoff = $days_since_cutoff + 2190;
+  $tenYearPlusCutoff = $days_since_cutoff + 3650;
+  watchdog('ttc_content_type_abstract', "It has been %days days  since the March 1, 2022 cutoff for retroactive emails.",
+    array('%days' => $days_since_cutoff));
+//3 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $threeYearStartSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $threeYearPlusCutoff . ' ';
+  $threeYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $sixYearPlusCutoff  . ' ';
+  $query->where($threeYearStartSnippet);
+  $query->where($threeYearEndSnippet);
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 3 years old.",
+    array('%count' => $results->rowCount()));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'3');
+  }
+//6 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $sixYearStartSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $sixYearPlusCutoff  . ' ';
+  $sixYearEndSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $tenYearPlusCutoff  . ' ';
+  $query->where($sixYearStartSnippet);
+  $query->where($sixYearEndSnippet);
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 6 years old.",
+    array('%count' => $results->rowCount()));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
+  }
+//10 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $tenYearSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >=  '  . $tenYearPlusCutoff  . ' ';
+  $query->where($tenYearSnippet);
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 10 years old.",
+    array('%count' => $results->rowCount()));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'10');
+  }
+}
+//3 (1095), 6 (2190), and 10 (3650) year notification
 function _ttc_content_type_abstract_cron_time_notifications(){
 //3 year query
   $query = db_select('node', 'n');
@@ -256,7 +319,7 @@ function _ttc_content_type_abstract_cron_time_notifications(){
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 1065 ' );
+  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 1095 ' );
   $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < 2190 ' );
   $query->where('(
 	  c.field_3_year_warned_value <> 1 or c.field_3_year_warned_value is null)');
@@ -345,15 +408,15 @@ function _ttc_content_type_abstract_cron_notifications(){
 }
 function _ttc_content_type_abstract_cron_notify_message($nid,$time_period){
   $node = node_load($nid);
-
   global $conf;
   $email_cc = $conf['notifications_email'];
   $email_contact_name = $conf['notifications_contact_name'];
   $title = $node->title;
-  $contact_tid = $node->field_contact_auto['und']['0']['tid'];
-  $term = taxonomy_term_load($contact_tid);
-  $email_to = $term->field_contact_email['und']['0']['email'];
-  if(!isset($email_to) || ($email_to == '')){
+  if(isset($node->field_contact_auto['und']['0']['tid'])){
+    $contact_tid = $node->field_contact_auto['und']['0']['tid'];
+    $term = taxonomy_term_load($contact_tid);
+    $email_to = $term->field_contact_email['und']['0']['email'] ?? $email_cc;
+  } else {
     $email_to = $email_cc;
   }
   $nih_reference_no  = $node->field_enumber['und']['0']['value'];
@@ -363,7 +426,7 @@ function _ttc_content_type_abstract_cron_notify_message($nid,$time_period){
   $name_suffix = '';
   $updated_date = date('F j, Y', $node->field_updated_date['und']['0']['value']);
   $inventor_entity_ids = field_get_items('node', $node, 'field_inventors');
-  if(isset($inventor_entity_ids)){
+  if(isset($inventor_entity_ids) && (is_array($inventor_entity_ids)||is_object($inventor_entity_ids))){
     foreach($inventor_entity_ids as $inventor_entity_id) {
       $id = $inventor_entity_id['value'];
       $inventor = field_collection_item_load($id);
