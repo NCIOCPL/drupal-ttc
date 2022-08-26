@@ -244,17 +244,21 @@ function ttc_content_type_abstract_cron() {
     watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
   }
 }
-function _ttc_content_type_abstract_cron_retroactive_time_notifications(){
+function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_datetime="2022-03-01"){
 
   $now = new DateTime('now');
-  $cutoff_date = new DateTime('2022-03-01');
+  if(!isset($cutoff_datetime) || ($cutoff_datetime=='') || (!strtotime($cutoff_datetime))){
+    $cutoff_datetime="2022-03-01";
+  }
+  $cutoff_date = new DateTime($cutoff_datetime);
+  $notification_display_cutoff_date = $cutoff_date->format('F j,Y');
   $time_since_cutoff = date_diff($now, $cutoff_date);
   $days_since_cutoff = $time_since_cutoff->days;
   $threeYearPlusCutoff = $days_since_cutoff + 1095;
   $sixYearPlusCutoff = $days_since_cutoff + 2190;
   $tenYearPlusCutoff = $days_since_cutoff + 3650;
-  watchdog('ttc_content_type_abstract', "It has been %days days  since the March 1, 2022 cutoff for retroactive emails.",
-    array('%days' => $days_since_cutoff));
+  watchdog('ttc_content_type_abstract', "It has been %days days since the %cutoff cutoff for retroactive emails.",
+    array('%days' => $days_since_cutoff, '%cutoff' => $notification_display_cutoff_date));
 //3 year query
   $query = db_select('node', 'n');
   $query->distinct();
