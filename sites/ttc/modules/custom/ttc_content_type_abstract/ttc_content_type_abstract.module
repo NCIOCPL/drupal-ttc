@@ -101,9 +101,7 @@ function ttc_content_type_abstract_generate_printpdf($node) {
     $node_id = "";
   }
   drupal_goto(urlencode('printpdf') . '/' . $node_id);
-  dpm($node);
-  return;
-
+//  dpm($node);
 }
 /**
  * Generate HTML of a given node.
@@ -155,7 +153,7 @@ function ttc_content_type_abstract_generate_printpdf($node) {
  *   Filename of the desired PDF.
  *
  * @return bool
- *   TRUE if permision allow and FALSE if access denied.
+ *   TRUE if permission allow and FALSE if access denied.
  */
 /*function _ttc_content_type_abstract_attributes_access($filename) {
 
@@ -173,8 +171,8 @@ function ttc_content_type_abstract_generate_printpdf($node) {
  * Outputs the cached abstract xml.
  */
 function ttc_content_type_abstract_xml() {
-  // retrieve thhe abstract xml from cache
-  $xml = cache_get('abstract_xml', 'cache');
+  // retrieve the abstract xml from cache
+  $xml = cache_get('abstract_xml');
 
   drupal_add_http_header('Content-Type', 'text/xml; charset=utf-8');
 
@@ -225,7 +223,7 @@ function ttc_content_type_abstract_cache_xml() {
 
   watchdog('ttc_content_type_abstract', "Caching abstract xml ($count nodes found, $populated with populated xml cache fields)");
 
-  cache_set('abstract_xml', $xml, 'cache');
+  cache_set('abstract_xml', $xml);
 }
 
 /**
@@ -250,7 +248,10 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
   if(!isset($cutoff_datetime) || ($cutoff_datetime=='') || (!strtotime($cutoff_datetime))){
     $cutoff_datetime="2022-03-01";
   }
-  $cutoff_date = new DateTime($cutoff_datetime);
+  try {
+    $cutoff_date = new DateTime($cutoff_datetime);
+  } catch (Exception $e) {
+  }
   $notification_display_cutoff_date = $cutoff_date->format('F j,Y');
   $time_since_cutoff = date_diff($now, $cutoff_date);
   $days_since_cutoff = $time_since_cutoff->days;
@@ -268,7 +269,7 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->fields('n', array('nid'))
   ;
   $threeYearStartSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $threeYearPlusCutoff . ' ';
-  $threeYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $sixYearPlusCutoff  . ' ';
+  $threeYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $sixYearPlusCutoff . ' ';
   $query->where($threeYearStartSnippet);
   $query->where($threeYearEndSnippet);
   $results = $query->execute();
@@ -450,11 +451,17 @@ function _ttc_content_type_abstract_cron_notify_message($nid,$time_period){
     $lead_inventor = '';
   }
   $timezone = new DateTimeZone('America/New_York');
-  $now = new DateTime('now', $timezone);
- if($time_period=='13'){
+  try {
+    $now = new DateTime('now', $timezone);
+  } catch (Exception $e) {
+  }
+  if($time_period=='13'){
    $start_date = date('Y-m-d',$node->field_opp_start_date['und']['0']['value']);
-   $publication_date = new DateTime($start_date, $timezone);
-   $time_since_publication = date_diff($now,  $publication_date);
+    try {
+      $publication_date = new DateTime($start_date, $timezone);
+    } catch (Exception $e) {
+    }
+    $time_since_publication = date_diff($now,  $publication_date);
    $display_time_period = $time_since_publication->y;
  } else {
    $display_time_period = $time_period;
@@ -508,7 +515,10 @@ TTC Website Admin";
     $node->field_last_warned_date['und']['0']['value'] = $now->getTimestamp();
   }
 
-  node_save($node);
+  try {
+    node_save($node);
+  } catch (Exception $e) {
+  }
 }
 
 function _ttc_content_type_abstract_cron_notify_30day($nid){
