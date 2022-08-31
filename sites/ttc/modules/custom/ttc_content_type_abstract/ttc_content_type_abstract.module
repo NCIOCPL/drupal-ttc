@@ -242,11 +242,11 @@ function ttc_content_type_abstract_cron() {
     watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
   }
 }
-function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_datetime="2022-03-01"){
+function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_datetime='2022-03-01'){
 
   $now = new DateTime('now');
   if(!isset($cutoff_datetime) || ($cutoff_datetime=='') || (!strtotime($cutoff_datetime))){
-    $cutoff_datetime="2022-03-01";
+    $cutoff_datetime='2022-03-01';
   }
   try {
     $cutoff_date = new DateTime($cutoff_datetime);
