@@ -255,9 +255,12 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
   $notification_display_cutoff_date = $cutoff_date->format('F j,Y');
   $time_since_cutoff = date_diff($now, $cutoff_date);
   $days_since_cutoff = $time_since_cutoff->days;
-  $threeYearPlusCutoff = $days_since_cutoff + 1095;
-  $sixYearPlusCutoff = $days_since_cutoff + 2190;
-  $tenYearPlusCutoff = $days_since_cutoff + 3650;
+  $threeYearPlusStart = 1095;
+  $threeYearPlusCutoff = $days_since_cutoff + $threeYearPlusStart;
+  $sixYearPlusStart = 2190;
+  $sixYearPlusCutoff = $days_since_cutoff + $sixYearPlusStart;
+  $tenYearPlusStart = 3650;
+  $tenYearPlusCutoff = $days_since_cutoff + $tenYearPlusStart;
   watchdog('ttc_content_type_abstract', "It has been %days days since the %cutoff cutoff for retroactive emails.",
     array('%days' => $days_since_cutoff, '%cutoff' => $notification_display_cutoff_date));
 //3 year query
@@ -268,8 +271,8 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $threeYearStartSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $threeYearPlusCutoff . ' ';
-  $threeYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $sixYearPlusCutoff . ' ';
+  $threeYearStartSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $threeYearPlusStart  . ' ';
+  $threeYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $threeYearPlusCutoff . ' ';
   $query->where($threeYearStartSnippet);
   $query->where($threeYearEndSnippet);
   $results = $query->execute();
@@ -286,8 +289,8 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $sixYearStartSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $sixYearPlusCutoff  . ' ';
-  $sixYearEndSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $tenYearPlusCutoff  . ' ';
+  $sixYearStartSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $sixYearPlusStart  . ' ';
+  $sixYearEndSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $sixYearPlusCutoff  . ' ';
   $query->where($sixYearStartSnippet);
   $query->where($sixYearEndSnippet);
   $results = $query->execute();
@@ -304,8 +307,10 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $tenYearSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= '  . $tenYearPlusCutoff  . ' ';
-  $query->where($tenYearSnippet);
+  $tenYearStartSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= '  . $tenYearPlusStart  . ' ';
+  $tenYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < '  . $tenYearPlusCutoff  . ' ';
+  $query->where($tenYearStartSnippet);
+  $query->where($tenYearEndSnippet);
   $results = $query->execute();
   watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 10 years old.",
     array('%count' => $results->rowCount()));
