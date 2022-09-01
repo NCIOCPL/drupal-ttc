@@ -234,7 +234,6 @@ function ttc_content_type_abstract_cron() {
     // create node and history queries
 
     _ttc_content_type_abstract_cron_abstracts_xml();
-    // _ttc_content_type_abstract_cron_notifications();
     _ttc_content_type_abstract_cron_time_notifications();
 
   }
@@ -243,7 +242,6 @@ function ttc_content_type_abstract_cron() {
   }
 }
 function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_datetime='2022-03-01'){
-
   $now = new DateTime('now');
   if(!isset($cutoff_datetime) || ($cutoff_datetime=='') || (!strtotime($cutoff_datetime))){
     $cutoff_datetime='2022-03-01';
@@ -252,18 +250,30 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     $cutoff_date = new DateTime($cutoff_datetime);
   } catch (Exception $e) {
   }
+  if(!isset($cutoff_date)){
+    $cutoff_date = $now;
+  }
   $notification_display_cutoff_date = $cutoff_date->format('F j,Y');
   $time_since_cutoff = date_diff($now, $cutoff_date);
   $days_since_cutoff = $time_since_cutoff->days;
   $threeYearPlusStart = 1095;
-  $threeYearPlusCutoff = $days_since_cutoff + $threeYearPlusStart;
   $sixYearPlusStart = 2190;
-  $sixYearPlusCutoff = $days_since_cutoff + $sixYearPlusStart;
   $tenYearPlusStart = 3650;
+  $threeYearPlusCutoff = $days_since_cutoff + $threeYearPlusStart;
+  $sixYearPlusCutoff = $days_since_cutoff + $sixYearPlusStart;
   $tenYearPlusCutoff = $days_since_cutoff + $tenYearPlusStart;
+  $startSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ';
+  $endSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ';
+  $threeYearStartSnippet = $startSnippet . $threeYearPlusStart  . ' ';
+  $threeYearEndSnippet = $endSnippet . $threeYearPlusCutoff . ' ';
+  $sixYearStartSnippet = $startSnippet . $sixYearPlusStart  . ' ';
+  $sixYearEndSnippet = $endSnippet . $sixYearPlusCutoff  . ' ';
+  $tenYearStartSnippet = $startSnippet  . $tenYearPlusStart  . ' ';
+  $tenYearEndSnippet = $endSnippet  . $tenYearPlusCutoff  . ' ';
   watchdog('ttc_content_type_abstract', "It has been %days days since the %cutoff cutoff for retroactive emails.",
     array('%days' => $days_since_cutoff, '%cutoff' => $notification_display_cutoff_date));
-//3 year query
+  $watchdog_abstract_count_message = "Cron task found %count abstracts more than %years years old.";
+  //3 year query
   $query = db_select('node', 'n');
   $query->distinct();
   $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
@@ -271,13 +281,11 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $threeYearStartSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $threeYearPlusStart  . ' ';
-  $threeYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $threeYearPlusCutoff . ' ';
   $query->where($threeYearStartSnippet);
   $query->where($threeYearEndSnippet);
   $results = $query->execute();
-  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 3 years old.",
-    array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '3'));
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_message($result->nid,'3');
   }
@@ -289,13 +297,11 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $sixYearStartSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ' . $sixYearPlusStart  . ' ';
-  $sixYearEndSnippet =' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ' . $sixYearPlusCutoff  . ' ';
   $query->where($sixYearStartSnippet);
   $query->where($sixYearEndSnippet);
   $results = $query->execute();
-  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 6 years old.",
-    array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '6'));
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
   }
@@ -307,19 +313,31 @@ function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $tenYearStartSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= '  . $tenYearPlusStart  . ' ';
-  $tenYearEndSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < '  . $tenYearPlusCutoff  . ' ';
   $query->where($tenYearStartSnippet);
   $query->where($tenYearEndSnippet);
   $results = $query->execute();
-  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 10 years old.",
-    array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '10'));
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_message($result->nid,'10');
   }
 }
 //3 (1095), 6 (2190), and 10 (3650) year notification
 function _ttc_content_type_abstract_cron_time_notifications(){
+  $threeYearPlusStart = 1095;
+  $sixYearPlusStart = 2190;
+  $tenYearPlusStart = 3650;
+  $threeYearPlusCutoff = $threeYearPlusStart;
+  $sixYearPlusCutoff = $sixYearPlusStart;
+
+  $startSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ';
+  $endSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ';
+  $threeYearStartSnippet = $startSnippet . $threeYearPlusStart  . ' ';
+  $threeYearEndSnippet = $endSnippet . $threeYearPlusCutoff . ' ';
+  $sixYearStartSnippet = $startSnippet . $sixYearPlusStart  . ' ';
+  $sixYearEndSnippet = $endSnippet . $sixYearPlusCutoff  . ' ';
+  $tenYearStartSnippet = $startSnippet  . $tenYearPlusStart  . ' ';
+  $watchdog_abstract_count_message = "Cron task found %count abstracts more than %years years old.";
 //3 year query
   $query = db_select('node', 'n');
   $query->distinct();
@@ -329,13 +347,13 @@ function _ttc_content_type_abstract_cron_time_notifications(){
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 1095 ' );
-  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < 2190 ' );
+  $query->where($threeYearStartSnippet);
+  $query->where($threeYearEndSnippet);
   $query->where('(
 	  c.field_3_year_warned_value <> 1 or c.field_3_year_warned_value is null)');
   $results = $query->execute();
-  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 3 years old.",
-    array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '3'));
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_message($result->nid,'3');
   }
@@ -348,13 +366,13 @@ function _ttc_content_type_abstract_cron_time_notifications(){
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 2190 ' );
-  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < 3650 ' );
+  $query->where($sixYearStartSnippet);
+  $query->where($sixYearEndSnippet);
   $query->where('(
 	  c.field_6_year_warned_value <> 1 or c.field_6_year_warned_value is null)');
   $results = $query->execute();
-  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 6 years old.",
-    array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '6'));
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
   }
@@ -367,12 +385,12 @@ function _ttc_content_type_abstract_cron_time_notifications(){
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 3650 ' );
+  $query->where($tenYearStartSnippet);
   $query->where('(
 	  c.field_10_year_warned_value <> 1 or c.field_10_year_warned_value is null)');
   $results = $query->execute();
-  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 10 years old.",
-    array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '10'));
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_message($result->nid,'10');
   }
@@ -385,11 +403,11 @@ function _ttc_content_type_abstract_cron_time_notifications(){
     ->condition('n.type', 'abstract', '=')
     ->fields('n', array('nid'))
   ;
-  $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 3650 ' );
+  $query->where($tenYearStartSnippet );
   $query->where(' datediff(now(), from_unixtime(c.field_last_warned_date_value)) >= 1095' );
   $results = $query->execute();
-  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 13+ years old.",
-    array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '13+'));
   foreach($results as $result) {
     _ttc_content_type_abstract_cron_notify_message($result->nid,'13');
   }
