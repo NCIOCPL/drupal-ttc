@@ -5,6 +5,13 @@
  * Default view for node content administration.
  */
 
+Skip to main content
+Home
+Hello emeyerLog outAdministrative toolbarMy Workbench(My Workbench area)Dashboard(View and customize your dashboard.)Content(Find and manage content.)Structure(Administer blocks, content types, menus, etc.)Appearance(Select and configure your themes.)People(Manage user accounts, roles, and permissions.)Modules(Extend site functionality.)Configuration(Administer settings.)Reports(View reports, updates, and errors.)Help(Reference for usage, configuration, and modules.)Clear Cache
+You are here
+Home » Administration » Structure » Views » Administration: Nodes (Content)
+Export view admin_views_node
+Export
 $view = new view();
 $view->name = 'admin_views_node';
 $view->description = 'Find and manage content.';
@@ -40,10 +47,12 @@ $handler->display->display_options['style_options']['columns'] = array(
   'type' => 'type',
   'name' => 'name',
   'status' => 'status',
+  'state' => 'state',
   'changed' => 'changed',
   'edit_node' => 'edit_node',
   'delete_node' => 'edit_node',
 );
+$handler->display->display_options['style_options']['class'] = '';
 $handler->display->display_options['style_options']['default'] = 'changed';
 $handler->display->display_options['style_options']['info'] = array(
   'views_bulk_operations' => array(
@@ -84,6 +93,13 @@ $handler->display->display_options['style_options']['info'] = array(
     'separator' => '',
     'empty_column' => 0,
   ),
+  'state' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
   'changed' => array(
     'sortable' => 1,
     'default_sort_order' => 'desc',
@@ -110,23 +126,21 @@ $handler->display->display_options['empty']['area_text_custom']['table'] = 'view
 $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
 $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
 $handler->display->display_options['empty']['area_text_custom']['content'] = 'No content available.';
-/* Relationship: Content: Author */
+/* Relationship: Content: Content author */
 $handler->display->display_options['relationships']['uid']['id'] = 'uid';
 $handler->display->display_options['relationships']['uid']['table'] = 'node';
 $handler->display->display_options['relationships']['uid']['field'] = 'uid';
 /* Relationship: Content: Taxonomy terms on node */
-if (module_exists('taxonomy')) {
-  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
-    'forums' => 0,
-    'tags' => 0,
-  );
-}
+$handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+$handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+$handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+$handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+  'forums' => 0,
+  'tags' => 0,
+);
 /* Field: Bulk operations: Content */
 $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-$handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+$handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
 $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
 $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
 $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
@@ -163,20 +177,6 @@ $handler->display->display_options['fields']['views_bulk_operations']['vbo_opera
     ),
     'postpone_processing' => 0,
   ),
-  'action::system_message_action' => array(
-    'selected' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-    'postpone_processing' => 0,
-  ),
-  'action::views_bulk_operations_script_action' => array(
-    'selected' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-    'postpone_processing' => 0,
-  ),
   'action::node_make_sticky_action' => array(
     'selected' => 1,
     'skip_confirmation' => 1,
@@ -190,15 +190,6 @@ $handler->display->display_options['fields']['views_bulk_operations']['vbo_opera
     'override_label' => 1,
     'label' => 'Unstick',
     'postpone_processing' => 0,
-  ),
-  'action::views_bulk_operations_argument_selector_action' => array(
-    'selected' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-    'settings' => array(
-      'url' => '',
-    ),
   ),
   'action::node_promote_action' => array(
     'selected' => 1,
@@ -214,13 +205,6 @@ $handler->display->display_options['fields']['views_bulk_operations']['vbo_opera
     'label' => 'Publish',
     'postpone_processing' => 0,
   ),
-  'action::system_goto_action' => array(
-    'selected' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-    'postpone_processing' => 0,
-  ),
   'action::node_unpromote_action' => array(
     'selected' => 1,
     'skip_confirmation' => 1,
@@ -228,32 +212,11 @@ $handler->display->display_options['fields']['views_bulk_operations']['vbo_opera
     'label' => 'Demote from front page',
     'postpone_processing' => 0,
   ),
-  'action::node_save_action' => array(
-    'selected' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-    'postpone_processing' => 0,
-  ),
-  'action::system_send_email_action' => array(
-    'selected' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-    'postpone_processing' => 0,
-  ),
   'action::node_unpublish_action' => array(
     'selected' => 1,
     'skip_confirmation' => 1,
     'override_label' => 1,
     'label' => 'Unpublish',
-    'postpone_processing' => 0,
-  ),
-  'action::node_unpublish_by_keyword_action' => array(
-    'selected' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
     'postpone_processing' => 0,
   ),
 );
@@ -278,23 +241,28 @@ $handler->display->display_options['fields']['name']['field'] = 'name';
 $handler->display->display_options['fields']['name']['relationship'] = 'uid';
 $handler->display->display_options['fields']['name']['label'] = 'Author';
 $handler->display->display_options['fields']['name']['hide_alter_empty'] = FALSE;
-/* Field: Content: Published */
+/* Field: Content: Published status */
 $handler->display->display_options['fields']['status']['id'] = 'status';
 $handler->display->display_options['fields']['status']['table'] = 'node';
 $handler->display->display_options['fields']['status']['field'] = 'status';
 $handler->display->display_options['fields']['status']['not'] = 0;
+/* Field: Workbench Moderation: State */
+$handler->display->display_options['fields']['state']['id'] = 'state';
+$handler->display->display_options['fields']['state']['table'] = 'workbench_moderation_node_history';
+$handler->display->display_options['fields']['state']['field'] = 'state';
+$handler->display->display_options['fields']['state']['machine_name'] = 0;
 /* Field: Content: Updated date */
 $handler->display->display_options['fields']['changed']['id'] = 'changed';
 $handler->display->display_options['fields']['changed']['table'] = 'node';
 $handler->display->display_options['fields']['changed']['field'] = 'changed';
 $handler->display->display_options['fields']['changed']['label'] = 'Updated';
 $handler->display->display_options['fields']['changed']['date_format'] = 'short';
-/* Field: Content: Edit link */
+/* Field: Content: Link to edit content */
 $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
 $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
 $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
 $handler->display->display_options['fields']['edit_node']['label'] = 'Operations';
-/* Field: Content: Delete link */
+/* Field: Content: Link to delete content */
 $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
 $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
 $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
@@ -304,6 +272,7 @@ $handler->display->display_options['filters']['title']['id'] = 'title';
 $handler->display->display_options['filters']['title']['table'] = 'node';
 $handler->display->display_options['filters']['title']['field'] = 'title';
 $handler->display->display_options['filters']['title']['operator'] = 'contains';
+$handler->display->display_options['filters']['title']['group'] = 1;
 $handler->display->display_options['filters']['title']['exposed'] = TRUE;
 $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
 $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
@@ -315,6 +284,7 @@ $handler->display->display_options['filters']['title']['expose']['remember'] = T
 $handler->display->display_options['filters']['type']['id'] = 'type';
 $handler->display->display_options['filters']['type']['table'] = 'node';
 $handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['group'] = 1;
 $handler->display->display_options['filters']['type']['exposed'] = TRUE;
 $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
 $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
@@ -327,48 +297,57 @@ $handler->display->display_options['filters']['uid']['table'] = 'users';
 $handler->display->display_options['filters']['uid']['field'] = 'uid';
 $handler->display->display_options['filters']['uid']['relationship'] = 'uid';
 $handler->display->display_options['filters']['uid']['value'] = '';
+$handler->display->display_options['filters']['uid']['group'] = 1;
 $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
 $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
 $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
 $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
 $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'author';
 $handler->display->display_options['filters']['uid']['expose']['remember'] = TRUE;
-/* Filter criterion: Content: Published */
+/* Filter criterion: Content: Published status */
 $handler->display->display_options['filters']['status']['id'] = 'status';
 $handler->display->display_options['filters']['status']['table'] = 'node';
 $handler->display->display_options['filters']['status']['field'] = 'status';
 $handler->display->display_options['filters']['status']['value'] = 'All';
+$handler->display->display_options['filters']['status']['group'] = 1;
 $handler->display->display_options['filters']['status']['exposed'] = TRUE;
 $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
 $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
 $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
 $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
 $handler->display->display_options['filters']['status']['expose']['remember'] = TRUE;
-if (module_exists('taxonomy')) {
+/* Filter criterion: Workbench Moderation: State */
+$handler->display->display_options['filters']['state']['id'] = 'state';
+$handler->display->display_options['filters']['state']['table'] = 'workbench_moderation_node_history';
+$handler->display->display_options['filters']['state']['field'] = 'state';
+$handler->display->display_options['filters']['state']['value'] = array(
+  'draft' => 'draft',
+  'published' => 'published',
+  'archived' => 'archived',
+  'needs_review' => 'needs_review',
+);
+$handler->display->display_options['filters']['state']['group'] = 1;
+$handler->display->display_options['filters']['state']['exposed'] = TRUE;
+$handler->display->display_options['filters']['state']['expose']['operator_id'] = 'state_op';
+$handler->display->display_options['filters']['state']['expose']['label'] = 'State';
+$handler->display->display_options['filters']['state']['expose']['operator'] = 'state_op';
+$handler->display->display_options['filters']['state']['expose']['identifier'] = 'state';
+$handler->display->display_options['filters']['state']['expose']['multiple'] = TRUE;
+$handler->display->display_options['filters']['state']['expose']['remember_roles'] = array(
+  2 => '2',
+);
 /* Filter criterion: Taxonomy term: Vocabulary */
-  $handler->display->display_options['filters']['vid']['id'] = 'vid';
-  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['vid']['field'] = 'vid';
-  $handler->display->display_options['filters']['vid']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['filters']['vid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['vid']['expose']['operator_id'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['label'] = 'Vocabulary';
-  $handler->display->display_options['filters']['vid']['expose']['operator'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['identifier'] = 'vid';
-  $handler->display->display_options['filters']['vid']['expose']['remember'] = TRUE;
-}
-if (module_exists('domain')) {
-  /* Filter criterion: Domain Access: Domain ID */
-  $handler->display->display_options['filters']['gid']['id'] = 'gid';
-  $handler->display->display_options['filters']['gid']['table'] = 'domain_access';
-  $handler->display->display_options['filters']['gid']['field'] = 'gid';
-  $handler->display->display_options['filters']['gid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['gid']['expose']['operator_id'] = 'gid_op';
-  $handler->display->display_options['filters']['gid']['expose']['label'] = 'Domain';
-  $handler->display->display_options['filters']['gid']['expose']['operator'] = 'gid_op';
-  $handler->display->display_options['filters']['gid']['expose']['identifier'] = 'gid';
-  $handler->display->display_options['filters']['gid']['expose']['remember'] = TRUE;
-}
+$handler->display->display_options['filters']['vid']['id'] = 'vid';
+$handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
+$handler->display->display_options['filters']['vid']['field'] = 'vid';
+$handler->display->display_options['filters']['vid']['relationship'] = 'term_node_tid';
+$handler->display->display_options['filters']['vid']['group'] = 1;
+$handler->display->display_options['filters']['vid']['exposed'] = TRUE;
+$handler->display->display_options['filters']['vid']['expose']['operator_id'] = 'vid_op';
+$handler->display->display_options['filters']['vid']['expose']['label'] = 'Vocabulary';
+$handler->display->display_options['filters']['vid']['expose']['operator'] = 'vid_op';
+$handler->display->display_options['filters']['vid']['expose']['identifier'] = 'vid';
+$handler->display->display_options['filters']['vid']['expose']['remember'] = TRUE;
 
 /* Display: System */
 $handler = $view->new_display('system', 'System', 'system_1');
