@@ -4,14 +4,6 @@
  * @file
  * Default view for node content administration.
  */
-
-Skip to main content
-Home
-Hello emeyerLog outAdministrative toolbarMy Workbench(My Workbench area)Dashboard(View and customize your dashboard.)Content(Find and manage content.)Structure(Administer blocks, content types, menus, etc.)Appearance(Select and configure your themes.)People(Manage user accounts, roles, and permissions.)Modules(Extend site functionality.)Configuration(Administer settings.)Reports(View reports, updates, and errors.)Help(Reference for usage, configuration, and modules.)Clear Cache
-You are here
-Home » Administration » Structure » Views » Administration: Nodes (Content)
-Export view admin_views_node
-Export
 $view = new view();
 $view->name = 'admin_views_node';
 $view->description = 'Find and manage content.';
