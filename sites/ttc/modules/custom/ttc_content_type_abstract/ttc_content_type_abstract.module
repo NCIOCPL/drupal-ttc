@@ -327,8 +327,8 @@ function _ttc_content_type_abstract_cron_time_notifications(){
   $threeYearPlusStart = 1095;
   $sixYearPlusStart = 2190;
   $tenYearPlusStart = 3650;
-  $threeYearPlusCutoff = $threeYearPlusStart;
-  $sixYearPlusCutoff = $sixYearPlusStart;
+  $threeYearPlusCutoff = $sixYearPlusStart;
+  $sixYearPlusCutoff = $tenYearPlusStart;
 
   $startSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ';
   $endSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ';
