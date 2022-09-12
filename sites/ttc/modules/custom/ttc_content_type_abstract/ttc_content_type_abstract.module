@@ -11,15 +11,15 @@ include_once 'ttc_content_type_abstract.hooks.inc';
  * Implements hook_menu().
  */
 function ttc_content_type_abstract_menu() {
-   /* $items['pdf/%ttc_content_type_abstract_enumber'] = array(
-        'title' => 'Generate Abstract PDF',
-        'page callback' => 'ttc_content_type_abstract_generate_pdf',
-        'page arguments' => array(1),
-        'access callback' => '_ttc_content_type_abstract_attributes_access',
-        'access arguments' => array(1),
-        'type' => MENU_LOCAL_TASK,
-        'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
-    );*/
+  /* $items['pdf/%ttc_content_type_abstract_enumber'] = array(
+       'title' => 'Generate Abstract PDF',
+       'page callback' => 'ttc_content_type_abstract_generate_pdf',
+       'page arguments' => array(1),
+       'access callback' => '_ttc_content_type_abstract_attributes_access',
+       'access arguments' => array(1),
+       'type' => MENU_LOCAL_TASK,
+       'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+   );*/
   $items['node/%node/printpdf'] = array(
     'title' => 'Generate PDF',
     'page callback' => 'ttc_content_type_abstract_generate_printpdf',
@@ -28,13 +28,13 @@ function ttc_content_type_abstract_menu() {
     'type' => MENU_LOCAL_TASK,
     //'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
   );
-    $items['abstracts.xml'] = array(
-        'page callback' => 'ttc_content_type_abstract_xml',
-        'access callback' => TRUE,
-        'type'=> MENU_CALLBACK,
-    );
+  $items['abstracts.xml'] = array(
+    'page callback' => 'ttc_content_type_abstract_xml',
+    'access callback' => TRUE,
+    'type'=> MENU_CALLBACK,
+  );
 
-    return $items;
+  return $items;
 }
 
 
@@ -42,38 +42,38 @@ function ttc_content_type_abstract_menu() {
 
 function ttc_content_type_abstract_enumber_load($filename) {
 
-    // extract the enum from the filename
-    $matches = array();
-    $result = preg_match('~([^.]+)\.pdf~', $filename, $matches);
+  // extract the enum from the filename
+  $matches = array();
+  $result = preg_match('~([^.]+)\.pdf~', $filename, $matches);
 
-    if (!$result)
-        return FALSE;
-
-    // if matched, the first result should be the enumber
-    $enumber = $matches[1];
-
-    // set up a field query to find nodes matching this enumber
-    $query = new EntityFieldQuery();
-
-    $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', 'abstract')
-        ->propertyCondition('status', NODE_PUBLISHED)
-        ->fieldCondition('field_enumber', 'value', strtolower($enumber), '=');
-
-    $query_result = $query->execute();
-
-    if (isset($query_result['node'])) {
-        $nids = array_keys($query_result['node']);
-        $nodes = entity_load('node', $nids);
-        $node = array_pop($nodes);
-
-        // if a node exists, return it
-        if (isset($node)) {
-            return $node;
-        }
-    }
-
+  if (!$result)
     return FALSE;
+
+  // if matched, the first result should be the enumber
+  $enumber = $matches[1];
+
+  // set up a field query to find nodes matching this enumber
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'abstract')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_enumber', 'value', strtolower($enumber), '=');
+
+  $query_result = $query->execute();
+
+  if (isset($query_result['node'])) {
+    $nids = array_keys($query_result['node']);
+    $nodes = entity_load('node', $nids);
+    $node = array_pop($nodes);
+
+    // if a node exists, return it
+    if (isset($node)) {
+      return $node;
+    }
+  }
+
+  return FALSE;
 }
 /**
  * Generate HTML of a given node.
@@ -83,27 +83,25 @@ function ttc_content_type_abstract_enumber_load($filename) {
  */
 function ttc_content_type_abstract_generate_printpdf($node) {
 
-    if (!node_access('view', $node)) {
-        drupal_set_message(t('You are not authorized to generate PDF for this page.'), 'warning');
-        drupal_goto(urlencode('node') . '/' . $node->nid);
-        return;
-    }
-    if (empty($node)) {
-        drupal_get_messages('error');
-        drupal_set_message(t('PDF cannot be generated for this path.'), 'error');
-        return;
-    }
-    if(is_object($node)){
-      $node_id = $node->nid;
-    } elseif(is_string($node)){
-        $node_id = $node;
-      } else {
-      $node_id = "";
-    }
+  if (!node_access('view', $node)) {
+    drupal_set_message(t('You are not authorized to generate PDF for this page.'), 'warning');
+    drupal_goto(urlencode('node') . '/' . $node->nid);
+    return;
+  }
+  if (empty($node)) {
+    drupal_get_messages('error');
+    drupal_set_message(t('PDF cannot be generated for this path.'), 'error');
+    return;
+  }
+  if(is_object($node)){
+    $node_id = $node->nid;
+  } elseif(is_string($node)){
+    $node_id = $node;
+  } else {
+    $node_id = "";
+  }
   drupal_goto(urlencode('printpdf') . '/' . $node_id);
-    dpm($node);
-  return;
-
+//  dpm($node);
 }
 /**
  * Generate HTML of a given node.
@@ -155,7 +153,7 @@ function ttc_content_type_abstract_generate_printpdf($node) {
  *   Filename of the desired PDF.
  *
  * @return bool
- *   TRUE if permision allow and FALSE if access denied.
+ *   TRUE if permission allow and FALSE if access denied.
  */
 /*function _ttc_content_type_abstract_attributes_access($filename) {
 
@@ -173,16 +171,16 @@ function ttc_content_type_abstract_generate_printpdf($node) {
  * Outputs the cached abstract xml.
  */
 function ttc_content_type_abstract_xml() {
-    // retrieve thhe abstract xml from cache
-    $xml = cache_get('abstract_xml', 'cache');
+  // retrieve the abstract xml from cache
+  $xml = cache_get('abstract_xml');
 
-    drupal_add_http_header('Content-Type', 'text/xml; charset=utf-8');
+  drupal_add_http_header('Content-Type', 'text/xml; charset=utf-8');
 
-    if($xml) {
-        print $xml->data;
-    }
+  if($xml) {
+    print $xml->data;
+  }
 
-    drupal_exit();
+  drupal_exit();
 }
 
 /**
@@ -193,196 +191,369 @@ function ttc_content_type_abstract_xml() {
  *   (Some form of XML content will be generated in almost every case, even if empty.)
  */
 function ttc_content_type_abstract_cache_xml() {
-    // query for abstracts with send_to_ott set or in the archived state
-    $query = _ttc_content_type_abstract_build_current_query();
+  // query for abstracts with send_to_ott set or in the archived state
+  $query = _ttc_content_type_abstract_build_current_query();
 
-    $results = $query->execute();
-    $nodes = $results->fetchAllAssoc('nid');
-    $count = count($nodes);
+  $results = $query->execute();
+  $nodes = $results->fetchAllAssoc('nid');
+  $count = count($nodes);
 
-    field_attach_load_revision('node', $nodes, array('field_id' => 'field_xml'));
+  field_attach_load_revision('node', $nodes, array('field_id' => 'field_xml'));
 
-    $output = array();
+  $output = array();
 
-    $output[] = '<?xml version="1.0" encoding="UTF-8" ?>';
-    $output[] = '<Technologies>';
+  $output[] = '<?xml version="1.0" encoding="UTF-8" ?>';
+  $output[] = '<Technologies>';
 
-    $populated = 0;
+  $populated = 0;
 
-    foreach($nodes as $node) {
-        if(isset($node->field_xml[LANGUAGE_NONE]['0']['value'])) {
-            $output[] = '<Technology>';
-            $output[] = $node->field_xml[LANGUAGE_NONE]['0']['value'];
-            $output[] = '</Technology>';
+  foreach($nodes as $node) {
+    if(isset($node->field_xml[LANGUAGE_NONE]['0']['value'])) {
+      $output[] = '<Technology>';
+      $output[] = $node->field_xml[LANGUAGE_NONE]['0']['value'];
+      $output[] = '</Technology>';
 
-            $populated++;
-        }
+      $populated++;
     }
+  }
 
-    $output[] = '</Technologies>';
+  $output[] = '</Technologies>';
 
-    $xml = implode(' ', $output);
+  $xml = implode(' ', $output);
 
-    watchdog('ttc_content_type_abstract', "Caching abstract xml ($count nodes found, $populated with populated xml cache fields)");
+  watchdog('ttc_content_type_abstract', "Caching abstract xml ($count nodes found, $populated with populated xml cache fields)");
 
-    cache_set('abstract_xml', $xml, 'cache');
+  cache_set('abstract_xml', $xml);
 }
 
 /**
  * cron hook - add all abstract nodes without populated XML to the queue
  */
 function ttc_content_type_abstract_cron() {
-    try {
-        // create node and history queries
+  try {
+    // create node and history queries
 
-        _ttc_content_type_abstract_cron_abstracts_xml();
-        // _ttc_content_type_abstract_cron_notifications();
-        _ttc_content_type_abstract_cron_time_notifications();
+    _ttc_content_type_abstract_cron_abstracts_xml();
+    _ttc_content_type_abstract_cron_time_notifications();
 
-    }
-    catch(Exception $e){
-        watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
-    }
+  }
+  catch(Exception $e){
+    watchdog('ttc_content_type_abstract', $e->getMessage() . "\n" . $e->getTraceAsString());
+  }
 }
-
-//3 (1065), 6 (2190), and 10 (3650) year notification
-function _ttc_content_type_abstract_cron_time_notifications(){
-//3 year query
-    $query = db_select('node', 'n');
-    $query->distinct();
-    $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
-    $query->leftJoin('field_data_field_3_year_warned', 'c', 'n.nid = c.entity_id');
-    $query->condition('n.status', 1, '=')
-        ->condition('n.type', 'abstract', '=')
-        ->fields('n', array('nid'))
-    ;
-    $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 1065 ' );
-    $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < 2190 ' );
-    $query->where('(
-	  c.field_3_year_warned_value <> 1 or c.field_3_year_warned_value is null)');
-    $results = $query->execute();
-    watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 3 years old.",
-        array('%count' => $results->rowCount()));
-    foreach($results as $result) {
-           _ttc_content_type_abstract_cron_notify_message($result->nid,'3');
-    }
+function _ttc_content_type_abstract_cron_retroactive_time_notifications($cutoff_datetime='2022-03-01'){
+  $now = new DateTime('now');
+  if(!isset($cutoff_datetime) || ($cutoff_datetime=='') || (!strtotime($cutoff_datetime))){
+    $cutoff_datetime='2022-03-01';
+  }
+  try {
+    $cutoff_date = new DateTime($cutoff_datetime);
+  } catch (Exception $e) {
+  }
+  if(!isset($cutoff_date)){
+    $cutoff_date = $now;
+  }
+  $notification_display_cutoff_date = $cutoff_date->format('F j,Y');
+  $time_since_cutoff = date_diff($now, $cutoff_date);
+  $days_since_cutoff = $time_since_cutoff->days;
+  $threeYearPlusStart = 1095;
+  $sixYearPlusStart = 2190;
+  $tenYearPlusStart = 3650;
+  $threeYearPlusCutoff = $days_since_cutoff + $threeYearPlusStart;
+  $sixYearPlusCutoff = $days_since_cutoff + $sixYearPlusStart;
+  $tenYearPlusCutoff = $days_since_cutoff + $tenYearPlusStart;
+  $startSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ';
+  $endSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ';
+  $threeYearStartSnippet = $startSnippet . $threeYearPlusStart  . ' ';
+  $threeYearEndSnippet = $endSnippet . $threeYearPlusCutoff . ' ';
+  $sixYearStartSnippet = $startSnippet . $sixYearPlusStart  . ' ';
+  $sixYearEndSnippet = $endSnippet . $sixYearPlusCutoff  . ' ';
+  $tenYearStartSnippet = $startSnippet  . $tenYearPlusStart  . ' ';
+  $tenYearEndSnippet = $endSnippet  . $tenYearPlusCutoff  . ' ';
+  watchdog('ttc_content_type_abstract', "It has been %days days since the %cutoff cutoff for retroactive emails.",
+    array('%days' => $days_since_cutoff, '%cutoff' => $notification_display_cutoff_date));
+  $watchdog_abstract_count_message = "Cron task found %count abstracts more than %years years old.";
+  //3 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where($threeYearStartSnippet);
+  $query->where($threeYearEndSnippet);
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '3'));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'3');
+  }
 //6 year query
-    $query = db_select('node', 'n');
-    $query->distinct();
-    $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
-    $query->leftJoin('field_data_field_6_year_warned', 'c', 'n.nid = c.entity_id');
-    $query->condition('n.status', 1, '=')
-        ->condition('n.type', 'abstract', '=')
-        ->fields('n', array('nid'))
-    ;
-    $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 2190 ' );
-    $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < 3650 ' );
-    $query->where('(
-	  c.field_6_year_warned_value <> 1 or c.field_6_year_warned_value is null)');
-    $results = $query->execute();
-    watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 6 years old.",
-        array('%count' => $results->rowCount()));
-    foreach($results as $result) {
-        _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
-    }
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where($sixYearStartSnippet);
+  $query->where($sixYearEndSnippet);
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '6'));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
+  }
 //10 year query
-    $query = db_select('node', 'n');
-    $query->distinct();
-    $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
-    $query->leftJoin('field_data_field_10_year_warned', 'c', 'n.nid = c.entity_id');
-    $query->condition('n.status', 1, '=')
-        ->condition('n.type', 'abstract', '=')
-        ->fields('n', array('nid'))
-    ;
-    $query->where(' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= 3650 ' );
-    $query->where('(
-	  c.field_10_year_warned_value <> 1 or c.field_10_year_warned_value is null)');
-    $results = $query->execute();
-    watchdog('ttc_content_type_abstract', "Cron task found %count abstracts more than 10 years old.",
-        array('%count' => $results->rowCount()));
-    foreach($results as $result) {
-        _ttc_content_type_abstract_cron_notify_message($result->nid,'10');
-    }
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where($tenYearStartSnippet);
+  $query->where($tenYearEndSnippet);
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '10'));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'10');
+  }
+}
+//3 (1095), 6 (2190), and 10 (3650) year notification
+function _ttc_content_type_abstract_cron_time_notifications(){
+  $threeYearPlusStart = 1095;
+  $sixYearPlusStart = 2190;
+  $tenYearPlusStart = 3650;
+  $threeYearPlusCutoff = $sixYearPlusStart;
+  $sixYearPlusCutoff = $tenYearPlusStart;
 
+  $startSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) >= ';
+  $endSnippet = ' datediff(now(), from_unixtime(b.field_opp_start_date_value)) < ';
+  $threeYearStartSnippet = $startSnippet . $threeYearPlusStart  . ' ';
+  $threeYearEndSnippet = $endSnippet . $threeYearPlusCutoff . ' ';
+  $sixYearStartSnippet = $startSnippet . $sixYearPlusStart  . ' ';
+  $sixYearEndSnippet = $endSnippet . $sixYearPlusCutoff  . ' ';
+  $tenYearStartSnippet = $startSnippet  . $tenYearPlusStart  . ' ';
+  $watchdog_abstract_count_message = "Cron task found %count abstracts more than %years years old.";
+//3 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->leftJoin('field_data_field_3_year_warned', 'c', 'n.nid = c.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where($threeYearStartSnippet);
+  $query->where($threeYearEndSnippet);
+  $query->where('(
+	  c.field_3_year_warned_value <> 1 or c.field_3_year_warned_value is null)');
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '3'));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'3');
+  }
+//6 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->leftJoin('field_data_field_6_year_warned', 'c', 'n.nid = c.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where($sixYearStartSnippet);
+  $query->where($sixYearEndSnippet);
+  $query->where('(
+	  c.field_6_year_warned_value <> 1 or c.field_6_year_warned_value is null)');
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '6'));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'6');
+  }
+//10 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->leftJoin('field_data_field_10_year_warned', 'c', 'n.nid = c.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where($tenYearStartSnippet);
+  $query->where('(
+	  c.field_10_year_warned_value <> 1 or c.field_10_year_warned_value is null)');
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '10'));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'10');
+  }
+//3+ Beyond 10 year query
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_start_date', 'b', 'n.nid = b.entity_id');
+  $query->leftjoin('field_data_field_last_warned_date', 'c', 'n.nid = c.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where($tenYearStartSnippet );
+  $query->where(' datediff(now(), from_unixtime(c.field_last_warned_date_value)) >= 1095' );
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', $watchdog_abstract_count_message,
+    array('%count' => $results->rowCount(), '%years' => '13+'));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_message($result->nid,'13');
+  }
 }
 function _ttc_content_type_abstract_cron_notifications(){
 
-    $query = db_select('node', 'n');
-    $query->distinct();
-    $query->join('field_data_field_opp_end_date', 'b', 'n.nid = b.entity_id');
-    $query->leftJoin('field_data_field_opp_30day_warned', 'c', 'n.nid = c.entity_id');
-    $query->condition('n.status', 1, '=')
-        ->condition('n.type', 'abstract', '=')
-        ->fields('n', array('nid'))
-    ;
-    $query->where(' datediff(from_unixtime(b.field_opp_end_date_value),now()) <= 30 ' );
-    $query->where(' datediff(from_unixtime(b.field_opp_end_date_value),now()) >= 0 ' );
-    $query->where('(
+  $query = db_select('node', 'n');
+  $query->distinct();
+  $query->join('field_data_field_opp_end_date', 'b', 'n.nid = b.entity_id');
+  $query->leftJoin('field_data_field_opp_30day_warned', 'c', 'n.nid = c.entity_id');
+  $query->condition('n.status', 1, '=')
+    ->condition('n.type', 'abstract', '=')
+    ->fields('n', array('nid'))
+  ;
+  $query->where(' datediff(from_unixtime(b.field_opp_end_date_value),now()) <= 30 ' );
+  $query->where(' datediff(from_unixtime(b.field_opp_end_date_value),now()) >= 0 ' );
+  $query->where('(
 	  c.field_opp_30day_warned_value <> 1 or c.field_opp_30day_warned_value is null
   )');
-    $results = $query->execute();
-    watchdog('ttc_content_type_abstract', "Cron task found %count abstracts within 30 days of expiring.",
-        array('%count' => $results->rowCount()));
-    foreach($results as $result) {
-        _ttc_content_type_abstract_cron_notify_30day($result->nid);
-    }
+  $results = $query->execute();
+  watchdog('ttc_content_type_abstract', "Cron task found %count abstracts within 30 days of expiring.",
+    array('%count' => $results->rowCount()));
+  foreach($results as $result) {
+    _ttc_content_type_abstract_cron_notify_30day($result->nid);
+  }
 }
 function _ttc_content_type_abstract_cron_notify_message($nid,$time_period){
-    $node = node_load($nid);
-
-    global $conf;
-    $email_cc = $conf['notifications_email'];
-    $title = $node->title;
+  $node = node_load($nid);
+  global $conf;
+  $email_cc = $conf['notifications_email'];
+  $email_contact_name = $conf['notifications_contact_name'];
+  $title = $node->title;
+  if(isset($node->field_contact_auto['und']['0']['tid'])){
     $contact_tid = $node->field_contact_auto['und']['0']['tid'];
     $term = taxonomy_term_load($contact_tid);
-    $email_to = $term->field_contact_email['und']['0']['email'];
-    $nih_reference_no  = $node->field_enumber['und']['0']['value'];
-    // Send email notification
+    $email_to = $term->field_contact_email['und']['0']['email'] ?? $email_cc;
+  } else {
+    $email_to = $email_cc;
+  }
+  $nih_reference_no  = $node->field_enumber['und']['0']['value'];
+  $first_name = '';
+  $middle_initial = '';
+  $last_name = '';
+  $name_suffix = '';
+  $updated_date = date('F j, Y', $node->field_updated_date['und']['0']['value']);
+  $inventor_entity_ids = field_get_items('node', $node, 'field_inventors');
+  if(isset($inventor_entity_ids) && (is_array($inventor_entity_ids)||is_object($inventor_entity_ids))){
+    foreach($inventor_entity_ids as $inventor_entity_id) {
+      $id = $inventor_entity_id['value'];
+      $inventor = field_collection_item_load($id);
+      $is_lead = $inventor->field_is_lead['und']['0']['value'] ? 'true' : 'false';
+      if($is_lead){
+        $first_name = $inventor->field_first_name['und']['0']['value'] ?? '';
+        $middle_initial = $inventor->field_middle_initial['und']['0']['value'] ?? '';
+        $last_name = $inventor->field_last_name['und']['0']['value'] ?? '';
+        $name_suffix = $inventor->field_suffix['und']['0']['value'] ?? '';
+      }
+    }
+  }
 
-    $message = 'The abstract associated with ' . $title . ' ' . $nih_reference_no . ' was posted ' .
-        $time_period . ' years ago. Please work with the inventor(s) to update any parts that have changed and send back a revised copy. Especially important:
+  if(isset($last_name)){
+    $lead_inventor = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $name_suffix;
+  } else {
+    $lead_inventor = '';
+  }
+  $timezone = new DateTimeZone('America/New_York');
+  try {
+    $now = new DateTime('now', $timezone);
+  } catch (Exception $e) {
+  }
+  if($time_period=='13'){
+   $start_date = date('Y-m-d',$node->field_opp_start_date['und']['0']['value']);
+    try {
+      $publication_date = new DateTime($start_date, $timezone);
+    } catch (Exception $e) {
+    }
+    $time_since_publication = date_diff($now,  $publication_date);
+   $display_time_period = $time_since_publication->y;
+ } else {
+   $display_time_period = $time_period;
+ }
+  // Send email notification
 
+  $message = "The abstract associated with: \n" .
+    $title . "\n"
+    . $nih_reference_no . "\n"
+    . $lead_inventor . "\n" .
+    " was posted " . $display_time_period . " years ago and was last updated on " . $updated_date .
+    ". \n\n Please work with the inventor(s) to update the published abstract and send any revisions to " . $email_contact_name . ".\n
+    Consider:\n
 1. Summary
 2. Collaboration Opportunity (Co-development and/or License)
 3. Experimental results in the Description of Technology
 4. Development Stage
-5. Patent Status
+5. Patent Status. If abandoned, should the abstract be removed?
 6. Publications
+
+Research Tools: Please confirm materials are available.
+
+For higher abstract appeal, please update abstracts regularly. Abstracts that were published 10 or more years ago will be reviewed with the TTM for retirement/removal from the TTC and OTT websites.
 
 Best regards,
 
-TTC Website Admin';
-    // Send the email.
+TTC Website Admin";
+  // Send the email.
 
 
-    $params = array(
-        'subject' => 'Notice Abstract Posted ' . $time_period . ' years ago: ' . $nih_reference_no,
-        'body' => check_markup(
-            t($message),
-            'plain_text'
-        ),
-        'headers' => array(
-          'Cc' => $email_cc
-        )
-    );
+  $params = array(
+    'subject' => 'Notice Abstract Posted ' . $display_time_period . ' years ago: ' . $nih_reference_no,
+    'body' => check_markup(
+      t($message),
+      'plain_text'
+    ),
+    'headers' => array(
+      'Cc' => $email_cc
+    )
+  );
 
-    $notification = str_replace(' ', '_', $time_period) . '_year_notify';
-    drupal_mail('ttc_content_type_abstract', $notification, $email_to, language_default(), $params);
+  $notification = str_replace(' ', '_', $time_period) . '_year_notify';
+  drupal_mail('ttc_content_type_abstract', $notification, $email_to, language_default(), $params);
+  if($time_period!='13') {
     $warning_field = 'field_' . $time_period . '_year_warned';
     $node->$warning_field['und'][0]['value'] = '1';
+  }
+  //Sets 10+ field
+  if(($time_period=='10')||($time_period=='13')){
+
+    $node->field_last_warned_date['und']['0']['value'] = $now->getTimestamp();
+  }
+
+  try {
     node_save($node);
+  } catch (Exception $e) {
+  }
 }
 
 function _ttc_content_type_abstract_cron_notify_30day($nid){
-    $node = node_load($nid);
+  $node = node_load($nid);
 
-    global $conf;
-    $email_to = $conf['notifications_email'];
-    $title = $node->title;
-    $nih_reference_no  = $node->field_enumber['und']['0']['value'];
-    // Send email notification
+  global $conf;
+  $email_to = $conf['notifications_email'];
+  $title = $node->title;
+  $nih_reference_no  = $node->field_enumber['und']['0']['value'];
+  // Send email notification
 
-    $message = "The abstract associated with $title $nih_reference_no is due to expire in 30 days. Please work with the inventor(s) to update any parts that have changed and send back a revised copy. Especially important:
+  $message = "The abstract associated with $title $nih_reference_no is due to expire in 30 days. Please work with the inventor(s) to update any parts that have changed and send back a revised copy. Especially important:
 
 1. Summary
 2. Collaboration Opportunity (Co-development and/or License)
@@ -394,57 +565,57 @@ function _ttc_content_type_abstract_cron_notify_30day($nid){
 Best regards,
 
 TTC Website Admin";
-    // Send the email.
-    $params = array(
-        'subject' => 'Notice of Abstract Expiration ' . $nih_reference_no,
-        'body' => check_markup(
-            t($message),
-            'plain_text'
-        ),
-    );
-    drupal_mail('ttc_content_type_abstract', '30day_notify', $email_to, language_default(), $params);
+  // Send the email.
+  $params = array(
+    'subject' => 'Notice of Abstract Expiration ' . $nih_reference_no,
+    'body' => check_markup(
+      t($message),
+      'plain_text'
+    ),
+  );
+  drupal_mail('ttc_content_type_abstract', '30day_notify', $email_to, language_default(), $params);
 
 
-    $num_updated = db_update('field_data_field_opp_30day_warned')
-        ->fields(array(
-            'field_opp_30day_warned_value' => 1,
-        ))
-        ->condition('entity_id', $nid,  '=')
-        ->execute();
+  $num_updated = db_update('field_data_field_opp_30day_warned')
+    ->fields(array(
+      'field_opp_30day_warned_value' => 1,
+    ))
+    ->condition('entity_id', $nid,  '=')
+    ->execute();
 
 
-    $num_updated = db_update('field_revision_field_opp_30day_warned')
-        ->fields(array(
-            'field_opp_30day_warned_value' => 1,
-        ))
-        ->condition('entity_id', $nid,  '=')
-        ->execute();
+  $num_updated = db_update('field_revision_field_opp_30day_warned')
+    ->fields(array(
+      'field_opp_30day_warned_value' => 1,
+    ))
+    ->condition('entity_id', $nid,  '=')
+    ->execute();
 
 }
 
 
 
 function _ttc_content_type_abstract_cron_abstracts_xml(){
-    $query = _ttc_content_type_abstract_build_current_query();
+  $query = _ttc_content_type_abstract_build_current_query();
 
-    // add check for null xml fields
-    $xml = db_select('field_revision_field_xml', 'x');
-    $xml->rightJoin($query, 'a', 'x.entity_id = a.nid AND x.revision_id = a.vid');
-    $xml->isNull('x.field_xml_value');
+  // add check for null xml fields
+  $xml = db_select('field_revision_field_xml', 'x');
+  $xml->rightJoin($query, 'a', 'x.entity_id = a.nid AND x.revision_id = a.vid');
+  $xml->isNull('x.field_xml_value');
 
-    $xml->fields('a', array('nid', 'vid', 'type'));
+  $xml->fields('a', array('nid', 'vid', 'type'));
 
-    $results = $xml->execute();
+  $results = $xml->execute();
 
-    watchdog('ttc_content_type_abstract', "Cron task found %count empty abstract xml fields.",
-        array('%count' => $results->rowCount()));
+  watchdog('ttc_content_type_abstract', "Cron task found %count empty abstract xml fields.",
+    array('%count' => $results->rowCount()));
 
-    foreach($results as $result) {
-        _ttc_content_type_abstract_queue_xml($result);
-    }
+  foreach($results as $result) {
+    _ttc_content_type_abstract_queue_xml($result);
+  }
 
-    // add the xml generation request on the end
-    _ttc_content_type_abstract_queue_xml('cache_xml');
+  // add the xml generation request on the end
+  _ttc_content_type_abstract_queue_xml('cache_xml');
 
 }
 function ttc_content_type_abstract_field_attach_view_alter(&$output, $context) {

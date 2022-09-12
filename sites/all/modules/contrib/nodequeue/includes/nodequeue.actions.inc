@@ -76,10 +76,10 @@ function nodequeue_add_action($node, $context) {
 /**
  * Old-style action to add a node to a queue.
  */
-  function action_nodequeue_add($op, $edit, $node) {
-    if (empty($edit)) {
-      $edit = array();
-    }
+function action_nodequeue_add($op, $edit, $node) {
+  if (empty($edit)) {
+    $edit = array();
+  }
   switch ($op) {
     case 'metadata':
       return array(

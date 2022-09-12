@@ -775,7 +775,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 39,
       ),
       'print' => array(
         'label' => 'above',
@@ -866,6 +866,59 @@ function ttc_content_type_abstract_field_default_field_instances() {
       'settings' => array(),
       'type' => 'field_collection_embed',
       'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-abstract-field_last_warned_date'.
+  $field_instances['node-abstract-field_last_warned_date'] = array(
+    'bundle' => 'abstract',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 37,
+      ),
+      'print' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_last_warned_date',
+    'label' => 'Last Warned Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'Y-m-d H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_select',
+      'weight' => 46,
     ),
   );
 
@@ -1800,7 +1853,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 38,
       ),
       'print' => array(
         'label' => 'hidden',
@@ -2222,7 +2275,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 41,
       ),
       'print' => array(
         'label' => 'above',
@@ -2392,7 +2445,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 40,
       ),
       'print' => array(
         'label' => 'above',
@@ -2455,6 +2508,7 @@ function ttc_content_type_abstract_field_default_field_instances() {
   t('Inventor Data');
   t('Inventor(s)');
   t('Keywords');
+  t('Last Warned Date');
   t('Mailing List Intro');
   t('Mode');
   t('NIH IC');
