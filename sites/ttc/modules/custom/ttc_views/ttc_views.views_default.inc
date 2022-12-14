@@ -701,6 +701,31 @@ function ttc_views_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Created date';
+  $handler->display->display_options['fields']['created']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'search_api_facetapi_YEAR';
+  /* Field: Content: Renewal Date */
+  $handler->display->display_options['fields']['field_opp_end_date']['id'] = 'field_opp_end_date';
+  $handler->display->display_options['fields']['field_opp_end_date']['table'] = 'field_data_field_opp_end_date';
+  $handler->display->display_options['fields']['field_opp_end_date']['field'] = 'field_opp_end_date';
+  $handler->display->display_options['fields']['field_opp_end_date']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_opp_end_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_opp_end_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_opp_end_date']['settings'] = array(
+    'format_type' => 'short',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
   /* Field: Date Unpublished */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
