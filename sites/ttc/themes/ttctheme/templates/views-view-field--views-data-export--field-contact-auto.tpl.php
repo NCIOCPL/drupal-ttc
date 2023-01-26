@@ -44,8 +44,10 @@ try {
         $org = isset($contact->field_organization_name['und'][0]['value']) ? $contact->field_organization_name['und'][0]['value'] : '';
         $fax_number = isset($contact->field_fax_number['und'][0]['value']) ? $contact->field_fax_number['und'][0]['value'] : '';
         $email = isset($contact->field_contact_email['und'][0]['email']) ? $contact->field_contact_email['und'][0]['email'] : '';
+        $cc_email = isset($contact->field_contact_email_cc['und'][0]['email']) ? $contact->field_contact_email_cc['und'][0]['email'] : '';
+        $bcc_email = isset($contact->field_contact_email_bcc['und'][0]['email']) ? $contact->field_contact_email_bcc['und'][0]['email'] : '';
 
-        unset($contact);
+      unset($contact);
 
         $writer->startElement('Contact');
             $writer->startElement('Person');
@@ -76,6 +78,12 @@ try {
                      $writer->startElement('Email');
                         $writer->writeElement('EmailID', $email);
                     $writer->endElement(); //Email
+                    $writer->startElement('CC');
+                      $writer->writeElement('EmailID', $cc_email);
+                    $writer->endElement(); //CC Email
+                    $writer->startElement('BCC');
+                      $writer->writeElement('EmailID', $bcc_email);
+                    $writer->endElement(); //BCC Email
                 $writer->endElement(); //Emails
             $writer->endElement(); //Person
             $writer->startElement('Organizations');

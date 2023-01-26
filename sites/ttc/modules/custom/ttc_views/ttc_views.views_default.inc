@@ -622,6 +622,7 @@ function ttc_views_views_default_views() {
     'field_contact_auto' => 'field_contact_auto',
   );
   $handler->display->display_options['style_options']['cdata_wrapper'] = array(
+    'field_meta_long_desc' => 'field_meta_long_desc',
     'field_opp_compadv_text' => 'field_opp_compadv_text',
     'field_opp_commapp_text' => 'field_opp_commapp_text',
     'field_development_stage' => 'field_development_stage',
@@ -635,6 +636,16 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Meta Description */
+  $handler->display->display_options['fields']['field_meta_long_desc']['id'] = 'field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['table'] = 'field_data_field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['field'] = 'field_meta_long_desc';
+  $handler->display->display_options['fields']['field_meta_long_desc']['label'] = 'Summary';
+  /* Field: Content: Keywords */
+  $handler->display->display_options['fields']['field_meta_keywords']['id'] = 'field_meta_keywords';
+  $handler->display->display_options['fields']['field_meta_keywords']['table'] = 'field_data_field_meta_keywords';
+  $handler->display->display_options['fields']['field_meta_keywords']['field'] = 'field_meta_keywords';
+  $handler->display->display_options['fields']['field_meta_keywords']['delta_offset'] = '0';
   /* Field: Content: Competitive Advantages */
   $handler->display->display_options['fields']['field_opp_compadv_text']['id'] = 'field_opp_compadv_text';
   $handler->display->display_options['fields']['field_opp_compadv_text']['table'] = 'field_data_field_opp_compadv_text';
@@ -684,6 +695,31 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_posted_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_posted_date']['settings'] = array(
     'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Created date';
+  $handler->display->display_options['fields']['created']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'search_api_facetapi_YEAR';
+  /* Field: Content: Renewal Date */
+  $handler->display->display_options['fields']['field_opp_end_date']['id'] = 'field_opp_end_date';
+  $handler->display->display_options['fields']['field_opp_end_date']['table'] = 'field_data_field_opp_end_date';
+  $handler->display->display_options['fields']['field_opp_end_date']['field'] = 'field_opp_end_date';
+  $handler->display->display_options['fields']['field_opp_end_date']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_opp_end_date']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_opp_end_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_opp_end_date']['settings'] = array(
+    'format_type' => 'short',
+    'custom_date_format' => '',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -760,6 +796,12 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_product_type']['label'] = 'Provider Classifications';
   $handler->display->display_options['fields']['field_product_type']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_product_type']['delta_offset'] = '0';
+  /* Field: Content: Therapeutic Area */
+  $handler->display->display_options['fields']['field_therapeutic_area']['id'] = 'field_therapeutic_area';
+  $handler->display->display_options['fields']['field_therapeutic_area']['table'] = 'field_data_field_therapeutic_area';
+  $handler->display->display_options['fields']['field_therapeutic_area']['field'] = 'field_therapeutic_area';
+  $handler->display->display_options['fields']['field_therapeutic_area']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_therapeutic_area']['delta_offset'] = '0';
   /* Field: Content: Contact */
   $handler->display->display_options['fields']['field_contact_auto']['id'] = 'field_contact_auto';
   $handler->display->display_options['fields']['field_contact_auto']['table'] = 'field_data_field_contact_auto';
@@ -768,6 +810,11 @@ function ttc_views_views_default_views() {
   $handler->display->display_options['fields']['field_contact_auto']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_contact_auto']['alter']['text'] = '[field_contact_auto-tid]';
   $handler->display->display_options['fields']['field_contact_auto']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Announce opportunity to GovDelivery? */
+  $handler->display->display_options['fields']['field_opp_list_send']['id'] = 'field_opp_list_send';
+  $handler->display->display_options['fields']['field_opp_list_send']['table'] = 'field_data_field_opp_list_send';
+  $handler->display->display_options['fields']['field_opp_list_send']['field'] = 'field_opp_list_send';
+  $handler->display->display_options['fields']['field_opp_list_send']['label'] = 'GovDelivery';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';

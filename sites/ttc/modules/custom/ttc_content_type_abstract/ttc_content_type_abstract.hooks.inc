@@ -14,6 +14,8 @@ function ttc_content_type_abstract_form_node_form_alter(&$form, &$form_state) {
         $form['field_3_year_warned']['#access'] = false;
         $form['field_6_year_warned']['#access'] = false;
         $form['field_10_year_warned']['#access'] = false;
+        $form['field_last_warned_date']['#access'] = false;
+        $form['field_opp_end_date']['#access'] = false;
         $form['field_xml']['#access'] = false;
 
 
